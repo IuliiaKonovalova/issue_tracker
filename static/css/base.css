@@ -1,0 +1,16 @@
+:root {
+  --clr-primary--100: #202a3c;
+  --clr-primary--300: #1c2431;
+  --clr-primary--500: #181f2a;
+  --clr-primary--900: hsl(215, 52%, 9%);
+  --clr-accent--300: #65e2d9;
+  --clr-accent--500: #339ecc;
+  --clr-accent--700: #925cef;
+  --clr-accent--900: hsl(0, 100%, 63%);
+  --clr-neutral--100: #ffffff;
+  --clr-neutral--300: #ffffffb7;
+  --clr-neutral--500: #afadad;
+  --fs: 0.9375rem;
+  --ff-primary: 'Lato', sans-serif;
+  --br: 1.75em;
+}
