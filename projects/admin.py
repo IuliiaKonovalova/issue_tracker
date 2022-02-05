@@ -33,6 +33,9 @@ class ProjectAdmin(admin.ModelAdmin):
     
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'bio', 'birth_date', 'related_projects', 'assigned_issues')
+    list_display = ('user', 'bio', 'birth_date')
+    # display assigned issues
+    
+    # display projects
     
     
