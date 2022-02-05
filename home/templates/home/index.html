@@ -2,5 +2,29 @@
 {% load static %}
 
 {% block content %}
-<h2>home/index.html</h2>
+<div class="bg">
+  <div class="incentive">
+    <h2 class="incentive__title">Place to make the best products</h2>
+    <div class="incentive__buttons">
+      <div class="incentive__button">
+        <a href="{% url 'account_login' %}">Login</a>
+      </div>
+      <div class="incentive__button">
+        <a href="{% url 'account_signup' %}">SignUp</a>
+      </div>
+    </div>
+  </div>
+</div>
+<section>
+  <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt vitae rerum odio consequuntur sed atque est
+    aperiam quae! Ipsum porro inventore dolorum? Amet pariatur nostrum cum, quae alias blanditiis illo.
+    Unde at ullam, voluptate enim et dolores quasi, laboriosam delectus nostrum molestias placeat excepturi mollitia
+    consectetur laudantium, ex doloremque odit quaerat incidunt nulla nihil ipsa voluptatibus earum facilis modi? Quas?
+  </div>
+  <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt vitae rerum odio consequuntur sed atque est
+    aperiam quae! Ipsum porro inventore dolorum? Amet pariatur nostrum cum, quae alias blanditiis illo.
+    Unde at ullam, voluptate enim et dolores quasi, laboriosam delectus nostrum molestias placeat excepturi mollitia
+    consectetur laudantium, ex doloremque odit quaerat incidunt nulla nihil ipsa voluptatibus earum facilis modi? Quas?
+  </div>
+</section>
 {% endblock %}
