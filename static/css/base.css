@@ -108,8 +108,9 @@ body {
 }
 
 .navbar__item a:hover,
+.navbar__item--dropdown:hover,
 .account__option a:hover {
-  color: var(--clr-accent--500);
+  color: var(--clr-accent--300);
 }
 
 .navbar__item--dropdown {
@@ -140,6 +141,20 @@ body {
   margin: 0.6em 1em;
 }
 
+.account__options .account__option--logout {
+  position: relative;
+  margin-top: 1.3em;
+}
+
+.account__option--logout::before {
+  content: '';
+  border: 0.5px solid var(--clr-neutral--300);
+  position: absolute;
+  top: -1rem;
+  left: -1.8rem;
+  right: -1.8em;
+}
+
 
 /* ----- Main ----- */
 
@@ -158,6 +173,10 @@ body {
 }
 
 
+
+
+
+
 /* ----- Footer ----- */
 
 .footer {
@@ -170,6 +189,38 @@ body {
   max-width: 120rem;
   margin: 0 auto;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6em 2em;
+  color: var(--clr-neutral--100);
+}
+
+.contributor {
+  display: flex;
   flex-direction: column;
-  padding: 0 2em;
+  align-items: center;
+  margin: 0 4em;
+  max-width: 15rem;
+}
+
+.contributor__name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.8em;
+  letter-spacing: 0.1rem;
+}
+
+.contributor__links {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.contributor__link a i {
+  font-size: 2rem;
+  color: var(--clr-neutral--100);
+}
+
+.contributor__link a i:hover {
+  color: var(--clr-accent--300);
 }
