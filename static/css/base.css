@@ -108,8 +108,9 @@ body {
 }
 
 .navbar__item a:hover,
+.navbar__item--dropdown:hover,
 .account__option a:hover {
-  color: var(--clr-accent--500);
+  color: var(--clr-accent--300);
 }
 
 .navbar__item--dropdown {
@@ -138,6 +139,20 @@ body {
 
 .account__options li {
   margin: 0.6em 1em;
+}
+
+.account__options .account__option--logout {
+  position: relative;
+  margin-top: 1.3em;
+}
+
+.account__option--logout::before {
+  content: '';
+  border: 0.5px solid var(--clr-neutral--300);
+  position: absolute;
+  top: -1rem;
+  left: -1.8rem;
+  right: -1.8em;
 }
 
 
