@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% block meta %}
+  <meta http-equiv="X-UA-Compatible" content="ie-edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% endblock %}
+
+  {% block extra_meta %}
+  {% endblock %}
+
+  {% block corecss %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  {% endblock %}
+
+  {% block extra_css %}
+  {% endblock %}
+
+  {% block corejs %}
+  <script src="https://kit.fontawesome.com/7a0af02583.js" crossorigin="anonymous"></script>
+  {% endblock %}
+
+  {% block extra_js %}
+  {% endblock %}
+
+  <title>Bugs digger {% block extra_title %}{% endblock %}</title>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo__container">Bugs' digger</div>
+      <ul class="navbar__items">
+        <li class="navbar__item">
+          <a href="{% url 'home' %}">Home</a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li class="navbar__item navbar__item--dropdown">
+          <div href="#" id="dropdown-profile">Account</div>
+          <!-- <ul class="account__options">
+            <li class="account__option">
+              <a href="#">Profile</a>
+            </li>
+            <li class="account__option">
+              <a href="#">Projects</a>
+            </li>
+            <li class="account__option">
+              <a href="#">Settings</a>
+            </li>
+            <li class="account__option">
+              <a href="{% url 'account_logout' %}">Logout</a>
+            </li>
+          </ul> -->
+        </li>
+        {% else %}
+        <li class="navbar__item ">
+          <div href="#" id="dropdown-enter" class="navbar__item--dropdown">Login/Sign Up</div>
+          <ul class="account__options">
+            <li class="account__option">
+              <a href="{% url 'account_login' %}">Login</a>
+            </li>
+            <li class="account__option">
+              <a href="{% url 'account_signup' %}">Sign Up</a>
+            </li>
+          </ul>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+
+
+  </header>
+  {% if messages %}
+  <div class="message-container"></div>
+  {% endif %}
+
+  {% block page_header %}
+  {% endblock %}
+
+  {% block content %}
+  {% endblock %}
+
+  {% block postloadjs %}
+  <script src="{% static 'js/base.js' %}"></script>
+  {% endblock %}
+</body>
+
+</html>

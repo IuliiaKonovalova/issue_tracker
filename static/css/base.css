@@ -1,0 +1,140 @@
+:root {
+  --clr-primary--100: #202a3c;
+  --clr-primary--300: #1c2431;
+  --clr-primary--500: #181f2a;
+  --clr-primary--900: #0b1523;
+  --clr-accent--300: #65e2d9;
+  --clr-accent--500: #339ecc;
+  --clr-accent--700: #925cef;
+  --clr-accent--900: hsl(0, 100%, 63%);
+  --clr-neutral--100: #ffffff;
+  --clr-neutral--300: #ffffffb7;
+  --clr-neutral--500: #afadad;
+  --fs: 1.2rem;
+  --ff-primary: 'Lato', sans-serif;
+  --br: 1em;
+}
+
+/*------ Global Settings------*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  margin-left: 0;
+  padding-left: 0;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: contain;
+}
+
+/* Body */
+
+body {
+  font-family: var(--ff-primary);
+  font-size: var(--fs);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: var(--fs);
+}
+
+.header {
+  width: 100%;
+  background-color: var(--clr-primary--100);
+  color: var(--clr-neutral--100);
+}
+
+.navbar {
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 2em;
+  position: relative;
+}
+
+.logo__container {
+  font-weight: bold;
+  font-size: 1.5rem;
+  letter-spacing: 0.15rem;
+}
+
+.navbar__items {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__item:not(:first-child) {
+  margin-left: 7vw;
+}
+
+.navbar__item a {
+  color: var(--clr-neutral--100);
+}
+
+.navbar__item a:hover,
+.account__option a:hover {
+  color: var(--clr-accent--500);
+}
+
+.navbar__item--dropdown {
+  position: relative;
+}
+
+.account__options {
+  padding: 2em;
+  position: absolute;
+  top: 98%;
+  list-style-type: none;
+  right: 0;
+  z-index: 99;
+  border: 1px solid var(--clr-neutral--500);
+  background-color: var(--clr-primary--100);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
+  display: none;
+}
+
+.navbar__item--dropdown.open~.account__options {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+}
+
+.account__options li {
+  margin: 0.6em 1em;
+}
