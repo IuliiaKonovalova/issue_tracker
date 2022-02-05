@@ -158,6 +158,10 @@ body {
 }
 
 
+
+
+
+
 /* ----- Footer ----- */
 
 .footer {
@@ -170,6 +174,38 @@ body {
   max-width: 120rem;
   margin: 0 auto;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6em 2em;
+  color: var(--clr-neutral--100);
+}
+
+.contributor {
+  display: flex;
   flex-direction: column;
-  padding: 0 2em;
+  align-items: center;
+  margin: 0 4em;
+  max-width: 15rem;
+}
+
+.contributor__name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.8em;
+  letter-spacing: 0.1rem;
+}
+
+.contributor__links {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.contributor__link a i {
+  font-size: 2rem;
+  color: var(--clr-neutral--100);
+}
+
+.contributor__link a i:hover {
+  color: var(--clr-accent--300);
 }
