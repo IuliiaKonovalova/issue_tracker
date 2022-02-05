@@ -33,15 +33,15 @@
 <body>
   <header class="header">
     <nav class="navbar">
-      <div class="logo__container">Logo</div>
+      <div class="logo__container">Bugs' digger</div>
       <ul class="navbar__items">
         <li class="navbar__item">
           <a href="{% url 'home' %}">Home</a>
         </li>
         {% if request.user.is_authenticated %}
-        <li class="navbar__item">
-          <div href="#" id="dropdown">Account</div>
-          <ul class="account__options">
+        <li class="navbar__item navbar__item--dropdown">
+          <div href="#" id="dropdown-profile">Account</div>
+          <!-- <ul class="account__options">
             <li class="account__option">
               <a href="#">Profile</a>
             </li>
@@ -54,11 +54,19 @@
             <li class="account__option">
               <a href="{% url 'account_logout' %}">Logout</a>
             </li>
-          </ul>
+          </ul> -->
         </li>
         {% else %}
-        <li class="navbar__item">
-          <a href="{% url 'account_login' %}">Login</a>
+        <li class="navbar__item ">
+          <div href="#" id="dropdown-enter" class="navbar__item--dropdown">Login/Sign Up</div>
+          <ul class="account__options">
+            <li class="account__option">
+              <a href="{% url 'account_login' %}">Login</a>
+            </li>
+            <li class="account__option">
+              <a href="{% url 'account_signup' %}">Sign Up</a>
+            </li>
+          </ul>
         </li>
         {% endif %}
       </ul>
@@ -77,6 +85,7 @@
   {% endblock %}
 
   {% block postloadjs %}
+  <script src="{% static 'js/base.js' %}"></script>
   {% endblock %}
 </body>
 
