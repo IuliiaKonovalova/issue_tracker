@@ -1,7 +1,6 @@
 from re import L
 from django.contrib import admin
-from nbformat import read
-from .models import Issue, Comment, Project
+from .models import Issue, Comment, Project, UserProfile
 from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(Issue)
@@ -25,10 +24,15 @@ class CommentAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    # list_display = ('name', 'created_by', 'created_on')
-    # list_filter = ('created_on',)
-    # search_fields = ('name', 'created_by')
-    # ordering = ('-created_on',)
-    # list_select_related = ('created_by',)
+    list_display = ('name', 'created_by', 'created_on')
+    list_filter = ('created_on',)
+    search_fields = ('name', 'created_by')
+    ordering = ('-created_on',)
+    list_select_related = ('created_by',)
     # need to add members to the project
-    pass
+    
+@admin.register(UserProfile)
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'bio', 'birth_date', 'related_projects', 'assigned_issues')
+    
+    

@@ -90,3 +90,10 @@ class Project(models.Model):
     def __str__(self):
         return self.name
 
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+    related_projects = models.ManyToManyField(Project, related_name='related_projects', blank=True)
+    assigned_issues = models.ManyToManyField(Issue, related_name='assigned_issues', blank=True)
