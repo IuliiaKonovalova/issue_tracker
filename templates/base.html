@@ -39,9 +39,9 @@
           <a href="{% url 'home' %}">Home</a>
         </li>
         {% if request.user.is_authenticated %}
-        <li class="navbar__item navbar__item--dropdown">
-          <div href="#" id="dropdown-profile">Account</div>
-          <!-- <ul class="account__options">
+        <li class="navbar__item">
+          <div href="#" id="dropdown-profile" class="navbar__item--dropdown">Account</div>
+          <ul class="account__options">
             <li class="account__option">
               <a href="#">Profile</a>
             </li>
@@ -54,7 +54,7 @@
             <li class="account__option">
               <a href="{% url 'account_logout' %}">Logout</a>
             </li>
-          </ul> -->
+          </ul>
         </li>
         {% else %}
         <li class="navbar__item ">
@@ -74,16 +74,69 @@
 
 
   </header>
-  {% if messages %}
-  <div class="message-container"></div>
-  {% endif %}
+  <main class="main">
+    <div class="content__container">
+      {% if messages %}
+      <div class="message-container"></div>
+      {% endif %}
 
-  {% block page_header %}
-  {% endblock %}
+      {% block page_header %}
+      {% endblock %}
 
-  {% block content %}
-  {% endblock %}
+      {% block content %}
+      {% endblock %}
+    </div>
+  </main>
+  <footer class="footer">
 
+    <div class="footer__content">
+
+      <div class="contributor">
+        <div class="contributor__name">Aleksei Konovalov</div>
+        <ul class="contributor__links">
+          <li class="contributor__link">
+            <a href="mailto:ronmctailor@protonmail.com">
+              <i class="fas fa-envelope-square"></i>
+            </a>
+          </li>
+          <li class="contributor__link">
+            <a href="https://www.linkedin.com/in/aleksei-konovalov/" target="_blank" rel="noopener"
+              aria-label="Visit Aleksei Konovalov LinkedIn page">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li class="contributor__link">
+            <a href="https://github.com/lexach91" target="_blank" rel="noopener"
+              aria-label="Visit Aleksei Konovalov GitHub page">
+              <i class="fab fa-github-square"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="contributor">
+        <div class="contributor__name">Iuliia Konovalova</div>
+        <ul class="contributor__links">
+          <li class="contributor__link">
+            <a href="mailto:JuliiaKonn@protonmail.com">
+              <i class="fas fa-envelope-square"></i>
+            </a>
+          </li>
+          <li class="contributor__link">
+            <a href="https://www.linkedin.com/in/iuliiakonovalova/" target="_blank" rel="noopener"
+              aria-label="Visit Iuliia Konovalova LinkedIn page">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li class="contributor__link">
+            <a href="https://github.com/IuliiaKonovalova" target="_blank" rel="noopener"
+              aria-label="Visit Iuliia Konovalova GitHub page">
+              <i class="fab fa-github-square"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
   {% block postloadjs %}
   <script src="{% static 'js/base.js' %}"></script>
   {% endblock %}

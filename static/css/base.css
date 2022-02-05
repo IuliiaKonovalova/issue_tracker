@@ -67,6 +67,7 @@ body {
   flex-direction: column;
   width: 100%;
   font-size: var(--fs);
+  min-height: 100vh;
 }
 
 .header {
@@ -137,4 +138,38 @@ body {
 
 .account__options li {
   margin: 0.6em 1em;
+}
+
+
+/* ----- Main ----- */
+
+.main {
+  width: 100%;
+  flex: 1 0 auto;
+}
+
+.content__container {
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2em;
+}
+
+
+/* ----- Footer ----- */
+
+.footer {
+  width: 100%;
+  background-color: var(--clr-primary--100);
+}
+
+.footer__content {
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2em;
 }
