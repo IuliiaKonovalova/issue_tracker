@@ -227,6 +227,7 @@ body {
   padding-bottom: 0.9em;
   border-radius: var(--br);
   margin: 1em;
+  transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
 }
 
 .incentive__button a {
@@ -370,7 +371,7 @@ input:not(:placeholder-shown) {
   margin: 2em 0;
   outline: none;
   border: 1px solid var(--clr-primary--300);
-  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
 }
 
 .account .form-check {
