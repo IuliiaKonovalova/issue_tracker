@@ -164,6 +164,10 @@ body {
 .main {
   width: 100%;
   flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .content__container {
@@ -180,12 +184,11 @@ body {
 .bg {
   height: 65rem;
   width: unset;
-  background-color: #339ecc;
+  background-color: var(--clr-primary--500);
   background-image: url('/media/bg_image_dark.svg');
   background-repeat: no-repeat;
   background-position: left center;
   background-size: cover;
-
 }
 
 .incentive {
@@ -224,6 +227,7 @@ body {
   padding-bottom: 0.9em;
   border-radius: var(--br);
   margin: 1em;
+  transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
 }
 
 .incentive__button a {
@@ -277,6 +281,123 @@ body {
 .benefit__content {
   font-size: 1.5rem;
   padding-bottom: 2em;
+}
+
+/* ----- Forms ----- */
+.account__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: unset;
+
+}
+
+.account {
+  max-width: 50rem;
+  margin: 5em auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4em;
+  background-color: var(--clr-primary--100);
+  color: var(--clr-neutral--100);
+  border-radius: var(--br);
+  border: 1px solid #ffffff8c;
+}
+
+.account__title {
+  font-size: 2.2rem;
+  letter-spacing: 0.15rem;
+  font-weight: 900;
+}
+
+.account p {
+  margin: 2em 0;
+  max-width: 18rem;
+  color: #ffffffc2;
+  font-weight: 100;
+  font-size: 1.2rem;
+}
+
+.account input {
+  border: 1px solid #ffffff8c;
+  border-radius: var(--br);
+  padding: 1em 2em;
+  min-width: 25rem;
+  margin: 1em 0;
+  background-color: #202a3cad;
+}
+
+/* .account input[type='text'],
+.account input[type='password'],
+.account input[type='email'] {
+  min-width: 20rem;
+} */
+
+.account label:not([for='id_remember']) {
+  display: none;
+}
+
+.account input::placeholder {
+  color: #ffffff8c;
+  font-size: 1rem;
+  letter-spacing: 0.13rem;
+  font-weight: 600;
+}
+
+input:placeholder-shown {
+  color: #65e2d9;
+  font-weight: 600;
+}
+
+input:not(:placeholder-shown) {
+  color: var(--clr-accent--300);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.13rem;
+}
+
+.account button,
+.account input[type='submit'] {
+  background-color: var(--clr-accent--800);
+  color: var(--clr-neutral--100);
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5em 1.7em 0.6em 1.7em;
+  border-radius: var(--br);
+  margin: 2em 0;
+  outline: none;
+  border: 1px solid var(--clr-primary--300);
+  transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.account .form-check {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  color: #ffffffc2;
+  font-weight: 100;
+  font-size: 1.2rem;
+}
+
+.account input[type='checkbox'] {
+  margin-left: 1em;
+  min-width: unset;
+}
+
+.account button:hover,
+.account input[type='submit']:hover {
+  color: #fff;
+  background-color: var(--clr-accent--700);
+  border-color: var(--clr-primary--300);
+}
+
+.account a {
+  color: var(--clr-accent--300);
 }
 
 /* ----- Footer ----- */
