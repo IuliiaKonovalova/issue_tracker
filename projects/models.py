@@ -43,7 +43,7 @@ class Project(models.Model):
     project_type = models.IntegerField(choices=PROJECT_TYPE, default=0)
     status = models.IntegerField(choices=PROJECT_STATUS, default=0)
     collaborators = models.ManyToManyField(User, related_name='collaborators')
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_by')
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='created_by')
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     
