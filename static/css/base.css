@@ -279,6 +279,75 @@ body {
   padding-bottom: 2em;
 }
 
+/* ----- Forms ----- */
+.account {
+  max-width: 40rem;
+  margin: 5em auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2em;
+  background-color: #e94e4e;
+}
+
+.account p {
+  margin-top: 1.5rem;
+  /* mt-4 */
+  color: #6c757d;
+  /* text-secondary */
+}
+
+.account input {
+  border-color: #000;
+  border-radius: 0;
+  padding: 1em;
+  min-width: 20rem;
+}
+
+.account label:not([for='id_remember']) {
+  display: none;
+}
+
+.account input::placeholder {
+  color: #aab7c4;
+}
+
+.account button,
+.account input[type='submit'] {
+  /* btn */
+  display: inline-block;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #000;
+  border: 1px solid #000;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0;
+
+  /* standard bootstrap btn transitions */
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.account button:hover,
+.account input[type='submit']:hover {
+  color: #fff;
+  background-color: #222;
+  border-color: #222;
+}
+
+.account a {
+  color: #17a2b8;
+  /* text-info */
+}
+
 /* ----- Footer ----- */
 
 .footer {
