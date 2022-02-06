@@ -164,6 +164,10 @@ body {
 .main {
   width: 100%;
   flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .content__container {
@@ -180,12 +184,11 @@ body {
 .bg {
   height: 65rem;
   width: unset;
-  background-color: #339ecc;
+  background-color: var(--clr-primary--500);
   background-image: url('/media/bg_image_dark.svg');
   background-repeat: no-repeat;
   background-position: left center;
   background-size: cover;
-
 }
 
 .incentive {
@@ -280,72 +283,120 @@ body {
 }
 
 /* ----- Forms ----- */
+.account__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: unset;
+
+}
+
 .account {
-  max-width: 40rem;
+  max-width: 50rem;
   margin: 5em auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 2em;
-  background-color: #e94e4e;
+  text-align: center;
+  padding: 4em;
+  background-color: var(--clr-primary--100);
+  color: var(--clr-neutral--100);
+  border-radius: var(--br);
+  border: 1px solid #ffffff8c;
+}
+
+.account__title {
+  font-size: 2.2rem;
+  letter-spacing: 0.15rem;
+  font-weight: 900;
 }
 
 .account p {
-  margin-top: 1.5rem;
-  /* mt-4 */
-  color: #6c757d;
-  /* text-secondary */
+  margin: 2em 0;
+  max-width: 18rem;
+  color: #ffffffc2;
+  font-weight: 100;
+  font-size: 1.2rem;
 }
 
 .account input {
-  border-color: #000;
-  border-radius: 0;
-  padding: 1em;
-  min-width: 20rem;
+  border: 1px solid #ffffff8c;
+  border-radius: var(--br);
+  padding: 1em 2em;
+  min-width: 25rem;
+  margin: 1em 0;
+  background-color: #202a3cad;
 }
+
+/* .account input[type='text'],
+.account input[type='password'],
+.account input[type='email'] {
+  min-width: 20rem;
+} */
 
 .account label:not([for='id_remember']) {
   display: none;
 }
 
 .account input::placeholder {
-  color: #aab7c4;
+  color: #ffffff8c;
+  font-size: 1rem;
+  letter-spacing: 0.13rem;
+  font-weight: 600;
+}
+
+input:placeholder-shown {
+  color: #65e2d9;
+  font-weight: 600;
+}
+
+input:not(:placeholder-shown) {
+  color: var(--clr-accent--300);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.13rem;
 }
 
 .account button,
 .account input[type='submit'] {
-  /* btn */
-  display: inline-block;
-  font-weight: 400;
-  color: #fff;
-  text-align: center;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-color: #000;
-  border: 1px solid #000;
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 0;
-
-  /* standard bootstrap btn transitions */
+  background-color: var(--clr-accent--800);
+  color: var(--clr-neutral--100);
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5em 1.7em 0.6em 1.7em;
+  border-radius: var(--br);
+  margin: 2em 0;
+  outline: none;
+  border: 1px solid var(--clr-primary--300);
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.account .form-check {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  color: #ffffffc2;
+  font-weight: 100;
+  font-size: 1.2rem;
+}
+
+.account input[type='checkbox'] {
+  margin-left: 1em;
+  min-width: unset;
 }
 
 .account button:hover,
 .account input[type='submit']:hover {
   color: #fff;
-  background-color: #222;
-  border-color: #222;
+  background-color: var(--clr-accent--700);
+  border-color: var(--clr-primary--300);
 }
 
 .account a {
-  color: #17a2b8;
-  /* text-info */
+  color: var(--clr-accent--300);
 }
 
 /* ----- Footer ----- */
