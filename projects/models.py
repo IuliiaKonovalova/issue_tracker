@@ -1,10 +1,11 @@
 from turtle import update
+from unittest.mock import DEFAULT
 from django.db import models
 from django.contrib.auth.models import User
 from matplotlib.pyplot import title
 from tables import Description
 
-# models for issue tracker app
+DEFAULT_PROJECT_ID = 1
 
 # project model variables
 PROJECT_TYPE = (
@@ -40,10 +41,11 @@ ISSUE_TYPE = (
 
 
 class Project(models.Model):
-    title = models.CharField(max_length=100, blank=False, unique=True)
+    title = models.CharField(max_length=100, blank=False, unique=True, default='Untitled Project')
     slug = models.SlugField(max_length=100, blank=False, unique=True)
     description = models.TextField(max_length=1000, blank=True)
     project_type = models.IntegerField(choices=PROJECT_TYPE, default=0)
+    status = models.IntegerField(choices=PROJECT_STATUS, default=0)
     collaborators = models.ManyToManyField(User, related_name='collaborators')
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_by')
     created_on = models.DateTimeField(auto_now_add=True)
@@ -72,10 +74,10 @@ class Issue(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     votes = models.ManyToManyField(User, related_name='votes', blank=True)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='issues')
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='issues', default=DEFAULT_PROJECT_ID)
     
     class Meta:
-        ordering = ['priority', '-created_on', 'status']
+        ordering = ['priority', 'status']
 
     def __str__(self):
         return self.title
@@ -104,7 +106,7 @@ class Comment(models.Model):
         ordering = ['created_on']
 
     def __str__(self):
-        return self.comment
+        return self.comment_body
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
