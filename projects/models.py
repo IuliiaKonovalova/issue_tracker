@@ -1,9 +1,5 @@
-from turtle import update
-from unittest.mock import DEFAULT
 from django.db import models
 from django.contrib.auth.models import User
-from matplotlib.pyplot import title
-from tables import Description
 
 DEFAULT_PROJECT_ID = 1
 
