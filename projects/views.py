@@ -5,9 +5,13 @@ from .models import Issue, Comment, Project
 # Create your views here.
 
 
-class ProjectsListView(generic.ListView):
+# view to show all projects created by the user and projects he is a collaborator of
+class ProjectsView(generic.ListView):
     model = Project
-    queryset = Project.objects.filter
     template_name = 'projects/projects_list.html'
     context_object_name = 'projects'
-    
+
+    def get_queryset(self):
+        return Project.objects.filter(
+            collaborators=self.request.user
+        )
