@@ -1,0 +1,22 @@
+ {% extends "base.html" %}
+
+ {% block content %}
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <h2>My projects:</h2>
+    {% for project in projects %}        
+        {% if project.created_by.id == user.id %}
+        <p>{{ project.title }}</p>
+        {% endif %}
+    {% endfor %}
+    <h2>Other projects:</h2>
+    {% for project in projects %}
+        {% if project.created_by.id != user.id %}
+        <p>{{ project.title }}</p>
+        {% endif %}
+    {% endfor %}
+
+ {% endblock %}
