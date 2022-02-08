@@ -14,9 +14,17 @@
     {% endfor %}
     <h2>Other projects:</h2>
     {% for project in projects %}
-        {% if project.created_by.id != user.id %}
+        {% if project.created_by.id != user.id and user in project.collaborators.all %}
         <p>{{ project.title }}</p>
         {% endif %}
     {% endfor %}
+
+    <h2>ALL PROJECTS IN DATABASE:</h2>
+    {% for project in projects %}
+        <p>{{ project.title }}</p>
+    {% endfor %}
+
+    
+    <a href="{% url 'create_project' %}">Create a new project</a>
 
  {% endblock %}
