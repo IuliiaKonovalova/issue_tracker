@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -125,7 +125,7 @@ WSGI_APPLICATION = 'issue_tracker.wsgi.application'
 # }
 
 DATABASES = {
-  'default': dj_database_url.parse('postgres://cagapacfypfafm:b90799235de5b2d791034a5b9334df3d4982e4354e72545eb50d4a510f1f974c@ec2-52-209-185-5.eu-west-1.compute.amazonaws.com:5432/deat6nr8uj8oad')
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 # Password validation
