@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% block meta %}
+  <meta http-equiv="X-UA-Compatible" content="ie-edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% endblock %}
+
+  {% block extra_meta %}
+  {% endblock %}
+
+  {% block corecss %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  {% endblock %}
+
+  {% block extra_css %}
+  {% endblock %}
+
+  {% block corejs %}
+  <script src="https://kit.fontawesome.com/7a0af02583.js" crossorigin="anonymous"></script>
+  {% endblock %}
+
+  {% block extra_js %}
+  {% endblock %}
+
+  <title>Bugs digger {% block extra_title %}{% endblock %}</title>
+</head>
+
+<body class="bg">
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo__container">Bugs' digger</div>
+      <ul class="navbar__items">
+        <li class="navbar__item">
+          <a href="{% url 'home' %}">Home</a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li class="navbar__item">
+          <div href="#" id="dropdown-profile" class="dropdown navbar__item--dropdown">Account</div>
+          <ul class="account__options">
+            <li class="account__option">
+              <a href="#">Profile</a>
+            </li>
+            <li class="account__option">
+              <a href="#">Projects</a>
+            </li>
+            <li class="account__option">
+              <a href="#">Settings</a>
+            </li>
+            <li class="account__option account__option--logout">
+              <a href="{% url 'account_logout' %}">Logout</a>
+            </li>
+          </ul>
+        </li>
+        {% else %}
+        <li class="navbar__item ">
+          <div href="#" id="dropdown-enter" class="dropdown navbar__item--dropdown">Get started</div>
+          <ul class="account__options">
+            <li class="account__option">
+              <a href="{% url 'account_login' %}">Login</a>
+            </li>
+            <li class="account__option">
+              <a href="{% url 'account_signup' %}">Sign Up</a>
+            </li>
+          </ul>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+
+
+  </header>
+  <main class=" main">
+    <div class="content__container">
+      {% if messages %}
+      <div class="message-container"></div>
+      {% endif %}
+
+      {% block page_header %}
+      {% endblock %}
+
+      {% block content %}
+      {% endblock %}
+    </div>
+  </main>
+  <footer class="footer">
+
+    <div class="footer__content">
+
+      <div class="contributor">
+        <div class="contributor__name">Aleksei Konovalov</div>
+        <ul class="contributor__links">
+          <li class="contributor__link">
+            <a href="mailto:ronmctailor@protonmail.com">
+              <i class="fas fa-envelope-square"></i>
+            </a>
+          </li>
+          <li class="contributor__link">
+            <a href="https://www.linkedin.com/in/aleksei-konovalov/" target="_blank" rel="noopener"
+              aria-label="Visit Aleksei Konovalov LinkedIn page">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li class="contributor__link">
+            <a href="https://github.com/lexach91" target="_blank" rel="noopener"
+              aria-label="Visit Aleksei Konovalov GitHub page">
+              <i class="fab fa-github-square"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="contributor">
+        <div class="contributor__name">Iuliia Konovalova</div>
+        <ul class="contributor__links">
+          <li class="contributor__link">
+            <a href="mailto:JuliiaKonn@protonmail.com">
+              <i class="fas fa-envelope-square"></i>
+            </a>
+          </li>
+          <li class="contributor__link">
+            <a href="https://www.linkedin.com/in/iuliiakonovalova/" target="_blank" rel="noopener"
+              aria-label="Visit Iuliia Konovalova LinkedIn page">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li class="contributor__link">
+            <a href="https://github.com/IuliiaKonovalova" target="_blank" rel="noopener"
+              aria-label="Visit Iuliia Konovalova GitHub page">
+              <i class="fab fa-github-square"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  {% block postloadjs %}
+  <script src="{% static 'js/base.js' %}"></script>
+  {% endblock %}
+</body>
+
+</html>
