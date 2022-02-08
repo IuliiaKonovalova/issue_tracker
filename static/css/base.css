@@ -185,7 +185,7 @@ body {
   height: 65rem;
   width: unset;
   background-color: var(--clr-primary--500);
-  background-image: url('/media/bg_image_dark.svg');
+  background-image: url('/static/media/bg_image_dark.svg');
   background-repeat: no-repeat;
   background-position: left center;
   background-size: cover;
