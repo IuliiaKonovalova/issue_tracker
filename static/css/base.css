@@ -487,10 +487,18 @@ input:not(:placeholder-shown) {
   border-color: var(--clr-primary--300);
 }
 
-.add__link {
+.add__project {
   grid-row: 1/5;
   justify-self: center;
   align-self: center;
+  color: white;
+}
+
+.add__project i {
+  font-size: 5rem;
+  color: white;
+  height: 5rem;
+  width: 5rem;
 }
 
 /* ----- Footer ----- */
