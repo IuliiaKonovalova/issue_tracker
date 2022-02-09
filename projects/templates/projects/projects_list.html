@@ -11,6 +11,13 @@
 
     <ul class="projects__list">
 
+      <li class="projects__item">
+
+        <a href="#" class="add__project">
+          <i class="fas fa-plus-circle"></i>
+        </a>
+      </li>
+
       {% for project in projects %}
       {% if project.created_by.id == user.id %}
 
@@ -67,12 +74,6 @@
       {% endif %}
       {% endfor %}
 
-      <li class="projects__item">
-
-        <a href="#" class="add__project">
-          <i class="fas fa-plus-circle"></i>
-        </a>
-      </li>
     </ul>
   </div>
 
