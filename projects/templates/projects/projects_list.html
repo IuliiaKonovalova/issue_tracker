@@ -1,30 +1,60 @@
- {% extends "base.html" %}
+{% extends "base.html" %}
 
- {% block content %}
+{% block content %}
+<div class="projects__container">
+  <h2 class="projects__title">All projects</h2>
+  {% if error %}
+  <div class="alert alert-danger">{{ error }}</div>
+  {% endif %}
+  <div class="projects__group">
+    <h3 class="projects__subtitle">My projects:</h3>
 
-    {% if error %}
-        <div class="alert alert-danger">{{ error }}</div>
-    {% endif %}
+    <ul class="projects__list">
 
-    <h2>My projects:</h2>
-    {% for project in projects %}        
-        {% if project.created_by.id == user.id %}
-        <p>{{ project.title }}</p>
-        {% endif %}
-    {% endfor %}
-    <h2>Other projects:</h2>
-    {% for project in projects %}
-        {% if project.created_by.id != user.id and user in project.collaborators.all %}
-        <p>{{ project.title }}</p>
-        {% endif %}
-    {% endfor %}
+      <li class="projects__item">
+        <div class="projects__item--name">Project1 name</div>
+        <div class="projects__item--members">Collaborators</div>
+        <div class="projects__item--description">Description</div>
 
-    <h2>ALL PROJECTS IN DATABASE:</h2>
-    {% for project in projects %}
-        <p>{{ project.title }}</p>
-    {% endfor %}
+        <a href="#" class="projects__link">Open</a>
 
-    
-    <a href="{% url 'create_project' %}">Create a new project</a>
+      </li>
+      <li class="projects__item">
+        <div class="projects__item--name">Project 2 name</div>
+        <div class="projects__item--members">Collaborators</div>
+        <div class="projects__item--description">Description</div>
+        <a href="#" class="projects__link">Open</a>
+      </li>
+      <li class="projects__item">
+        <div class="projects__item--name">Project 3 name</div>
+        <div class="projects__item--members">Collaborators</div>
+        <div class="projects__item--description">Description</div>
+        <a href="#" class="projects__link">Open</a>
+      </li>
+      <li class="projects__item">
 
- {% endblock %}
+        <a href="#" class="add__link">Add new</a>
+      </li>
+    </ul>
+  </div>
+  {% for project in projects %}
+  {% if project.created_by.id == user.id %}
+  <p>{{ project.title }}</p>
+  {% endif %}
+  {% endfor %}
+  <h3 class="projects__subtitle">Other projects:</h3>
+  {% for project in projects %}
+  {% if project.created_by.id != user.id and user in project.collaborators.all %}
+  <p>{{ project.title }}</p>
+  {% endif %}
+  {% endfor %}
+
+  <h2>ALL PROJECTS IN DATABASE:</h2>
+  {% for project in projects %}
+  <p>{{ project.title }}</p>
+  {% endfor %}
+
+
+  <a href="{% url 'create_project' %}">Create a new project</a>
+</div>
+{% endblock %}
