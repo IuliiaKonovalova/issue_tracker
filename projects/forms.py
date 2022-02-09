@@ -1,4 +1,5 @@
 from django import forms
+from matplotlib import widgets
 from .models import Project, Issue
 
 
@@ -24,3 +25,16 @@ class ProjectForm(forms.ModelForm):
                     self.fields['collaborators'].widget = forms.HiddenInput()
                 else:
                     self.fields['collaborators'].widget = forms.SelectMultiple(attrs={'class': 'form-control'})
+                    
+class IssueForm(forms.ModelForm):
+    class Meta:
+        model = Issue
+        fields = ['title', 'description', 'priority', 'issue_type', 'status', 'assigned_to']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'priority': forms.Select(attrs={'class': 'form-control'}),
+            'issue_type': forms.Select(attrs={'class': 'form-control'}),
+            'status': forms.Select(attrs={'class': 'form-control'}),
+            'assigned_to': forms.Select(attrs={'class': 'form-control'}),
+        }

@@ -448,7 +448,7 @@ input:not(:placeholder-shown) {
   border-radius: var(--br);
   display: grid;
   padding: 1em;
-  grid-template-rows: 0.3fr 0.3fr 1fr 0.3fr;
+  grid-template-rows: 0.2fr 0.3fr 0.3fr 1fr 0.3fr;
   gap: 1rem;
 }
 
