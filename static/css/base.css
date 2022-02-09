@@ -437,7 +437,7 @@ input:not(:placeholder-shown) {
   padding: 2em;
 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   grid-auto-flow: dense;
   gap: 1rem;
   background-color: #afadad;
@@ -448,8 +448,13 @@ input:not(:placeholder-shown) {
   border-radius: var(--br);
   display: grid;
   padding: 1em;
-  grid-template-rows: 0.2fr 0.3fr 0.3fr 1fr 0.3fr;
+  grid-template-rows: 0.2fr 1fr 1.2fr 1.7fr 0.3fr;
   gap: 1rem;
+}
+
+.project__icon i {
+  font-size: 1.2rem;
+  padding-left: 0.3em;
 }
 
 .projects__item--name {
@@ -459,6 +464,8 @@ input:not(:placeholder-shown) {
 
 .projects__item--members {
   font-size: 1.9rem;
+  justify-self: start;
+  align-self: start;
 }
 
 .projects__item--description {
@@ -488,7 +495,7 @@ input:not(:placeholder-shown) {
 }
 
 .add__project {
-  grid-row: 1/5;
+  grid-row: 1/6;
   justify-self: center;
   align-self: center;
   color: white;
@@ -497,8 +504,7 @@ input:not(:placeholder-shown) {
 .add__project i {
   font-size: 5rem;
   color: white;
-  height: 5rem;
-  width: 5rem;
+  padding: 1em 0;
 }
 
 /* ----- Footer ----- */
