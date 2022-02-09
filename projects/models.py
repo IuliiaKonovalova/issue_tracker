@@ -71,6 +71,13 @@ class Issue(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     votes = models.ManyToManyField(User, related_name='votes', blank=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='issues', default=DEFAULT_PROJECT_ID)
+    assigned_to = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+        related_name='assigned_to'
+    )
     
     class Meta:
         ordering = ['priority', 'status']
