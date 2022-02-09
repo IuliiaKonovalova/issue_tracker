@@ -20,10 +20,19 @@
           <i class="fas fa-user"></i>
         </div>
 
-        <div class="projects__item--name">{{ project.title }}</div>
-        <!-- <div class="projects__item--members">{{ project.created_by }}</div> -->
-        <div class="projects__item--members">Personal</div>
-        <div class="projects__item--description">{{ project.description }}</div>
+        <div class="projects__item--name">
+          <div class="project__item--title">Name:</div>
+          {{ project.title }}
+        </div>
+        <div class="projects__item--members">
+          <div class="project__item--title">Members:</div>
+          {{ project.created_by }}
+        </div>
+        <!-- <div class="projects__item--members">Personal</div> -->
+        <div class="projects__item--description">
+          <div class="project__item--title">Description:</div>
+          {{ project.description }}
+        </div>
 
         <a href="#" class="projects__link">Open</a>
 
@@ -35,14 +44,21 @@
         <div class="project__icon">
           <i class="fas fa-users"></i>
         </div>
-        <div class="projects__item--name">{{ project.title }}</div>
+        <div class="projects__item--name">
+          <div class="project__item--title">Name:</div>
+          {{ project.title }}
+        </div>
 
-        <div class="projects__item--members">Members:<br>
+        <div class="projects__item--members">
+          <div class="project__item--title">Members:</div>
           {% for collaborator in project.collaborators.all %}
           {{ collaborator.username }},
           {% endfor %}
         </div>
-        <div class="projects__item--description">{{ project.description }}</div>
+        <div class="projects__item--description">
+          <div class="project__item--title">Description:</div>
+          {{ project.description }}
+        </div>
 
         <a href="#" class="projects__link">Open</a>
 
@@ -71,15 +87,22 @@
         <div class="project__icon">
           <i class="fas fa-users"></i>
         </div>
-        <div class="projects__item--name">{{ project.title }}</div>
+        <div class="projects__item--name">
+          <div class="project__item--title">Name:</div>
+          {{ project.title }}
+        </div>
 
-        <div class="projects__item--members">Members:<br>
+        <div class="projects__item--members">
+          <div class="project__item--title">Members:</div>
           {% for collaborator in project.collaborators.all %}
           {{ collaborator.username }},
           {% endfor %}
 
         </div>
-        <div class="projects__item--description">{{ project.description }}</div>
+        <div class="projects__item--description">
+          <div class="project__item--title">Description:</div>
+          {{ project.description }}
+        </div>
 
         <a href="#" class="projects__link">Open</a>
 
@@ -88,17 +111,6 @@
       {% endfor %}
     </ul>
   </div>
-  {% for project in projects %}
-  {% if project.created_by.id != user.id and user in project.collaborators.all %}
-  <p>{{ project.title }}</p>
-  {% endif %}
-  {% endfor %}
-
-  <h2>ALL PROJECTS IN DATABASE:</h2>
-  {% for project in projects %}
-  <p>{{ project.title }}</p>
-  {% endfor %}
-
 
   <a href="{% url 'create_project' %}">Create a new project</a>
 </div>
