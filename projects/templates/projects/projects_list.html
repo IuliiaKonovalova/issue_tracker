@@ -32,13 +32,12 @@
           <div class="project__item--title">Members:</div>
           {{ project.created_by }}
         </div>
-        <!-- <div class="projects__item--members">Personal</div> -->
         <div class="projects__item--description">
           <div class="project__item--title">Description:</div>
           {{ project.description }}
         </div>
 
-        <a href="#" class="projects__link">Open</a>
+        <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="projects__link">Open</a>
       </li>
       {% else %}
       <li class="projects__item">
@@ -60,9 +59,7 @@
           <div class="project__item--title">Description:</div>
           {{ project.description }}
         </div>
-
-        <a href="#" class="projects__link">Open</a>
-
+          <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="projects__link">Open</a>
       </li>
       {% endif %}
       {% endif %}
@@ -90,15 +87,12 @@
           {% for collaborator in project.collaborators.all %}
           {{ collaborator.username }},
           {% endfor %}
-
         </div>
         <div class="projects__item--description">
           <div class="project__item--title">Description:</div>
           {{ project.description }}
         </div>
-
-        <a href="#" class="projects__link">Open</a>
-
+        <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="projects__link">Open</a>
       </li>
       {% endif %}
       {% endfor %}
