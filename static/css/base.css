@@ -284,7 +284,8 @@ body {
 }
 
 /* ----- Forms ----- */
-.account__container {
+.account__container,
+.project__new {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -348,12 +349,12 @@ body {
   font-weight: 600;
 }
 
-input:placeholder-shown {
+.account input:placeholder-shown {
   color: #65e2d9;
   font-weight: 600;
 }
 
-input:not(:placeholder-shown) {
+.account input:not(:placeholder-shown) {
   color: var(--clr-accent--300);
   font-weight: 600;
   font-size: 0.9rem;
@@ -361,14 +362,16 @@ input:not(:placeholder-shown) {
 }
 
 .account button,
-.account input[type='submit'] {
+.account input[type='submit'],
+.project__new button,
+.project__new input[type='submit'] {
   background-color: var(--clr-accent--800);
   color: var(--clr-neutral--100);
   font-size: 1.2rem;
   font-weight: bold;
   padding: 0.5em 1.7em 0.6em 1.7em;
   border-radius: var(--br);
-  margin: 2em 0;
+  margin: 2em auto;
   outline: none;
   border: 1px solid var(--clr-primary--300);
   transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
@@ -390,7 +393,7 @@ input:not(:placeholder-shown) {
 }
 
 .account button:hover,
-.account input[type='submit']:hover {
+.project__new button:hover {
   color: #fff;
   background-color: var(--clr-accent--700);
   border-color: var(--clr-primary--300);
@@ -581,6 +584,95 @@ input:not(:placeholder-shown) {
   font-size: 1.5rem;
 }
 
+/* ----- New Project ----- */
+
+.project__new--form {
+  max-width: 80rem;
+  margin: 5em auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  /* text-align: center; */
+  padding: 4em;
+  background-color: var(--clr-primary--100);
+  color: var(--clr-neutral--100);
+  border-radius: var(--br);
+  border: 1px solid #ffffff8c;
+}
+
+.project__new label[for='id_title'],
+.project__new label[for='id_description'],
+.project__new label[for='id_collaborators'] {
+  display: none;
+}
+
+
+.project__new label[for='id_title']~div::before,
+.project__new label[for='id_description']~div::before,
+.project__new label[for='id_collaborators']~div::before {
+  color: rgba(255, 255, 255, 0.808);
+  font-size: 1.7rem;
+  font-weight: 500;
+  top: -50%;
+  opacity: 1;
+  display: block;
+}
+
+.project__new label[for='id_title']~div::before {
+  content: 'Project Name:';
+}
+
+.project__new label[for='id_description']~div::before {
+  content: 'Project Description:';
+}
+
+.project__new label[for='id_collaborators']~div::before {
+  content: 'Add Collaborators';
+}
+
+
+.project__new input {
+  border: 1px solid #ffffff8c;
+  border-radius: var(--br);
+  padding: 0.5em 1em;
+  width: 35rem;
+  margin: 1em 0 1.5em 0;
+  background-color: #202a3cad;
+}
+
+.project__new input[type='text']::placeholder {
+  color: white;
+  font-size: 1.3rem;
+  letter-spacing: 0.13rem;
+  font-weight: 600;
+}
+
+.project__new input[type='text']:placeholder-shown {
+  color: white;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.project__new input[type='text']:not(:placeholder-shown) {
+  color: white;
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: 0.13rem;
+}
+
+.project__new .textarea {
+  border: 1px solid #ffffff8c;
+  border-radius: var(--br);
+  padding: 0.5em 1em;
+  width: 35rem;
+  margin: 1em 0 1.5em 0;
+  background-color: #202a3cad;
+  color: white;
+  font-size: 1.3rem;
+  resize: vertical;
+  min-height: 10rem;
+}
 
 /* ----- Footer ----- */
 

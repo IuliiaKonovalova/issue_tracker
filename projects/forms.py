@@ -1,5 +1,4 @@
 from django import forms
-from matplotlib import widgets
 from .models import Project, Issue
 from django.contrib.auth.models import User
 
