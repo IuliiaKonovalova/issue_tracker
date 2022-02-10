@@ -6,22 +6,19 @@
   {% if error %}
   <div class="alert alert-danger">{{ error }}</div>
   {% endif %}
+  <!-- Projects created by user -->
   <div class="projects__group">
     <h3 class="projects__subtitle">My projects:</h3>
-
     <ul class="projects__list">
-
       <li class="projects__item">
-
         <a href="#" class="add__project">
           <i class="fas fa-plus-circle"></i>
         </a>
       </li>
-
       {% for project in projects %}
       {% if project.created_by.id == user.id %}
-
       {% if project.project_type == 0 %}
+      <!-- Personal projects -->
       <li class="projects__item">
         <div class="project__icon">
           <i class="fas fa-user"></i>
@@ -42,10 +39,7 @@
         </div>
 
         <a href="#" class="projects__link">Open</a>
-
       </li>
-
-
       {% else %}
       <li class="projects__item">
         <div class="project__icon">
@@ -73,11 +67,9 @@
       {% endif %}
       {% endif %}
       {% endfor %}
-
     </ul>
   </div>
-
-
+  <!-- Created by others + participated -->
   <div class="projects__group">
     <h3 class="projects__subtitle">Other projects:</h3>
     <ul class="projects__list">
