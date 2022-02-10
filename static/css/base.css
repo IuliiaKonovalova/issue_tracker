@@ -511,12 +511,66 @@ input:not(:placeholder-shown) {
   justify-self: center;
   align-self: center;
   color: white;
+  display: none;
 }
 
 .add__project i {
   font-size: 5rem;
   color: white;
+
 }
+
+.project__options {
+  grid-row: 1/6;
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: 90%;
+  padding: 1em 0;
+  background-color: #339ecc;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add__project--title {
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.add__project--type {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.project__options--hidden {}
+
+
+.project__type {
+
+  background-color: var(--clr-accent--800);
+  color: var(--clr-neutral--100);
+  font-size: 1.5rem;
+  font-weight: 900;
+  width: 100%;
+
+  padding-top: 0.7em;
+  padding-bottom: 0.8em;
+
+  border-radius: var(--br);
+  outline: none;
+  border: 1px solid var(--clr-primary--300);
+  transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.project__type i {
+  padding-left: 0.2em;
+  font-size: 1.7rem;
+}
+
 
 /* ----- Footer ----- */
 

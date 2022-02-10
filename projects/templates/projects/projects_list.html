@@ -10,10 +10,28 @@
   <div class="projects__group">
     <h3 class="projects__subtitle">My projects:</h3>
     <ul class="projects__list">
-      <li class="projects__item">
-        <a href="#" class="add__project">
+      <li class="projects__item" id="add__project">
+        <div class="add__project">
           <i class="fas fa-plus-circle"></i>
-        </a>
+        </div>
+        <div class="project__options">
+          <div class="add__project--title">
+            Choose project's type:
+          </div>
+          <div class="add__project--type">
+            <a href="#" aria-label="Personal project" class="project__type">
+              Personal project
+              <i class="fas fa-plus-circle"></i>
+            </a>
+          </div>
+          <div class="add__project--type">
+            <a href="#" aria-label="Group project" class="project__type">
+              Group project
+              <i class="fas fa-plus-circle"></i>
+            </a>
+          </div>
+
+        </div>
       </li>
       {% for project in projects %}
       {% if project.created_by.id == user.id %}
@@ -59,7 +77,7 @@
           <div class="project__item--title">Description:</div>
           {{ project.description }}
         </div>
-          <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="projects__link">Open</a>
+        <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="projects__link">Open</a>
       </li>
       {% endif %}
       {% endif %}
@@ -101,4 +119,5 @@
 
   <a href="{% url 'create_project' %}">Create a new project</a>
 </div>
+
 {% endblock %}
