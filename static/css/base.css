@@ -404,7 +404,6 @@ input:not(:placeholder-shown) {
 /* ----- Projects ----- */
 .projects__container {
   width: 100%;
-
   background-color: #1c2431a9;
   color: var(--clr-neutral--100);
   display: flex;
@@ -414,33 +413,34 @@ input:not(:placeholder-shown) {
 }
 
 .projects__title {
-  font-size: 2.5rem;
+  font-size: 2.9rem;
   letter-spacing: 0.15rem;
-  padding-bottom: 2em;
-  color: var(--clr-accent--500);
+  padding: 2em 0;
+  color: var(--clr-neutral--100);
 }
 
 .projects__group {
   width: 100%;
-  background-color: #c4a8f5;
   padding: 2em;
+  margin-bottom: 3em;
 }
 
 .projects__subtitle {
   font-size: 2rem;
   letter-spacing: 0.15rem;
   padding-bottom: 2em;
+  text-align: center;
 }
 
 .projects__list {
   width: 100%;
   padding: 2em;
-
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   grid-auto-flow: dense;
   gap: 1rem;
-  background-color: #afadad;
+  background-color: var(--clr-primary--500);
+  border-radius: var(--br);
 }
 
 .projects__item {

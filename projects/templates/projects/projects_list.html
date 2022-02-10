@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="projects__container">
-  <h2 class="projects__title">All projects</h2>
+  <h2 class="projects__title">Projects</h2>
   {% if error %}
   <div class="alert alert-danger">{{ error }}</div>
   {% endif %}
@@ -118,8 +118,6 @@
     </ul>
   </div>
 
-  <a href="{% url 'create_personal_project' %}">Create a new pesonal project</a>
-  <a href="{% url 'create_team_project' %}">Create a new team project</a>
 </div>
 
 {% endblock %}
