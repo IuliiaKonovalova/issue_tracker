@@ -2,6 +2,7 @@ const profileMenu = document.getElementById('dropdown-profile');
 const menu = document.querySelectorAll('.dropdown');
 const loginSignup = document.getElementById('dropdown-enter');
 const dropdown = document.querySelectorAll('.account__options');
+const openProjectType = document.querySelector('#add__project');
 
 // On load
 document.addEventListener('DOMContentLoaded', function () {
@@ -18,9 +19,20 @@ document.addEventListener('DOMContentLoaded', function () {
         loginSignup.classList.remove('open');
       }
     }
+
+    //Open Projects' options
+    openProjectType.addEventListener('click', projectTypes);
+
   })
   // Close open navbar menu
   menu.forEach(m => m.addEventListener('click', () => {
     m.classList.toggle('open');
   }))
+  /**
+   * Open options for a new project
+   */
+  const projectTypes = function () {
+
+  };
+
 });
