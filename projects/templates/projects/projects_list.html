@@ -19,14 +19,14 @@
             Project's type:
           </div>
           <div class="add__project--type">
-            <a href="#" aria-label="Personal project" class="project__type">
+            <a href="{% url 'create_personal_project' %}" aria-label="Personal project" class="project__type">
               Personal
               <i class="fas fa-plus-circle"></i>
             </a>
           </div>
           <p class="add__project--or">or</p>
           <div class="add__project--type">
-            <a href="#" aria-label="Group project" class="project__type">
+            <a href="{% url 'create_team_project' %}" aria-label="Group project" class="project__type">
               Group
               <i class="fas fa-plus-circle"></i>
             </a>
