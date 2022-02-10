@@ -2,7 +2,9 @@ const profileMenu = document.getElementById('dropdown-profile');
 const menu = document.querySelectorAll('.dropdown');
 const loginSignup = document.getElementById('dropdown-enter');
 const dropdown = document.querySelectorAll('.account__options');
-const openProjectType = document.querySelector('#add__project');
+const openProjectTypes = document.getElementById('add-new-project');
+const addNewProject = document.getElementById('add__project');
+const projectOptions = document.getElementById('project__options');
 
 // On load
 document.addEventListener('DOMContentLoaded', function () {
@@ -21,18 +23,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     //Open Projects' options
-    openProjectType.addEventListener('click', projectTypes);
-
+    openProjectTypes.addEventListener('click', projectTypes(e));
   })
+
+
   // Close open navbar menu
   menu.forEach(m => m.addEventListener('click', () => {
     m.classList.toggle('open');
   }))
-  /**
-   * Open options for a new project
-   */
-  const projectTypes = function () {
 
-  };
 
 });
+
+/**
+ * Open options for a new project
+ */
+const projectTypes = function (e) {
+  e.preventDefault();
+  projectOptions.classList.remove('project__options--hidden');
+  addNewProject.classList.add('add__project--hidden');
+};
