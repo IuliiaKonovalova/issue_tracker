@@ -40,7 +40,7 @@ class Project(models.Model):
     title = models.CharField(max_length=100, blank=False, default='Untitled Project')
     slug = models.SlugField(max_length=100, blank=False)
     description = models.TextField(max_length=1000, blank=True)
-    project_type = models.IntegerField(choices=PROJECT_TYPE, default=0)
+    project_type = models.IntegerField(choices=PROJECT_TYPE)
     status = models.IntegerField(choices=PROJECT_STATUS, default=0)
     collaborators = models.ManyToManyField(User, related_name='collaborators')
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='created_by', null=True)
