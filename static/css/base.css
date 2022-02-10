@@ -284,7 +284,8 @@ body {
 }
 
 /* ----- Forms ----- */
-.account__container {
+.account__container,
+.project__new {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -348,12 +349,12 @@ body {
   font-weight: 600;
 }
 
-input:placeholder-shown {
+.account input:placeholder-shown {
   color: #65e2d9;
   font-weight: 600;
 }
 
-input:not(:placeholder-shown) {
+.account input:not(:placeholder-shown) {
   color: var(--clr-accent--300);
   font-weight: 600;
   font-size: 0.9rem;
@@ -361,14 +362,16 @@ input:not(:placeholder-shown) {
 }
 
 .account button,
-.account input[type='submit'] {
+.account input[type='submit'],
+.project__new button,
+.project__new input[type='submit'] {
   background-color: var(--clr-accent--800);
   color: var(--clr-neutral--100);
   font-size: 1.2rem;
   font-weight: bold;
   padding: 0.5em 1.7em 0.6em 1.7em;
   border-radius: var(--br);
-  margin: 2em 0;
+  margin: 2em auto;
   outline: none;
   border: 1px solid var(--clr-primary--300);
   transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
@@ -390,7 +393,7 @@ input:not(:placeholder-shown) {
 }
 
 .account button:hover,
-.account input[type='submit']:hover {
+.project__new button:hover {
   color: #fff;
   background-color: var(--clr-accent--700);
   border-color: var(--clr-primary--300);
@@ -404,43 +407,44 @@ input:not(:placeholder-shown) {
 /* ----- Projects ----- */
 .projects__container {
   width: 100%;
-
   background-color: #1c2431a9;
   color: var(--clr-neutral--100);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 5em;
 }
 
 .projects__title {
-  font-size: 2.5rem;
+  font-size: 2.9rem;
   letter-spacing: 0.15rem;
-  padding-bottom: 2em;
-  color: var(--clr-accent--500);
+  padding: 2em 0;
+  color: var(--clr-neutral--100);
 }
 
 .projects__group {
   width: 100%;
-  background-color: #c4a8f5;
   padding: 2em;
+  margin-bottom: 3em;
 }
 
 .projects__subtitle {
   font-size: 2rem;
   letter-spacing: 0.15rem;
   padding-bottom: 2em;
+  text-align: center;
 }
 
 .projects__list {
   width: 100%;
   padding: 2em;
-
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   grid-auto-flow: dense;
   gap: 1rem;
-  background-color: #afadad;
+  background-color: var(--clr-primary--500);
+  border-radius: var(--br);
 }
 
 .projects__item {
@@ -450,17 +454,17 @@ input:not(:placeholder-shown) {
   padding: 2em;
   grid-template-rows: 0.2fr 1fr 1.2fr 1.7fr 0.5fr;
   gap: 2rem;
+  cursor: unset;
+}
+
+.projects__item--new {
+  cursor: pointer;
 }
 
 .project__icon i {
   font-size: 1.2rem;
   padding-left: 0.3em;
 }
-
-/* .projects__item--name {
-  font-size: 1.9rem;
-  font-size: 900;
-} */
 
 .projects__item--name,
 .projects__item--members,
@@ -470,7 +474,6 @@ input:not(:placeholder-shown) {
   justify-self: start;
   align-self: start;
   color: rgba(255, 255, 255, 0.808);
-
 }
 
 .project__item--title {
@@ -479,10 +482,6 @@ input:not(:placeholder-shown) {
   padding-bottom: 0.2em;
   color: var(--clr-accent--300);
 }
-
-/* .projects__item--description {
-  font-size: 1.9rem;
-} */
 
 .projects__link {
   justify-self: center;
@@ -511,7 +510,6 @@ input:not(:placeholder-shown) {
   justify-self: center;
   align-self: center;
   color: white;
-
 }
 
 .add__project--hidden {
@@ -521,7 +519,6 @@ input:not(:placeholder-shown) {
 .add__project i {
   font-size: 5rem;
   color: white;
-
 }
 
 .project__options {
@@ -568,14 +565,18 @@ input:not(:placeholder-shown) {
   font-size: 1.5rem;
   font-weight: 900;
   width: 100%;
-
   padding-top: 0.7em;
   padding-bottom: 0.8em;
-
   border-radius: var(--br);
   outline: none;
   border: 1px solid var(--clr-primary--300);
   transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.project__type:hover {
+  color: #fff;
+  background-color: var(--clr-accent--700);
+  border-color: var(--clr-primary--300);
 }
 
 .project__type i {
@@ -583,6 +584,113 @@ input:not(:placeholder-shown) {
   font-size: 1.5rem;
 }
 
+/* ----- New Project ----- */
+.projects__container {
+  width: 100%;
+  background-color: #1c2431a9;
+  color: var(--clr-neutral--100);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5em;
+}
+
+.project__new--title {
+  max-width: 35rem;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--clr-neutral--100);
+  margin-top: 1em;
+  font-size: 2.5rem;
+  letter-spacing: 0.15rem;
+  background-color: #1c2431a9;
+}
+
+.project__new--form {
+  max-width: 80rem;
+  margin: 5em auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 4em;
+  background-color: var(--clr-primary--100);
+  color: var(--clr-neutral--100);
+  border-radius: var(--br);
+  border: 1px solid #ffffff8c;
+}
+
+.project__new label[for='id_title'],
+.project__new label[for='id_description'],
+.project__new label[for='id_collaborators'] {
+  display: none;
+}
+
+.project__new label[for='id_title']~div::before,
+.project__new label[for='id_description']~div::before,
+.project__new label[for='id_collaborators']~div::before {
+  color: rgba(255, 255, 255, 0.808);
+  font-size: 1.7rem;
+  font-weight: 500;
+  top: -50%;
+  opacity: 1;
+  display: block;
+}
+
+.project__new label[for='id_title']~div::before {
+  content: 'Project Name:';
+}
+
+.project__new label[for='id_description']~div::before {
+  content: 'Project Description:';
+}
+
+.project__new label[for='id_collaborators']~div::before {
+  content: 'Add Collaborators:';
+}
+
+.project__new input {
+  border: 1px solid #ffffff8c;
+  border-radius: var(--br);
+  padding: 0.5em 1em;
+  width: 35rem;
+  margin: 1em 0 1.5em 0;
+  background-color: #202a3cad;
+}
+
+.project__new input[type='text']::placeholder {
+  color: var(--clr-neutral--100);
+  font-size: 1.3rem;
+  letter-spacing: 0.13rem;
+  font-weight: 600;
+}
+
+.project__new input[type='text']:placeholder-shown {
+  color: var(--clr-neutral--100);
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.project__new input[type='text']:not(:placeholder-shown) {
+  color: var(--clr-neutral--100);
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: 0.13rem;
+}
+
+.project__new .textarea {
+  border: 1px solid #ffffff8c;
+  border-radius: var(--br);
+  padding: 0.5em 1em;
+  width: 35rem;
+  margin: 1em 0 1.5em 0;
+  background-color: #202a3cad;
+  color: white;
+  font-size: 1.3rem;
+  resize: vertical;
+  min-height: 10rem;
+}
 
 /* ----- Footer ----- */
 

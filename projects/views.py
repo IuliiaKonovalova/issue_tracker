@@ -26,7 +26,7 @@ class ProjectsView(View):
 class CreatePersonalProjectView(View):
     def get(self, request):
         form = PersonalProjectForm()
-        return render(request, 'projects/create_project.html', {'form': form})
+        return render(request, 'projects/create_project.html', {'form': form, 'personal': True})
     def post(self, request):
         form = PersonalProjectForm(request.POST)
         if form.is_valid():
@@ -44,7 +44,7 @@ class CreatePersonalProjectView(View):
 class CreateTeamProjectView(View):
     def get(self, request):
         form = TeamProjectForm()
-        return render(request, 'projects/create_project.html', {'form': form})
+        return render(request, 'projects/create_project.html', {'form': form, 'personal': False})
     def post(self, request):
         form = TeamProjectForm(request.POST)
         if form.is_valid():

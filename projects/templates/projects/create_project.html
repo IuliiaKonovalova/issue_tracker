@@ -2,9 +2,16 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <form method="post">
-        {{ form|crispy }}
-        {% csrf_token %}
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+{% if personal %}
+<h2 class="project__new--title">Add Personal Project</h2>
+{% else %}
+<h2 class="project__new--title">Add Group Project</h2>
+{% endif %}
+<div class="project__new">
+  <form method="post" class="project__new--form">
+    {{ form|crispy }}
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
 {% endblock %}
