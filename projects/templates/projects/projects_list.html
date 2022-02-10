@@ -21,7 +21,7 @@
                     <div class="projects__item--members">{{ project.collaborators.all }}</div>
                     <div class="projects__item--description">{{ project.description }}</div>
 
-                    <a href="#" class="projects__link">Open</a>
+                    <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="projects__link">Open</a>
 
                 </li>
             {% endif %}
@@ -40,7 +40,7 @@
                         </div>
                         <div class="projects__item--description">{{ project.description }}</div>
 
-                    <a href="#" class="projects__link">Open</a>
+                    <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="projects__link">Open</a>
 
                 </li>
             {% endif %}
