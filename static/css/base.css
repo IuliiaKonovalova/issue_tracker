@@ -585,6 +585,27 @@ body {
 }
 
 /* ----- New Project ----- */
+.projects__container {
+  width: 100%;
+  background-color: #1c2431a9;
+  color: var(--clr-neutral--100);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5em;
+}
+
+.project__new--title {
+  max-width: 35rem;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--clr-neutral--100);
+  margin-top: 1em;
+  font-size: 2.5rem;
+  letter-spacing: 0.15rem;
+  background-color: #1c2431a9;
+}
 
 .project__new--form {
   max-width: 80rem;
@@ -593,7 +614,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  /* text-align: center; */
   padding: 4em;
   background-color: var(--clr-primary--100);
   color: var(--clr-neutral--100);
@@ -606,7 +626,6 @@ body {
 .project__new label[for='id_collaborators'] {
   display: none;
 }
-
 
 .project__new label[for='id_title']~div::before,
 .project__new label[for='id_description']~div::before,
@@ -628,9 +647,8 @@ body {
 }
 
 .project__new label[for='id_collaborators']~div::before {
-  content: 'Add Collaborators';
+  content: 'Add Collaborators:';
 }
-
 
 .project__new input {
   border: 1px solid #ffffff8c;
@@ -642,20 +660,20 @@ body {
 }
 
 .project__new input[type='text']::placeholder {
-  color: white;
+  color: var(--clr-neutral--100);
   font-size: 1.3rem;
   letter-spacing: 0.13rem;
   font-weight: 600;
 }
 
 .project__new input[type='text']:placeholder-shown {
-  color: white;
+  color: var(--clr-neutral--100);
   font-weight: 600;
   font-size: 1.3rem;
 }
 
 .project__new input[type='text']:not(:placeholder-shown) {
-  color: white;
+  color: var(--clr-neutral--100);
   font-weight: 600;
   font-size: 1.3rem;
   letter-spacing: 0.13rem;
