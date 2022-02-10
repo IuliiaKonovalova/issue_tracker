@@ -410,6 +410,7 @@ input:not(:placeholder-shown) {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 5em;
 }
 
 .projects__title {
@@ -450,17 +451,17 @@ input:not(:placeholder-shown) {
   padding: 2em;
   grid-template-rows: 0.2fr 1fr 1.2fr 1.7fr 0.5fr;
   gap: 2rem;
+  cursor: unset;
+}
+
+.projects__item--new {
+  cursor: pointer;
 }
 
 .project__icon i {
   font-size: 1.2rem;
   padding-left: 0.3em;
 }
-
-/* .projects__item--name {
-  font-size: 1.9rem;
-  font-size: 900;
-} */
 
 .projects__item--name,
 .projects__item--members,
@@ -470,7 +471,6 @@ input:not(:placeholder-shown) {
   justify-self: start;
   align-self: start;
   color: rgba(255, 255, 255, 0.808);
-
 }
 
 .project__item--title {
@@ -479,10 +479,6 @@ input:not(:placeholder-shown) {
   padding-bottom: 0.2em;
   color: var(--clr-accent--300);
 }
-
-/* .projects__item--description {
-  font-size: 1.9rem;
-} */
 
 .projects__link {
   justify-self: center;
@@ -511,7 +507,6 @@ input:not(:placeholder-shown) {
   justify-self: center;
   align-self: center;
   color: white;
-
 }
 
 .add__project--hidden {
@@ -521,7 +516,6 @@ input:not(:placeholder-shown) {
 .add__project i {
   font-size: 5rem;
   color: white;
-
 }
 
 .project__options {
@@ -568,14 +562,18 @@ input:not(:placeholder-shown) {
   font-size: 1.5rem;
   font-weight: 900;
   width: 100%;
-
   padding-top: 0.7em;
   padding-bottom: 0.8em;
-
   border-radius: var(--br);
   outline: none;
   border: 1px solid var(--clr-primary--300);
   transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.project__type:hover {
+  color: #fff;
+  background-color: var(--clr-accent--700);
+  border-color: var(--clr-primary--300);
 }
 
 .project__type i {
