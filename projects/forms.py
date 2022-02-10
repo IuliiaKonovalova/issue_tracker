@@ -1,6 +1,6 @@
 from django import forms
-from matplotlib import widgets
 from .models import Project, Issue
+from django.contrib.auth.models import User
 
 
 class ProjectForm(forms.ModelForm):
@@ -18,13 +18,6 @@ class ProjectForm(forms.ModelForm):
             'collaborators': forms.SelectMultiple(attrs={'class': 'form-control'}),
         }
         
-        def __init__(self, *args, **kwargs):
-            super(ProjectForm, self).__init__(*args, **kwargs)
-            if self.instance.id:
-                if self.instance.project_type == 0:
-                    self.fields['collaborators'].widget = forms.HiddenInput()
-                else:
-                    self.fields['collaborators'].widget = forms.SelectMultiple(attrs={'class': 'form-control'})
                     
 class IssueForm(forms.ModelForm):
     class Meta:

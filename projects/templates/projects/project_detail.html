@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+    {% if request.user.is_authenticated %}
+
+        {% if user.id == project.created_by.id or user in project.collaborators.all %}
+        
+            {{ project.title }}<br>
+            {{ project.description }}
+        {% else %}
+            <h1>You are not authorized to view this project</h1>
+        {% endif %}
+
+    {% else %}
+        <h1>You are not authorized to view this project</h1>
+    {% endif %}
+{% endblock %}

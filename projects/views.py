@@ -37,3 +37,9 @@ class CreateProjectView(View):
             project.save()
             return HttpResponseRedirect(reverse('projects_list'))
         return render(request, 'projects/create_project.html', {'form': form})
+    
+
+class ProjectDetailView(View):
+    def get(self, request, pk, *args, **kwargs):
+        project = get_object_or_404(Project, pk=pk)
+        return render(request, 'projects/project_detail.html', {'project': project})
