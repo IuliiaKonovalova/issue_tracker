@@ -6,70 +6,98 @@
   {% if error %}
   <div class="alert alert-danger">{{ error }}</div>
   {% endif %}
+  <!-- Projects created by user -->
   <div class="projects__group">
     <h3 class="projects__subtitle">My projects:</h3>
-
     <ul class="projects__list">
-
-        {% for project in projects %}
-            {% if project.created_by.id == user.id %}
-
-
-                <li class="projects__item">
-                    <i class="fas fa-user"></i>
-                    <div class="projects__item--name">{{ project.title }}</div>
-                    <div class="projects__item--members">{{ project.collaborators.all }}</div>
-                    <div class="projects__item--description">{{ project.description }}</div>
-
-                    <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="projects__link">Open</a>
-
-                </li>
-            {% endif %}
-        {% endfor %}
-        {% for project in projects %}
-
-            {% if project.created_by.id != user.id and user in project.collaborators.all %}
-                    <li class="projects__item">
-                        <i class="fas fa-users"></i>
-                        <div class="projects__item--name">{{ project.title }}</div>
-                        <div class="projects__item--members">
-                            {% for collaborator in project.collaborators.all %}
-                                {{ collaborator.username }}<br>
-                            {% endfor %}
-
-                        </div>
-                        <div class="projects__item--description">{{ project.description }}</div>
-
-                    <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="projects__link">Open</a>
-
-                </li>
-            {% endif %}
-        {% endfor %}
       <li class="projects__item">
-
         <a href="#" class="add__project">
           <i class="fas fa-plus-circle"></i>
         </a>
       </li>
+      {% for project in projects %}
+      {% if project.created_by.id == user.id %}
+      {% if project.project_type == 0 %}
+      <!-- Personal projects -->
+      <li class="projects__item">
+        <div class="project__icon">
+          <i class="fas fa-user"></i>
+        </div>
+
+        <div class="projects__item--name">
+          <div class="project__item--title">Name:</div>
+          {{ project.title }}
+        </div>
+        <div class="projects__item--members">
+          <div class="project__item--title">Members:</div>
+          {{ project.created_by }}
+        </div>
+        <div class="projects__item--description">
+          <div class="project__item--title">Description:</div>
+          {{ project.description }}
+        </div>
+
+        <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="projects__link">Open</a>
+      </li>
+      {% else %}
+      <li class="projects__item">
+        <div class="project__icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="projects__item--name">
+          <div class="project__item--title">Name:</div>
+          {{ project.title }}
+        </div>
+
+        <div class="projects__item--members">
+          <div class="project__item--title">Members:</div>
+          {% for collaborator in project.collaborators.all %}
+          {{ collaborator.username }},
+          {% endfor %}
+        </div>
+        <div class="projects__item--description">
+          <div class="project__item--title">Description:</div>
+          {{ project.description }}
+        </div>
+          <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="projects__link">Open</a>
+      </li>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
     </ul>
   </div>
-  {% for project in projects %}
-  {% if project.created_by.id == user.id %}
-  <p>{{ project.title }}</p>
-  {% endif %}
-  {% endfor %}
-  <h3 class="projects__subtitle">Other projects:</h3>
-  {% for project in projects %}
-  {% if project.created_by.id != user.id and user in project.collaborators.all %}
-  <p>{{ project.title }}</p>
-  {% endif %}
-  {% endfor %}
+  <!-- Created by others + participated -->
+  <div class="projects__group">
+    <h3 class="projects__subtitle">Other projects:</h3>
+    <ul class="projects__list">
+      {% for project in projects %}
 
-  <h2>ALL PROJECTS IN DATABASE:</h2>
-  {% for project in projects %}
-  <p>{{ project.title }}</p>
-  {% endfor %}
+      {% if project.created_by.id != user.id and user in project.collaborators.all %}
+      <li class="projects__item">
+        <div class="project__icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="projects__item--name">
+          <div class="project__item--title">Name:</div>
+          {{ project.title }}
+        </div>
 
+        <div class="projects__item--members">
+          <div class="project__item--title">Members:</div>
+          {% for collaborator in project.collaborators.all %}
+          {{ collaborator.username }},
+          {% endfor %}
+        </div>
+        <div class="projects__item--description">
+          <div class="project__item--title">Description:</div>
+          {{ project.description }}
+        </div>
+        <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="projects__link">Open</a>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
 
   <a href="{% url 'create_project' %}">Create a new project</a>
 </div>
