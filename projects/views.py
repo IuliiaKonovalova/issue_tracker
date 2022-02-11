@@ -72,6 +72,6 @@ class CreateIssueView(View):
             issue.created_by = request.user
             issue.project = get_object_or_404(Project, id=project_id)
             issue.save()
-            return render(request, 'projects/project_detail.html', {'project': project})
+            return HttpResponseRedirect(reverse('project_detail', kwargs={'created_by': project.created_by,'pk': project.id}))
         return render(request, 'projects/create_issue.html', {'form': form, 'project':project})
     
