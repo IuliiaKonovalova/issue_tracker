@@ -22,12 +22,12 @@ document.addEventListener('DOMContentLoaded', function () {
         loginSignup.classList.remove('open');
       }
     }
+
+    //Open New Projects' options
     if (e.target === openProjectTypes || e.target === addProjectIcon) {
-      projectTypes(e)
+      projectTypes(e);
     }
   })
-  //Open Projects' options
-  // openProjectTypes.addEventListener('click', projectTypes(e));
 
   // Close open navbar menu
   menu.forEach(m => m.addEventListener('click', () => {
