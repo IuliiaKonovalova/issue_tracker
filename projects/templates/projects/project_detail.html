@@ -29,7 +29,8 @@
       <div class="project__issue--status">
         <div class="project__issues--header">
           <h4 class="issue--title">To Do:</h4>
-          <a href="#" class="btn btn__issue--add" data-target-modal="#todo_form">
+          <a href="{% url 'create_issue' created_by=project.created_by project_id=project.id %}"
+            class="btn btn__issue--add" data-target-modal="#todo_form">
             Add issue
             <span>+</span>
           </a>
@@ -60,7 +61,12 @@
   <h2>ISSUES:</h2>
   <ul>
     {% for issue in issues %}
+    {% if issue.status == 0 %}
     <li>{{issue.title}}</li>
+    {% endif %}
+    {% if issue.status == 1 %}
+    <li>{{issue.title}}</li>
+    {% endif %}
     {% endfor %}
 
   </ul>
