@@ -5,6 +5,7 @@ const dropdown = document.querySelectorAll('.account__options');
 const openProjectTypes = document.getElementById('add-new-project');
 const addNewProject = document.getElementById('add__project');
 const projectOptions = document.getElementById('project__options');
+const addProjectIcon = document.getElementById('add-project-icon');
 
 // On load
 document.addEventListener('DOMContentLoaded', function () {
@@ -22,10 +23,11 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    //Open Projects' options
-    openProjectTypes.addEventListener('click', projectTypes(e));
+    //Open New Projects' options
+    if (e.target === openProjectTypes || e.target === addProjectIcon) {
+      projectTypes(e);
+    }
   })
-
 
   // Close open navbar menu
   menu.forEach(m => m.addEventListener('click', () => {
