@@ -7,7 +7,8 @@
         {% if user.id == project.created_by.id or user in project.collaborators.all %}
         
             {{ project.title }}<br>
-            {{ project.description }}
+            {{ project.description }} <br>
+            <a href="{% url 'create_issue' created_by=project.created_by project_id=project.id %}">NEW ISSUE</a>
         {% else %}
             <h1>You are not authorized to view this project</h1>
         {% endif %}
