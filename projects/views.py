@@ -3,19 +3,9 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Issue, Comment, Project
 from .forms import PersonalProjectForm, TeamProjectForm
-# Create your views here.
 
 
-# view to show all projects created by the user and projects he is a collaborator of
-# class ProjectsView(generic.ListView):
-#     model = Project
-#     template_name = 'projects/projects_list.html'
-#     context_object_name = 'projects'
 
-#     def get_queryset(self):
-#         return Project.objects.filter(
-#             collaborators=self.request.user
-#         )
 class ProjectsView(View):
     def get(self, request):
         # chaeck if current user is in collaborators of the project
@@ -60,38 +50,7 @@ class CreateTeamProjectView(View):
             return HttpResponseRedirect(reverse('projects_list'))
         return render(request, 'projects/create_project.html', {'form': form})
         
-# class CreatePersonalProjectView(View):
-#     def get(self, request):
-#         form = ProjectForm(personal=True)
-#         return render(request, 'projects/create_project.html', {'form': form})
-    
-#     def post(self, request):
-#         form = ProjectForm(request.POST)
-#         form.fields['collaborators'].initial = [request.user]
-#         if form.is_valid():
-#             print("form is valid")
-#             project = form.save(commit=False)
-#             project.created_by = request.user
-#             project.save()
-#             return HttpResponseRedirect(reverse('projects_list'))
-            
-            
-#         return render(request, 'projects/create_project.html', {'form': form})
-    
-# class CreateTeamProjectView(View):
-#     def get(self, request):
-#         form = ProjectForm(personal=False)
-#         form.fields['collaborators'].initial = [request.user]
-#         return render(request, 'projects/create_project.html', {'form': form})
-    
-#     def post(self, request):
-#         form = ProjectForm(request.POST)
-#         if form.is_valid():
-#             project = form.save(commit=False)
-#             project.created_by = request.user
-#             project.save()
-#             return HttpResponseRedirect(reverse('projects_list'))
-#         return render(request, 'projects/create_project.html', {'form': form})
+
     
 
 class ProjectDetailView(View):
