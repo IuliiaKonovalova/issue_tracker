@@ -2,19 +2,7 @@
 
 {% block content%}
 
-{% if request.user.is_authenticated %}
-<h2 class="project__title">{{ project.title }}</h2>
-<div class="project__details">
-  {% if user.id == project.created_by.id or user in project.collaborators.all %}
-  <section class="project__header">
-    <h3 class="project__header--descriptions">
-      <span>Descriptions: </span>
-      {{ project.description }}
-    </h3>
-    </h3 class="project__header--descriptions">
-    <span>Collaborators: </span>
-    {% if project.project_type == 0 %}
-    {{ project.created_by }}
+
     {% else %}
     {% for collaborator in project.collaborators.all %}
     {{ collaborator.username }},
@@ -54,6 +42,15 @@
       </div>
     </div>
   </section>
+
+<h2>ISSUES:</h2>
+            <ul>
+            {% for issue in issues %}
+                <li>{{issue.title}}</li>
+            {% endfor %}
+            
+            </ul>
+
   {% else %}
   <h3 class="project__title--message">You are not authorized to view this project</h3>
   {% endif %}
