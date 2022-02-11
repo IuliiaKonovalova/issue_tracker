@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Issue, Comment, Project
-from .forms import PersonalProjectForm, TeamProjectForm
+from .forms import PersonalProjectForm, TeamProjectForm, IssueForm
 
 
 
@@ -51,9 +51,14 @@ class CreateTeamProjectView(View):
         return render(request, 'projects/create_project.html', {'form': form})
         
 
-    
-
 class ProjectDetailView(View):
     def get(self, request, pk, *args, **kwargs):
         project = get_object_or_404(Project, pk=pk)
         return render(request, 'projects/project_detail.html', {'project': project})
+    
+
+class CreateIssueView(View):
+    def get(self, request, project_id, *args, **kwargs):
+        project = get_object_or_404(Project, id=project_id)
+        form = IssueForm()
+        return render(request, 'projects/create_issue.html', {'form': form})
