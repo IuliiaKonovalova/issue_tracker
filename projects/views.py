@@ -54,7 +54,8 @@ class CreateTeamProjectView(View):
 class ProjectDetailView(View):
     def get(self, request, pk, *args, **kwargs):
         project = get_object_or_404(Project, pk=pk)
-        return render(request, 'projects/project_detail.html', {'project': project})
+        issues = Issue.objects.filter(project=project)
+        return render(request, 'projects/project_detail.html', {'project': project, 'issues': issues})
     
 
 class CreateIssueView(View):
