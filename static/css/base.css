@@ -596,7 +596,8 @@ body {
   padding-bottom: 5em;
 }
 
-.project__new--title {
+.project__new--title,
+.project__title {
   max-width: 35rem;
   margin: 0 auto;
   text-align: center;
@@ -605,6 +606,7 @@ body {
   font-size: 2.5rem;
   letter-spacing: 0.15rem;
   background-color: #1c2431a9;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
 }
 
 .project__new--form {
@@ -691,6 +693,41 @@ body {
   resize: vertical;
   min-height: 10rem;
 }
+
+/* ----- Project Details ----- */
+
+.project__details {
+  width: 100%;
+  color: var(--clr-neutral--100);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5em;
+}
+
+.project__title--message {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--clr-accent--300);
+  margin: 3em 0;
+}
+
+.project__title {
+  max-width: 50rem;
+  text-transform: capitalize;
+}
+
+.project__header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  height: unset;
+  width: 90%;
+  background-color: #925cef;
+}
+
 
 /* ----- Footer ----- */
 
