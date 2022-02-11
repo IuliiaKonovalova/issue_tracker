@@ -62,3 +62,13 @@ class CreateIssueView(View):
         project = get_object_or_404(Project, id=project_id)
         form = IssueForm()
         return render(request, 'projects/create_issue.html', {'form': form})
+    
+    def post(self, request, project_id, *args, **kwargs):
+        form = IssueForm(request.POST)
+        if form.is_valid():
+            issue = form.save(commit=False)
+            issue.created_by = request.user
+            issue.project = get_object_or_404(Project, id=project_id)
+            issue.save()
+            return HttpResponseRedirect(reverse('project_detail'))
+        return render(request, 'projects/create_issue.html', {'form': form})
