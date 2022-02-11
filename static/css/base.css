@@ -703,7 +703,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 5em;
+  padding: 2em;
+  margin-bottom: 3em;
+  background-color: var(--clr-primary--500);
+  border-radius: var(--br);
 }
 
 .project__title--message {
@@ -724,10 +727,59 @@ body {
   justify-content: center;
   align-items: start;
   height: unset;
-  width: 90%;
-  background-color: #925cef;
+  width: 100%;
+  padding: 2em;
+  background-color: var(--clr-primary--100);
+  border-radius: var(--br);
+  margin-bottom: 2em;
 }
 
+.project__issues {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  height: unset;
+  width: 100%;
+  padding: 2em;
+  background-color: var(--clr-primary--100);
+  border-radius: var(--br);
+}
+
+
+.project__issues--title {
+  font-size: 2rem;
+  letter-spacing: 0.15rem;
+  padding-bottom: 2em;
+  text-align: center;
+  width: 100%;
+}
+
+.project__issues--main {
+  width: 100%;
+  padding: 2em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  background-color: var(--clr-primary--500);
+  border-radius: var(--br);
+}
+
+.project__issue--status {
+  border: 1px solid var(--clr-neutral--500);
+  border-radius: var(--br);
+}
+
+.project__issues--header {
+  background-color: var(--clr-neutral--500);
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.project__issues--container {
+  min-height: 30rem;
+}
 
 /* ----- Footer ----- */
 
