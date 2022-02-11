@@ -17,8 +17,8 @@ PROJECT_STATUS = (
 # issue model variables
 ISSUE_STATUS = (
     (0, 'Open'),
-    (1, 'Closed'),
-    (2, 'In Progress'),
+    (1, 'In Progress'),
+    (2, 'Closed'),
 )
 
 ISSUE_PRIORITY = (

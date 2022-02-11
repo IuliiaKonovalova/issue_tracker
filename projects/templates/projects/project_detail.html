@@ -37,7 +37,11 @@
           </a>
         </div>
         <div class="project__issues--container">
-          <div class="project__issue"></div>
+          <div class="project__issue">
+            {% for issue_to_do in issues_to_do %}
+            {{ issue_to_do }}
+            {% endfor %}
+          </div>
         </div>
       </div>
       <div class="project__issue--status">
@@ -45,7 +49,11 @@
           <h4 class="project__issue--title">In Progress:</h4>
         </div>
         <div class="project__issues--container">
-          <div class="project__issue"></div>
+          <div class="project__issue">
+            {% for issue_in_progress in issues_in_progress %}
+            {{ issue_in_progress }}
+            {% endfor %}
+          </div>
         </div>
       </div>
       <div class="project__issue--status">
@@ -53,24 +61,15 @@
           <h4 class="project__issue--title">Done:</h4>
         </div>
         <div class="project__issues--container">
-          <div class="project__issue"></div>
+          <div class="project__issue">
+            {% for issue_done in issues_done %}
+            {{ issue_done }}
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
   </section>
-
-  <h2>ISSUES:</h2>
-  <ul>
-    {% for issue in issues %}
-    {% if issue.status == 0 %}
-    <li>{{issue.title}}</li>
-    {% endif %}
-    {% if issue.status == 1 %}
-    <li>{{issue.title}}</li>
-    {% endif %}
-    {% endfor %}
-
-  </ul>
   {% else %}
   <h3 class="project__title--message">You are not authorized to view this project</h3>
   {% endif %}
