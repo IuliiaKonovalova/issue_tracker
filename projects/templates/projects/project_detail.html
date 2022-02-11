@@ -10,15 +10,16 @@
       <span>Descriptions: </span>
       {{ project.description }}
     </h3>
-    </h3 class="project__header--descriptions">
-    <span>Collaborators: </span>
-    {% if project.project_type == 0 %}
-    {{ project.created_by }}
-    {% else %}
-    {% for collaborator in project.collaborators.all %}
-    {{ collaborator.username }},
-    {% endfor %}
-    {% endif %}
+    <h3 class="project__header--descriptions">
+      <span>Collaborators: </span>
+      {% if project.project_type == 0 %}
+      {{ project.created_by }}
+      {% else %}
+      {% for collaborator in project.collaborators.all %}
+      {{ collaborator.username }}
+      <p class="spacing"></p>
+      {% endfor %}
+      {% endif %}
     </h3>
   </section>
   <section class="project__issues">
