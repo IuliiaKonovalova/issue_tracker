@@ -705,7 +705,7 @@ body {
   align-items: center;
   padding: 2em;
   margin-bottom: 3em;
-  background-color: var(--clr-primary--500);
+  background-color: #1c2431a9;
   border-radius: var(--br);
 }
 
@@ -719,6 +719,8 @@ body {
 .project__title {
   max-width: 50rem;
   text-transform: capitalize;
+  font-size: 2.5rem;
+  margin-bottom: 2em;
 }
 
 .project__header {
@@ -746,7 +748,6 @@ body {
   border-radius: var(--br);
 }
 
-
 .project__issues--title {
   font-size: 2rem;
   letter-spacing: 0.15rem;
@@ -757,8 +758,8 @@ body {
 
 .project__issues--main {
   width: 100%;
-  padding: 2em;
   display: grid;
+  padding: 1em;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   background-color: var(--clr-primary--500);
@@ -766,15 +767,33 @@ body {
 }
 
 .project__issue--status {
-  border: 1px solid var(--clr-neutral--500);
+  border: 2px solid #2c3b55;
   border-radius: var(--br);
 }
 
 .project__issues--header {
-  background-color: var(--clr-neutral--500);
+  background-color: #1c2431a9;
+  border-top-left-radius: 0.4em;
+  border-top-right-radius: 0.4em;
+  border-bottom: 2px solid #2c3b55;
+  /* 202a3c; */
+  height: 4rem;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 1em;
+  font-weight: 900;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+.btn__issue--add {
+  padding: 0.4em 1em 0.5em 1em;
+  background-color: var(--clr-accent--800);
+  border-radius: var(--br);
+  color: white;
+  text-transform: lowercase;
+  font-size: 1.1rem;
 }
 
 .project__issues--container {
