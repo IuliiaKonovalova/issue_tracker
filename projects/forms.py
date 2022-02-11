@@ -46,12 +46,11 @@ class TeamProjectForm(forms.ModelForm):
 class IssueForm(forms.ModelForm):
     class Meta:
         model = Issue
-        fields = ['title', 'description', 'priority', 'issue_type', 'status', 'assigned_to']
+        fields = ['title', 'description', 'priority', 'issue_type', 'assigned_to']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
             'priority': forms.Select(attrs={'class': 'form-control'}),
             'issue_type': forms.Select(attrs={'class': 'form-control'}),
-            'status': forms.Select(attrs={'class': 'form-control'}),
             'assigned_to': forms.Select(attrs={'class': 'form-control'}),
         }

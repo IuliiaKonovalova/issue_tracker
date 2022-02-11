@@ -57,7 +57,7 @@ class Project(models.Model):
 
 class Issue(models.Model):
     title = models.CharField(max_length=100, blank=False, default='')
-    slug = models.SlugField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=100)
     created_by = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
