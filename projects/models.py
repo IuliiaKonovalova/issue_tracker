@@ -42,8 +42,8 @@ class Project(models.Model):
     description = models.TextField(max_length=1000, blank=True)
     project_type = models.IntegerField(choices=PROJECT_TYPE)
     status = models.IntegerField(choices=PROJECT_STATUS, default=0)
-    collaborators = models.ManyToManyField(User, related_name='collaborators')
-    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='created_by', null=True)
+    collaborators = models.ManyToManyField(User, related_name='collaborated_projects')
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='projects', null=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     
@@ -69,14 +69,14 @@ class Issue(models.Model):
     issue_type = models.IntegerField(choices=ISSUE_TYPE, default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    votes = models.ManyToManyField(User, related_name='votes', blank=True)
+    votes = models.ManyToManyField(User, related_name='voted_on_issue', blank=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='issues', default=DEFAULT_PROJECT_ID)
     assigned_to = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
-        related_name='assigned_to'
+        related_name='assigned_issues'
     )
     
     class Meta:
@@ -99,7 +99,7 @@ class Comment(models.Model):
     created_by = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='comments'
+        related_name='written_comments',
     )
     comment_body = models.TextField(blank=False, default='')
     created_on = models.DateTimeField(auto_now_add=True, blank=False, editable=False)
@@ -110,10 +110,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment_body
-
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(blank=True)
-    birth_date = models.DateField(null=True, blank=True)
-    related_projects = models.ManyToManyField(Project, related_name='related_projects', blank=True)
-    assigned_issues = models.ManyToManyField(Issue, related_name='assigned_issues', blank=True)
