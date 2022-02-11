@@ -736,6 +736,27 @@ body {
   margin-bottom: 2em;
 }
 
+.project__header>h3:first-child {
+  margin-bottom: 1em;
+}
+
+.project__header h3 {
+  color: var(--clr-neutral--100);
+  display: flex;
+  font-weight: 100;
+  text-transform: capitalize;
+}
+
+.project__header h3 span {
+  color: var(--clr-accent--300);
+  font-weight: 900;
+  margin-right: 1em;
+}
+
+.spacing {
+  margin-right: 0.5em;
+}
+
 .project__issues {
   display: flex;
   flex-direction: column;
@@ -776,7 +797,6 @@ body {
   border-top-left-radius: 0.4em;
   border-top-right-radius: 0.4em;
   border-bottom: 2px solid #2c3b55;
-  /* 202a3c; */
   height: 4rem;
   display: flex;
   align-items: center;

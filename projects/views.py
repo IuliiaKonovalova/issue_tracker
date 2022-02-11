@@ -55,7 +55,16 @@ class ProjectDetailView(View):
     def get(self, request, pk, *args, **kwargs):
         project = get_object_or_404(Project, pk=pk)
         issues = Issue.objects.filter(project=project)
-        return render(request, 'projects/project_detail.html', {'project': project, 'issues': issues})
+        issues_to_do = issues.filter(status=0)
+        issues_in_progress = issues.filter(status=1)
+        issues_done = issues.filter(status=2)
+        context = {
+            'project': project,
+            'issues_to_do': issues_to_do,
+            'issues_in_progress': issues_in_progress,
+            'issues_done': issues_done,
+        }
+        return render(request, 'projects/project_detail.html', context)
     
 
 class CreateIssueView(View):

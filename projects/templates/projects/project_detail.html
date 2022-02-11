@@ -10,15 +10,16 @@
       <span>Descriptions: </span>
       {{ project.description }}
     </h3>
-    </h3 class="project__header--descriptions">
-    <span>Collaborators: </span>
-    {% if project.project_type == 0 %}
-    {{ project.created_by }}
-    {% else %}
-    {% for collaborator in project.collaborators.all %}
-    {{ collaborator.username }},
-    {% endfor %}
-    {% endif %}
+    <h3 class="project__header--descriptions">
+      <span>Collaborators: </span>
+      {% if project.project_type == 0 %}
+      {{ project.created_by }}
+      {% else %}
+      {% for collaborator in project.collaborators.all %}
+      {{ collaborator.username }}
+      <p class="spacing"></p>
+      {% endfor %}
+      {% endif %}
     </h3>
   </section>
   <section class="project__issues">
@@ -29,13 +30,18 @@
       <div class="project__issue--status">
         <div class="project__issues--header">
           <h4 class="issue--title">To Do:</h4>
-          <a href="#" class="btn btn__issue--add" data-target-modal="#todo_form">
+          <a href="{% url 'create_issue' created_by=project.created_by project_id=project.id %}"
+            class="btn btn__issue--add" data-target-modal="#todo_form">
             Add issue
             <span>+</span>
           </a>
         </div>
         <div class="project__issues--container">
-          <div class="project__issue"></div>
+          <div class="project__issue">
+            {% for issue_to_do in issues_to_do %}
+            {{ issue_to_do }}
+            {% endfor %}
+          </div>
         </div>
       </div>
       <div class="project__issue--status">
@@ -43,7 +49,11 @@
           <h4 class="project__issue--title">In Progress:</h4>
         </div>
         <div class="project__issues--container">
-          <div class="project__issue"></div>
+          <div class="project__issue">
+            {% for issue_in_progress in issues_in_progress %}
+            {{ issue_in_progress }}
+            {% endfor %}
+          </div>
         </div>
       </div>
       <div class="project__issue--status">
@@ -51,19 +61,15 @@
           <h4 class="project__issue--title">Done:</h4>
         </div>
         <div class="project__issues--container">
-          <div class="project__issue"></div>
+          <div class="project__issue">
+            {% for issue_done in issues_done %}
+            {{ issue_done }}
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
   </section>
-
-  <h2>ISSUES:</h2>
-  <ul>
-    {% for issue in issues %}
-    <li>{{issue.title}}</li>
-    {% endfor %}
-
-  </ul>
   {% else %}
   <h3 class="project__title--message">You are not authorized to view this project</h3>
   {% endif %}
