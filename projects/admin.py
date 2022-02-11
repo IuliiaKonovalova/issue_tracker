@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Issue, Comment, Project, UserProfile
+from .models import Issue, Comment, Project
 from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(Project)
@@ -35,13 +35,3 @@ class CommentAdmin(admin.ModelAdmin):
     search_fields = ('issue', 'created_by')
     ordering = ('-created_on',)
     list_select_related = ('created_by',)
-
-@admin.register(UserProfile)
-class UserProfileAdmin(admin.ModelAdmin):
-    summernote_fields = ('bio',)
-    list_display = ('user', 'bio', 'birth_date')
-    # display assigned issues
-    
-    # display projects
-    
-    
