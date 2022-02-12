@@ -121,9 +121,10 @@
         <div class="project__issues--container">
           <div class="project__issue">
             {% for issue_in_progress in issues_in_progress %}
-            <div class="issue__container">
+            <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_in_progress.id %}"
+              class="issue__container">
               {{ issue_in_progress }}
-            </div>
+            </a>
             {% endfor %}
           </div>
         </div>
