@@ -7,7 +7,7 @@
         <h2>Projects:</h2>
         <ul>
            
-            {% for project in user_profile.projects %}
+            {% for project in request.user.projects.all %}
                 
                 <li>{{ project.title }}</li>
                 
@@ -16,14 +16,22 @@
         </ul>
         <h2>Issues:</h2>
         <ul>
-            {% for issue in user_profile.issues %}
+            {% for issue in request.user.issues.all %}
+                <li>{{ issue.title }}</li>
+            {% endfor %}
+
+        </ul>
+        
+        <h2>Assigned issues:</h2>
+        <ul>
+            {% for issue in request.user.assigned_issues.all %}
                 <li>{{ issue.title }}</li>
             {% endfor %}
 
         </ul>
         <h2>Comments:</h2>
         <ul>
-            {% for comment in user_profile.comments %}
+            {% for comment in request.user.written_comments.all %}
                 <li>{{ comment.comment_body }}</li>
             {% endfor %}
         </ul>
