@@ -83,4 +83,29 @@ class CreateIssueView(View):
             issue.save()
             return HttpResponseRedirect(reverse('project_detail', kwargs={'created_by': project.created_by,'pk': project.id}))
         return render(request, 'projects/create_issue.html', {'form': form, 'project':project})
-    
+
+
+class IssueDetailView(View):
+    def get(self, request, issue_id, *args, **kwargs):
+        issue = get_object_or_404(Issue, id=issue_id)
+        comments = Comment.objects.filter(issue=issue)
+        voted = False
+        if issue.votes.filter(id=self.request.user.id).exists():
+            voted = True
+        context = {
+            'issue': issue,
+            'comments': comments,
+            'voted': voted,
+        }
+        return render(request, 'projects/issue_detail.html', context)
+
+class IssueVotes(View):
+
+    def post(self, request, issue_id, *args, **kwargs):
+        issue = get_object_or_404(Issue, id=issue_id)
+
+        if issue.votes.filter(id=request.user.id).exists():
+            issue.votes.remove(request.user)
+        else:
+            issue.votes.add(request.user)
+        return HttpResponseRedirect(reverse('project_detail',))
