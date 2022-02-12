@@ -36,4 +36,12 @@
             {% endfor %}
         </ul>
 
+        {% if password_form %}
+        <form method="post">
+            {{ password_form|crispy }}
+            {% csrf_token %}
+            <button type="submit">Change password</button>
+        </form>
+        {% endif %}
+
     {% endblock %}
