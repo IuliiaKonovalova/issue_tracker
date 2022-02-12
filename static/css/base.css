@@ -828,10 +828,9 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: start;
-  height: unset;
+
   width: 100%;
   padding: 0.7em 1em;
-  height: 6rem;
   background-color: var(--clr-primary--100);
   border: 2px solid #1f3557;
   border-radius: var(--br);
@@ -845,9 +844,15 @@ body {
 .project__issue .issue__content {
   width: 100%;
   display: flex;
-
-
+  align-content: start;
 }
+
+.project__issue .issue__title {
+  padding: 1em 0;
+  font-size: 1.2rem;
+}
+
+
 
 .project__issue .issue {
   width: 100%;
@@ -959,7 +964,7 @@ body {
 
 /* ------- Issue Type + Issue Type User Story */
 .issue__type {
-  padding: 0 0.7em 0.1em 0.7em;
+  padding: 0 0.7em 0.0 0.7em;
   font-size: 0.9rem;
   position: relative;
   display: flex;
