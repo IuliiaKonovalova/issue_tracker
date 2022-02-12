@@ -63,9 +63,23 @@
                     {{ issue_to_do.title }}
                   </div>
                 </div>
-                <div class="issue__type">
-                  {{issue_to_do.priority }}
+                {% if issue_to_do.issue_type == 0 %}
+                <div class="issue__type red">
+                  <p class="issue__type--text">Bug</p>
                 </div>
+                {% elif issue_to_do.issue_type == 1 %}
+                <div class="issue__type purple">
+                  <p class="issue__type--text">Feature</p>
+                </div>
+                {% elif issue_to_do.issue_type == 2 %}
+                <div class="issue__type green">
+                  <p class="issue__type--text">Task</p>
+                </div>
+                {% elif issue_to_do.issue_type == 3 %}
+                <div class="issue__type blue">
+                  <p class="issue__type--text">User Story</p>
+                </div>
+                {% endif %}
               </div>
               <div class="issue__additional">
                 <div class="issue__assignee">

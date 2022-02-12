@@ -894,8 +894,6 @@ body {
   -moz-box-shadow: 0px 0px 3px 2px #65e2d9;
 }
 
-/* Issue Priority Low */
-
 /* Issue Priority Middle */
 .issue__priority.yellow {
   -webkit-box-shadow: 0px 0px 3px 2px yellow;
@@ -959,6 +957,49 @@ body {
   -moz-box-shadow: 0px 0px 3px 2px red;
 }
 
+/* ------- Issue Type + Issue Type User Story */
+.issue__type {
+  padding: 0 0.7em 0.1em 0.7em;
+  font-size: 0.9rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.2em;
+  color: #65e2d9;
+  border: #65e2d9;
+  -webkit-box-shadow: 0px 0px 3px 2px #65e2d9;
+  -moz-box-shadow: 0px 0px 3px 2px #65e2d9;
+  box-shadow: 0px 0px 3px 2px #65e2d9;
+}
+
+/* Issue Type Bug */
+.issue__type.red {
+  color: rgb(145, 2, 2);
+  border: red;
+  -webkit-box-shadow: 0px 0px 3px 2px red;
+  -moz-box-shadow: 0px 0px 3px 2px red;
+  box-shadow: 0px 0px 3px 2px red;
+}
+
+/* Issue Type Feature */
+.issue__type.purple {
+  color: #6b28e0;
+  border: #6b28e0;
+  -webkit-box-shadow: 0px 0px 3px 2px #6b28e0;
+  -moz-box-shadow: 0px 0px 3px 2px #6b28e0;
+  box-shadow: 0px 0px 3px 2px #6b28e0;
+}
+
+/* Issue Type Task */
+.issue__type.green {
+  color: green;
+  border: green;
+  -webkit-box-shadow: 0px 0px 3px 2px green;
+  -moz-box-shadow: 0px 0px 3px 2px green;
+  box-shadow: 0px 0px 3px 2px green;
+}
+
 .project__issue .issue__additional {
   background-color: #339ecc;
   width: 100%;
@@ -971,13 +1012,6 @@ body {
   display: flex;
 }
 
-/* -webkit-box-shadow: 0px 0px 7px 2px rgba(255, 56, 0, 0.2) inset;
--moz-box-shadow: 0px 0px 7px 2px rgba(255, 56, 0, 0.2) inset;
-box-shadow: 0px 0px 7px 2px rgba(255, 56, 0, 0.2) inset; */
-
-/* -webkit-box-shadow: 0px 0px 7px 2px rgba(255, 56, 0, 0.2);
--moz-box-shadow: 0px 0px 7px 2px rgba(255, 56, 0, 0.2);
-box-shadow: 0px 0px 7px 2px rgba(255, 56, 0, 0.2); */
 
 /* ----- Footer ----- */
 
