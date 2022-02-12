@@ -84,13 +84,27 @@
               </div>
               <div class="issue__additional">
                 <div class="issue__assignee">
+                  <span>Assigned:</span>
                   {{ issue_to_do.assigned_to.username }}
                 </div>
                 <div class="issue__data">
                   <div class="issue__votes">
+
+
+                    <form class="" action="" method="">
+                      {% csrf_token %}
+                      {% if user.id and user in issue_to_do.votes.all %}
+                      <i class="fas fa-check-circle"></i>
+                      {% else %}
+                      <i class="far fa-check-circle"></i>
+                      {% endif %}
+                    </form>
                     {{ issue_to_do.votes.count }}
+
                   </div>
                   <div class="issue__comments">
+
+                    <i class="far fa-comment"></i>
                     {{ issue_to_do.comments.count }}
                   </div>
                 </div>

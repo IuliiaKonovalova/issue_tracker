@@ -55,6 +55,9 @@ class ProjectDetailView(View):
     def get(self, request, pk, *args, **kwargs):
         project = get_object_or_404(Project, pk=pk)
         issues = Issue.objects.filter(project=project)
+        # voted = False
+        # if issues.votes.filter(id=self.request.user.id).exists():
+        #     voted = True
         issues_to_do = issues.filter(status=0)
         issues_in_progress = issues.filter(status=1)
         issues_done = issues.filter(status=2)
@@ -63,6 +66,7 @@ class ProjectDetailView(View):
             'issues_to_do': issues_to_do,
             'issues_in_progress': issues_in_progress,
             'issues_done': issues_done,
+            # 'voted': voted,
         }
         return render(request, 'projects/project_detail.html', context)
     
@@ -83,4 +87,15 @@ class CreateIssueView(View):
             issue.save()
             return HttpResponseRedirect(reverse('project_detail', kwargs={'created_by': project.created_by,'pk': project.id}))
         return render(request, 'projects/create_issue.html', {'form': form, 'project':project})
-    
+
+
+class IssueVotes(View):
+
+    def post(self, request, slug):
+        issue = get_object_or_404(Issue, slug=slug)
+
+        if issue.votes.filter(id=request.user.id).exists():
+            issue.votes.remove(request.user)
+        else:
+            issue.votes.add(request.user)
+        return HttpResponseRedirect(reverse('project_detail'))

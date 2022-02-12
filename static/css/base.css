@@ -848,7 +848,7 @@ body {
 }
 
 .project__issue .issue__title {
-  padding: 1em 0;
+  padding: 1em 0 0.5em 0;
   font-size: 1.2rem;
 }
 
@@ -858,6 +858,10 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.issue__votes {
+  display: flex;
 }
 
 /* -----Issue Priority + Priority Low*/
@@ -1006,11 +1010,21 @@ body {
 }
 
 .project__issue .issue__additional {
-  background-color: #339ecc;
+  /* background-color: #339ecc; */
   width: 100%;
   display: flex;
 
   justify-content: space-between;
+}
+
+.project__issue .issue__assignee {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.808);
+}
+
+.project__issue .issue__assignee span {
+  font-weight: 900;
+  margin-right: 0.2em;
 }
 
 .project__issue .issue__data {
