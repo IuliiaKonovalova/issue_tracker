@@ -31,7 +31,7 @@
         <div class="project__issues--header">
           <h4 class="issue--title">To Do:</h4>
           <a href="{% url 'create_issue' created_by=project.created_by project_id=project.id %}"
-            class="btn btn__issue--add" data-target-modal="#todo_form">
+            class="btn btn__issue--add" data-target-modal="#">
             Add issue
             <span>+</span>
           </a>
@@ -39,7 +39,8 @@
         <div class="project__issues--container">
           <div class="project__issue">
             {% for issue_to_do in issues_to_do %}
-            <div class="issue__container">
+            <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_to_do.id %}"
+              class="issue__container">
               <div class="issue">
                 <div class="issue__content">
                   {% if issue_to_do.priority == 0 %}
@@ -59,7 +60,6 @@
                     <div class="circle"></div>
                   </div>
                   {% endif %}
-
                 </div>
                 {% if issue_to_do.issue_type == 0 %}
                 <div class="issue__type red">
@@ -89,27 +89,24 @@
                 </div>
                 <div class="issue__data">
                   <div class="issue__votes">
-
-
-                    <form class="" action="" method="">
-                      {% csrf_token %}
+                    <div class="issue__votes--icon">
                       {% if user.id and user in issue_to_do.votes.all %}
                       <i class="fas fa-check-circle"></i>
                       {% else %}
                       <i class="far fa-check-circle"></i>
                       {% endif %}
-                    </form>
+                    </div>
                     {{ issue_to_do.votes.count }}
-
                   </div>
                   <div class="issue__comments">
-
-                    <i class="far fa-comment"></i>
+                    <div class="issue__comments--icon">
+                      <i class="far fa-comment"></i>
+                    </div>
                     {{ issue_to_do.comments.count }}
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
             {% endfor %}
           </div>
         </div>
@@ -123,7 +120,72 @@
             {% for issue_in_progress in issues_in_progress %}
             <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_in_progress.id %}"
               class="issue__container">
-              {{ issue_in_progress }}
+              <div class="issue">
+                <div class="issue__content">
+                  {% if issue_in_progress.priority == 0 %}
+                  <div class="issue__priority blue">
+                    <div class="circle"></div>
+                  </div>
+                  {% elif issue_in_progress.priority == 1 %}
+                  <div class="issue__priority yellow">
+                    <div class="circle"></div>
+                  </div>
+                  {% elif issue_in_progress.priority == 2 %}
+                  <div class="issue__priority orange">
+                    <div class="circle"></div>
+                  </div>
+                  {% elif issue_in_progress.priority == 3 %}
+                  <div class="issue__priority red">
+                    <div class="circle"></div>
+                  </div>
+                  {% endif %}
+
+                </div>
+                {% if issue_in_progress.issue_type == 0 %}
+                <div class="issue__type red">
+                  <p class="issue__type--text">Bug</p>
+                </div>
+                {% elif issue_in_progress.issue_type == 1 %}
+                <div class="issue__type purple">
+                  <p class="issue__type--text">Feature</p>
+                </div>
+                {% elif issue_in_progress.issue_type == 2 %}
+                <div class="issue__type green">
+                  <p class="issue__type--text">Task</p>
+                </div>
+                {% elif issue_in_progress.issue_type == 3 %}
+                <div class="issue__type blue">
+                  <p class="issue__type--text">User Story</p>
+                </div>
+                {% endif %}
+              </div>
+              <div class="issue__title">
+                {{ issue_in_progress.title }}
+              </div>
+              <div class="issue__additional">
+                <div class="issue__assignee">
+                  <span>Assigned:</span>
+                  {{ issue_in_progress.assigned_to.username }}
+                </div>
+                <div class="issue__data">
+                  <div class="issue__votes">
+                    <div class="issue__votes--icon">
+                      {% if user.id and user in issue_in_progress.votes.all %}
+                      <i class="fas fa-check-circle"></i>
+                      {% else %}
+                      <i class="far fa-check-circle"></i>
+                      {% endif %}
+                    </div>
+                    {{ issue_in_progress.votes.count }}
+                  </div>
+                  <div class="issue__comments">
+                    <div class="issue__comments--icon">
+                      <i class="far fa-comment"></i>
+                    </div>
+                    {{ issue_in_progress.comments.count }}
+                  </div>
+                </div>
+              </div>
             </a>
             {% endfor %}
           </div>
@@ -136,9 +198,75 @@
         <div class="project__issues--container">
           <div class="project__issue">
             {% for issue_done in issues_done %}
-            <div class="issue__container">
-              {{ issue_done }}
-            </div>
+            <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_done.id %}"
+              class="issue__container">
+              <div class="issue">
+                <div class="issue__content">
+                  {% if issue_done.priority == 0 %}
+                  <div class="issue__priority blue">
+                    <div class="circle"></div>
+                  </div>
+                  {% elif issue_done.priority == 1 %}
+                  <div class="issue__priority yellow">
+                    <div class="circle"></div>
+                  </div>
+                  {% elif issue_done.priority == 2 %}
+                  <div class="issue__priority orange">
+                    <div class="circle"></div>
+                  </div>
+                  {% elif issue_done.priority == 3 %}
+                  <div class="issue__priority red">
+                    <div class="circle"></div>
+                  </div>
+                  {% endif %}
+
+                </div>
+                {% if issue_done.issue_type == 0 %}
+                <div class="issue__type red">
+                  <p class="issue__type--text">Bug</p>
+                </div>
+                {% elif issue_done.issue_type == 1 %}
+                <div class="issue__type purple">
+                  <p class="issue__type--text">Feature</p>
+                </div>
+                {% elif issue_done.issue_type == 2 %}
+                <div class="issue__type green">
+                  <p class="issue__type--text">Task</p>
+                </div>
+                {% elif issue_done.issue_type == 3 %}
+                <div class="issue__type blue">
+                  <p class="issue__type--text">User Story</p>
+                </div>
+                {% endif %}
+              </div>
+              <div class="issue__title">
+                {{ issue_done.title }}
+              </div>
+              <div class="issue__additional">
+                <div class="issue__assignee">
+                  <span>Assigned:</span>
+                  {{ issue_done.assigned_to.username }}
+                </div>
+                <div class="issue__data">
+                  <div class="issue__votes">
+                    <div class="issue__votes--icon">
+                      {% if user.id and user in issue_done.votes.all %}
+                      <i class="fas fa-check-circle"></i>
+                      {% else %}
+                      <i class="far fa-check-circle"></i>
+                      {% endif %}
+                    </div>
+                    {{ issue_done.votes.count }}
+                  </div>
+                  <div class="issue__comments">
+                    <div class="issue__comments--icon">
+                      <i class="far fa-comment"></i>
+                    </div>
+                    {{ issue_done.comments.count }}
+                  </div>
+                </div>
+              </div>
+            </a>
             {% endfor %}
           </div>
         </div>
