@@ -42,11 +42,25 @@
             <div class="issue__container">
               <div class="issue">
                 <div class="issue__content">
-                  <div class="issue__priority">
-                    {{issue_to_do.priority }}
+                  {% if issue_to_do.priority == 0 %}
+                  <div class="issue__priority blue">
+                    <div class="circle"></div>
                   </div>
+                  {% elif issue_to_do.priority == 1 %}
+                  <div class="issue__priority yellow">
+                    <div class="circle"></div>
+                  </div>
+                  {% elif issue_to_do.priority == 2 %}
+                  <div class="issue__priority orange">
+                    <div class="circle"></div>
+                  </div>
+                  {% elif issue_to_do.priority == 3 %}
+                  <div class="issue__priority red">
+                    <div class="circle"></div>
+                  </div>
+                  {% endif %}
                   <div class="issue__description">
-                    {{ issue_to_do.description }}
+                    {{ issue_to_do.title }}
                   </div>
                 </div>
                 <div class="issue__type">
