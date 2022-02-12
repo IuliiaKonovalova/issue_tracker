@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+    
+    {% block content %}
+
+        <h2>Username: {{ user_profile.username }}</h2>
+        <h2>Email: {{ user_profile.email }}</h2>
+        <h2>Projects:</h2>
+        <ul>
+           
+            {% for project in user_profile.projects %}
+                
+                <li>{{ project.title }}</li>
+                
+            {% endfor %}
+              
+        </ul>
+        <h2>Issues:</h2>
+        <ul>
+            {% for issue in user_profile.issues %}
+                <li>{{ issue.title }}</li>
+            {% endfor %}
+
+        </ul>
+        <h2>Comments:</h2>
+        <ul>
+            {% for comment in user_profile.comments %}
+                <li>{{ comment.comment_body }}</li>
+            {% endfor %}
+        </ul>
+
+    {% endblock %}
