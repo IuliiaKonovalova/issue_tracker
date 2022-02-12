@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<h2>{{ issue.title }}</h2>
-<h3>{{ comments.all }}</h3>
-<h4>{{ voted }}</h4>
-
+<div class="issue__details">
+  <h2>{{ issue.title }}</h2>
+  <div>{{ comments.all }}</div>
+  <h4>{{ voted }}</h4>
+</div>
 {% endblock %}
