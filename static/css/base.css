@@ -823,8 +823,10 @@ body {
   padding: 0.5em;
 }
 
-.issue__container {
+.project__issue .issue__container {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: start;
   height: unset;
   width: 100%;
@@ -836,16 +838,35 @@ body {
 
 }
 
-.issue__container:not(:last-child) {
+.project__issue .issue__container:not(:last-child) {
   margin-bottom: 0.5em;
 }
 
-.issue {
-  background-color: #925cef;
+.project__issue .issue__content {
+  width: 100%;
+  display: flex;
+  background-color: green;
+
 }
 
-.issue__additional {
+.project__issue .issue {
+  width: 100%;
+  background-color: #925cef;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.project__issue .issue__additional {
   background-color: #339ecc;
+  width: 100%;
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.project__issue .issue__data {
+  display: flex;
 }
 
 /* ----- Footer ----- */
