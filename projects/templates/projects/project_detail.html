@@ -60,7 +60,6 @@
                     <div class="circle"></div>
                   </div>
                   {% endif %}
-
                 </div>
                 {% if issue_to_do.issue_type == 0 %}
                 <div class="issue__type red">
@@ -90,10 +89,7 @@
                 </div>
                 <div class="issue__data">
                   <div class="issue__votes">
-
-
-                    <div class="" action="" method="">
-                      {% csrf_token %}
+                    <div class="issue__votes--icon">
                       {% if user.id and user in issue_to_do.votes.all %}
                       <i class="fas fa-check-circle"></i>
                       {% else %}
@@ -101,11 +97,11 @@
                       {% endif %}
                     </div>
                     {{ issue_to_do.votes.count }}
-
                   </div>
                   <div class="issue__comments">
-
-                    <i class="far fa-comment"></i>
+                    <div class="issue__comments--icon">
+                      <i class="far fa-comment"></i>
+                    </div>
                     {{ issue_to_do.comments.count }}
                   </div>
                 </div>
@@ -173,10 +169,7 @@
                 </div>
                 <div class="issue__data">
                   <div class="issue__votes">
-
-
-                    <div class="" action="" method="">
-                      {% csrf_token %}
+                    <div class="issue__votes--icon">
                       {% if user.id and user in issue_in_progress.votes.all %}
                       <i class="fas fa-check-circle"></i>
                       {% else %}
@@ -184,11 +177,11 @@
                       {% endif %}
                     </div>
                     {{ issue_in_progress.votes.count }}
-
                   </div>
                   <div class="issue__comments">
-
-                    <i class="far fa-comment"></i>
+                    <div class="issue__comments--icon">
+                      <i class="far fa-comment"></i>
+                    </div>
                     {{ issue_in_progress.comments.count }}
                   </div>
                 </div>
@@ -256,10 +249,7 @@
                 </div>
                 <div class="issue__data">
                   <div class="issue__votes">
-
-
-                    <div class="" action="" method="">
-                      {% csrf_token %}
+                    <div class="issue__votes--icon">
                       {% if user.id and user in issue_done.votes.all %}
                       <i class="fas fa-check-circle"></i>
                       {% else %}
@@ -267,11 +257,11 @@
                       {% endif %}
                     </div>
                     {{ issue_done.votes.count }}
-
                   </div>
                   <div class="issue__comments">
-
-                    <i class="far fa-comment"></i>
+                    <div class="issue__comments--icon">
+                      <i class="far fa-comment"></i>
+                    </div>
                     {{ issue_done.comments.count }}
                   </div>
                 </div>
