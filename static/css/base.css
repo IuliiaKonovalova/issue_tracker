@@ -818,6 +818,34 @@ body {
 
 .project__issues--container {
   min-height: 30rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+}
+
+.issue__container {
+  display: flex;
+  align-items: start;
+  height: unset;
+  width: 100%;
+  padding: 0.7em 1em;
+  height: 6rem;
+  background-color: var(--clr-primary--100);
+  border: 2px solid #1f3557;
+  border-radius: var(--br);
+
+}
+
+.issue__container:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+
+.issue {
+  background-color: #925cef;
+}
+
+.issue__additional {
+  background-color: #339ecc;
 }
 
 /* ----- Footer ----- */

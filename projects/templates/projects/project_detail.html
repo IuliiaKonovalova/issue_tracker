@@ -39,7 +39,34 @@
         <div class="project__issues--container">
           <div class="project__issue">
             {% for issue_to_do in issues_to_do %}
-            {{ issue_to_do }}
+            <div class="issue__container">
+              <div class="issue">
+                <div class="issue__content">
+                  <div class="issue__priority">
+                    {{issue_to_do.priority }}
+                  </div>
+                  <div class="issue__description">
+                    {{ issue_to_do.description }}
+                  </div>
+                </div>
+                <div class="issue__type">
+                  {{issue_to_do.priority }}
+                </div>
+              </div>
+              <div class="issue__additional">
+                <div class="issue__assignee">
+                  {{ issue_to_do.assigned_to.username }}
+                </div>
+                <div class="issue__data">
+                  <div class="issue__votes">
+                    {{ issue_to_do.votes.count }}
+                  </div>
+                  <div class="issue__comments">
+                    {{ issue_to_do.comments.count }}
+                  </div>
+                </div>
+              </div>
+            </div>
             {% endfor %}
           </div>
         </div>
@@ -51,7 +78,9 @@
         <div class="project__issues--container">
           <div class="project__issue">
             {% for issue_in_progress in issues_in_progress %}
-            {{ issue_in_progress }}
+            <div class="issue__container">
+              {{ issue_in_progress }}
+            </div>
             {% endfor %}
           </div>
         </div>
@@ -63,7 +92,9 @@
         <div class="project__issues--container">
           <div class="project__issue">
             {% for issue_done in issues_done %}
-            {{ issue_done }}
+            <div class="issue__container">
+              {{ issue_done }}
+            </div>
             {% endfor %}
           </div>
         </div>
