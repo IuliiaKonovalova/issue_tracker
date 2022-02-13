@@ -96,13 +96,18 @@
   <div>{{ voted }}</div>
 
   <div class="issue__data">
-    <form class="issue__votes" action="" method="POST">
-
+    <form class="issue__votes" method="POST"
+      action="{% url 'issue_vote' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}">
+      {% csrf_token %}
       <div class="issue__votes--icon">
         {% if user.id and user in issue.votes.all %}
-        <i class="fas fa-check-circle"></i>
+        <button type="submit">
+          <i class="fas fa-check-circle"></i>
+        </button>
         {% else %}
-        <i class="far fa-check-circle"></i>
+        <button type="submit">
+          <i class="far fa-check-circle"></i>
+        </button>
         {% endif %}
       </div>
       {{ issue.votes.count }}
