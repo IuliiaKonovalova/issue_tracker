@@ -100,7 +100,6 @@ class IssueDetailView(View):
         return render(request, 'projects/issue_detail.html', context)
 
 class IssueVotes(View):
-
     def post(self, request, issue_id, *args, **kwargs):
         issue = get_object_or_404(Issue, id=issue_id)
 
