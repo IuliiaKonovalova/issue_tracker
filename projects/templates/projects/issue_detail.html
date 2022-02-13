@@ -2,61 +2,82 @@
 
 {% block content %}
 <div class="issue__details">
-  <h2 class="project__title">
+  <h2 class="issue__title--main">
     {{ issue.title }}
     </br>
     ({{ issue.project }})</h2>
-  <div class="issue__content">
-    {% if issue.priority == 0 %}
-    <div class="issue__priority blue">
-      <div class="circle"></div>
+  <div class="issue__details--main">
+    <div class="issue__marks">
+      <div class="issue__priority--container">
+        {% if issue.priority == 0 %}
+        <div class="issue__priority blue">
+          <div class="circle"></div>
+        </div>
+        <div class="issue__priority--content">Low priority</div>
+        {% elif issue.priority == 1 %}
+        <div class="issue__priority yellow">
+          <div class="circle"></div>
+        </div>
+        <div class="issue__priority--content">Medium priority</div>
+        {% elif issue.priority == 2 %}
+        <div class="issue__priority orange">
+          <div class="circle"></div>
+        </div>
+        <div class="issue__priority--content">High priority</div>
+        {% elif issue.priority == 3 %}
+        <div class="issue__priority red">
+          <div class="circle"></div>
+        </div>
+        <div class="issue__priority--content">Urgent priority</div>
+        {% endif %}
+      </div>
+      <div class="issue__type--container">
+        {% if issue.issue_type == 0 %}
+        <div class="issue__type red">
+          <p class="issue__type--text">Bug</p>
+        </div>
+        <div class="issue__type--content">Type: Bug</div>
+        {% elif issue.issue_type == 1 %}
+        <div class="issue__type purple">
+          <p class="issue__type--text">Feature</p>
+        </div>
+        <div class="issue__type--content">Type: Feature</div>
+        {% elif issue.issue_type == 2 %}
+        <div class="issue__type green">
+          <p class="issue__type--text">Task</p>
+        </div>
+        <div class="issue__type--content">Type: Task</div>
+        {% elif issue.issue_type == 3 %}
+        <div class="issue__type blue">
+          <p class="issue__type--text">User Story</p>
+        </div>
+        <div class="issue__type--content">Type: User Story</div>
+        {% endif %}
+      </div>
     </div>
-    <div>Low priority</div>
-    {% elif issue.priority == 1 %}
-    <div class="issue__priority yellow">
-      <div class="circle"></div>
+    <div class="issue__content--main">
+      <div class="issue__description">
+        <span class="issue__subtitle">Description: </span>
+        {{ issue.description }}
+      </div>
+      <div class="issue__description issue__description--name">
+        <span class="issue__subtitle">Created by: </span>
+        {{ issue.created_by }}
+      </div>
+      <div class="issue__description issue__description--name">
+        <span class="issue__subtitle">Assigned to: </span>
+        {{ issue.assigned_to }}
+      </div>
+      <div class="issue__description">
+        <span class="issue__subtitle">Created on: </span>
+        {{ issue.created_on }}
+      </div>
+      <div class="issue__description">
+        <span class="issue__subtitle">Updated on: </span>
+        {{ issue.updated_on }}
+      </div>
     </div>
-    <div>Medium priority</div>
-    {% elif issue.priority == 2 %}
-    <div class="issue__priority orange">
-      <div class="circle"></div>
-    </div>
-    <div>High priority</div>
-    {% elif issue.priority == 3 %}
-    <div class="issue__priority red">
-      <div class="circle"></div>
-    </div>
-    <div>Urgent priority</div>
-    {% endif %}
-
   </div>
-  {% if issue.issue_type == 0 %}
-  <div class="issue__type red">
-    <p class="issue__type--text">Bug</p>
-  </div>
-  <div>Type: Bug</div>
-  {% elif issue.issue_type == 1 %}
-  <div class="issue__type purple">
-    <p class="issue__type--text">Feature</p>
-  </div>
-  <div>Type: Feature</div>
-  {% elif issue.issue_type == 2 %}
-  <div class="issue__type green">
-    <p class="issue__type--text">Task</p>
-  </div>
-  <div>Type: Task</div>
-  {% elif issue.issue_type == 3 %}
-  <div class="issue__type blue">
-    <p class="issue__type--text">User Story</p>
-  </div>
-  <div>Type: User Story</div>
-  {% endif %}
-
-  <div>Description: {{ issue.description }}</div>
-  <div>Created by: {{ issue.created_by }}</div>
-  <div>Created on: {{ issue.created_on }}</div>
-  <div>Updated on: {{ issue.updated_on }}</div>
-  <div>Assigned to: {{ issue.assigned_to }}</div>
   <div>{{ voted }}</div>
   <div>{% for comment in comments.all %}
     {{ comment }}</br>

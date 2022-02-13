@@ -596,7 +596,8 @@ body {
 }
 
 .project__new--title,
-.project__title {
+.project__title,
+.issue__title--main {
   max-width: 35rem;
   margin: 0 auto;
   text-align: center;
@@ -604,7 +605,6 @@ body {
   margin-top: 1em;
   font-size: 2.5rem;
   letter-spacing: 0.15rem;
-
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
 }
 
@@ -1060,12 +1060,71 @@ body {
 .issue__details {
   max-width: 50rem;
   margin: 0 auto;
-  padding: 2em;
-  margin-bottom: 3em;
   background: unset;
   background-color: var(--clr-primary--100);
-
   border-radius: var(--br);
+  margin-top: 2em;
+}
+
+.issue__title--main {
+  margin-bottom: 1em;
+}
+
+.issue__details--main {
+  width: 90%;
+  background-color: var(--clr-primary--500);
+  border-radius: var(--br);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  padding: 1em 2em;
+}
+
+.issue__marks {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.issue__priority--container,
+.issue__type--container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--clr-primary--500);
+  border-radius: var(--br);
+}
+
+.issue__priority--content,
+.issue__type--content {
+  font-size: 1.2rem;
+  margin-left: 0.5em;
+}
+
+.issue__type--content {
+  margin-left: 1em;
+}
+
+.issue__content--main {
+  margin: 2em 0 1em 0;
+  font-size: 1.5rem;
+}
+
+.issue__subtitle {
+  color: var(--clr-accent--300);
+  font-weight: 900;
+  margin-right: 0.5em;
+}
+
+.issue__description:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+
+.issue__description--name {
+  text-transform: capitalize;
 }
 
 /* ----- Footer ----- */
