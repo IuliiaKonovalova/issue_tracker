@@ -82,7 +82,27 @@
       </div>
     </div>
   </div>
+
   <div>{{ voted }}</div>
+
+  <div class="issue__data">
+    <div class="issue__votes">
+      <div class="issue__votes--icon">
+        {% if user.id and user in issue.votes.all %}
+        <i class="fas fa-check-circle"></i>
+        {% else %}
+        <i class="far fa-check-circle"></i>
+        {% endif %}
+      </div>
+      {{ issue.votes.count }}
+    </div>
+    <div class="issue__comments">
+      <div class="issue__comments--icon">
+        <i class="far fa-comment"></i>
+      </div>
+      {{ issue.comments.count }}
+    </div>
+  </div>
   <div>{% for comment in comments.all %}
     {{ comment }}</br>
     {% endfor %}

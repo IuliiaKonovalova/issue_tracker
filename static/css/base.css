@@ -1041,7 +1041,7 @@ body {
   margin-right: 0.2em;
 }
 
-.project__issue .issue__data {
+.issue__data {
   display: flex;
   font-size: 1rem;
 }
