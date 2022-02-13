@@ -100,7 +100,6 @@ class IssueDetailView(View):
         return render(request, 'projects/issue_detail.html', context)
 
 class IssueVotes(View):
-
     def post(self, request, issue_id, *args, **kwargs):
         issue = get_object_or_404(Issue, id=issue_id)
 
@@ -108,4 +107,4 @@ class IssueVotes(View):
             issue.votes.remove(request.user)
         else:
             issue.votes.add(request.user)
-        return HttpResponseRedirect(reverse('project_detail',))
+        return HttpResponseRedirect(reverse('projects/issue_detail.html', issue_id=issue.id))

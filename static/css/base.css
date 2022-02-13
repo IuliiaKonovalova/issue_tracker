@@ -705,8 +705,6 @@ body {
   align-items: center;
   padding: 2em 2em 2em 2em;
   margin-bottom: 3em;
-  background-color: #1c2431a9;
-  background: linear-gradient(180deg, #1c2431a9, #181f2a 100%);
   border-radius: var(--br);
 }
 
@@ -834,7 +832,8 @@ body {
   padding: 0.5em;
 }
 
-.project__issue .issue__container {
+.project__issue .issue__container,
+.issue__comment {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1067,11 +1066,11 @@ body {
 /* ----- Issue Details ----- */
 .issue__details {
   max-width: 50rem;
-  margin: 0 auto;
+  margin: 4em auto;
   background: unset;
   background-color: var(--clr-primary--100);
   border-radius: var(--br);
-  margin-top: 2em;
+  /* margin: 2em 0; */
   position: relative;
 }
 
@@ -1089,7 +1088,8 @@ body {
   margin-bottom: 1em;
 }
 
-.issue__details--main {
+.issue__details--main,
+.issue__details--comments {
   width: 90%;
   background-color: var(--clr-primary--500);
   border-radius: var(--br);
@@ -1144,6 +1144,15 @@ body {
 
 .issue__description--name {
   text-transform: capitalize;
+}
+
+/* Comments */
+.issue__details--comments {
+  padding: 1em;
+}
+
+.issue__comment:not(:last-child) {
+  margin-bottom: 1em;
 }
 
 /* ----- Footer ----- */
