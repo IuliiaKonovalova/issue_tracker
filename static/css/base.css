@@ -810,13 +810,21 @@ body {
   text-transform: uppercase;
 }
 
-.btn__issue--add {
+.btn__issue--add,
+.btn__issue--edit {
   padding: 0.4em 1em 0.5em 1em;
   background-color: var(--clr-accent--800);
   border-radius: var(--br);
+  font-weight: 900;
   color: white;
   text-transform: lowercase;
   font-size: 1.1rem;
+  transition: background-color 150ms ease-in-out;
+}
+
+.btn__issue--add:hover,
+.btn__issue--edit:hover {
+  background-color: var(--clr-accent--700);
 }
 
 .project__issues--container {
@@ -1064,6 +1072,17 @@ body {
   background-color: var(--clr-primary--100);
   border-radius: var(--br);
   margin-top: 2em;
+  position: relative;
+}
+
+.issue__edit {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+}
+
+.issue__edit i {
+  margin-left: 0.3em;
 }
 
 .issue__title--main {
