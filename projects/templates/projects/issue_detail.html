@@ -86,7 +86,8 @@
   <div>{{ voted }}</div>
 
   <div class="issue__data">
-    <div class="issue__votes">
+    <form class="issue__votes" action="" method="POST">
+
       <div class="issue__votes--icon">
         {% if user.id and user in issue.votes.all %}
         <i class="fas fa-check-circle"></i>
@@ -95,7 +96,7 @@
         {% endif %}
       </div>
       {{ issue.votes.count }}
-    </div>
+    </form>
     <div class="issue__comments">
       <div class="issue__comments--icon">
         <i class="far fa-comment"></i>
@@ -103,10 +104,24 @@
       {{ issue.comments.count }}
     </div>
   </div>
-  <div>{% for comment in comments.all %}
-    {{ comment }}</br>
-    {% endfor %}
-  </div>
+  <div class="issue__details--comments">
+    {% for comment in comments.all %}
+    <div class="issue__comment">
+      <div class="issue__comment--header">
+        <div class="issue__comment--name">
+          {{ comment.created_by }}
+        </div>
+        <div class="issue__comment--date">
+          {{ comment.updated_on }}
+        </div>
+      </div>
+      <div class="issue__comment--content">
+        {{ comment.comment_body }}
+      </div>
 
-</div>
-{% endblock %}
+
+    </div>
+    {% endfor %}
+
+  </div>
+  {% endblock %}

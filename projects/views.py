@@ -108,4 +108,4 @@ class IssueVotes(View):
             issue.votes.remove(request.user)
         else:
             issue.votes.add(request.user)
-        return HttpResponseRedirect(reverse('project_detail',))
+        return HttpResponseRedirect(reverse('projects/issue_detail.html', issue_id=issue.id))
