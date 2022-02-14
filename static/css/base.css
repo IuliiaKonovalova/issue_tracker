@@ -318,7 +318,7 @@ body {
 }
 
 .account p {
-  margin: 2em 0;
+  margin: 2em auto;
   max-width: 18rem;
   color: #ffffffc2;
   font-weight: 100;
