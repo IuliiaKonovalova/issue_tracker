@@ -286,6 +286,7 @@
       </div>
     </div>
   </section>
+  <a href="{% url 'edit_project' created_by=project.created_by project_id=project.id %}">EDIT</a>
   {% else %}
   <h3 class="project__title--message">You are not authorized to view this project</h3>
   {% endif %}

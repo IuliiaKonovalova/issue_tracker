@@ -12,7 +12,7 @@
 
 {% block content %}
 <div class="issue__details">
-  <a href="#" class="issue__edit btn__issue--edit">
+  <a href="{% url 'edit_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}" class="issue__edit btn__issue--edit">
     Edit
     <i class="fas fa-edit"></i>
   </a>

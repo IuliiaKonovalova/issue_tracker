@@ -1,5 +1,15 @@
 from django.urls import path
-from .views import ProjectsView, CreatePersonalProjectView, CreateTeamProjectView, ProjectDetailView, CreateIssueView, IssueDetailView, IssueVotesView
+from .views import (
+    ProjectsView,
+    CreatePersonalProjectView,
+    CreateTeamProjectView,
+    ProjectDetailView,
+    CreateIssueView,
+    IssueDetailView,
+    IssueVotesView,
+    EditProjectView,
+    EditIssueView,
+)
 
 urlpatterns = [
     path('', ProjectsView.as_view(), name='projects_list'),
@@ -9,4 +19,6 @@ urlpatterns = [
     path('<slug:created_by>/<int:project_id>/new_issue/', CreateIssueView.as_view(), name='create_issue'),
     path('<slug:created_by>/<int:project_id>/<int:issue_id>/', IssueDetailView.as_view(), name='issue_detail'),
     path('<slug:created_by>/<int:project_id>/<int:issue_id>/vote/', IssueVotesView.as_view(), name='issue_vote'),
+    path('<slug:created_by>/<int:project_id>/edit/', EditProjectView.as_view(), name='edit_project'),
+    path('<slug:created_by>/<int:project_id>/<int:issue_id>/edit/', EditIssueView.as_view(), name='edit_issue'),
 ]
