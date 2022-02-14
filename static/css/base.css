@@ -287,7 +287,7 @@ body {
 .project__new,
 .issue__new,
 .issue__previous,
-.issue__previous {
+.project__previous {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -370,12 +370,14 @@ body {
 .issue__new button,
 .issue__new input[type='submit'],
 .issue__previous button,
-.issue__previous input[type='submit'] {
+.issue__previous input[type='submit'],
+.project__previous button,
+.project__previous input[type='submit'] {
   background-color: var(--clr-accent--800);
   color: var(--clr-neutral--100);
   font-size: 1.2rem;
   font-weight: bold;
-  padding: 0.5em 1.7em 0.6em 1.7em;
+  padding: 0.5em 1.7em 0.58em 1.7em;
   border-radius: var(--br);
   margin: 2em auto;
   outline: none;
@@ -401,7 +403,8 @@ body {
 .account button:hover,
 .project__new button:hover,
 .issue__new button:hover,
-.issue__previous button:hover {
+.issue__previous button:hover,
+.project__previous button:hover {
   color: #fff;
   background-color: var(--clr-accent--700);
   border-color: var(--clr-primary--300);
@@ -622,7 +625,8 @@ body {
 
 .project__new--form,
 .issue__new--form,
-.issue__previous--form {
+.issue__previous--form,
+.project__previous--form {
   max-width: 80rem;
   margin: 5em auto;
   margin-top: 3em;
@@ -643,7 +647,10 @@ body {
 .issue__new label[for='id_title'],
 .issue__new label[for='id_description'],
 .issue__previous label[for='id_title'],
-.issue__previous label[for='id_description'] {
+.issue__previous label[for='id_description'],
+.project__previous label[for='id_title'],
+.project__previous label[for='id_description'],
+.project__previous label[for='id_collaborators'] {
   display: none;
 }
 
@@ -653,7 +660,10 @@ body {
 .issue__new label[for='id_title']~div::before,
 .issue__new label[for='id_description']~div::before,
 .issue__previous label[for='id_title']~div::before,
-.issue__previous label[for='id_description']~div::before {
+.issue__previous label[for='id_description']~div::before,
+.project__previous label[for='id_title']~div::before,
+.project__previous label[for='id_description']~div::before,
+.project__previous label[for='id_collaborators']~div::before {
   color: rgba(255, 255, 255, 0.808);
   font-size: 1.7rem;
   font-weight: 500;
@@ -662,21 +672,25 @@ body {
   display: block;
 }
 
-.project__new label[for='id_title']~div::before {
+.project__new label[for='id_title']~div::before,
+.project__previous label[for='id_title']~div::before {
   content: 'Project Name:';
 }
 
-.project__new label[for='id_description']~div::before {
+.project__new label[for='id_description']~div::before,
+.project__previous label[for='id_description']~div::before {
   content: 'Project Description:';
 }
 
-.project__new label[for='id_collaborators']~div::before {
+.project__new label[for='id_collaborators']~div::before,
+.project__previous label[for='id_collaborators']~div::before {
   content: 'Add Collaborators:';
 }
 
 .project__new input,
 .issue__new input,
-.issue__previous input {
+.issue__previous input,
+.project__previous input {
   border: none;
   border-radius: var(--br);
   padding: 1em 1.2em;
@@ -687,7 +701,8 @@ body {
 
 .project__new input[type='text']::placeholder,
 .issue__new input[type='text']::placeholder,
-.issue__previous input[type='text']::placeholder {
+.issue__previous input[type='text']::placeholder,
+.project__previous input[type='text']::placeholder {
   color: var(--clr-neutral--100);
   font-size: 1.3rem;
   letter-spacing: 0.13rem;
@@ -696,7 +711,8 @@ body {
 
 .project__new input[type='text']:placeholder-shown,
 .issue__new input[type='text']:placeholder-shown,
-.issue__previous input[type='text']:placeholder-shown {
+.issue__previous input[type='text']:placeholder-shown,
+.project__previous input[type='text']:placeholder-shown {
   color: var(--clr-neutral--100);
   font-weight: 600;
   font-size: 1.3rem;
@@ -704,7 +720,8 @@ body {
 
 .project__new input[type='text']:not(:placeholder-shown),
 .issue__new input[type='text']:not(:placeholder-shown),
-.issue__previous input[type='text']:not(:placeholder-shown) {
+.issue__previous input[type='text']:not(:placeholder-shown),
+.project__previous input[type='text']:not(:placeholder-shown) {
   color: var(--clr-neutral--100);
   font-weight: 600;
   font-size: 1.3rem;
@@ -713,7 +730,8 @@ body {
 
 .project__new .textarea,
 .issue__new .textarea,
-.issue__previous .textarea {
+.issue__previous .textarea,
+.project__previous .textarea {
   border: none;
   font-weight: 900;
   border-radius: var(--br);
