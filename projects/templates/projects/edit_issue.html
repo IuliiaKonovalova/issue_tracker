@@ -2,11 +2,15 @@
 
 {% block content %}
 
-    <h1>Edit issue: {{ issue.title }}</h1>
-    <form method="post">
-        {{ form|crispy }}
-        {% csrf_token %}
-        <button type="submit">Submit</button>
-    </form>
-
+<h2 class="issue__edit--title">
+  Edit issue: </br>
+  {{ issue.title }}
+</h2>
+<div class="issue__previous">
+  <form method="post" class="issue__previous--form">
+    {{ form|crispy }}
+    {% csrf_token %}
+    <button type="submit">Submit</button>
+  </form>
+</div>
 {% endblock %}

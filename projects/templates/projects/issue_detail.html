@@ -128,12 +128,28 @@
 
 
   <div class="issue__details--comments">
+    {% if comments.all.count == 0 %}
+    <div class="issue__comments--empty">
+      <p>No comments yet</p>
+    </div>
+    {% else %}
+
     {% for comment in comments.all %}
     <div class="issue__comment">
       <div class="issue__comment--header">
         <div class="issue__comment--name">
           {{ comment.created_by }}
         </div>
+        {% if comment.created_by == user %}
+        <div class="issue__comment--edit">
+          <div href="" class=" btn__comment--edit">
+            Edit
+            <i class="fas fa-edit"></i>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      <div class="issue__comment--subheader">
         <div class="issue__comment--date">
           {{ comment.updated_on }}
         </div>
@@ -145,6 +161,13 @@
 
     </div>
     {% endfor %}
-
+    {% endif %}
+  </div>
+  <div class="add__comment">
+    <form class="add__comment--container" method="post">
+      {{ form|crispy }}
+      {% csrf_token %}
+      <button class="btn__comment--add" type="submit">Add comment +</button>
+    </form>
   </div>
   {% endblock %}

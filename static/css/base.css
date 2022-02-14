@@ -284,7 +284,10 @@ body {
 
 /* ----- Forms ----- */
 .account__container,
-.project__new {
+.project__new,
+.issue__new,
+.issue__previous,
+.project__previous {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -315,7 +318,7 @@ body {
 }
 
 .account p {
-  margin: 2em 0;
+  margin: 2em auto;
   max-width: 18rem;
   color: #ffffffc2;
   font-weight: 100;
@@ -363,12 +366,18 @@ body {
 .account button,
 .account input[type='submit'],
 .project__new button,
-.project__new input[type='submit'] {
+.project__new input[type='submit'],
+.issue__new button,
+.issue__new input[type='submit'],
+.issue__previous button,
+.issue__previous input[type='submit'],
+.project__previous button,
+.project__previous input[type='submit'] {
   background-color: var(--clr-accent--800);
   color: var(--clr-neutral--100);
   font-size: 1.2rem;
   font-weight: bold;
-  padding: 0.5em 1.7em 0.6em 1.7em;
+  padding: 0.5em 1.7em 0.58em 1.7em;
   border-radius: var(--br);
   margin: 2em auto;
   outline: none;
@@ -392,7 +401,10 @@ body {
 }
 
 .account button:hover,
-.project__new button:hover {
+.project__new button:hover,
+.issue__new button:hover,
+.issue__previous button:hover,
+.project__previous button:hover {
   color: #fff;
   background-color: var(--clr-accent--700);
   border-color: var(--clr-primary--300);
@@ -597,20 +609,27 @@ body {
 
 .project__new--title,
 .project__title,
-.issue__title--main {
+.issue__title--main,
+.issue__new--title,
+.issue__edit--title,
+.project__edit--title {
   max-width: 35rem;
   margin: 0 auto;
   text-align: center;
   color: var(--clr-neutral--100);
-  margin-top: 1em;
+  margin-top: 2em;
   font-size: 2.5rem;
   letter-spacing: 0.15rem;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
 }
 
-.project__new--form {
+.project__new--form,
+.issue__new--form,
+.issue__previous--form,
+.project__previous--form {
   max-width: 80rem;
   margin: 5em auto;
+  margin-top: 3em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -624,13 +643,27 @@ body {
 
 .project__new label[for='id_title'],
 .project__new label[for='id_description'],
-.project__new label[for='id_collaborators'] {
+.project__new label[for='id_collaborators'],
+.issue__new label[for='id_title'],
+.issue__new label[for='id_description'],
+.issue__previous label[for='id_title'],
+.issue__previous label[for='id_description'],
+.project__previous label[for='id_title'],
+.project__previous label[for='id_description'],
+.project__previous label[for='id_collaborators'] {
   display: none;
 }
 
 .project__new label[for='id_title']~div::before,
 .project__new label[for='id_description']~div::before,
-.project__new label[for='id_collaborators']~div::before {
+.project__new label[for='id_collaborators']~div::before,
+.issue__new label[for='id_title']~div::before,
+.issue__new label[for='id_description']~div::before,
+.issue__previous label[for='id_title']~div::before,
+.issue__previous label[for='id_description']~div::before,
+.project__previous label[for='id_title']~div::before,
+.project__previous label[for='id_description']~div::before,
+.project__previous label[for='id_collaborators']~div::before {
   color: rgba(255, 255, 255, 0.808);
   font-size: 1.7rem;
   font-weight: 500;
@@ -639,54 +672,73 @@ body {
   display: block;
 }
 
-.project__new label[for='id_title']~div::before {
+.project__new label[for='id_title']~div::before,
+.project__previous label[for='id_title']~div::before {
   content: 'Project Name:';
 }
 
-.project__new label[for='id_description']~div::before {
+.project__new label[for='id_description']~div::before,
+.project__previous label[for='id_description']~div::before {
   content: 'Project Description:';
 }
 
-.project__new label[for='id_collaborators']~div::before {
+.project__new label[for='id_collaborators']~div::before,
+.project__previous label[for='id_collaborators']~div::before {
   content: 'Add Collaborators:';
 }
 
-.project__new input {
-  border: 1px solid #ffffff8c;
+.project__new input,
+.issue__new input,
+.issue__previous input,
+.project__previous input {
+  border: none;
   border-radius: var(--br);
-  padding: 0.5em 1em;
+  padding: 1em 1.2em;
   width: 35rem;
-  margin: 1em 0 1.5em 0;
-  background-color: #202a3cad;
+  margin: 1.5em 0 1.5em 0;
+  background-color: var(--clr-primary--500);
 }
 
-.project__new input[type='text']::placeholder {
+.project__new input[type='text']::placeholder,
+.issue__new input[type='text']::placeholder,
+.issue__previous input[type='text']::placeholder,
+.project__previous input[type='text']::placeholder {
   color: var(--clr-neutral--100);
   font-size: 1.3rem;
   letter-spacing: 0.13rem;
   font-weight: 600;
 }
 
-.project__new input[type='text']:placeholder-shown {
+.project__new input[type='text']:placeholder-shown,
+.issue__new input[type='text']:placeholder-shown,
+.issue__previous input[type='text']:placeholder-shown,
+.project__previous input[type='text']:placeholder-shown {
   color: var(--clr-neutral--100);
   font-weight: 600;
   font-size: 1.3rem;
 }
 
-.project__new input[type='text']:not(:placeholder-shown) {
+.project__new input[type='text']:not(:placeholder-shown),
+.issue__new input[type='text']:not(:placeholder-shown),
+.issue__previous input[type='text']:not(:placeholder-shown),
+.project__previous input[type='text']:not(:placeholder-shown) {
   color: var(--clr-neutral--100);
   font-weight: 600;
   font-size: 1.3rem;
   letter-spacing: 0.13rem;
 }
 
-.project__new .textarea {
-  border: 1px solid #ffffff8c;
+.project__new .textarea,
+.issue__new .textarea,
+.issue__previous .textarea,
+.project__previous .textarea {
+  border: none;
+  font-weight: 900;
   border-radius: var(--br);
-  padding: 0.5em 1em;
+  padding: 1em 1.2em;
   width: 35rem;
-  margin: 1em 0 1.5em 0;
-  background-color: #202a3cad;
+  margin: 1.5em 0 1.5em 0;
+  background-color: var(--clr-primary--500);
   color: white;
   font-size: 1.3rem;
   resize: vertical;
@@ -809,7 +861,9 @@ body {
 }
 
 .btn__issue--add,
-.btn__issue--edit {
+.btn__issue--edit,
+.btn__comment--edit,
+.btn__comment--add {
   padding: 0.4em 1em 0.5em 1em;
   background-color: var(--clr-accent--800);
   border-radius: var(--br);
@@ -821,7 +875,9 @@ body {
 }
 
 .btn__issue--add:hover,
-.btn__issue--edit:hover {
+.btn__issue--edit:hover,
+.btn__comment--edit:hover,
+.btn__comment--add:hover {
   background-color: var(--clr-accent--700);
 }
 
@@ -1077,15 +1133,17 @@ body {
   position: absolute;
   right: 2rem;
   top: 2rem;
+  display: flex;
+  align-items: center;
 }
 
 .issue__edit i {
-  margin-left: 0.3em;
+  margin-left: 0.5em;
 }
 
 .issue__title--main {
-  margin-bottom: 0.7em;
-  line-height: 2rem;
+  margin-bottom: 1em;
+  font-size: 2rem;
 }
 
 .issue__title--main span {
@@ -1181,6 +1239,104 @@ body {
 
 .issue__comment:not(:last-child) {
   margin-bottom: 1em;
+}
+
+.issue__comment--header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.1em;
+}
+
+.issue__comment--name {
+  font-size: 1.2rem;
+  color: var(--clr-accent--300);
+  font-weight: 900;
+}
+
+.btn__comment--edit {
+  padding: 0.15em 0.7em 0.2em 0.77em;
+  display: flex;
+  align-items: center;
+  border-radius: 0.3em;
+}
+
+.btn__comment--edit i {
+  margin-left: 0.9em;
+  font-size: 0.8rem;
+}
+
+.issue__comment--subheader {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.issue__comment--date {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.808);
+  font-weight: 900;
+}
+
+.issue__comment--content {
+  width: 100%;
+  display: flex;
+  font-size: 1.3rem;
+  margin-bottom: 0.6em;
+}
+
+/* Add comment */
+.add__comment {
+  width: 90%;
+}
+
+.add__comment--container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2em auto;
+  margin-top: 3em;
+}
+
+.add__comment--container label {
+  display: none;
+}
+
+.add__comment--container textarea {
+  width: 100%;
+  height: 10rem;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 1em 1.2em;
+  font-size: 1.2rem;
+  border-radius: var(--br);
+  background-color: var(--clr-primary--500);
+  margin-bottom: 2em;
+  color: white;
+}
+
+.btn__comment--add {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ----- Create / Edit Issue Form ----- */
+
+.issue__new label[for='id_title']~div::before,
+.issue__previous label[for='id_title']~div::before {
+  content: 'Issue Name:';
+}
+
+.issue__new label[for='id_description']~div::before,
+.issue__previous label[for='id_description']~div::before {
+  content: 'Issue Description:';
 }
 
 /* ----- Footer ----- */
