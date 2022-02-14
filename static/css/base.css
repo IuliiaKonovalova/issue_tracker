@@ -1081,10 +1081,12 @@ body {
   position: absolute;
   right: 2rem;
   top: 2rem;
+  display: flex;
+  align-items: center;
 }
 
 .issue__edit i {
-  margin-left: 0.3em;
+  margin-left: 0.5em;
 }
 
 .issue__title--main {
