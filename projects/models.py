@@ -37,7 +37,7 @@ ISSUE_TYPE = (
 
 
 class Project(models.Model):
-    title = models.CharField(max_length=100, blank=False, default='Untitled Project')
+    title = models.CharField(max_length=35, blank=False, default='Untitled Project')
     slug = models.SlugField(max_length=100, blank=False)
     description = models.TextField(max_length=1000, blank=True)
     project_type = models.IntegerField(choices=PROJECT_TYPE)
@@ -56,7 +56,7 @@ class Project(models.Model):
 
 
 class Issue(models.Model):
-    title = models.CharField(max_length=100, blank=False, default='')
+    title = models.CharField(max_length=35, blank=False, default='')
     slug = models.SlugField(max_length=100)
     created_by = models.ForeignKey(
         User,
