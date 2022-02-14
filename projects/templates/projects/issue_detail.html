@@ -12,14 +12,16 @@
 
 {% block content %}
 <div class="issue__details">
-  <a href="{% url 'edit_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}" class="issue__edit btn__issue--edit">
+  <a href="{% url 'edit_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}"
+    class="issue__edit btn__issue--edit">
     Edit
     <i class="fas fa-edit"></i>
   </a>
   <h2 class="issue__title--main">
     {{ issue.title }}
     </br>
-    ({{ issue.project }})</h2>
+    <span>({{ issue.project }})</span>
+  </h2>
   <div class="issue__details--main">
     <div class="issue__marks">
       <div class="issue__priority--container">
@@ -93,32 +95,38 @@
     </div>
   </div>
 
-  <div>{{ voted }}</div>
 
-  <div class="issue__data">
-    <form class="issue__votes" method="POST"
+  <div class="issue__data issue__detail--data">
+    <form class="issue__votes " method="POST"
       action="{% url 'issue_vote' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}">
       {% csrf_token %}
-      <div class="issue__votes--icon">
+      <div class="issue__votes--icon ">
         {% if user.id and user in issue.votes.all %}
         <button type="submit">
-          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-check-circle votes"></i>
         </button>
         {% else %}
         <button type="submit">
-          <i class="far fa-check-circle"></i>
+          <i class="far fa-check-circle votes"></i>
         </button>
         {% endif %}
       </div>
-      {{ issue.votes.count }}
+      <div class="votes">
+        {{ issue.votes.count }}
+      </div>
     </form>
     <div class="issue__comments">
       <div class="issue__comments--icon">
-        <i class="far fa-comment"></i>
+        <i class="far fa-comment comments"></i>
       </div>
-      {{ issue.comments.count }}
+      <div class="comments">
+        {{ issue.comments.count }}
+      </div>
+
     </div>
   </div>
+
+
   <div class="issue__details--comments">
     {% for comment in comments.all %}
     <div class="issue__comment">
