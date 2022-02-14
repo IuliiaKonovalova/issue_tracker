@@ -284,7 +284,9 @@ body {
 
 /* ----- Forms ----- */
 .account__container,
-.project__new {
+.project__new,
+.issue__new,
+.issue__previous {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -363,7 +365,11 @@ body {
 .account button,
 .account input[type='submit'],
 .project__new button,
-.project__new input[type='submit'] {
+.project__new input[type='submit'],
+.issue__new button,
+.issue__new input[type='submit'],
+.issue__previous button,
+.issue__previous input[type='submit'] {
   background-color: var(--clr-accent--800);
   color: var(--clr-neutral--100);
   font-size: 1.2rem;
@@ -392,7 +398,9 @@ body {
 }
 
 .account button:hover,
-.project__new button:hover {
+.project__new button:hover,
+.issue__new button:hover,
+.issue__previous button:hover {
   color: #fff;
   background-color: var(--clr-accent--700);
   border-color: var(--clr-primary--300);
@@ -597,20 +605,25 @@ body {
 
 .project__new--title,
 .project__title,
-.issue__title--main {
+.issue__title--main,
+.issue__new--title,
+.issue__edit--title {
   max-width: 35rem;
   margin: 0 auto;
   text-align: center;
   color: var(--clr-neutral--100);
-  margin-top: 1em;
+  margin-top: 2em;
   font-size: 2.5rem;
   letter-spacing: 0.15rem;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
 }
 
-.project__new--form {
+.project__new--form,
+.issue__new--form,
+.issue__previous--form {
   max-width: 80rem;
   margin: 5em auto;
+  margin-top: 3em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -624,13 +637,21 @@ body {
 
 .project__new label[for='id_title'],
 .project__new label[for='id_description'],
-.project__new label[for='id_collaborators'] {
+.project__new label[for='id_collaborators'],
+.issue__new label[for='id_title'],
+.issue__new label[for='id_description'],
+.issue__previous label[for='id_title'],
+.issue__previous label[for='id_description'] {
   display: none;
 }
 
 .project__new label[for='id_title']~div::before,
 .project__new label[for='id_description']~div::before,
-.project__new label[for='id_collaborators']~div::before {
+.project__new label[for='id_collaborators']~div::before,
+.issue__new label[for='id_title']~div::before,
+.issue__new label[for='id_description']~div::before,
+.issue__previous label[for='id_title']~div::before,
+.issue__previous label[for='id_description']~div::before {
   color: rgba(255, 255, 255, 0.808);
   font-size: 1.7rem;
   font-weight: 500;
@@ -651,7 +672,9 @@ body {
   content: 'Add Collaborators:';
 }
 
-.project__new input {
+.project__new input,
+.issue__new input,
+.issue__previous input {
   border: 1px solid #ffffff8c;
   border-radius: var(--br);
   padding: 0.5em 1em;
@@ -660,28 +683,37 @@ body {
   background-color: #202a3cad;
 }
 
-.project__new input[type='text']::placeholder {
+.project__new input[type='text']::placeholder,
+.issue__new input[type='text']::placeholder,
+.issue__previous input[type='text']::placeholder {
   color: var(--clr-neutral--100);
   font-size: 1.3rem;
   letter-spacing: 0.13rem;
   font-weight: 600;
 }
 
-.project__new input[type='text']:placeholder-shown {
+.project__new input[type='text']:placeholder-shown,
+.issue__new input[type='text']:placeholder-shown,
+.issue__previous input[type='text']:placeholder-shown {
   color: var(--clr-neutral--100);
   font-weight: 600;
   font-size: 1.3rem;
 }
 
-.project__new input[type='text']:not(:placeholder-shown) {
+.project__new input[type='text']:not(:placeholder-shown),
+.issue__new input[type='text']:not(:placeholder-shown),
+.issue__previous input[type='text']:not(:placeholder-shown) {
   color: var(--clr-neutral--100);
   font-weight: 600;
   font-size: 1.3rem;
   letter-spacing: 0.13rem;
 }
 
-.project__new .textarea {
+.project__new .textarea,
+.issue__new .textarea,
+.issue__previous .textarea {
   border: 1px solid #ffffff8c;
+  font-weight: 900;
   border-radius: var(--br);
   padding: 0.5em 1em;
   width: 35rem;
@@ -1249,6 +1281,18 @@ body {
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+/* ----- Create / Edit Issue Form ----- */
+
+.issue__new label[for='id_title']~div::before,
+.issue__previous label[for='id_title']~div::before {
+  content: 'Issue Name:';
+}
+
+.issue__new label[for='id_description']~div::before,
+.issue__previous label[for='id_description']~div::before {
+  content: 'Issue Description:';
 }
 
 /* ----- Footer ----- */
