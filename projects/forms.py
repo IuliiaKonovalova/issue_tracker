@@ -1,7 +1,4 @@
-from pyexpat import model
-from attr import field
 from django import forms
-from matplotlib import widgets
 from .models import Project, Issue, Comment
 from django.contrib.auth.models import User
 
