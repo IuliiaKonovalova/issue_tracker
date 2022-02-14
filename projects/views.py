@@ -126,3 +126,17 @@ class EditProjectView(View):
             form.save()
             return HttpResponseRedirect(reverse('project_detail', kwargs={'created_by': project.created_by,'pk': project.id}))
         return render(request, 'projects/edit_project.html', {'form': form, 'project': project})
+    
+class EditIssueView(View):
+    def get(self, request, issue_id, *args, **kwargs):
+        issue = get_object_or_404(Issue, id=issue_id)
+        form = IssueForm(instance=issue)
+        return render(request, 'projects/edit_issue.html', {'form': form, 'issue': issue})
+    
+    def post(self, request, issue_id, *args, **kwargs):
+        issue = get_object_or_404(Issue, id=issue_id)
+        form = IssueForm(request.POST, instance=issue)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('issue_detail', args=[issue.created_by, issue.project.id, issue.id]))
+        return render(request, 'projects/edit_issue.html', {'form': form, 'issue': issue})

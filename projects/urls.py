@@ -8,6 +8,7 @@ from .views import (
     IssueDetailView,
     IssueVotesView,
     EditProjectView,
+    EditIssueView,
 )
 
 urlpatterns = [
@@ -19,4 +20,5 @@ urlpatterns = [
     path('<slug:created_by>/<int:project_id>/<int:issue_id>/', IssueDetailView.as_view(), name='issue_detail'),
     path('<slug:created_by>/<int:project_id>/<int:issue_id>/vote/', IssueVotesView.as_view(), name='issue_vote'),
     path('<slug:created_by>/<int:project_id>/edit/', EditProjectView.as_view(), name='edit_project'),
+    path('<slug:created_by>/<int:project_id>/<int:issue_id>/edit/', EditIssueView.as_view(), name='edit_issue'),
 ]
