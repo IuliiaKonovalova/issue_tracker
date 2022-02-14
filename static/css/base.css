@@ -1070,7 +1070,6 @@ body {
   background: unset;
   background-color: var(--clr-primary--100);
   border-radius: var(--br);
-  /* margin: 2em 0; */
   position: relative;
 }
 
@@ -1085,7 +1084,13 @@ body {
 }
 
 .issue__title--main {
-  margin-bottom: 1em;
+  margin-bottom: 0.7em;
+  line-height: 2rem;
+}
+
+.issue__title--main span {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.808);
 }
 
 .issue__details--main,
@@ -1128,7 +1133,7 @@ body {
 }
 
 .issue__content--main {
-  margin: 2em 0 1em 0;
+  margin: 1em 0 1em 0;
   font-size: 1.5rem;
 }
 
