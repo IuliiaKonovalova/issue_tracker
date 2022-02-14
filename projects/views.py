@@ -104,3 +104,25 @@ class IssueVotesView(View):
         else:
             issue.votes.add(request.user)
         return HttpResponseRedirect(reverse('issue_detail', args=[project.created_by, project.id, issue.id]))
+    
+    
+class EditProjectView(View):
+    def get(self, request, project_id, *args, **kwargs):
+        project = get_object_or_404(Project, id=project_id)
+        if project.project_type == 0:
+            form = PersonalProjectForm(instance=project)
+        else:
+            form = TeamProjectForm(instance=project)
+            
+        return render(request, 'projects/edit_project.html', {'form': form, 'project': project})
+    
+    def post(self, request, project_id, *args, **kwargs):
+        project = get_object_or_404(Project, id=project_id)
+        if project.project_type == 0:
+            form = PersonalProjectForm(request.POST, instance=project)
+        else:
+            form = TeamProjectForm(request.POST, instance=project)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('project_detail', kwargs={'created_by': project.created_by,'pk': project.id}))
+        return render(request, 'projects/edit_project.html', {'form': form, 'project': project})
