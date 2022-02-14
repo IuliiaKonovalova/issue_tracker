@@ -1146,6 +1146,29 @@ body {
   text-transform: capitalize;
 }
 
+/* Data on votes and comments */
+.issue__detail--data {
+  padding: 2em 0;
+}
+
+.issue__votes--icon button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.issue__detail--data>* {
+  padding: 0 0.5em;
+}
+
+.votes,
+.comments {
+  font-size: 1.5rem;
+}
+
 /* Comments */
 .issue__details--comments {
   padding: 1em;
