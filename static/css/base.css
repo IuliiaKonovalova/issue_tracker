@@ -809,7 +809,8 @@ body {
 }
 
 .btn__issue--add,
-.btn__issue--edit {
+.btn__issue--edit,
+.btn__comment--edit {
   padding: 0.4em 1em 0.5em 1em;
   background-color: var(--clr-accent--800);
   border-radius: var(--br);
@@ -821,7 +822,8 @@ body {
 }
 
 .btn__issue--add:hover,
-.btn__issue--edit:hover {
+.btn__issue--edit:hover,
+.btn__comment--edit:hover {
   background-color: var(--clr-accent--700);
 }
 
@@ -1084,8 +1086,8 @@ body {
 }
 
 .issue__title--main {
-  margin-bottom: 0.7em;
-  line-height: 2rem;
+  margin-bottom: 1em;
+  font-size: 2rem;
 }
 
 .issue__title--main span {
@@ -1181,6 +1183,52 @@ body {
 
 .issue__comment:not(:last-child) {
   margin-bottom: 1em;
+}
+
+.issue__comment--header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.1em;
+}
+
+.issue__comment--name {
+  font-size: 1.2rem;
+  color: var(--clr-accent--300);
+  font-weight: 900;
+}
+
+.btn__comment--edit {
+  padding: 0.1em 0.7em 0.2em 0.7em;
+  display: flex;
+  align-items: center;
+}
+
+.btn__comment--edit i {
+  margin-left: 0.9em;
+  font-size: 0.8rem;
+}
+
+.issue__comment--subheader {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.issue__comment--date {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.808);
+  font-weight: 900;
+}
+
+.issue__comment--content {
+  width: 100%;
+  display: flex;
+  font-size: 1.3rem;
+  margin-bottom: 0.6em;
 }
 
 /* ----- Footer ----- */
