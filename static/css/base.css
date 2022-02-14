@@ -810,7 +810,8 @@ body {
 
 .btn__issue--add,
 .btn__issue--edit,
-.btn__comment--edit {
+.btn__comment--edit,
+.btn__comment--add {
   padding: 0.4em 1em 0.5em 1em;
   background-color: var(--clr-accent--800);
   border-radius: var(--br);
@@ -823,7 +824,8 @@ body {
 
 .btn__issue--add:hover,
 .btn__issue--edit:hover,
-.btn__comment--edit:hover {
+.btn__comment--edit:hover,
+.btn__comment--add:hover {
   background-color: var(--clr-accent--700);
 }
 
@@ -1200,9 +1202,10 @@ body {
 }
 
 .btn__comment--edit {
-  padding: 0.1em 0.7em 0.2em 0.7em;
+  padding: 0.15em 0.7em 0.2em 0.77em;
   display: flex;
   align-items: center;
+  border-radius: 0.3em;
 }
 
 .btn__comment--edit i {
@@ -1229,6 +1232,21 @@ body {
   display: flex;
   font-size: 1.3rem;
   margin-bottom: 0.6em;
+}
+
+/* Add comment */
+.add__comment--container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em auto;
+}
+
+.btn__comment--add {
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 /* ----- Footer ----- */
