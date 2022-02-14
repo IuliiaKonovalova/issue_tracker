@@ -167,7 +167,7 @@
     <form class="add__comment--container" method="post">
       {{ form|crispy }}
       {% csrf_token %}
-      <button class="btn__comment--add">Add comment +</button>
+      <button class="btn__comment--add" type="submit">Add comment +</button>
     </form>
   </div>
   {% endblock %}
