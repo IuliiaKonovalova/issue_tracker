@@ -286,6 +286,7 @@ body {
 .account__container,
 .project__new,
 .issue__new,
+.issue__previous,
 .issue__previous {
   display: flex;
   flex-direction: column;
@@ -607,7 +608,8 @@ body {
 .project__title,
 .issue__title--main,
 .issue__new--title,
-.issue__edit--title {
+.issue__edit--title,
+.project__edit--title {
   max-width: 35rem;
   margin: 0 auto;
   text-align: center;
@@ -675,12 +677,12 @@ body {
 .project__new input,
 .issue__new input,
 .issue__previous input {
-  border: 1px solid #ffffff8c;
+  border: none;
   border-radius: var(--br);
-  padding: 0.5em 1em;
+  padding: 1em 1.2em;
   width: 35rem;
-  margin: 1em 0 1.5em 0;
-  background-color: #202a3cad;
+  margin: 1.5em 0 1.5em 0;
+  background-color: var(--clr-primary--500);
 }
 
 .project__new input[type='text']::placeholder,
@@ -712,13 +714,13 @@ body {
 .project__new .textarea,
 .issue__new .textarea,
 .issue__previous .textarea {
-  border: 1px solid #ffffff8c;
+  border: none;
   font-weight: 900;
   border-radius: var(--br);
-  padding: 0.5em 1em;
+  padding: 1em 1.2em;
   width: 35rem;
-  margin: 1em 0 1.5em 0;
-  background-color: #202a3cad;
+  margin: 1.5em 0 1.5em 0;
+  background-color: var(--clr-primary--500);
   color: white;
   font-size: 1.3rem;
   resize: vertical;

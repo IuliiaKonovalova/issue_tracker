@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Issue, Comment, Project
-from .forms import PersonalProjectForm, TeamProjectForm, IssueForm
+from .forms import PersonalProjectForm, TeamProjectForm, IssueForm, CommentForm
 
 
 
@@ -89,11 +89,26 @@ class IssueDetailView(View):
     def get(self, request, issue_id, *args, **kwargs):
         issue = get_object_or_404(Issue, id=issue_id)
         comments = Comment.objects.filter(issue=issue)
+        form = CommentForm()
         context = {
             'issue': issue,
             'comments': comments,
+            'form': form,
         }
         return render(request, 'projects/issue_detail.html', context)
+
+    def post(self, request, issue_id, *args, **kwargs):
+        form = CommentForm(request.POST)
+        issue = get_object_or_404(Issue, id=issue_id)
+        project = get_object_or_404(Project, id=issue.project.id)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.created_by = request.user
+            comment.issue = issue
+            comment.save()
+            return HttpResponseRedirect(reverse('issue_detail', args=[project.created_by, project.id, issue.id]))
+        return render(request, 'projects/issue_detail.html', {'form': form, 'issue': issue})
+
 
 class IssueVotesView(View):
     def post(self, request, issue_id, *args, **kwargs):
@@ -104,8 +119,8 @@ class IssueVotesView(View):
         else:
             issue.votes.add(request.user)
         return HttpResponseRedirect(reverse('issue_detail', args=[project.created_by, project.id, issue.id]))
-    
-    
+
+
 class EditProjectView(View):
     def get(self, request, project_id, *args, **kwargs):
         project = get_object_or_404(Project, id=project_id)
@@ -126,7 +141,8 @@ class EditProjectView(View):
             form.save()
             return HttpResponseRedirect(reverse('project_detail', kwargs={'created_by': project.created_by,'pk': project.id}))
         return render(request, 'projects/edit_project.html', {'form': form, 'project': project})
-    
+
+
 class EditIssueView(View):
     def get(self, request, issue_id, *args, **kwargs):
         issue = get_object_or_404(Issue, id=issue_id)

@@ -2,10 +2,12 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
- <h1>Edit project: {{ project.title }}</h1>
-  <form method="post">
-    {{ form|crispy }}
-    {% csrf_token %}
-    <button type="submit">Submit</button>
-  </form>
-{% endblock %}
+<h2 class="project__edit--title">Edit project: {{ project.title }}</h1>
+  <div class="issue__previous">
+    <form method="post">
+      {{ form|crispy }}
+      {% csrf_token %}
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  {% endblock %}

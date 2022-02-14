@@ -140,12 +140,14 @@
         <div class="issue__comment--name">
           {{ comment.created_by }}
         </div>
+        {% if comment.created_by == user %}
         <div class="issue__comment--edit">
           <div href="" class=" btn__comment--edit">
             Edit
             <i class="fas fa-edit"></i>
           </div>
         </div>
+        {% endif %}
       </div>
       <div class="issue__comment--subheader">
         <div class="issue__comment--date">
@@ -162,8 +164,10 @@
     {% endif %}
   </div>
   <div class="add__comment">
-    <div class="add__comment--container">
+    <form class="add__comment--container" method="post">
+      {{ form|crispy }}
+      {% csrf_token %}
       <button class="btn__comment--add">Add comment +</button>
-    </div>
+    </form>
   </div>
   {% endblock %}
