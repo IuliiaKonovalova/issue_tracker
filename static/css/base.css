@@ -1155,6 +1155,8 @@ body {
 .issue__title--main {
   margin-bottom: 1em;
   font-size: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .issue__title--main span {
