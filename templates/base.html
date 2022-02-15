@@ -43,10 +43,10 @@
           <div href="#" id="dropdown-profile" class="dropdown navbar__item--dropdown">Account</div>
           <ul class="account__options">
             <li class="account__option">
-              <a href="#">Profile</a>
+              <a href="{% url 'user_profile' username=request.user %}">Profile</a>
             </li>
             <li class="account__option">
-              <a href="#">Projects</a>
+              <a href="{% url 'projects_list' %}">Projects</a>
             </li>
             <li class="account__option">
               <a href="#">Settings</a>
