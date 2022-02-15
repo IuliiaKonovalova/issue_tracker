@@ -1142,15 +1142,22 @@ body {
 
 .btn__issue--back {
   position: absolute;
-  top: 2rem;
-  left: 2rem;
+  top: 2.2rem;
+  left: 2.5rem;
   display: flex;
   align-items: center;
+  color: rgba(255, 255, 255, 0.808);
+  font-size: 1.2rem;
+  text-transform: underline;
+  transition: color 150ms ease-in-out;
+}
+
+.btn__issue--back:hover {
   color: white;
-  background-color: #339ecc;
 }
 
 .btn__issue--back i {
+  margin-top: 0.08em;
   margin-right: 0.5em;
   transform: rotate(180deg);
 }
@@ -1168,13 +1175,14 @@ body {
 }
 
 .issue__title--main {
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
   font-size: 2rem;
   display: flex;
   flex-direction: column;
 }
 
 .issue__title--main span {
+  margin-top: 0.5em;
   font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.808);
 }
