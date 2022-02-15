@@ -140,28 +140,54 @@
         </div>
       </div>
     </section>
-
-    <h2>Issues:</h2>
-    <ul>
-      {% for issue in user_profile.issues.all %}
-      <a href="{% url 'issue_detail' created_by=issue.project.created_by  project_id=issue.project.id issue_id=issue.id%}"
-        aria-label="Go to issue">{{ issue.title }}</a>
-
-      {% endfor %}
-
-    </ul>
-
-    <h2>Assigned issues:</h2>
-    <ul>
-      {% for issue in user_profile.assigned_issues.all %}
-      <a href="{% url 'issue_detail' created_by=issue.project.created_by  project_id=issue.project.id issue_id=issue.id%}"
-        aria-label="Go to issue">{{ issue.title }}</a>
-      {% endfor %}
-
-    </ul>
-
-
-
+    {% comment %} Profile Issues {% endcomment %}
+    <section class="profile__issues">
+      <h3 class="profile__issues--title">Issues:</h3>
+      <div class="profile__issues--container">
+        <div class="profile__issues--column">
+          <h4 class="profile__issues--subtitle">Created Issues:</h4>
+          <div class="profile__issues--block ">
+            {% if user_profile.issues.all.count == 0 %}
+              {% if user_profile == request.user %}
+                <p>You haven't created any issues yet.</p>
+              {% else %}
+                <p>{{ user_profile.username }} hasn't created any issues yet.</p>
+              {% endif %}
+            {% else %}
+              {% for issue in user_profile.issues.all %}
+                <div class="profile__issue--block">
+                  <a href="{% url 'issue_detail' created_by=issue.project.created_by  project_id=issue.project.id issue_id=issue.id%}"
+                    aria-label="Go to issue" class="profile__issue--link">
+                    {{ issue.title }}
+                  </a>
+                </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+        <div class="profile__issues--column">
+          <h4 class="profile__issues--subtitle">Assigned Issues:</h4>
+          <div class="profile__issues--block">
+            {% if user_profile.issues.all.count == 0 %}
+              {% if user_profile == request.user %}
+                <p>You haven't created assigned any issues yet.</p>
+              {% else %}
+                <p>{{ user_profile.username }} hasn't been assigned any issues yet.</p>
+              {% endif %}
+            {% else %}
+              {% for issue in user_profile.assigned_issues.all %}
+                <div class="profile__issue--block">
+                  <a href="{% url 'issue_detail' created_by=issue.project.created_by  project_id=issue.project.id issue_id=issue.id%}"
+                    aria-label="Go to issue"  class="profile__issue--link">
+                    {{ issue.title }}
+                  </a>
+                </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </section>
 
 
     {% if password_form %}
