@@ -14,7 +14,11 @@
 
 {% block content %}
   <div class="profile__details">
-    <h2 class="profile__title">Your Profile</h2>
+    {% if user_profile == request.user %}
+      <h2 class="profile__title">Your Profile</h2>
+    {% else %}
+      <h2 class="profile__title">{{ user_profile.username }}'s Profile</h2>
+    {% endif %}
     {% comment %} Profile Data {% endcomment %}
     <section class="profile__header">
       <a href="#"
