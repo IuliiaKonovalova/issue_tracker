@@ -22,6 +22,12 @@
       <span>Email: </span>
       {{ user_profile.email }}
     </h3>
+  </section>
+  <section class="profile__statistics">
+    <div>projects {{ user_profile.projects.all.count }}</div>
+    <div>issues {{ user_profile.issues.all.count }}</div>
+    <div>assigned_issues {{ user_profile.assigned_issues.all.count }}</div>
+    <div>written_comments {{ user_profile.written_comments.all.count }}</div>
 
   </section>
   <h2>Projects:</h2>

@@ -778,7 +778,8 @@ body {
 }
 
 .project__header,
-.profile__header {
+.profile__header,
+.profile__statistics {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1344,6 +1345,12 @@ body {
 .issue__new label[for='id_description']~div::before,
 .issue__previous label[for='id_description']~div::before {
   content: 'Issue Description:';
+}
+
+/* ----- Profile Page ----- */
+
+.profile__header h3 {
+  text-transform: lowercase;
 }
 
 /* ----- Footer ----- */
