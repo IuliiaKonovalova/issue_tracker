@@ -801,7 +801,7 @@ body {
 
 .project__header h3,
 .profile__header h3 {
-  color: var(--clr-neutral--100);
+  color: rgba(255, 255, 255, 0.808);
   display: flex;
   font-weight: 100;
   text-transform: capitalize;
@@ -814,8 +814,13 @@ body {
   margin-right: 1em;
 }
 
-.spacing {
+.project__collaborator--link {
+  color: rgba(255, 255, 255, 0.808);
   margin-right: 0.5em;
+}
+
+.project__collaborator--link:hover {
+  color: white;
 }
 
 .project__issues,

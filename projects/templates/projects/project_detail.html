@@ -29,8 +29,9 @@
       {{ project.created_by }}
       {% else %}
       {% for collaborator in project.collaborators.all %}
-      {{ collaborator.username }}
-      <p class="spacing"></p>
+      <a href="{% url 'user_profile' username=collaborator.username %}" class="project__collaborator--link">
+        {{ collaborator.username }}
+      </a>
       {% endfor %}
       {% endif %}
     </h3>
