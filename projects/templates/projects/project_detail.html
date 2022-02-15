@@ -298,8 +298,46 @@
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script>
   let issues_container = $('.project__issues--main');
-  let sectionsToDrop = $('.project__issue--status')
-  $('.issue__container', issues_container).draggable({});
-  $('.issue__container', sectionsToDrop).droppable({});
+  let sectionsToDrop = $('.project__issue')
+  $('.issue__container', issues_container).draggable({
+    revert: 'invalid',
+    helper: 'clone',
+    cursor: 'move',
+    cursorAt: {
+      top: 20,
+      left: 20
+    },
+    zIndex: 100,
+
+
+    // appendTo: '.project__issue',
+    // width should be the same as at the start of the drag
+    // height should be the same as at the start of the drag
+    start: function(event, ui) {
+      ui.helper.width($(this).width());
+      ui.helper.height($(this).height());
+    }
+  });
+  $(sectionsToDrop).droppable({
+    accept: '.issue__container',
+    hoverClass: 'hovered',
+    // on drop need to make it transition smoothly
+    drop: function(event, ui) {
+      ui.draggable.css({
+        'position': 'relative',
+        'top': '0',
+        'left': '0'
+      });
+      $(this).append(ui.draggable);
+      $(ui.draggable).animate({
+        left: 0,
+        top: 0
+      });
+    }
+  });
+  //   drop: function(event, ui) {
+  //     $(this).append(ui.draggable);
+  //   }
+  // });
 </script>
 {% endblock %}
