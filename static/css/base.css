@@ -1140,6 +1140,21 @@ body {
   position: relative;
 }
 
+.btn__issue--back {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: #339ecc;
+}
+
+.btn__issue--back i {
+  margin-right: 0.5em;
+  transform: rotate(180deg);
+}
+
 .issue__edit {
   position: absolute;
   right: 2rem;

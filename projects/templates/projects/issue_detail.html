@@ -12,6 +12,11 @@
 
 {% block content %}
   <div class="issue__details">
+    <a href="{% url 'project_detail' created_by=issue.project.created_by pk=issue.project.id %}"
+      class="issue__to--project btn__issue--back">
+      <i class="fas fa-sign-in-alt"></i>
+      Go to project
+    </a>
     <a href="{% url 'edit_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}"
       class="issue__edit btn__issue--edit">
       Edit
