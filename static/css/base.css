@@ -609,6 +609,7 @@ body {
 
 .project__new--title,
 .project__title,
+.profile__title,
 .issue__title--main,
 .issue__new--title,
 .issue__edit--title,
@@ -748,7 +749,8 @@ body {
 /* ----- Project Details ----- */
 
 .project__details,
-.issue__details {
+.issue__details,
+.profile__details {
   width: 100%;
   color: var(--clr-neutral--100);
   display: flex;
@@ -767,14 +769,17 @@ body {
   margin: 3em 0;
 }
 
-.project__title {
+.project__title,
+.profile__title {
   max-width: 50rem;
   text-transform: capitalize;
   font-size: 2.5rem;
   margin-bottom: 2em;
 }
 
-.project__header {
+.project__header,
+.profile__header,
+.profile__statistics {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -787,18 +792,21 @@ body {
   margin-bottom: 2em;
 }
 
-.project__header>h3:first-child {
+.project__header>h3:first-child,
+.profile__header>h3:first-child {
   margin-bottom: 1em;
 }
 
-.project__header h3 {
+.project__header h3,
+.profile__header h3 {
   color: var(--clr-neutral--100);
   display: flex;
   font-weight: 100;
   text-transform: capitalize;
 }
 
-.project__header h3 span {
+.project__header h3 span,
+.profile__header h3 span {
   color: var(--clr-accent--300);
   font-weight: 900;
   margin-right: 1em;
@@ -821,7 +829,8 @@ body {
   border-radius: var(--br);
 }
 
-.project__issues--title {
+.project__issues--title,
+.profile__statistics--title {
   font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.15rem;
@@ -1337,6 +1346,35 @@ body {
 .issue__new label[for='id_description']~div::before,
 .issue__previous label[for='id_description']~div::before {
   content: 'Issue Description:';
+}
+
+/* ----- Profile Page ----- */
+
+.profile__header h3 span {
+  text-transform: lowercase;
+}
+
+.profile__statistics--title {
+  font-size: 1.8rem;
+}
+
+.profile__statistics--container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.profile__statistics--column {
+  /* width: 15rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  background-color: var(--clr-primary--500);
+  border-radius: var(--br);
+  font-size: 1.7rem;
 }
 
 /* ----- Footer ----- */
