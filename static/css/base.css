@@ -779,7 +779,9 @@ body {
 
 .project__header,
 .profile__header,
-.profile__statistics {
+.profile__statistics,
+.profile__projects,
+.profile__issues {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -792,17 +794,26 @@ body {
   margin-bottom: 2em;
 }
 
+.project__header {
+  position: relative;
+  font-size: 1.4rem;
+}
+
 .project__header>h3:first-child,
 .profile__header>h3:first-child {
-  margin-bottom: 1em;
+  margin-bottom: 1.2em;
 }
 
 .project__header h3,
 .profile__header h3 {
-  color: var(--clr-neutral--100);
+  color: rgba(255, 255, 255, 0.808);
   display: flex;
   font-weight: 100;
   text-transform: capitalize;
+}
+
+.project__header--first {
+  margin-bottom: 1em;
 }
 
 .project__header h3 span,
@@ -812,8 +823,13 @@ body {
   margin-right: 1em;
 }
 
-.spacing {
+.project__collaborator--link {
+  color: rgba(255, 255, 255, 0.808);
   margin-right: 0.5em;
+}
+
+.project__collaborator--link:hover {
+  color: white;
 }
 
 .project__issues,
@@ -830,7 +846,9 @@ body {
 }
 
 .project__issues--title,
-.profile__statistics--title {
+.profile__statistics--title,
+.profile__projects--title,
+.profile__issues--title {
   font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.15rem;
@@ -872,7 +890,8 @@ body {
 .btn__issue--add,
 .btn__issue--edit,
 .btn__comment--edit,
-.btn__comment--add {
+.btn__comment--add,
+.btn__project--edit {
   padding: 0.4em 1em 0.5em 1em;
   background-color: var(--clr-accent--800);
   border-radius: var(--br);
@@ -886,7 +905,8 @@ body {
 .btn__issue--add:hover,
 .btn__issue--edit:hover,
 .btn__comment--edit:hover,
-.btn__comment--add:hover {
+.btn__comment--add:hover,
+.btn__project--edit:hover {
   background-color: var(--clr-accent--700);
 }
 
@@ -1136,7 +1156,30 @@ body {
   position: relative;
 }
 
-.issue__edit {
+.btn__issue--back {
+  position: absolute;
+  top: 2.5rem;
+  left: 2.5rem;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.808);
+  font-size: 1.2rem;
+  text-transform: underline;
+  transition: color 150ms ease-in-out;
+}
+
+.btn__issue--back:hover {
+  color: white;
+}
+
+.btn__issue--back i {
+  margin-top: 0.08em;
+  margin-right: 0.5em;
+  transform: rotate(180deg);
+}
+
+.issue__edit,
+.project__edit {
   position: absolute;
   right: 2rem;
   top: 2rem;
@@ -1144,16 +1187,24 @@ body {
   align-items: center;
 }
 
-.issue__edit i {
+.project__edit {
+  right: 5rem;
+}
+
+.issue__edit i,
+.project__edit i {
   margin-left: 0.5em;
 }
 
 .issue__title--main {
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
   font-size: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .issue__title--main span {
+  margin-top: 0.5em;
   font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.808);
 }
@@ -1191,6 +1242,7 @@ body {
 .issue__type--content {
   font-size: 1.2rem;
   margin-left: 0.5em;
+  margin-bottom: 0.2em;
 }
 
 .issue__type--content {
@@ -1202,18 +1254,39 @@ body {
   font-size: 1.5rem;
 }
 
-.issue__subtitle {
-  color: var(--clr-accent--300);
-  font-weight: 900;
-  margin-right: 0.5em;
+.issue__description {
+  color: rgba(255, 255, 255, 0.808);
+}
+
+.issue__description--name {
+  text-transform: capitalize;
 }
 
 .issue__description:not(:last-child) {
   margin-bottom: 0.5em;
 }
 
-.issue__description--name {
-  text-transform: capitalize;
+.issue__subtitle {
+  color: var(--clr-accent--300);
+  font-weight: 900;
+  margin-right: 0.5em;
+}
+
+.issue__subtitle--link {
+  color: rgba(255, 255, 255, 0.808);
+  position: relative;
+}
+
+.issue__subtitle--link:hover {
+  color: white;
+}
+
+.issue__subtitle--link i {
+  position: absolute;
+  top: 0.5em;
+  right: -1.5em;
+  margin-left: 0.5em;
+  font-size: 1rem;
 }
 
 /* Data on votes and comments */
@@ -1348,6 +1421,18 @@ body {
 
 /* ----- Profile Page ----- */
 
+.profile__header {
+  position: relative;
+}
+
+.profile__header--descriptions {
+  font-size: 2rem;
+}
+
+.profile__header--descriptions:not(:last-child) {
+  margin-bottom: 1em;
+}
+
 .lowercase {
   text-transform: lowercase;
 }
@@ -1365,7 +1450,9 @@ body {
   gap: 2rem;
 }
 
-.profile__statistics--column {
+.profile__statistics--column,
+.profile__projects--column,
+.profile__issues--column {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1376,26 +1463,91 @@ body {
   font-size: 1.7rem;
 }
 
-.profile__statistics--subtitle {
-  font-size: 1.5rem;
+.profile__statistics--subtitle,
+.profile__projects--subtitle,
+.profile__issues--subtitle {
+  font-size: 1.7rem;
   font-weight: 900;
   text-align: center;
-  margin-bottom: 1em;
+  margin-bottom: 0.8em;
+  margin-top: 0.5em;
   color: var(--clr-accent--300);
 }
 
-.profile__statistics--block {
+.profile__statistics--block,
+.profile__issues--block {
   width: 100%;
   display: flex;
   align-items: start;
   justify-content: center;
-  margin-bottom: 0.3em;
   color: rgba(255, 255, 255, 0.808);
+}
+
+.profile__statistics--block:not(:last-child),
+.profile__projects--block:not(:last-child) {
+  margin-bottom: 0.3em;
 }
 
 .statistics__block--title {
   margin-right: 0.4em;
 }
+
+.profile__projects--container,
+.profile__issues--container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 2rem;
+}
+
+.profile__projects--block,
+.profile__issues--block {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.808);
+}
+
+.profile__project--block,
+.profile__issue--block {
+  display: flex;
+  align-items: start;
+  color: rgba(255, 255, 255, 0.808);
+  margin-bottom: 0.5em;
+}
+
+.profile__project--block:hover {
+  color: white
+}
+
+.profile__project--icon {
+  color: rgba(255, 255, 255, 0.808);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.profile__project--link,
+.profile__issue--link {
+  color: rgba(255, 255, 255, 0.808);
+  margin-left: 0.5em;
+}
+
+.profile__project--link:hover,
+.profile__issue--link:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.profile__projects--block p,
+.profile__issues--block p {
+  width: inherit;
+  margin: 0 auto;
+  text-align: center;
+}
+
 
 /* ----- Footer ----- */
 
