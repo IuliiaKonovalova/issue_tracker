@@ -897,7 +897,7 @@ body {
   padding: 0.5em;
 }
 
-.project__issue .issue__container,
+.issue__container,
 .issue__comment {
   display: flex;
   flex-direction: column;
@@ -912,24 +912,22 @@ body {
 
 }
 
-.project__issue .issue__container:not(:last-child) {
+.issue__container:not(:last-child) {
   margin-bottom: 0.5em;
 }
 
-.project__issue .issue__content {
+.issue__content {
   width: 100%;
   display: flex;
   align-content: start;
 }
 
-.project__issue .issue__title {
+.issue__title {
   padding: 1em 0 0.5em 0;
   font-size: 1.2rem;
 }
 
-
-
-.project__issue .issue {
+.issue {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -1350,24 +1348,25 @@ body {
 
 /* ----- Profile Page ----- */
 
-.profile__header h3 span {
+.lowercase {
   text-transform: lowercase;
 }
 
 .profile__statistics--title {
   font-size: 1.8rem;
+  padding-top: 0;
+  padding-bottom: 1em;
 }
 
 .profile__statistics--container {
   width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 2em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 2rem;
 }
 
 .profile__statistics--column {
-  /* width: 15rem; */
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1375,6 +1374,27 @@ body {
   background-color: var(--clr-primary--500);
   border-radius: var(--br);
   font-size: 1.7rem;
+}
+
+.profile__statistics--subtitle {
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 1em;
+  color: var(--clr-accent--300);
+}
+
+.profile__statistics--block {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  margin-bottom: 0.3em;
+  color: rgba(255, 255, 255, 0.808);
+}
+
+.statistics__block--title {
+  margin-right: 0.4em;
 }
 
 /* ----- Footer ----- */
