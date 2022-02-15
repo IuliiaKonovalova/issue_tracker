@@ -829,7 +829,8 @@ body {
   border-radius: var(--br);
 }
 
-.project__issues--title {
+.project__issues--title,
+.profile__statistics--title {
   font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.15rem;
@@ -1349,8 +1350,31 @@ body {
 
 /* ----- Profile Page ----- */
 
-.profile__header h3 {
+.profile__header h3 span {
   text-transform: lowercase;
+}
+
+.profile__statistics--title {
+  font-size: 1.8rem;
+}
+
+.profile__statistics--container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.profile__statistics--column {
+  /* width: 15rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  background-color: var(--clr-primary--500);
+  border-radius: var(--br);
+  font-size: 1.7rem;
 }
 
 /* ----- Footer ----- */

@@ -24,10 +24,39 @@
     </h3>
   </section>
   <section class="profile__statistics">
-    <div>projects {{ user_profile.projects.all.count }}</div>
-    <div>issues {{ user_profile.issues.all.count }}</div>
-    <div>assigned_issues {{ user_profile.assigned_issues.all.count }}</div>
-    <div>written_comments {{ user_profile.written_comments.all.count }}</div>
+    <h3 class="profile__statistics--title">Statistics</h3>
+    <div class="profile__statistics--container">
+      <div class="profile__statistics--column">
+        <div class="profile__statistics--projects">
+          <h4 class="profile__statistics--subtitle">Projects</h4>
+          <div class="profile__statistics--block">
+            Created: {{ user_profile.projects.all.count}}
+          </div>
+          <div class="profile__statistics--block">
+            Collaborated: {{ user_profile.collaborated_projects.all.count }}
+          </div>
+        </div>
+      </div>
+
+      <div class="profile__statistics--column">
+        <div class="profile__statistics--issues">
+          <h4 class="profile__statistics--subtitle">Issues</h4>
+          <div class="profile__statistics--block">
+            Created: {{ user_profile.issues.all.count }}
+          </div>
+          <div class="profile__statistics--block">
+            Assigned: {{ user_profile.assigned_issues.all.count }}
+          </div>
+        </div>
+      </div>
+      <div class="profile__statistics--column">
+        <h4 class="profile__statistics--subtitle">Comments</h4>
+        <div class="profile__statistics--block">
+          Comments left: {{ user_profile.written_comments.all.count }}
+        </div>
+      </div>
+
+    </div>
 
   </section>
   <h2>Projects:</h2>
