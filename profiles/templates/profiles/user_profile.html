@@ -20,7 +20,7 @@
     </h3>
     <h3 class="profile__header--descriptions">
       <span>Email: </span>
-      {{ user_profile.email }}
+      <div class="lowercase">{{ user_profile.email }}</div>
     </h3>
   </section>
   <section class="profile__statistics">
@@ -30,10 +30,16 @@
         <div class="profile__statistics--projects">
           <h4 class="profile__statistics--subtitle">Projects</h4>
           <div class="profile__statistics--block">
-            Created: {{ user_profile.projects.all.count}}
+            <div class="statistics__block--title">Created:</div>
+            <div>
+              {{ user_profile.projects.all.count}}
+            </div>
           </div>
           <div class="profile__statistics--block">
-            Collaborated: {{ user_profile.collaborated_projects.all.count }}
+            <div class="statistics__block--title">Total:</div>
+            <div>
+              {{ user_profile.collaborated_projects.all.count }}
+            </div>
           </div>
         </div>
       </div>
@@ -42,17 +48,26 @@
         <div class="profile__statistics--issues">
           <h4 class="profile__statistics--subtitle">Issues</h4>
           <div class="profile__statistics--block">
-            Created: {{ user_profile.issues.all.count }}
+            <div class="statistics__block--title">Created:</div>
+            <div>
+              {{ user_profile.issues.all.count }}
+            </div>
           </div>
           <div class="profile__statistics--block">
-            Assigned: {{ user_profile.assigned_issues.all.count }}
+            <div class="statistics__block--title">Assigned:</div>
+            <div>
+              {{ user_profile.assigned_issues.all.count }}
+            </div>
           </div>
         </div>
       </div>
       <div class="profile__statistics--column">
         <h4 class="profile__statistics--subtitle">Comments</h4>
         <div class="profile__statistics--block">
-          Comments left: {{ user_profile.written_comments.all.count }}
+          <div class="statistics__block--title">Comments left:</div>
+          <div>
+            {{ user_profile.written_comments.all.count }}
+          </div>
         </div>
       </div>
 
