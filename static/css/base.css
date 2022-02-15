@@ -832,7 +832,6 @@ body {
   color: white;
 }
 
-.project__issues,
 .project__issues {
   display: flex;
   flex-direction: column;
@@ -912,9 +911,14 @@ body {
 
 .project__issues--container {
   min-height: 30rem;
+  height: 90%;
   display: flex;
   flex-direction: column;
   padding: 0.5em;
+}
+
+.project__issue {
+  height: 100%;
 }
 
 .issue__container,
