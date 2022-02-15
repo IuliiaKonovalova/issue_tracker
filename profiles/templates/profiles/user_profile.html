@@ -17,6 +17,11 @@
     <h2 class="profile__title">Your Profile</h2>
     {% comment %} Profile Data {% endcomment %}
     <section class="profile__header">
+      <a href="#"
+        class="issue__edit btn__issue--edit">
+        Edit
+        <i class="fas fa-edit"></i>
+      </a>
       <h3 class="profile__header--descriptions">
         <span>Username: </span>
         {{ user_profile.username }}

@@ -1353,6 +1353,18 @@ body {
 
 /* ----- Profile Page ----- */
 
+.profile__header {
+  position: relative;
+}
+
+.profile__header--descriptions {
+  font-size: 2rem;
+}
+
+.profile__header--descriptions:not(:last-child) {
+  margin-bottom: 1em;
+}
+
 .lowercase {
   text-transform: lowercase;
 }
