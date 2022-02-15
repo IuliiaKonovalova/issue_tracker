@@ -897,7 +897,7 @@ body {
   padding: 0.5em;
 }
 
-.project__issue .issue__container,
+.issue__container,
 .issue__comment {
   display: flex;
   flex-direction: column;
@@ -912,24 +912,22 @@ body {
 
 }
 
-.project__issue .issue__container:not(:last-child) {
+.issue__container:not(:last-child) {
   margin-bottom: 0.5em;
 }
 
-.project__issue .issue__content {
+.issue__content {
   width: 100%;
   display: flex;
   align-content: start;
 }
 
-.project__issue .issue__title {
+.issue__title {
   padding: 1em 0 0.5em 0;
   font-size: 1.2rem;
 }
 
-
-
-.project__issue .issue {
+.issue {
   width: 100%;
   display: flex;
   justify-content: space-between;
