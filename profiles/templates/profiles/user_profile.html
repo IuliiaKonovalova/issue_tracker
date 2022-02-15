@@ -82,12 +82,19 @@
       <div class="project__icon">
         <i class="fas fa-user"></i>
       </div>
-      <li>{{ project.title }}</li>
+      <li>
+        <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" aria-label="Go to project">
+          {{ project.title }}
+        </a>
+
+      </li>
       {% else %}
       <div class="project__icon">
         <i class="fas fa-users"></i>
       </div>
-      <li>{{ project.title }}</li>
+      <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" aria-label="Go to project">
+        {{ project.title }}
+      </a>
       {% endif %}
       {% endfor %}
 
@@ -101,7 +108,9 @@
       <div class="project__icon">
         <i class="fas fa-users"></i>
       </div>
-      <li>{{ project.title }}</li>
+      <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" aria-label="Go to project">
+        {{ project.title }}
+      </a>
       {% endif %}
       {% endfor %}
 
@@ -111,7 +120,9 @@
   <h2>Issues:</h2>
   <ul>
     {% for issue in user_profile.issues.all %}
-    <li>{{ issue.title }}</li>
+    <a href="{% url 'issue_detail' created_by=issue.project.created_by  project_id=issue.project.id issue_id=issue.id%}"
+      aria-label="Go to issue">{{ issue.title }}</a>
+
     {% endfor %}
 
   </ul>
@@ -119,16 +130,15 @@
   <h2>Assigned issues:</h2>
   <ul>
     {% for issue in user_profile.assigned_issues.all %}
-    <li>{{ issue.title }}</li>
+    <a href="{% url 'issue_detail' created_by=issue.project.created_by  project_id=issue.project.id issue_id=issue.id%}"
+      aria-label="Go to issue">{{ issue.title }}</a>
     {% endfor %}
 
   </ul>
-  <h2>Comments:</h2>
-  <ul>
-    {% for comment in user_profile.written_comments.all %}
-    <li>{{ comment.comment_body }}</li>
-    {% endfor %}
-  </ul>
+
+
+
+
 
   {% if password_form %}
   <form method="post">
