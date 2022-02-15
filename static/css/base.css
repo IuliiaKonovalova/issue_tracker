@@ -1142,7 +1142,7 @@ body {
 
 .btn__issue--back {
   position: absolute;
-  top: 2.2rem;
+  top: 2.5rem;
   left: 2.5rem;
   display: flex;
   align-items: center;
@@ -1232,18 +1232,39 @@ body {
   font-size: 1.5rem;
 }
 
-.issue__subtitle {
-  color: var(--clr-accent--300);
-  font-weight: 900;
-  margin-right: 0.5em;
+.issue__description {
+  color: rgba(255, 255, 255, 0.808);
+}
+
+.issue__description--name {
+  text-transform: capitalize;
 }
 
 .issue__description:not(:last-child) {
   margin-bottom: 0.5em;
 }
 
-.issue__description--name {
-  text-transform: capitalize;
+.issue__subtitle {
+  color: var(--clr-accent--300);
+  font-weight: 900;
+  margin-right: 0.5em;
+}
+
+.issue__subtitle--link {
+  color: rgba(255, 255, 255, 0.808);
+  position: relative;
+}
+
+.issue__subtitle--link:hover {
+  color: white;
+}
+
+.issue__subtitle--link i {
+  position: absolute;
+  top: 0.5em;
+  right: -1.5em;
+  margin-left: 0.5em;
+  font-size: 1rem;
 }
 
 /* Data on votes and comments */

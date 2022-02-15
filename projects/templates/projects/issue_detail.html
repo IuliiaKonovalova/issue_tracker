@@ -84,11 +84,17 @@
         </div>
         <div class="issue__description issue__description--name">
           <span class="issue__subtitle">Created by: </span>
-          {{ issue.created_by }}
+          <a href="{% url 'user_profile' username=issue.created_by %}" class="issue__subtitle--link">
+            {{ issue.created_by }}
+            <i class="fas fa-sign-in-alt"></i>
+          </a>
         </div>
         <div class="issue__description issue__description--name">
           <span class="issue__subtitle">Assigned to: </span>
-          {{ issue.assigned_to }}
+          <a href="{% url 'user_profile' username=issue.assigned_to %}" class="issue__subtitle--link">
+            {{ issue.assigned_to }}
+            <i class="fas fa-sign-in-alt"></i>
+          </a>
         </div>
         <div class="issue__description">
           <span class="issue__subtitle">Created on: </span>
@@ -139,9 +145,9 @@
         {% for comment in comments.all %}
           <div class="issue__comment">
             <div class="issue__comment--header">
-              <div class="issue__comment--name">
+              <a href="{% url 'user_profile' username=comment.created_by %}" class="issue__comment--name">
                 {{ comment.created_by }}
-              </div>
+              </a>
               {% if comment.created_by == user %}
                 <div class="issue__comment--edit">
                   <div href="" class=" btn__comment--edit">
