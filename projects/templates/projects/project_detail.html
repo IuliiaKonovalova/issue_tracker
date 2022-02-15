@@ -19,7 +19,12 @@
   <h2 class="project__title">{{ project.title }}</h2>
   {% if user.id == project.created_by.id or user in project.collaborators.all %}
   <section class="project__header">
-    <h3 class="project__header--descriptions">
+    <a href="{% url 'edit_project' created_by=project.created_by project_id=project.id %}"
+      class="project__edit btn__project--edit">
+      Edit
+      <i class="fas fa-edit"></i>
+    </a>
+    <h3 class="project__header--descriptions project__header--first">
       <span>Descriptions: </span>
       {{ project.description }}
     </h3>

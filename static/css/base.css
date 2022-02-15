@@ -794,9 +794,14 @@ body {
   margin-bottom: 2em;
 }
 
+.project__header {
+  position: relative;
+  font-size: 1.4rem;
+}
+
 .project__header>h3:first-child,
 .profile__header>h3:first-child {
-  margin-bottom: 1em;
+  margin-bottom: 1.2em;
 }
 
 .project__header h3,
@@ -805,6 +810,10 @@ body {
   display: flex;
   font-weight: 100;
   text-transform: capitalize;
+}
+
+.project__header--first {
+  margin-bottom: 1em;
 }
 
 .project__header h3 span,
@@ -881,7 +890,8 @@ body {
 .btn__issue--add,
 .btn__issue--edit,
 .btn__comment--edit,
-.btn__comment--add {
+.btn__comment--add,
+.btn__project--edit {
   padding: 0.4em 1em 0.5em 1em;
   background-color: var(--clr-accent--800);
   border-radius: var(--br);
@@ -895,7 +905,8 @@ body {
 .btn__issue--add:hover,
 .btn__issue--edit:hover,
 .btn__comment--edit:hover,
-.btn__comment--add:hover {
+.btn__comment--add:hover,
+.btn__project--edit:hover {
   background-color: var(--clr-accent--700);
 }
 
@@ -1167,7 +1178,8 @@ body {
   transform: rotate(180deg);
 }
 
-.issue__edit {
+.issue__edit,
+.project__edit {
   position: absolute;
   right: 2rem;
   top: 2rem;
@@ -1175,7 +1187,12 @@ body {
   align-items: center;
 }
 
-.issue__edit i {
+.project__edit {
+  right: 5rem;
+}
+
+.issue__edit i,
+.project__edit i {
   margin-left: 0.5em;
 }
 
