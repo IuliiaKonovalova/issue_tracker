@@ -779,7 +779,8 @@ body {
 
 .project__header,
 .profile__header,
-.profile__statistics {
+.profile__statistics,
+.profile__projects {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1191,6 +1192,7 @@ body {
 .issue__type--content {
   font-size: 1.2rem;
   margin-left: 0.5em;
+  margin-bottom: 0.2em;
 }
 
 .issue__type--content {

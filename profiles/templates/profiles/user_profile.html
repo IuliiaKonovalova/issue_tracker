@@ -72,18 +72,42 @@
       </div>
 
     </div>
-
   </section>
-  <h2>Projects:</h2>
-  <ul>
+  <section class="profile__projects">
+    <h2>Projects:</h2>
+    <ul>
 
-    {% for project in user_profile.projects.all %}
+      {% for project in user_profile.projects.all %}
+      {% if project.project_type == 0 %}
+      <div class="project__icon">
+        <i class="fas fa-user"></i>
+      </div>
+      <li>{{ project.title }}</li>
+      {% else %}
+      <div class="project__icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <li>{{ project.title }}</li>
+      {% endif %}
+      {% endfor %}
 
-    <li>{{ project.title }}</li>
 
-    {% endfor %}
+    </ul>
+    <h2>Projects (collab):</h2>
+    <ul>
 
-  </ul>
+      {% for project in user_profile.collaborated_projects.all %}
+      {% if project.project_type != 0 %}
+      <div class="project__icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <li>{{ project.title }}</li>
+      {% endif %}
+      {% endfor %}
+
+    </ul>
+  </section>
+
   <h2>Issues:</h2>
   <ul>
     {% for issue in user_profile.issues.all %}
