@@ -294,4 +294,12 @@
   <h3 class="project__title--message">You are not authorized to view this project</h3>
   {% endif %}
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script>
+  let issues_container = $('.project__issues--main');
+  let sectionsToDrop = $('.project__issue--status')
+  $('.issue__container', issues_container).draggable({});
+  $('.issue__container', sectionsToDrop).droppable({});
+</script>
 {% endblock %}
