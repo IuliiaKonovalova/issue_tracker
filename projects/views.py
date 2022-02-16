@@ -179,8 +179,12 @@ class DeleteIssueView(View):
 class DeleteProjectView(View):
     def get(self, request, project_id, *args, **kwargs):
         project = get_object_or_404(Project, id=project_id)
+        return render(request, 'projects/delete_project.html', {'project': project})
+    
+    def post(self, request, project_id, *args, **kwargs):
+        project = get_object_or_404(Project, id=project_id)
         project.delete()
-        return HttpResponseRedirect(reverse('projects_list'))
+        return HttpResponseRedirect(reverse('project_detail', kwargs={'created_by': project.created_by,'pk': project.id}))
     
 
 class DeleteCommentView(View):
