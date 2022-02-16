@@ -56,7 +56,7 @@
           </a>
         </div>
         <div class="project__issues--container">
-          <div class="project__issue">
+          <div class="project__issue" data-issue-status=0>
             {% for issue_to_do in issues_to_do %}
             <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_to_do.id %}"
               class="issue__container" data-issue-id="{{ issue_to_do.id }}" >
@@ -135,7 +135,7 @@
           <h4 class="project__issue--title">In Progress:</h4>
         </div>
         <div class="project__issues--container">
-          <div class="project__issue">
+          <div class="project__issue" data-issue-status=1>
             {% for issue_in_progress in issues_in_progress %}
             <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_in_progress.id %}"
               class="issue__container" data-issue-id="{{ issue_in_progress.id }}">
@@ -215,7 +215,7 @@
           <h4 class="project__issue--title">Done:</h4>
         </div>
         <div class="project__issues--container">
-          <div class="project__issue">
+          <div class="project__issue" data-issue-status=2>
             {% for issue_done in issues_done %}
             <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_done.id %}"
               class="issue__container" data-issue-id="{{ issue_done.id }}">
@@ -300,50 +300,55 @@
   <h3 class="project__title--message">You are not authorized to view this project</h3>
   {% endif %}
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-<script>
-  let issues_container = $('.project__issues--main');
-  let sectionsToDrop = $('.project__issue')
-  $('.issue__container', issues_container).draggable({
-    revert: 'invalid',
-    helper: 'clone',
-    cursor: 'move',
-    cursorAt: {
-      top: 20,
-      left: 20
-    },
-    zIndex: 100,
 
-
-    // appendTo: '.project__issue',
-    // width should be the same as at the start of the drag
-    // height should be the same as at the start of the drag
-    start: function(event, ui) {
-      ui.helper.width($(this).width());
-      ui.helper.height($(this).height());
-    }
-  });
-  $(sectionsToDrop).droppable({
-    accept: '.issue__container',
-    hoverClass: 'hovered',
-    // on drop need to make it transition smoothly
-    drop: function(event, ui) {
-      ui.draggable.css({
-        'position': 'relative',
-        'top': '0',
-        'left': '0'
+  
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script>
+      let issues_container = $('.project__issues--main');
+      let sectionsToDrop = $('.project__issue')
+      $('.issue__container', issues_container).draggable({
+        revert: 'invalid',
+        helper: 'clone',
+        cursor: 'move',
+        cursorAt: {
+          top: 20,
+          left: 20
+        },
+        zIndex: 100,
+    
+    
+        // appendTo: '.project__issue',
+        // width should be the same as at the start of the drag
+        // height should be the same as at the start of the drag
+        start: function(event, ui) {
+          ui.helper.width($(this).width());
+          ui.helper.height($(this).height());
+        }
       });
-      $(this).append(ui.draggable);
-      $(ui.draggable).animate({
-        left: 0,
-        top: 0
+      $(sectionsToDrop).droppable({
+        accept: '.issue__container',
+        hoverClass: 'hovered',
+        // on drop need to make it transition smoothly
+        
+        drop: function(event, ui) {
+          $(this).append(ui.draggable);
+          let issue_id = ui.draggable.attr('data-issue-id');
+          let issue_status = $(this).attr('data-issue-status');
+          let url = '{% url "update_issue_status" %}'
+          $.ajax({
+            url: url,
+            type: 'POST',
+            data: {
+              issue_id: issue_id,
+              issue_status: issue_status,
+              csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function(data) {
+              console.log(data);
+            }
+          });
+        }
       });
-    }
-  });
-  //   drop: function(event, ui) {
-  //     $(this).append(ui.draggable);
-  //   }
-  // });
-</script>
+    </script>
 {% endblock %}
