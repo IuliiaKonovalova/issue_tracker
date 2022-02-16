@@ -2,6 +2,9 @@
 
 {% block extra_css %}
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     .bg {
       height: unset;
       background-image: linear-gradient(#1c2431a9,
@@ -21,7 +24,7 @@
     {% endif %}
     {% comment %} Profile Data {% endcomment %}
     <section class="profile__header">
-      <a href="#"
+      <a href="#scroll_to_settings"
         class="issue__edit btn__issue--edit">
         Edit
         <i class="fas fa-edit"></i>
@@ -198,7 +201,7 @@
       </div>
     </section>
 
-    <h2 class="password__edit--title">Change password</h2>
+    <h2 id="scroll_to_settings" class="password__edit--title">Change password</h2>
     <h3 class="password__edit--subtitle">(Fill out required fields)</h3>
     {% if password_form %}
     <div class="password__change">
