@@ -1,216 +1,218 @@
 {% extends "base.html" %}
 
 {% block extra_css %}
-  <style>
-    .bg {
-      height: unset;
-      background-image: linear-gradient(#1c2431a9,
-          #1c2431a9),
-        url('/static/media/bg7.svg');
-      background-position: center top;
-    }
-  </style>
+<style>
+  .bg {
+    height: unset;
+    background-image: linear-gradient(#1c2431a9,
+        #1c2431a9),
+      url('/static/media/bg7.svg');
+    background-position: center top;
+  }
+</style>
 {% endblock %}
 
 {% block content %}
-  <div class="profile__details">
-    {% if user_profile == request.user %}
-      <h2 class="profile__title">Your Profile</h2>
-    {% else %}
-      <h2 class="profile__title">{{ user_profile.username }}'s Profile</h2>
-    {% endif %}
-    {% comment %} Profile Data {% endcomment %}
-    <section class="profile__header">
-      {% if user_profile == request.user %}
-        <a href="#"
-          class="profile__edit btn__profile--edit">
-          Edit
-          <i class="fas fa-edit"></i>
-        </a>
-      {% endif %}
-      <h3 class="profile__header--descriptions">
-        <span>Username: </span>
-        {{ user_profile.username }}
-      </h3>
-      <h3 class="profile__header--descriptions">
-        <span>Email: </span>
-        <div class="lowercase">{{ user_profile.email }}</div>
-      </h3>
-    </section>
-    {% comment %} Profile Statistics {% endcomment %}
-    <section class="profile__statistics">
-      <h3 class="profile__statistics--title">Statistics</h3>
-      <div class="profile__statistics--container">
-        <div class="profile__statistics--column">
-          <div class="profile__statistics--projects">
-            <h4 class="profile__statistics--subtitle">Projects</h4>
-            <div class="profile__statistics--block">
-              <div class="statistics__block--title">Created:</div>
-              <div>
-                {{ user_profile.projects.all.count}}
-              </div>
-            </div>
-            <div class="profile__statistics--block">
-              <div class="statistics__block--title">Total:</div>
-              <div>
-                {{ user_profile.collaborated_projects.all.count }}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="profile__statistics--column">
-          <div class="profile__statistics--issues">
-            <h4 class="profile__statistics--subtitle">Issues</h4>
-            <div class="profile__statistics--block">
-              <div class="statistics__block--title">Created:</div>
-              <div>
-                {{ user_profile.issues.all.count }}
-              </div>
-            </div>
-            <div class="profile__statistics--block">
-              <div class="statistics__block--title">Assigned:</div>
-              <div>
-                {{ user_profile.assigned_issues.all.count }}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="profile__statistics--column">
-          <h4 class="profile__statistics--subtitle">Comments</h4>
-          <div class="profile__statistics--block">
-            <div class="statistics__block--title">Comments left:</div>
-            <div>
-              {{ user_profile.written_comments.all.count }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    {% comment %} Profile Projects {% endcomment %}
-    <section class="profile__projects">
-      <h3 class="profile__projects--title">Projects:</h3>
-      <div class="profile__projects--container">
-        <div class="profile__projects--column">
-          <h4 class="profile__projects--subtitle">Created Projects:</h4>
-          <div class="profile__projects--block">
-            {% if user_profile.projects.all.count == 0 %}
-              {% if user_profile == request.user %}
-                <p>You haven't created any projects yet.</p>
-              {% else %}
-                <p>{{ user_profile.username }} hasn't created any projects yet.</p>
-              {% endif %}
-            {% else %}
-              {% for project in user_profile.projects.all %}
-                {% if project.project_type == 0 %}
-                  <div class="profile__project--block">
-                    <div class="profile__project--icon">
-                      <i class="fas fa-user"></i>
-                    </div>
-                    <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" aria-label="Go to project" class="profile__project--link">
-                      {{ project.title }}
-                    </a>
-                  </div>
-                {% else %}
-                  <div class="profile__project--block">
-                    <div class="profile__project--icon">
-                      <i class="fas fa-users"></i>
-                    </div>
-                    <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" aria-label="Go to project" class="profile__project--link">
-                      {{ project.title }}
-                    </a>
-                  </div>
-                {% endif %}
-              {% endfor %}
-            {% endif %}
-          </div>
-        </div>
-        <div class="profile__projects--column">
-          <h4 class="profile__statistics--subtitle">Collaborated on:</h4>
-          <div class="profile__projects--block">
-            {% if user_profile.collaborated_projects.all.count == 0 %}
-              {% if user_profile == request.user %}
-                <p>You haven't collaborated on any projects yet.</p>
-              {% else %}
-                <p>{{ user_profile.username }} hasn't collaborated on any projects yet.</p>
-              {% endif %}
-            {% else %}
-              {% for project in user_profile.collaborated_projects.all %}
-                {% if project.project_type != 0 %}
-                  <div class="profile__project--block">
-                    <div class="profile__project--icon">
-                      <i class="fas fa-users"></i>
-                    </div>
-                    <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" aria-label="Go to project" class="profile__project--link">
-                      {{ project.title }}
-                    </a>
-                  </div>
-                {% endif %}
-              {% endfor %}
-            {% endif %}
-          </div>
-        </div>
-      </div>
-    </section>
-    {% comment %} Profile Issues {% endcomment %}
-    <section class="profile__issues">
-      <h3 class="profile__issues--title">Issues:</h3>
-      <div class="profile__issues--container">
-        <div class="profile__issues--column">
-          <h4 class="profile__issues--subtitle">Created Issues:</h4>
-          <div class="profile__issues--block ">
-            {% if user_profile.issues.all.count == 0 %}
-              {% if user_profile == request.user %}
-                <p>You haven't created any issues yet.</p>
-              {% else %}
-                <p>{{ user_profile.username }} hasn't created any issues yet.</p>
-              {% endif %}
-            {% else %}
-              {% for issue in user_profile.issues.all %}
-                <div class="profile__issue--block">
-                  <a href="{% url 'issue_detail' created_by=issue.project.created_by  project_id=issue.project.id issue_id=issue.id%}"
-                    aria-label="Go to issue" class="profile__issue--link">
-                    {{ issue.title }}
-                  </a>
-                </div>
-              {% endfor %}
-            {% endif %}
-          </div>
-        </div>
-        <div class="profile__issues--column">
-          <h4 class="profile__issues--subtitle">Assigned Issues:</h4>
-          <div class="profile__issues--block">
-            {% if user_profile.issues.all.count == 0 %}
-              {% if user_profile == request.user %}
-                <p>You haven't created assigned any issues yet.</p>
-              {% else %}
-                <p>{{ user_profile.username }} hasn't been assigned any issues yet.</p>
-              {% endif %}
-            {% else %}
-              {% for issue in user_profile.assigned_issues.all %}
-                <div class="profile__issue--block">
-                  <a href="{% url 'issue_detail' created_by=issue.project.created_by  project_id=issue.project.id issue_id=issue.id%}"
-                    aria-label="Go to issue"  class="profile__issue--link">
-                    {{ issue.title }}
-                  </a>
-                </div>
-              {% endfor %}
-            {% endif %}
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {% if password_form %}
-    <div class="password__change">
-      <h2 class="password__edit--title">Change password</h2>
-      <h3 class="password__edit--subtitle">(Fill out required fields)</h3>
-      <form method="post" class="password__change--form">
-        {{ password_form|crispy }}
-        {% csrf_token %}
-        <button type="submit">Change password</button>
-      </form>
-    </div>
-  </div>
+<div class="profile__details">
+  {% if user_profile == request.user %}
+  <h2 class="profile__title">Your Profile</h2>
+  {% else %}
+  <h2 class="profile__title">{{ user_profile.username }}'s Profile</h2>
   {% endif %}
+  {% comment %} Profile Data {% endcomment %}
+  <section class="profile__header">
+    {% if user_profile == request.user %}
+    <a href="#" class="profile__edit btn__profile--edit">
+      Edit
+      <i class="fas fa-edit"></i>
+    </a>
+    {% endif %}
+    <h3 class="profile__header--descriptions">
+      <span>Username: </span>
+      {{ user_profile.username }}
+    </h3>
+    <h3 class="profile__header--descriptions">
+      <span>Email: </span>
+      <div class="lowercase">{{ user_profile.email }}</div>
+    </h3>
+  </section>
+  {% comment %} Profile Statistics {% endcomment %}
+  <section class="profile__statistics">
+    <h3 class="profile__statistics--title">Statistics</h3>
+    <div class="profile__statistics--container">
+      <div class="profile__statistics--column">
+        <div class="profile__statistics--projects">
+          <h4 class="profile__statistics--subtitle">Projects</h4>
+          <div class="profile__statistics--block">
+            <div class="statistics__block--title">Created:</div>
+            <div>
+              {{ user_profile.projects.all.count }}
+            </div>
+          </div>
+          <div class="profile__statistics--block">
+            <div class="statistics__block--title">Total:</div>
+            <div>
+              {{ user_profile.collaborated_projects.all.count|add:user_profile.projects.all.count }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="profile__statistics--column">
+        <div class="profile__statistics--issues">
+          <h4 class="profile__statistics--subtitle">Issues</h4>
+          <div class="profile__statistics--block">
+            <div class="statistics__block--title">Created:</div>
+            <div>
+              {{ user_profile.issues.all.count }}
+            </div>
+          </div>
+          <div class="profile__statistics--block">
+            <div class="statistics__block--title">Assigned:</div>
+            <div>
+              {{ user_profile.assigned_issues.all.count }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="profile__statistics--column">
+        <h4 class="profile__statistics--subtitle">Comments</h4>
+        <div class="profile__statistics--block">
+          <div class="statistics__block--title">Comments left:</div>
+          <div>
+            {{ user_profile.written_comments.all.count }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% comment %} Profile Projects {% endcomment %}
+  <section class="profile__projects">
+    <h3 class="profile__projects--title">Projects:</h3>
+    <div class="profile__projects--container">
+      <div class="profile__projects--column">
+        <h4 class="profile__projects--subtitle">Created Projects:</h4>
+        <div class="profile__projects--block">
+          {% if user_profile.projects.all.count == 0 %}
+          {% if user_profile == request.user %}
+          <p>You haven't created any projects yet.</p>
+          {% else %}
+          <p>{{ user_profile.username }} hasn't created any projects yet.</p>
+          {% endif %}
+          {% else %}
+          {% for project in user_profile.projects.all %}
+          {% if project.project_type == 0 %}
+          <div class="profile__project--block">
+            <div class="profile__project--icon">
+              <i class="fas fa-user"></i>
+            </div>
+            <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" aria-label="Go to project"
+              class="profile__project--link">
+              {{ project.title }}
+            </a>
+          </div>
+          {% else %}
+          <div class="profile__project--block">
+            <div class="profile__project--icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" aria-label="Go to project"
+              class="profile__project--link">
+              {{ project.title }}
+            </a>
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+      <div class="profile__projects--column">
+        <h4 class="profile__statistics--subtitle">Collaborated on:</h4>
+        <div class="profile__projects--block">
+          {% if user_profile.collaborated_projects.all.count == 0 %}
+          {% if user_profile == request.user %}
+          <p>You haven't collaborated on any projects yet.</p>
+          {% else %}
+          <p>{{ user_profile.username }} hasn't collaborated on any projects yet.</p>
+          {% endif %}
+          {% else %}
+          {% for project in user_profile.collaborated_projects.all %}
+          {% if project.project_type != 0 %}
+          <div class="profile__project--block">
+            <div class="profile__project--icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" aria-label="Go to project"
+              class="profile__project--link">
+              {{ project.title }}
+            </a>
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+  {% comment %} Profile Issues {% endcomment %}
+  <section class="profile__issues">
+    <h3 class="profile__issues--title">Issues:</h3>
+    <div class="profile__issues--container">
+      <div class="profile__issues--column">
+        <h4 class="profile__issues--subtitle">Created Issues:</h4>
+        <div class="profile__issues--block ">
+          {% if user_profile.issues.all.count == 0 %}
+          {% if user_profile == request.user %}
+          <p>You haven't created any issues yet.</p>
+          {% else %}
+          <p>{{ user_profile.username }} hasn't created any issues yet.</p>
+          {% endif %}
+          {% else %}
+          {% for issue in user_profile.issues.all %}
+          <div class="profile__issue--block">
+            <a href="{% url 'issue_detail' created_by=issue.project.created_by  project_id=issue.project.id issue_id=issue.id%}"
+              aria-label="Go to issue" class="profile__issue--link">
+              {{ issue.title }}
+            </a>
+          </div>
+          {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+      <div class="profile__issues--column">
+        <h4 class="profile__issues--subtitle">Assigned Issues:</h4>
+        <div class="profile__issues--block">
+          {% if user_profile.issues.all.count == 0 %}
+          {% if user_profile == request.user %}
+          <p>You haven't created assigned any issues yet.</p>
+          {% else %}
+          <p>{{ user_profile.username }} hasn't been assigned any issues yet.</p>
+          {% endif %}
+          {% else %}
+          {% for issue in user_profile.assigned_issues.all %}
+          <div class="profile__issue--block">
+            <a href="{% url 'issue_detail' created_by=issue.project.created_by  project_id=issue.project.id issue_id=issue.id%}"
+              aria-label="Go to issue" class="profile__issue--link">
+              {{ issue.title }}
+            </a>
+          </div>
+          {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% if password_form %}
+  <div class="password__change">
+    <h2 class="password__edit--title">Change password</h2>
+    <h3 class="password__edit--subtitle">(Fill out required fields)</h3>
+    <form method="post" class="password__change--form">
+      {{ password_form|crispy }}
+      {% csrf_token %}
+      <button type="submit">Change password</button>
+    </form>
+  </div>
+</div>
+{% endif %}
 
 {% endblock %}

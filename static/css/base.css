@@ -900,7 +900,8 @@ body {
 .btn__comment--edit,
 .btn__comment--add,
 .btn__project--edit,
-.btn__profile--edit {
+.btn__profile--edit,
+.btn__project--delete {
   padding: 0.4em 1em 0.5em 1em;
   background-color: var(--clr-accent--800);
   border-radius: var(--br);
@@ -909,6 +910,15 @@ body {
   text-transform: lowercase;
   font-size: 1.1rem;
   transition: background-color 150ms ease-in-out;
+}
+
+.btn__project--delete {
+  background-color: #2c3b55;
+  margin-left: 0.5em;
+}
+
+.btn__project--delete:hover {
+  background-color: #263041;
 }
 
 .btn__issue--add:hover,
@@ -1201,10 +1211,6 @@ body {
   top: 2rem;
   display: flex;
   align-items: center;
-}
-
-.project__edit {
-  right: 5rem;
 }
 
 .issue__edit i,
