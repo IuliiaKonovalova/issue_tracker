@@ -34,7 +34,7 @@ class IssueForm(forms.ModelForm):
             'priority': forms.RadioSelect(attrs={'class': 'form-control'}),
             # 'issue_type': forms.Select(attrs={'class': 'form-control'}),
             'issue_type': forms.RadioSelect(attrs={'class': 'form-control'}),
-            'assigned_to': forms.Select(attrs={'class': 'form-control'}),
+            'assigned_to': forms.Select(attrs={'class': 'form-control'}),            
         }
 
 

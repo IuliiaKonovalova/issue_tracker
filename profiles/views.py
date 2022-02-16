@@ -16,6 +16,8 @@ class UserProfileView(View):
                 # if user is authenticated and is opening his own profile
                 # he can change his password
                 form = PasswordChangeForm(request.user)
+                # need to set autofocus to false to avoid autofocus on password field
+                form.fields['old_password'].widget.attrs['autofocus'] = False
                 return render(request, 'profiles/user_profile.html', {'user_profile': user_profile, 'password_form': form})
         return render(request, 'profiles/user_profile.html', {'user_profile': user_profile})
     
