@@ -3,6 +3,7 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import Issue, Comment, Project
 from .forms import PersonalProjectForm, TeamProjectForm, IssueForm, CommentForm
+from django.contrib.auth.models import User
 
 
 
@@ -25,7 +26,6 @@ class CreatePersonalProjectView(View):
             project.project_type = 0
             project.save()
             project.collaborators.add(request.user)
-            # project.slug = project.title.replace(' ', '-').lower()
             project.save()
             return HttpResponseRedirect(reverse('projects_list'))
         return render(request, 'projects/create_project.html', {'form': form})
@@ -33,6 +33,8 @@ class CreatePersonalProjectView(View):
 class CreateTeamProjectView(View):
     def get(self, request):
         form = TeamProjectForm()
+        # query list for collaborators should not include the current user
+        form.fields['collaborators'].queryset = User.objects.exclude(id=request.user.id)
         return render(request, 'projects/create_project.html', {'form': form, 'personal': False})
     def post(self, request):
         form = TeamProjectForm(request.POST)
@@ -41,11 +43,10 @@ class CreateTeamProjectView(View):
             project.project_type = 1
             project.created_by = request.user
             project.status = 0
-            # project.save()
-            # project.collaborators.add(request.user)
-            # project.slug = project.title.replace(' ', '-').lower()
             project.save()
             form.save_m2m()
+            project.collaborators.add(request.user)
+            project.save()
             return HttpResponseRedirect(reverse('projects_list'))
         return render(request, 'projects/create_project.html', {'form': form})
         
