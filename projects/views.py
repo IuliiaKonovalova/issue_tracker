@@ -3,6 +3,7 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import Issue, Comment, Project
 from .forms import PersonalProjectForm, TeamProjectForm, IssueForm, CommentForm
+from django.contrib.auth.models import User
 
 
 
@@ -21,11 +22,10 @@ class CreatePersonalProjectView(View):
         if form.is_valid():
             project = form.save(commit=False)
             project.created_by = request.user
-            project.save()
-            project.collaborators.add(request.user)
             project.status = 0
             project.project_type = 0
-            project.slug = project.title.replace(' ', '-').lower()
+            project.save()
+            project.collaborators.add(request.user)
             project.save()
             return HttpResponseRedirect(reverse('projects_list'))
         return render(request, 'projects/create_project.html', {'form': form})
@@ -33,6 +33,8 @@ class CreatePersonalProjectView(View):
 class CreateTeamProjectView(View):
     def get(self, request):
         form = TeamProjectForm()
+        # query list for collaborators should not include the current user
+        form.fields['collaborators'].queryset = User.objects.exclude(id=request.user.id)
         return render(request, 'projects/create_project.html', {'form': form, 'personal': False})
     def post(self, request):
         form = TeamProjectForm(request.POST)
@@ -40,12 +42,11 @@ class CreateTeamProjectView(View):
             project = form.save(commit=False)
             project.project_type = 1
             project.created_by = request.user
-            project.save()
-            # project.collaborators.add(request.user)
             project.status = 0
-            project.slug = project.title.replace(' ', '-').lower()
             project.save()
             form.save_m2m()
+            project.collaborators.add(request.user)
+            project.save()
             return HttpResponseRedirect(reverse('projects_list'))
         return render(request, 'projects/create_project.html', {'form': form})
         
@@ -178,6 +179,13 @@ class DeleteIssueView(View):
 
 class DeleteProjectView(View):
     def get(self, request, project_id, *args, **kwargs):
+        project = get_object_or_404(Project, id=project_id)
+        if request.user == project.created_by:
+            return render(request, 'projects/delete_project.html', {'project': project})
+        else:
+            return HttpResponseRedirect(reverse('project_detail', kwargs={'created_by': project.created_by,'pk': project.id}))
+    
+    def post(self, request, project_id, *args, **kwargs):
         project = get_object_or_404(Project, id=project_id)
         project.delete()
         return HttpResponseRedirect(reverse('projects_list'))
