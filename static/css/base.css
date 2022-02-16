@@ -805,7 +805,8 @@ body {
 
 .project__header {
   position: relative;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  padding: 4em 2em;
 }
 
 .project__header>h3:first-child,
