@@ -661,8 +661,14 @@ body {
 .project__new label[for='id_collaborators'],
 .issue__new label[for='id_title'],
 .issue__new label[for='id_description'],
+.issue__new label[for='id_assigned_to'],
+.issue__new #div_id_priority label.requiredField,
+.issue__new #div_id_issue_type label.requiredField,
 .issue__previous label[for='id_title'],
 .issue__previous label[for='id_description'],
+.issue__previous label[for='id_assigned_to'],
+.issue__previous #div_id_priority label.requiredField,
+.issue__previous #div_id_issue_type label.requiredField,
 .project__previous label[for='id_title'],
 .project__previous label[for='id_description'],
 .project__previous label[for='id_collaborators'] {
@@ -674,8 +680,14 @@ body {
 .project__new label[for='id_collaborators']~div::before,
 .issue__new label[for='id_title']~div::before,
 .issue__new label[for='id_description']~div::before,
+.issue__new label[for='id_assigned_to']~div::before,
+.issue__new #div_id_priority label.requiredField~div::before,
+.issue__new #div_id_issue_type label.requiredField~div::before,
 .issue__previous label[for='id_title']~div::before,
 .issue__previous label[for='id_description']~div::before,
+.issue__previous label[for='id_assigned_to']~div::before,
+.issue__previous #div_id_priority label.requiredField~div::before,
+.issue__previous #div_id_issue_type label.requiredField~div::before,
 .project__previous label[for='id_title']~div::before,
 .project__previous label[for='id_description']~div::before,
 .project__previous label[for='id_collaborators']~div::before {
@@ -702,6 +714,22 @@ body {
   content: 'Add Collaborators:';
 }
 
+.issue__new label[for='id_assigned_to']~div::before,
+.issue__previous label[for='id_assigned_to']~div::before {
+  content: 'Assignee:';
+}
+
+.issue__new #div_id_priority label.requiredField~div::before,
+.issue__previous #div_id_priority label.requiredField~div::before {
+  content: 'Priority:';
+}
+
+.issue__new #div_id_issue_type label.requiredField~div::before,
+.issue__previous #div_id_issue_type label.requiredField~div::before {
+  content: 'Issue Type:';
+}
+
+
 .project__new input,
 .issue__new input,
 .issue__previous input,
@@ -713,6 +741,20 @@ body {
   width: 35rem;
   margin: 1.5em 0 1.5em 0;
   background-color: var(--clr-primary--500);
+}
+
+.issue__new input[type='radio'],
+.issue__previous input[type='radio'] {
+  width: unset;
+  margin: 0.5em;
+  margin-left: 2em;
+}
+
+.issue__new #div_id_priority div .form-check:last-child,
+.issue__new #div_id_issue_type div .form-check:last-child,
+.issue__previous #div_id_priority div .form-check:last-child,
+.issue__previous #div_id_issue_type div .form-check:last-child {
+  margin-bottom: 1em;
 }
 
 .project__new input[type='text']::placeholder,
