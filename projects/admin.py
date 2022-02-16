@@ -10,7 +10,6 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ('name', 'created_by')
     ordering = ('-created_on',)
     list_select_related = ('created_by',)
-    prepopulated_fields = {'slug': ('title',)}
     # need to add members to the project
     
     
@@ -22,7 +21,6 @@ class IssueAdmin(SummernoteModelAdmin):
     list_filter = ('created_on', 'status', 'priority', 'issue_type')
     search_fields = ('title', 'description')
     ordering = ('-created_on', 'status', 'priority')
-    prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('created_on', 'updated_on',)
     list_select_related = ('created_by',)
     

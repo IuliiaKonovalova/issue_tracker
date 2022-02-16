@@ -38,8 +38,8 @@ ISSUE_TYPE = (
 
 class Project(models.Model):
     title = models.CharField(max_length=35, blank=False, default='Untitled Project')
-    slug = models.SlugField(max_length=100, blank=False)
-    description = models.TextField(max_length=1000, blank=True)
+    # slug = models.SlugField(max_length=100, blank=False)
+    description = models.TextField(max_length=300, blank=True)
     project_type = models.IntegerField(choices=PROJECT_TYPE)
     status = models.IntegerField(choices=PROJECT_STATUS, default=0)
     collaborators = models.ManyToManyField(User, related_name='collaborated_projects')
@@ -57,13 +57,13 @@ class Project(models.Model):
 
 class Issue(models.Model):
     title = models.CharField(max_length=35, blank=False, default='')
-    slug = models.SlugField(max_length=100)
+    # slug = models.SlugField(max_length=100)
     created_by = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name='issues'
     )
-    description = models.TextField(blank=False, default='')
+    description = models.TextField(max_length=300, blank=False, default='')
     status = models.IntegerField(choices=ISSUE_STATUS, default=0)
     priority = models.IntegerField(choices=ISSUE_PRIORITY, default=0)
     issue_type = models.IntegerField(choices=ISSUE_TYPE, default=0)
@@ -101,7 +101,7 @@ class Comment(models.Model):
         on_delete=models.CASCADE,
         related_name='written_comments',
     )
-    comment_body = models.TextField(blank=False, default='')
+    comment_body = models.TextField(max_length=300, blank=False, default='')
     created_on = models.DateTimeField(auto_now_add=True, blank=False, editable=False)
     updated_on = models.DateTimeField(auto_now=True, blank=False, editable=False)
 
