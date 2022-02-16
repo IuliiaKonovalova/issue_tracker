@@ -52,8 +52,9 @@ class CreateTeamProjectView(View):
         
 
 class ProjectDetailView(View):
-    def get(self, request, pk, *args, **kwargs):
-        project = get_object_or_404(Project, pk=pk)
+    def get(self, request, created_by, pk, *args, **kwargs):
+        # project = get_object_or_404(Project, pk=pk)
+        project = get_object_or_404(Project, pk=pk, created_by__username=created_by)
         issues = Issue.objects.filter(project=project)
         issues_to_do = issues.filter(status=0)
         issues_in_progress = issues.filter(status=1)
@@ -68,14 +69,14 @@ class ProjectDetailView(View):
     
 
 class CreateIssueView(View):
-    def get(self, request, project_id, *args, **kwargs):
-        project = get_object_or_404(Project, id=project_id)
+    def get(self, request, created_by, project_id, *args, **kwargs):
+        project = get_object_or_404(Project, id=project_id, created_by__username=created_by)
         form = IssueForm()
         return render(request, 'projects/create_issue.html', {'form': form, 'project': project})
     
-    def post(self, request, project_id, *args, **kwargs):
+    def post(self, request, created_by, project_id, *args, **kwargs):
         form = IssueForm(request.POST)
-        project = get_object_or_404(Project, id=project_id)
+        project = get_object_or_404(Project, id=project_id, created_by__username=created_by)
         if form.is_valid():
             issue = form.save(commit=False)
             issue.created_by = request.user
@@ -86,8 +87,10 @@ class CreateIssueView(View):
 
 
 class IssueDetailView(View):
-    def get(self, request, issue_id, *args, **kwargs):
-        issue = get_object_or_404(Issue, id=issue_id)
+    def get(self, request, created_by, project_id, issue_id, *args, **kwargs):
+        # issue = get_object_or_404(Issue, id=issue_id)
+        project = get_object_or_404(Project, id=project_id, created_by__username=created_by)
+        issue = project.issues.get(id=issue_id)
         comments = Comment.objects.filter(issue=issue)
         form = CommentForm()
         context = {
@@ -97,10 +100,12 @@ class IssueDetailView(View):
         }
         return render(request, 'projects/issue_detail.html', context)
 
-    def post(self, request, issue_id, *args, **kwargs):
+    def post(self, request, created_by, project_id, issue_id, *args, **kwargs):
         form = CommentForm(request.POST)
-        issue = get_object_or_404(Issue, id=issue_id)
-        project = get_object_or_404(Project, id=issue.project.id)
+        # issue = get_object_or_404(Issue, id=issue_id)
+        project = get_object_or_404(Project, id=project_id, created_by__username=created_by)
+        issue = project.issues.get(id=issue_id)
+        # project = get_object_or_404(Project, id=issue.project.id)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.created_by = request.user
@@ -111,9 +116,9 @@ class IssueDetailView(View):
 
 
 class IssueVotesView(View):
-    def post(self, request, issue_id, *args, **kwargs):
-        issue = get_object_or_404(Issue, id=issue_id)
-        project = get_object_or_404(Project, id=issue.project.id)
+    def post(self, request, created_by, project_id, issue_id, *args, **kwargs):
+        project = get_object_or_404(Project, id=project_id, created_by__username=created_by)
+        issue = project.issues.get(id=issue_id)
         if issue.votes.filter(id=request.user.id).exists():
             issue.votes.remove(request.user)
         else:
@@ -122,8 +127,8 @@ class IssueVotesView(View):
 
 
 class EditProjectView(View):
-    def get(self, request, project_id, *args, **kwargs):
-        project = get_object_or_404(Project, id=project_id)
+    def get(self, request, created_by, project_id, *args, **kwargs):
+        project = get_object_or_404(Project, id=project_id, created_by__username=created_by)
         if project.project_type == 0:
             form = PersonalProjectForm(instance=project)
         else:
@@ -131,8 +136,8 @@ class EditProjectView(View):
             
         return render(request, 'projects/edit_project.html', {'form': form, 'project': project})
     
-    def post(self, request, project_id, *args, **kwargs):
-        project = get_object_or_404(Project, id=project_id)
+    def post(self, request, created_by, project_id, *args, **kwargs):
+        project = get_object_or_404(Project, id=project_id, created_by__username=created_by)
         if project.project_type == 0:
             form = PersonalProjectForm(request.POST, instance=project)
         else:
@@ -144,13 +149,17 @@ class EditProjectView(View):
 
 
 class EditIssueView(View):
-    def get(self, request, issue_id, *args, **kwargs):
-        issue = get_object_or_404(Issue, id=issue_id)
+    def get(self, request, created_by, project_id, issue_id, *args, **kwargs):
+        # issue = get_object_or_404(Issue, id=issue_id)
+        project = get_object_or_404(Project, id=project_id, created_by__username=created_by)
+        issue = project.issues.get(id=issue_id)
         form = IssueForm(instance=issue)
         return render(request, 'projects/edit_issue.html', {'form': form, 'issue': issue})
     
-    def post(self, request, issue_id, *args, **kwargs):
-        issue = get_object_or_404(Issue, id=issue_id)
+    def post(self, request, created_by, project_id, issue_id, *args, **kwargs):
+        # issue = get_object_or_404(Issue, id=issue_id)
+        project = get_object_or_404(Project, id=project_id, created_by__username=created_by)
+        issue = project.issues.get(id=issue_id)
         form = IssueForm(request.POST, instance=issue)
         if form.is_valid():
             form.save()
