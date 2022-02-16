@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from .models import Issue, Comment, Project
 from .forms import PersonalProjectForm, TeamProjectForm, IssueForm, CommentForm
 
@@ -156,3 +156,14 @@ class EditIssueView(View):
             form.save()
             return HttpResponseRedirect(reverse('issue_detail', args=[issue.created_by, issue.project.id, issue.id]))
         return render(request, 'projects/edit_issue.html', {'form': form, 'issue': issue})
+    
+
+class UpdateIssueStatusAjaxView(View):
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            issue_id = request.POST.get('issue_id')
+            status = request.POST.get('issue_status')
+            issue = get_object_or_404(Issue, id=issue_id)
+            issue.status = status
+            issue.save()
+            return JsonResponse({'status': 'ok'})
