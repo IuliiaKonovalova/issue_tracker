@@ -8,7 +8,6 @@ from .forms import PersonalProjectForm, TeamProjectForm, IssueForm, CommentForm
 
 class ProjectsView(View):
     def get(self, request):
-        # chaeck if current user is in collaborators of the project
         projects = Project.objects.all()
         return render(request, 'projects/projects_list.html', {'projects': projects})
         
@@ -167,3 +166,26 @@ class UpdateIssueStatusAjaxView(View):
             issue.status = status
             issue.save()
             return JsonResponse({'status': 'ok'})
+        
+        
+class DeleteIssueView(View):
+    def get(self, request, issue_id, *args, **kwargs):
+        issue = get_object_or_404(Issue, id=issue_id)
+        project = get_object_or_404(Project, id=issue.project.id)
+        issue.delete()
+        return HttpResponseRedirect(reverse('project_detail', kwargs={'created_by': project.created_by,'pk': project.id}))
+    
+
+class DeleteProjectView(View):
+    def get(self, request, project_id, *args, **kwargs):
+        project = get_object_or_404(Project, id=project_id)
+        project.delete()
+        return HttpResponseRedirect(reverse('projects_list'))
+    
+
+class DeleteCommentView(View):
+    def get(self, request, comment_id, *args, **kwargs):
+        comment = get_object_or_404(Comment, id=comment_id)
+        issue = get_object_or_404(Issue, id=comment.issue.id)
+        comment.delete()
+        return HttpResponseRedirect(reverse('issue_detail', args=[issue.created_by, issue.project.id, issue.id]))
