@@ -316,11 +316,7 @@
           left: 20
         },
         zIndex: 100,
-    
-    
-        // appendTo: '.project__issue',
-        // width should be the same as at the start of the drag
-        // height should be the same as at the start of the drag
+
         start: function(event, ui) {
           ui.helper.width($(this).width());
           ui.helper.height($(this).height());
@@ -329,7 +325,6 @@
       $(sectionsToDrop).droppable({
         accept: '.issue__container',
         hoverClass: 'hovered',
-        // on drop need to make it transition smoothly
         
         drop: function(event, ui) {
           $(this).append(ui.draggable);

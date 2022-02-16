@@ -30,8 +30,10 @@ class IssueForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
-            'priority': forms.Select(attrs={'class': 'form-control'}),
-            'issue_type': forms.Select(attrs={'class': 'form-control'}),
+            # 'priority': forms.Select(attrs={'class': 'form-control'}),
+            'priority': forms.RadioSelect(attrs={'class': 'form-control'}),
+            # 'issue_type': forms.Select(attrs={'class': 'form-control'}),
+            'issue_type': forms.RadioSelect(attrs={'class': 'form-control'}),
             'assigned_to': forms.Select(attrs={'class': 'form-control'}),
         }
 
