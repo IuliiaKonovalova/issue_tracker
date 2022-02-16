@@ -21,11 +21,11 @@ class CreatePersonalProjectView(View):
         if form.is_valid():
             project = form.save(commit=False)
             project.created_by = request.user
-            project.save()
-            project.collaborators.add(request.user)
             project.status = 0
             project.project_type = 0
-            project.slug = project.title.replace(' ', '-').lower()
+            project.save()
+            project.collaborators.add(request.user)
+            # project.slug = project.title.replace(' ', '-').lower()
             project.save()
             return HttpResponseRedirect(reverse('projects_list'))
         return render(request, 'projects/create_project.html', {'form': form})
@@ -40,10 +40,10 @@ class CreateTeamProjectView(View):
             project = form.save(commit=False)
             project.project_type = 1
             project.created_by = request.user
-            project.save()
-            # project.collaborators.add(request.user)
             project.status = 0
-            project.slug = project.title.replace(' ', '-').lower()
+            # project.save()
+            # project.collaborators.add(request.user)
+            # project.slug = project.title.replace(' ', '-').lower()
             project.save()
             form.save_m2m()
             return HttpResponseRedirect(reverse('projects_list'))
@@ -179,12 +179,15 @@ class DeleteIssueView(View):
 class DeleteProjectView(View):
     def get(self, request, project_id, *args, **kwargs):
         project = get_object_or_404(Project, id=project_id)
-        return render(request, 'projects/delete_project.html', {'project': project})
+        if request.user == project.created_by:
+            return render(request, 'projects/delete_project.html', {'project': project})
+        else:
+            return HttpResponseRedirect(reverse('project_detail', kwargs={'created_by': project.created_by,'pk': project.id}))
     
     def post(self, request, project_id, *args, **kwargs):
         project = get_object_or_404(Project, id=project_id)
         project.delete()
-        return HttpResponseRedirect(reverse('project_detail', kwargs={'created_by': project.created_by,'pk': project.id}))
+        return HttpResponseRedirect(reverse('projects_list'))
     
 
 class DeleteCommentView(View):

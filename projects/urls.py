@@ -10,6 +10,7 @@ from .views import (
     EditProjectView,
     EditIssueView,
     UpdateIssueStatusAjaxView,
+    DeleteProjectView
 )
 
 urlpatterns = [
@@ -23,4 +24,5 @@ urlpatterns = [
     path('<slug:created_by>/<int:project_id>/edit/', EditProjectView.as_view(), name='edit_project'),
     path('<slug:created_by>/<int:project_id>/<int:issue_id>/edit/', EditIssueView.as_view(), name='edit_issue'),
     path('update_issue_status/', UpdateIssueStatusAjaxView.as_view(), name='update_issue_status'),
+    path('<slug:created_by>/<int:project_id>/delete/', DeleteProjectView.as_view(), name='delete_project'),
 ]
