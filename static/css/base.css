@@ -1559,6 +1559,27 @@ body {
   text-align: center;
 }
 
+/* Change Password */
+.password__edit--subtitle {
+  font-size: 1.5rem;
+}
+
+.password__change--form .asteriskField {
+  display: none;
+}
+
+.password__change--form input {
+  color: white;
+}
+
+.password__change--form input:focus {
+  outline: none;
+}
+
+.password__change--form ul {
+  display: none;
+}
+
 
 /* ----- Footer ----- */
 
