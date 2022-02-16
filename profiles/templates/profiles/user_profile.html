@@ -198,13 +198,16 @@
       </div>
     </section>
 
-
+    <h2 class="password__edit--title">Change password</h2>
+    <h3 class="password__edit--subtitle">(Fill out required fields)</h3>
     {% if password_form %}
-    <form method="post">
-      {{ password_form|crispy }}
-      {% csrf_token %}
-      <button type="submit">Change password</button>
-    </form>
+    <div class="password__change">
+      <form method="post" class="password__change--form">
+        {{ password_form|crispy }}
+        {% csrf_token %}
+        <button type="submit">Change password</button>
+      </form>
+    </div>
   </div>
   {% endif %}
 

@@ -287,7 +287,8 @@ body {
 .project__new,
 .issue__new,
 .issue__previous,
-.project__previous {
+.project__previous,
+.password__change {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -372,7 +373,9 @@ body {
 .issue__previous button,
 .issue__previous input[type='submit'],
 .project__previous button,
-.project__previous input[type='submit'] {
+.project__previous input[type='submit'],
+.password__change button,
+.password__change input[type='submit'] {
   background-color: var(--clr-accent--800);
   color: var(--clr-neutral--100);
   font-size: 1.2rem;
@@ -404,7 +407,8 @@ body {
 .project__new button:hover,
 .issue__new button:hover,
 .issue__previous button:hover,
-.project__previous button:hover {
+.project__previous button:hover,
+.password__change button:hover {
   color: #fff;
   background-color: var(--clr-accent--700);
   border-color: var(--clr-primary--300);
@@ -613,7 +617,8 @@ body {
 .issue__title--main,
 .issue__new--title,
 .issue__edit--title,
-.project__edit--title {
+.project__edit--title,
+.password__edit--title {
   max-width: 35rem;
   margin: 0 auto;
   text-align: center;
@@ -627,7 +632,8 @@ body {
 .project__new--form,
 .issue__new--form,
 .issue__previous--form,
-.project__previous--form {
+.project__previous--form,
+.password__change--form {
   max-width: 80rem;
   margin: 5em auto;
   margin-top: 3em;
@@ -691,7 +697,8 @@ body {
 .project__new input,
 .issue__new input,
 .issue__previous input,
-.project__previous input {
+.project__previous input,
+.password__change input {
   border: none;
   border-radius: var(--br);
   padding: 1em 1.2em;
@@ -1552,6 +1559,27 @@ body {
   text-align: center;
 }
 
+/* Change Password */
+.password__edit--subtitle {
+  font-size: 1.5rem;
+}
+
+.password__change--form .asteriskField {
+  display: none;
+}
+
+.password__change--form input {
+  color: white;
+}
+
+.password__change--form input:focus {
+  outline: none;
+}
+
+.password__change--form ul {
+  display: none;
+}
+
 
 /* ----- Footer ----- */
 
@@ -1599,4 +1627,100 @@ body {
 
 .contributor__link a i:hover {
   color: var(--clr-accent--300);
+}
+
+@media all and (max-width: 50em) {
+  .account {
+    margin: 2em auto;
+    padding: 2em;
+  }
+
+  .account__title {
+    font-size: 1.7rem;
+  }
+
+  .account p {
+    margin: 1em auto;
+  }
+
+  .account input {
+    min-width: 15rem;
+  }
+
+  .project__new--form,
+  .issue__new--form,
+  .issue__previous--form,
+  .project__previous--form,
+  .password__change--form {
+    margin: 2em auto;
+    padding: 2em;
+  }
+
+  .project__new label[for='id_title']~div::before,
+  .project__new label[for='id_description']~div::before,
+  .project__new label[for='id_collaborators']~div::before,
+  .issue__new label[for='id_title']~div::before,
+  .issue__new label[for='id_description']~div::before,
+  .issue__previous label[for='id_title']~div::before,
+  .issue__previous label[for='id_description']~div::before,
+  .project__previous label[for='id_title']~div::before,
+  .project__previous label[for='id_description']~div::before,
+  .project__previous label[for='id_collaborators']~div::before {
+    font-size: 1.2rem;
+  }
+
+  .project__new input,
+  .issue__new input,
+  .issue__previous input,
+  .project__previous input,
+  .password__change input {
+    width: 20rem;
+    margin: 1em 0 1em 0;
+  }
+
+  .project__new .textarea,
+  .issue__new .textarea,
+  .issue__previous .textarea,
+  .project__previous .textarea {
+    width: 20rem;
+    margin: 1em 0 1em 0;
+    font-size: 1rem;
+  }
+
+  .account button,
+  .account input[type='submit'],
+  .project__new button,
+  .project__new input[type='submit'],
+  .issue__new button,
+  .issue__new input[type='submit'],
+  .issue__previous button,
+  .issue__previous input[type='submit'],
+  .project__previous button,
+  .project__previous input[type='submit'],
+  .password__change button,
+  .password__change input[type='submit'] {
+    font-size: 1.2rem;
+    padding: 0.5em 1.7em 0.58em 1.7em;
+    margin: 1em auto;
+  }
+
+  .contributor {
+    margin: 0 2em;
+  }
+}
+
+
+@media all and (max-width: 30em) {
+  .bg {
+    height: 40rem;
+  }
+
+  .incentive__title {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+
+  .incentive__buttons {
+    flex-direction: column;
+  }
 }
