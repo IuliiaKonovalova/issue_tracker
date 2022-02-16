@@ -19,13 +19,19 @@
   <h2 class="project__title">{{ project.title }}</h2>
   {% if user.id == project.created_by.id or user in project.collaborators.all %}
   <section class="project__header">
-    <a href="{% url 'edit_project' created_by=project.created_by project_id=project.id %}"
-      class="project__edit btn__project--edit">
-      Edit
-      <i class="fas fa-edit"></i>
-    </a>
+    <div class="project__edit">
+      <a href="{% url 'edit_project' created_by=project.created_by project_id=project.id %}"
+        class=" btn__project--edit">
+        Edit
+        <i class="fas fa-edit"></i>
+      </a>
+      <a href="#" class="btn__project--delete">
+        Delete
+        <i class="fas fa-trash-alt"></i>
+      </a>
+    </div>
     <h3 class="project__header--descriptions project__header--first">
-      <span>Descriptions: </span>
+      <span>Description: </span>
       {{ project.description }}
     </h3>
     <h3 class="project__header--descriptions">
@@ -59,7 +65,7 @@
           <div class="project__issue" data-issue-status=0>
             {% for issue_to_do in issues_to_do %}
             <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_to_do.id %}"
-              class="issue__container" data-issue-id="{{ issue_to_do.id }}" >
+              class="issue__container" data-issue-id="{{ issue_to_do.id }}">
               <div class="issue">
                 <div class="issue__content">
                   {% if issue_to_do.priority == 0 %}
@@ -301,49 +307,49 @@
   {% endif %}
 </div>
 
-  
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-    <script>
-      let issues_container = $('.project__issues--main');
-      let sectionsToDrop = $('.project__issue')
-      $('.issue__container', issues_container).draggable({
-        revert: 'invalid',
-        helper: 'clone',
-        cursor: 'move',
-        cursorAt: {
-          top: 20,
-          left: 20
-        },
-        zIndex: 100,
 
-        start: function(event, ui) {
-          ui.helper.width($(this).width());
-          ui.helper.height($(this).height());
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script>
+  let issues_container = $('.project__issues--main');
+  let sectionsToDrop = $('.project__issue')
+  $('.issue__container', issues_container).draggable({
+    revert: 'invalid',
+    helper: 'clone',
+    cursor: 'move',
+    cursorAt: {
+      top: 20,
+      left: 20
+    },
+    zIndex: 100,
+
+    start: function (event, ui) {
+      ui.helper.width($(this).width());
+      ui.helper.height($(this).height());
+    }
+  });
+  $(sectionsToDrop).droppable({
+    accept: '.issue__container',
+    hoverClass: 'hovered',
+
+    drop: function (event, ui) {
+      $(this).append(ui.draggable);
+      let issue_id = ui.draggable.attr('data-issue-id');
+      let issue_status = $(this).attr('data-issue-status');
+      let url = '{% url "update_issue_status" %}'
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data: {
+          issue_id: issue_id,
+          issue_status: issue_status,
+          csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+        success: function (data) {
+          console.log(data);
         }
       });
-      $(sectionsToDrop).droppable({
-        accept: '.issue__container',
-        hoverClass: 'hovered',
-        
-        drop: function(event, ui) {
-          $(this).append(ui.draggable);
-          let issue_id = ui.draggable.attr('data-issue-id');
-          let issue_status = $(this).attr('data-issue-status');
-          let url = '{% url "update_issue_status" %}'
-          $.ajax({
-            url: url,
-            type: 'POST',
-            data: {
-              issue_id: issue_id,
-              issue_status: issue_status,
-              csrfmiddlewaretoken: '{{ csrf_token }}'
-            },
-            success: function(data) {
-              console.log(data);
-            }
-          });
-        }
-      });
-    </script>
+    }
+  });
+</script>
 {% endblock %}
