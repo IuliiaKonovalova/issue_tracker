@@ -499,8 +499,6 @@ body {
   -webkit-box-orient: vertical;
 }
 
-.projects__item--description {}
-
 .project__item--title {
   font-size: 1.95rem;
   font-weight: 900;
@@ -813,11 +811,11 @@ body {
 
 .project__header {
   position: relative;
-  font-size: 1.3rem;
-  padding: 4em 2em;
+  font-size: 1.5rem;
+  padding: 2em;
 }
 
-.project__header>h3:first-child,
+.project__header>p:first-child,
 .profile__header>h3:first-child {
   margin-bottom: 1.2em;
 }
@@ -830,7 +828,14 @@ body {
   text-transform: capitalize;
 }
 
-.project__header--first {
+.project__header>p {
+  padding-top: 0.5em;
+  padding-left: 2em;
+  max-width: 80%;
+  color: rgba(255, 255, 255, 0.808);
+}
+
+.project__header--about {
   margin-bottom: 1em;
 }
 
@@ -1217,7 +1222,7 @@ body {
 .profile__edit {
   position: absolute;
   right: 2rem;
-  top: 2rem;
+  top: 1.8rem;
   display: flex;
   align-items: center;
 }
@@ -1670,7 +1675,7 @@ body {
     margin-bottom: 1em;
   }
 
-  .project__header,
+
   .profile__header,
   .profile__statistics,
   .profile__projects,
@@ -1868,6 +1873,16 @@ body {
 
   .contributor:first-child {
     margin-bottom: 3.5em;
+  }
+
+  .project__header {
+    position: relative;
+    font-size: 1.5rem;
+    padding: 4em 2em;
+  }
+
+  .project__header>p {
+    max-width: unset;
   }
 }
 

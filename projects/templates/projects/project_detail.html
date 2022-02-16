@@ -30,12 +30,16 @@
         <i class="fas fa-trash-alt"></i>
       </a>
     </div>
-    <h3 class="project__header--descriptions project__header--first">
-      <span>Description: </span>
-      {{ project.description }}
-    </h3>
     <h3 class="project__header--descriptions">
+      <span>Description: </span>
+    </h3>
+    <p class="project__header--about">
+      {{ project.description }}
+    </p>
+    <h3>
       <span>Collaborators: </span>
+    </h3>
+    <p>
       {% if project.project_type == 0 %}
       {{ project.created_by }}
       {% else %}
@@ -45,7 +49,7 @@
       </a>
       {% endfor %}
       {% endif %}
-    </h3>
+    </p>
   </section>
   <section class="project__issues">
     <h3 class="project__issues--title">
