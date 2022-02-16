@@ -287,7 +287,8 @@ body {
 .project__new,
 .issue__new,
 .issue__previous,
-.project__previous {
+.project__previous,
+.password__change {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -372,7 +373,9 @@ body {
 .issue__previous button,
 .issue__previous input[type='submit'],
 .project__previous button,
-.project__previous input[type='submit'] {
+.project__previous input[type='submit'],
+.password__change button,
+.password__change input[type='submit'] {
   background-color: var(--clr-accent--800);
   color: var(--clr-neutral--100);
   font-size: 1.2rem;
@@ -404,7 +407,8 @@ body {
 .project__new button:hover,
 .issue__new button:hover,
 .issue__previous button:hover,
-.project__previous button:hover {
+.project__previous button:hover,
+.password__change button:hover {
   color: #fff;
   background-color: var(--clr-accent--700);
   border-color: var(--clr-primary--300);
@@ -613,7 +617,8 @@ body {
 .issue__title--main,
 .issue__new--title,
 .issue__edit--title,
-.project__edit--title {
+.project__edit--title,
+.password__edit--title {
   max-width: 35rem;
   margin: 0 auto;
   text-align: center;
@@ -627,7 +632,8 @@ body {
 .project__new--form,
 .issue__new--form,
 .issue__previous--form,
-.project__previous--form {
+.project__previous--form,
+.password__change--form {
   max-width: 80rem;
   margin: 5em auto;
   margin-top: 3em;
@@ -691,7 +697,8 @@ body {
 .project__new input,
 .issue__new input,
 .issue__previous input,
-.project__previous input {
+.project__previous input,
+.password__change input {
   border: none;
   border-radius: var(--br);
   padding: 1em 1.2em;
