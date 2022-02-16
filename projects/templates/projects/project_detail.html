@@ -59,7 +59,7 @@
           <div class="project__issue">
             {% for issue_to_do in issues_to_do %}
             <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_to_do.id %}"
-              class="issue__container">
+              class="issue__container" data-issue-id="{{ issue_to_do.id }}" >
               <div class="issue">
                 <div class="issue__content">
                   {% if issue_to_do.priority == 0 %}
@@ -138,7 +138,7 @@
           <div class="project__issue">
             {% for issue_in_progress in issues_in_progress %}
             <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_in_progress.id %}"
-              class="issue__container">
+              class="issue__container" data-issue-id="{{ issue_in_progress.id }}">
               <div class="issue">
                 <div class="issue__content">
                   {% if issue_in_progress.priority == 0 %}
@@ -218,7 +218,7 @@
           <div class="project__issue">
             {% for issue_done in issues_done %}
             <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_done.id %}"
-              class="issue__container">
+              class="issue__container" data-issue-id="{{ issue_done.id }}">
               <div class="issue">
                 <div class="issue__content">
                   {% if issue_done.priority == 0 %}
