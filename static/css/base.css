@@ -258,6 +258,7 @@ body {
   font-size: 2rem;
   letter-spacing: 0.15rem;
   padding-bottom: 2em;
+  text-align: center;
 }
 
 .benefits {
@@ -280,6 +281,7 @@ body {
 .benefit__content {
   font-size: 1.5rem;
   padding-bottom: 2em;
+  margin: 0 2em;
 }
 
 /* ----- Forms ----- */
@@ -1704,8 +1706,40 @@ body {
     margin: 1em auto;
   }
 
-  .contributor {
-    margin: 0 2em;
+  .bg {
+    height: 50rem;
+    background-position: center center;
+  }
+
+  .incentive__title {
+    max-width: 35rem;
+    font-size: 2.7rem;
+    letter-spacing: 0.1rem;
+    line-height: 3.5rem;
+  }
+
+  .incentive__button {
+    width: 10rem;
+    padding-top: 0.5em;
+    padding-bottom: 0.6em;
+    margin: 0.5em;
+  }
+
+  .incentive__button a {
+    color: var(--clr-neutral--100);
+    font-size: 1.2rem;
+  }
+
+  .benefits {
+    flex-direction: column;
+  }
+
+  .footer__content {
+    flex-direction: column;
+  }
+
+  .contributor:first-child {
+    margin-bottom: 3.5em;
   }
 }
 
