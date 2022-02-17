@@ -671,8 +671,77 @@ body {
 .issue__previous #div_id_issue_type label.requiredField,
 .project__previous label[for='id_title'],
 .project__previous label[for='id_description'],
-.project__previous label[for='id_collaborators'] {
+.project__previous #div_id_collaborators label.requiredField {
   display: none;
+}
+
+/* Forms Select */
+select#select2-data-id_collaborators {
+  background-color: #202a3c;
+}
+
+.select2-container--default .select2-selection--single {
+  margin-top: 1.3em;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.select2-selection__arrow {
+  margin-top: 1.3em;
+}
+
+.select2-container--default .select2-search--inline .select2-search__field {
+  color: white;
+  padding: 2em;
+}
+
+.project__previous--form .select2-container--default .select2-selection--multiple,
+.project__new--form .select2-container--default .select2-selection--multiple,
+.issue__new--form .select2-container--default .select2-selection--multiple,
+.issue__previous--form .select2-container--default .select2-selection--multiple {
+  background-color: var(--clr-primary--500);
+  border: none;
+  border-radius: 4px;
+  cursor: text;
+  padding: 0.2em;
+  padding-bottom: 0.4em;
+  position: relative;
+  color: white;
+  width: 35rem;
+  margin-top: 1.5em;
+}
+
+.select2-results__options {
+  cursor: pointer;
+  padding: 0.3em;
+  background-color: var(--clr-primary--500);
+  border: none;
+}
+
+.select2-selection__choice {
+  background-color: red;
+}
+
+button.select2-selection__choice__remove {
+  margin: unset;
+  border: none;
+  background-color: #040911;
+}
+
+.select2-selection__choice__display {
+  color: #040911;
+  padding: 1em;
+  border: none;
+  margin: 1em;
+}
+
+.select2-results__option.select2-results__option--selectable.select2-results__option--selected.select2-results__option--highlighted {
+  background-color: #193d81;
+}
+
+.select2-results__option.select2-results__option--selectable.select2-results__option--selected {
+  background-color: #193d81;
 }
 
 .project__new label[for='id_title']~div::before,
@@ -1872,6 +1941,11 @@ body {
     font-size: 1rem;
   }
 
+  .project__previous--form .select2-container--default .select2-selection--multiple,
+  .project__new--form .select2-container--default .select2-selection--multiple {
+    width: 20rem;
+  }
+
   .account button,
   .account input[type='submit'],
   .project__new button,
@@ -1887,6 +1961,12 @@ body {
     font-size: 1.2rem;
     padding: 0.5em 1.7em 0.58em 1.7em;
     margin: 1em auto;
+  }
+
+  button.select2-selection__choice__remove {
+    margin: unset;
+    border: none;
+    background-color: #040911;
   }
 
   /* Home page */
@@ -1975,5 +2055,37 @@ body {
   .profile__issues--column {
     padding: 0.5em 0.3em;
     font-size: 1rem;
+  }
+
+  .project__new input,
+  .issue__new input,
+  .issue__previous input,
+  .project__previous input,
+  .password__change input {
+    width: 15rem;
+    margin: 0.5em 0 0.5em 0;
+  }
+
+  .project__new .textarea,
+  .issue__new .textarea,
+  .issue__previous .textarea,
+  .project__previous .textarea {
+    width: 15rem;
+    margin: 0.5em 0.5em 0;
+    font-size: 1rem;
+  }
+
+  .project__previous--form .select2-container--default .select2-selection--multiple,
+  .project__new--form .select2-container--default .select2-selection--multiple {
+    width: 15rem;
+  }
+
+  .project__new--form,
+  .issue__new--form,
+  .issue__previous--form,
+  .project__previous--form,
+  .password__change--form {
+    margin: 1em auto;
+    padding: 0.5em;
   }
 }
