@@ -9,8 +9,10 @@ from django.contrib.auth.models import User
 
 class ProjectsView(View):
     def get(self, request):
-        projects = Project.objects.all()
-        return render(request, 'projects/projects_list.html', {'projects': projects})
+        users_projects = Project.objects.filter(created_by=request.user)
+        # projects not created by user but where user in in collaborators
+        collab_projects = request.user.collaborated_projects.all().exclude(created_by=request.user)
+        return render(request, 'projects/projects_list.html', {'users_projects': users_projects, 'collab_projects': collab_projects})
         
         
 class CreatePersonalProjectView(View):
@@ -165,7 +167,7 @@ class EditIssueView(View):
             form.save()
             return HttpResponseRedirect(reverse('issue_detail', args=[issue.created_by, issue.project.id, issue.id]))
         return render(request, 'projects/edit_issue.html', {'form': form, 'issue': issue})
-    
+
 
 class UpdateIssueStatusAjaxView(View):
     def post(self, request, *args, **kwargs):
@@ -178,12 +180,25 @@ class UpdateIssueStatusAjaxView(View):
             return JsonResponse({'status': 'ok'})
         
         
+class UpdateCommentAjaxView(View):
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            comment_id = request.POST.get('comment_id')
+            comment_text = request.POST.get('comment_body')
+            comment = get_object_or_404(Comment, id=comment_id)
+            comment.comment_body = comment_text
+            comment.save()
+            return JsonResponse({'status': 'ok'})
+        
+        
 class DeleteIssueView(View):
-    def get(self, request, issue_id, *args, **kwargs):
-        issue = get_object_or_404(Issue, id=issue_id)
-        project = get_object_or_404(Project, id=issue.project.id)
-        issue.delete()
-        return HttpResponseRedirect(reverse('project_detail', kwargs={'created_by': project.created_by,'pk': project.id}))
+    def get(self, request, created_by, project_id, issue_id, *args, **kwargs):
+        project = get_object_or_404(Project, id=project_id, created_by__username=created_by)
+        issue = project.issues.get(id=issue_id)
+        if issue.created_by == request.user or project.created_by == request.user:
+            issue.delete()
+            return HttpResponseRedirect(reverse('project_detail', kwargs={'created_by': project.created_by,'pk': project.id}))
+        return HttpResponseRedirect(reverse('issue_detail', args=[project.created_by, issue.project.id, issue.id]))
     
 
 class DeleteProjectView(View):

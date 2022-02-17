@@ -34,8 +34,7 @@
 
         </div>
       </li>
-      {% for project in projects %}
-      {% if project.created_by.id == user.id %}
+      {% for project in users_projects %}
       {% if project.project_type == 0 %}
       <!-- Personal projects -->
       <li class="projects__item">
@@ -81,7 +80,6 @@
         <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="projects__link">Open</a>
       </li>
       {% endif %}
-      {% endif %}
       {% endfor %}
     </ul>
   </div>
@@ -89,9 +87,8 @@
   <div class="projects__group">
     <h3 class="projects__subtitle">Other projects:</h3>
     <ul class="projects__list">
-      {% for project in projects %}
+      {% for project in collab_projects %}
 
-      {% if project.created_by.id != user.id and user in project.collaborators.all %}
       <li class="projects__item">
         <div class="project__icon">
           <i class="fas fa-users"></i>
@@ -113,7 +110,6 @@
         </div>
         <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="projects__link">Open</a>
       </li>
-      {% endif %}
       {% endfor %}
     </ul>
   </div>
