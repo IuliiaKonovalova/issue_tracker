@@ -23,7 +23,7 @@
       Edit
       <i class="fas fa-edit"></i>
     </a>
-    <a href="#" class="btn__issue--delete">
+    <a href="{% url 'delete_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}" class="btn__issue--delete">
       Delete
       <i class="fas fa-trash-alt"></i>
     </a>

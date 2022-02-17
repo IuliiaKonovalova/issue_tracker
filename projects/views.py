@@ -179,11 +179,13 @@ class UpdateIssueStatusAjaxView(View):
         
         
 class DeleteIssueView(View):
-    def get(self, request, issue_id, *args, **kwargs):
-        issue = get_object_or_404(Issue, id=issue_id)
-        project = get_object_or_404(Project, id=issue.project.id)
-        issue.delete()
-        return HttpResponseRedirect(reverse('project_detail', kwargs={'created_by': project.created_by,'pk': project.id}))
+    def get(self, request, created_by, project_id, issue_id, *args, **kwargs):
+        project = get_object_or_404(Project, id=project_id, created_by__username=created_by)
+        issue = project.issues.get(id=issue_id)
+        if issue.created_by == request.user or project.created_by == request.user:
+            issue.delete()
+            return HttpResponseRedirect(reverse('project_detail', kwargs={'created_by': project.created_by,'pk': project.id}))
+        return HttpResponseRedirect(reverse('issue_detail', args=[project.created_by, issue.project.id, issue.id]))
     
 
 class DeleteProjectView(View):
