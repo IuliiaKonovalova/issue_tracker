@@ -165,7 +165,7 @@ class EditIssueView(View):
             form.save()
             return HttpResponseRedirect(reverse('issue_detail', args=[issue.created_by, issue.project.id, issue.id]))
         return render(request, 'projects/edit_issue.html', {'form': form, 'issue': issue})
-    
+
 
 class UpdateIssueStatusAjaxView(View):
     def post(self, request, *args, **kwargs):
@@ -175,6 +175,17 @@ class UpdateIssueStatusAjaxView(View):
             issue = get_object_or_404(Issue, id=issue_id)
             issue.status = status
             issue.save()
+            return JsonResponse({'status': 'ok'})
+        
+        
+class UpdateCommentAjaxView(View):
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            comment_id = request.POST.get('comment_id')
+            comment_text = request.POST.get('comment_body')
+            comment = get_object_or_404(Comment, id=comment_id)
+            comment.comment_body = comment_text
+            comment.save()
             return JsonResponse({'status': 'ok'})
         
         
