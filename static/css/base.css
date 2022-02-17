@@ -1027,9 +1027,11 @@ button.select2-selection__choice__remove {
 .btn__project--edit,
 .btn__profile--edit,
 .btn__project--delete,
-.btn__issue--delete {
+.btn__issue--delete,
+.btn__comment--delete {
   padding: 0.4em 1em 0.5em 1em;
   background-color: var(--clr-accent--800);
+  border: 1px solid var(--clr-accent--800);
   border-radius: var(--br);
   font-weight: 900;
   color: white;
@@ -1039,13 +1041,16 @@ button.select2-selection__choice__remove {
 }
 
 .btn__project--delete,
-.btn__issue--delete {
+.btn__issue--delete,
+.btn__comment--delete {
   background-color: #2c3b55;
+  border: 1px solid #2c3b55;
   margin-left: 0.5em;
 }
 
 .btn__project--delete:hover,
-.btn__issue--delete:hover {
+.btn__issue--delete:hover,
+.btn__comment--delete:hover {
   background-color: #263041;
 }
 
@@ -1478,6 +1483,7 @@ button.select2-selection__choice__remove {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.1em;
+  position: relative;
 }
 
 .issue__comment--name {
@@ -1486,14 +1492,24 @@ button.select2-selection__choice__remove {
   font-weight: 900;
 }
 
-.btn__comment--edit {
+.issue__comment--edit {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+}
+
+.btn__comment--edit,
+.btn__comment--delete {
   padding: 0.15em 0.7em 0.2em 0.77em;
   display: flex;
   align-items: center;
   border-radius: 0.3em;
 }
 
-.btn__comment--edit i {
+.btn__comment--edit i,
+.btn__comment--delete i {
   margin-left: 0.9em;
   font-size: 0.8rem;
 }

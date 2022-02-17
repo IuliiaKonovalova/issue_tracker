@@ -23,7 +23,8 @@
       Edit
       <i class="fas fa-edit"></i>
     </a>
-    <a href="{% url 'delete_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}" class="btn__issue--delete">
+    <a href="{% url 'delete_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}"
+      class="btn__issue--delete">
       Delete
       <i class="fas fa-trash-alt"></i>
     </a>
@@ -157,10 +158,14 @@
         </a>
         {% if comment.created_by == user %}
         <div class="issue__comment--edit">
-          <div href="" class=" btn__comment--edit" data-comment-target='{{ comment.id }}'>
+          <button class=" btn__comment--edit" data-comment-target='{{ comment.id }}'>
             Edit
             <i class="fas fa-edit"></i>
-          </div>
+          </button>
+          <button class="btn__comment--delete">
+            Delete
+            <i class="fas fa-trash-alt"></i>
+          </button>
         </div>
         {% endif %}
       </div>
@@ -189,8 +194,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script>
-  $(document).ready(function() {
-    $('.btn__comment--edit').click(function() {
+  $(document).ready(function () {
+    $('.btn__comment--edit').click(function () {
       $('.btn__comment--edit').hide();
       let url = '{% url "update_comment" %}'
       let comment_id = $(this).attr('data-comment-target');
@@ -202,10 +207,10 @@
         <textarea class="comment__textarea">${comment_text}</textarea>
         <button class="btn__comment--save" type="submit">Save</button>`);
 
-      $('.btn__comment--save').click(function() {
+      $('.btn__comment--save').click(function () {
         let comment_body = $('.comment__textarea').val();
         $('.comment__textarea').val() == '';
-        
+
         $.ajax({
           url: url,
           type: 'POST',
@@ -214,7 +219,7 @@
             comment_body: comment_body,
             csrfmiddlewaretoken: '{{ csrf_token }}'
           },
-          success: function(data) {
+          success: function (data) {
             comment.html(`${comment_body}`);
             $('.btn__comment--edit').show();
 
