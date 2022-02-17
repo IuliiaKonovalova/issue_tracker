@@ -1027,11 +1027,15 @@ button.select2-selection__choice__remove {
 .btn__project--edit,
 .btn__profile--edit,
 .btn__project--delete,
-.btn__issue--delete {
-  padding: 0.4em 1em 0.5em 1em;
+.btn__issue--delete,
+.btn__comment--delete {
+  padding: 0.4em 1em 0.4em 1em;
   background-color: var(--clr-accent--800);
+  border: 1px solid var(--clr-accent--800);
   border-radius: var(--br);
   font-weight: 900;
+  display: flex;
+  align-items: center;
   color: white;
   text-transform: lowercase;
   font-size: 1.1rem;
@@ -1039,13 +1043,16 @@ button.select2-selection__choice__remove {
 }
 
 .btn__project--delete,
-.btn__issue--delete {
+.btn__issue--delete,
+.btn__comment--delete {
   background-color: #2c3b55;
+  border: 1px solid #2c3b55;
   margin-left: 0.5em;
 }
 
 .btn__project--delete:hover,
-.btn__issue--delete:hover {
+.btn__issue--delete:hover,
+.btn__comment--delete:hover {
   background-color: #263041;
 }
 
@@ -1269,6 +1276,7 @@ button.select2-selection__choice__remove {
 .project__issue .issue__assignee {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.808);
+  margin-right: 1em;
 }
 
 .project__issue .issue__assignee span {
@@ -1341,7 +1349,7 @@ button.select2-selection__choice__remove {
   align-items: center;
 }
 
-.issue__edit i,
+.btn__icon,
 .project__edit i,
 .profile__edit i {
   margin-left: 0.5em;
@@ -1401,7 +1409,7 @@ button.select2-selection__choice__remove {
 }
 
 .issue__content--main {
-  margin: 1em 0 1em 0;
+  margin: 1em 0;
   font-size: 1.5rem;
 }
 
@@ -1478,6 +1486,7 @@ button.select2-selection__choice__remove {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.1em;
+  position: relative;
 }
 
 .issue__comment--name {
@@ -1486,16 +1495,20 @@ button.select2-selection__choice__remove {
   font-weight: 900;
 }
 
-.btn__comment--edit {
+.issue__comment--edit {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+}
+
+.btn__comment--edit,
+.btn__comment--delete {
   padding: 0.15em 0.7em 0.2em 0.77em;
   display: flex;
   align-items: center;
   border-radius: 0.3em;
-}
-
-.btn__comment--edit i {
-  margin-left: 0.9em;
-  font-size: 0.8rem;
 }
 
 .issue__comment--subheader {
@@ -1517,6 +1530,41 @@ button.select2-selection__choice__remove {
   display: flex;
   font-size: 1.3rem;
   margin-bottom: 0.6em;
+  position: relative;
+}
+
+.issue__comment--content .comment__textarea {
+  width: 100%;
+  height: 6rem;
+  border: none;
+  outline: none;
+  resize: vertical;
+  font-size: 1.2rem;
+  padding: 0.8em;
+  background-color: var(--clr-primary--500);
+  color: white;
+  border-radius: var(--br);
+  margin-bottom: 2em;
+}
+
+.btn__comment--save {
+  position: absolute;
+  bottom: -0.5rem;
+  right: 0.5rem;
+  padding: 0.2em 1em 0.2em 1em;
+  background-color: var(--clr-accent--800);
+  border-radius: var(--br);
+  border: 1px solid var(--clr-accent--800);
+  font-weight: 900;
+  color: white;
+  text-transform: lowercase;
+  font-size: 1.1rem;
+  transition: background-color 150ms ease-in-out;
+}
+
+.btn__comment--save:hover {
+  background-color: var(--clr-accent--700);
+  margin-left: 0.5em;
 }
 
 /* Add comment */
@@ -1875,9 +1923,15 @@ button.select2-selection__choice__remove {
   }
 
   .profile__edit i,
-  .issue__edit i {
+  .btn__icon {
     font-size: 0.9rem;
-    margin-left: 0.2em;
+    margin-left: 0.3em;
+  }
+
+  /* Project Page */
+
+  .project__issues--main {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -2017,16 +2071,73 @@ button.select2-selection__choice__remove {
   }
 
   /* Issue Details */
-  .issue__priority--container,
-  .issue__type--container {
-    flex-direction: column;
-    align-items: start;
+  .issue__details {
+    margin: 1em 0;
+    padding: 1em;
   }
 
-  .issue__priority--content,
-  .issue__type--content {
-    margin-top: 0.5em;
-    margin-left: 0;
+  .issue__title--main {
+    font-size: 1.5rem
+  }
+
+  .issue__title--main span {
+    font-size: 1.2rem;
+  }
+
+  .issue__details--main {
+    padding: 0.9em;
+    width: 95%;
+  }
+
+  .issue__marks {
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 2em;
+  }
+
+  .issue__priority--container,
+  .issue__type--container {
+    margin-bottom: 1em;
+  }
+
+  .issue__content--main {
+    margin: 0.5em 0;
+    font-size: 1.3rem;
+  }
+
+  .issue__details--comments {
+    width: 95%;
+  }
+
+  .btn__issue--back {
+    top: 1rem;
+  }
+
+  .issue__edit,
+  .project__edit,
+  .profile__edit {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .issue__comment--edit button .btn__text--hidden {
+    display: none;
+  }
+
+  .project__edit a .btn__text--hidden {
+    display: none;
+  }
+
+  .project__edit a .btn__icon {
+    margin: 0 0.3em;
+  }
+
+  .project__header>p {
+    width: 100%;
+    padding-left: 0;
   }
 }
 
@@ -2088,4 +2199,22 @@ button.select2-selection__choice__remove {
     margin: 1em auto;
     padding: 0.5em;
   }
+
+  .btn__text--hidden {
+    display: none;
+  }
+
+  .btn__icon {
+    margin-right: 0.3em;
+  }
+
+  /* Project Page */
+  .project__issues {
+    padding: 1em;
+  }
+
+  .project__issues--main {
+    padding: 0.5em;
+  }
+
 }
