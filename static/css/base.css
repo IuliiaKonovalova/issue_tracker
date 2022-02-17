@@ -833,7 +833,6 @@ button.select2-selection__choice__remove {
   color: var(--clr-neutral--100);
   font-size: 1.3rem;
   letter-spacing: 0.13rem;
-  font-weight: 600;
 }
 
 .project__new input[type='text']:placeholder-shown,
@@ -841,7 +840,6 @@ button.select2-selection__choice__remove {
 .issue__previous input[type='text']:placeholder-shown,
 .project__previous input[type='text']:placeholder-shown {
   color: var(--clr-neutral--100);
-  font-weight: 600;
   font-size: 1.3rem;
 }
 
@@ -850,7 +848,6 @@ button.select2-selection__choice__remove {
 .issue__previous input[type='text']:not(:placeholder-shown),
 .project__previous input[type='text']:not(:placeholder-shown) {
   color: var(--clr-neutral--100);
-  font-weight: 600;
   font-size: 1.3rem;
   letter-spacing: 0.13rem;
 }
@@ -870,6 +867,7 @@ button.select2-selection__choice__remove {
   font-size: 1.3rem;
   resize: vertical;
   min-height: 10rem;
+  font-weight: 100;
 }
 
 /* ----- Project Details ----- */
@@ -1817,7 +1815,6 @@ button.select2-selection__choice__remove {
   .project__new--title,
   .project__title,
   .profile__title,
-
   .issue__new--title,
   .issue__edit--title,
   .project__edit--title,
@@ -1938,6 +1935,16 @@ button.select2-selection__choice__remove {
 @media all and (max-width: 50em) {
 
   /* Forms */
+  .project__new--title,
+  .project__title,
+  .profile__title,
+  .issue__new--title,
+  .issue__edit--title,
+  .project__edit--title,
+  .password__edit--title {
+    font-size: 1.7rem;
+  }
+
   .account {
     margin: 2em auto;
     padding: 2em;
@@ -1984,6 +1991,7 @@ button.select2-selection__choice__remove {
   .password__change input {
     width: 20rem;
     margin: 1em 0 1em 0;
+    padding: 0.5em 0.7em;
   }
 
   .project__new .textarea,
@@ -1998,6 +2006,7 @@ button.select2-selection__choice__remove {
   .project__previous--form .select2-container--default .select2-selection--multiple,
   .project__new--form .select2-container--default .select2-selection--multiple {
     width: 20rem;
+    margin-top: 1em;
   }
 
   .account button,
@@ -2173,7 +2182,7 @@ button.select2-selection__choice__remove {
   .issue__previous input,
   .project__previous input,
   .password__change input {
-    width: 15rem;
+    width: 17rem;
     margin: 0.5em 0 0.5em 0;
   }
 
@@ -2181,14 +2190,15 @@ button.select2-selection__choice__remove {
   .issue__new .textarea,
   .issue__previous .textarea,
   .project__previous .textarea {
-    width: 15rem;
-    margin: 0.5em 0.5em 0;
+    width: 17rem;
+    margin: 0.5em 0 0.5em 0;
     font-size: 1rem;
   }
 
   .project__previous--form .select2-container--default .select2-selection--multiple,
   .project__new--form .select2-container--default .select2-selection--multiple {
-    width: 15rem;
+    width: 17rem;
+    margin-top: 0.5em;
   }
 
   .project__new--form,
