@@ -1029,12 +1029,13 @@ button.select2-selection__choice__remove {
 .btn__project--delete,
 .btn__issue--delete,
 .btn__comment--delete {
-  padding: 0.4em 1em 0.5em 1em;
+  padding: 0.4em 1em 0.4em 1em;
   background-color: var(--clr-accent--800);
   border: 1px solid var(--clr-accent--800);
   border-radius: var(--br);
   font-weight: 900;
   display: flex;
+  align-items: center;
   color: white;
   text-transform: lowercase;
   font-size: 1.1rem;
@@ -1275,6 +1276,7 @@ button.select2-selection__choice__remove {
 .project__issue .issue__assignee {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.808);
+  margin-right: 1em;
 }
 
 .project__issue .issue__assignee span {
@@ -1925,6 +1927,12 @@ button.select2-selection__choice__remove {
     font-size: 0.9rem;
     margin-left: 0.3em;
   }
+
+  /* Project Page */
+
+  .project__issues--main {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 @media all and (max-width: 50em) {
@@ -2118,6 +2126,19 @@ button.select2-selection__choice__remove {
   .issue__comment--edit button .btn__text--hidden {
     display: none;
   }
+
+  .project__edit a .btn__text--hidden {
+    display: none;
+  }
+
+  .project__edit a .btn__icon {
+    margin: 0 0.3em;
+  }
+
+  .project__header>p {
+    width: 100%;
+    padding-left: 0;
+  }
 }
 
 
@@ -2146,8 +2167,6 @@ button.select2-selection__choice__remove {
     padding: 0.5em 0.3em;
     font-size: 1rem;
   }
-
-
 
   .project__new input,
   .issue__new input,
@@ -2188,4 +2207,14 @@ button.select2-selection__choice__remove {
   .btn__icon {
     margin-right: 0.3em;
   }
+
+  /* Project Page */
+  .project__issues {
+    padding: 1em;
+  }
+
+  .project__issues--main {
+    padding: 0.5em;
+  }
+
 }

@@ -23,12 +23,13 @@
     <div class="project__edit">
       <a href="{% url 'edit_project' created_by=project.created_by project_id=project.id %}"
         class=" btn__project--edit">
-        Edit
-        <i class="fas fa-edit"></i>
+        <div class="btn__text--hidden">Edit</div>
+        <i class="fas fa-edit btn__icon"></i>
       </a>
-      <a href="{% url 'delete_project' created_by=project.created_by project_id=project.id %}" class="btn__project--delete">
-        Delete
-        <i class="fas fa-trash-alt"></i>
+      <a href="{% url 'delete_project' created_by=project.created_by project_id=project.id %}"
+        class="btn__project--delete">
+        <div class="btn__text--hidden">Delete</div>
+        <i class="fas fa-trash-alt btn__icon"></i>
       </a>
     </div>
     {% endif %}
