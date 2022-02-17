@@ -9,8 +9,10 @@ from django.contrib.auth.models import User
 
 class ProjectsView(View):
     def get(self, request):
-        projects = Project.objects.all()
-        return render(request, 'projects/projects_list.html', {'projects': projects})
+        users_projects = Project.objects.filter(created_by=request.user)
+        # projects not created by user but where user in in collaborators
+        collab_projects = request.user.collaborated_projects.all().exclude(created_by=request.user)
+        return render(request, 'projects/projects_list.html', {'users_projects': users_projects, 'collab_projects': collab_projects})
         
         
 class CreatePersonalProjectView(View):
