@@ -1517,6 +1517,41 @@ button.select2-selection__choice__remove {
   display: flex;
   font-size: 1.3rem;
   margin-bottom: 0.6em;
+  position: relative;
+}
+
+.issue__comment--content .comment__textarea {
+  width: 100%;
+  height: 6rem;
+  border: none;
+  outline: none;
+  resize: vertical;
+  font-size: 1.2rem;
+  padding: 0.8em;
+  background-color: var(--clr-primary--500);
+  color: white;
+  border-radius: var(--br);
+  margin-bottom: 2em;
+}
+
+.btn__comment--save {
+  position: absolute;
+  bottom: -0.5rem;
+  right: 0.5rem;
+  padding: 0.2em 1em 0.2em 1em;
+  background-color: var(--clr-accent--800);
+  border-radius: var(--br);
+  border: 1px solid var(--clr-accent--800);
+  font-weight: 900;
+  color: white;
+  text-transform: lowercase;
+  font-size: 1.1rem;
+  transition: background-color 150ms ease-in-out;
+}
+
+.btn__comment--save:hover {
+  background-color: var(--clr-accent--700);
+  margin-left: 0.5em;
 }
 
 /* Add comment */
