@@ -1034,6 +1034,7 @@ button.select2-selection__choice__remove {
   border: 1px solid var(--clr-accent--800);
   border-radius: var(--br);
   font-weight: 900;
+  display: flex;
   color: white;
   text-transform: lowercase;
   font-size: 1.1rem;
@@ -1346,7 +1347,7 @@ button.select2-selection__choice__remove {
   align-items: center;
 }
 
-.issue__edit i,
+.btn__icon,
 .project__edit i,
 .profile__edit i {
   margin-left: 0.5em;
@@ -1406,7 +1407,7 @@ button.select2-selection__choice__remove {
 }
 
 .issue__content--main {
-  margin: 1em 0 1em 0;
+  margin: 1em 0;
   font-size: 1.5rem;
 }
 
@@ -1506,12 +1507,6 @@ button.select2-selection__choice__remove {
   display: flex;
   align-items: center;
   border-radius: 0.3em;
-}
-
-.btn__comment--edit i,
-.btn__comment--delete i {
-  margin-left: 0.9em;
-  font-size: 0.8rem;
 }
 
 .issue__comment--subheader {
@@ -1926,9 +1921,9 @@ button.select2-selection__choice__remove {
   }
 
   .profile__edit i,
-  .issue__edit i {
+  .btn__icon {
     font-size: 0.9rem;
-    margin-left: 0.2em;
+    margin-left: 0.3em;
   }
 }
 
@@ -2068,16 +2063,60 @@ button.select2-selection__choice__remove {
   }
 
   /* Issue Details */
-  .issue__priority--container,
-  .issue__type--container {
-    flex-direction: column;
-    align-items: start;
+  .issue__details {
+    margin: 1em 0;
+    padding: 1em;
   }
 
-  .issue__priority--content,
-  .issue__type--content {
-    margin-top: 0.5em;
-    margin-left: 0;
+  .issue__title--main {
+    font-size: 1.5rem
+  }
+
+  .issue__title--main span {
+    font-size: 1.2rem;
+  }
+
+  .issue__details--main {
+    padding: 0.9em;
+    width: 95%;
+  }
+
+  .issue__marks {
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 2em;
+  }
+
+  .issue__priority--container,
+  .issue__type--container {
+    margin-bottom: 1em;
+  }
+
+  .issue__content--main {
+    margin: 0.5em 0;
+    font-size: 1.3rem;
+  }
+
+  .issue__details--comments {
+    width: 95%;
+  }
+
+  .btn__issue--back {
+    top: 1rem;
+  }
+
+  .issue__edit,
+  .project__edit,
+  .profile__edit {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .issue__comment--edit button .btn__text--hidden {
+    display: none;
   }
 }
 
@@ -2107,6 +2146,8 @@ button.select2-selection__choice__remove {
     padding: 0.5em 0.3em;
     font-size: 1rem;
   }
+
+
 
   .project__new input,
   .issue__new input,
@@ -2138,5 +2179,13 @@ button.select2-selection__choice__remove {
   .password__change--form {
     margin: 1em auto;
     padding: 0.5em;
+  }
+
+  .btn__text--hidden {
+    display: none;
+  }
+
+  .btn__icon {
+    margin-right: 0.3em;
   }
 }

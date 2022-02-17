@@ -20,13 +20,13 @@
   <div class="issue__edit">
     <a href="{% url 'edit_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}"
       class="btn__issue--edit">
-      Edit
-      <i class="fas fa-edit"></i>
+      <div class="btn__text--hidden">Edit</div>
+      <i class="fas fa-edit btn__icon"></i>
     </a>
     <a href="{% url 'delete_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}"
       class="btn__issue--delete">
-      Delete
-      <i class="fas fa-trash-alt"></i>
+      <div class="btn__text--hidden">Delete</div>
+      <i class="fas fa-trash-alt btn__icon"></i>
     </a>
   </div>
   {% endif %}
@@ -158,13 +158,13 @@
         </a>
         {% if comment.created_by == user %}
         <div class="issue__comment--edit">
-          <button class=" btn__comment--edit" data-comment-target='{{ comment.id }}'>
-            Edit
-            <i class="fas fa-edit"></i>
+          <button class="btn__comment--edit" data-comment-target='{{ comment.id }}'>
+            <div class="btn__text--hidden">Edit</div>
+            <i class="fas fa-edit btn__icon"></i>
           </button>
           <button class="btn__comment--delete">
-            Delete
-            <i class="fas fa-trash-alt"></i>
+            <div class="btn__text--hidden">Delete</div>
+            <i class="fas fa-trash-alt btn__icon"></i>
           </button>
         </div>
         {% endif %}
