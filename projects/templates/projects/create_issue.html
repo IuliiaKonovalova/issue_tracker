@@ -11,7 +11,7 @@
 
   </form>
 </div>
-<!-- imports for jquery -->
+<!-- imports for jquery and select2-->
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -23,7 +23,8 @@
     $('.js-example-basic-single').select2({
       placeholder: 'Chose an assignee',
     });
-    $('.js-example-basic-single').css('width', '100%');
+    $('#div_id_assigned_to').css('width', '100%');
+    $('.select2').css('width', '100%');
 });
 
 
