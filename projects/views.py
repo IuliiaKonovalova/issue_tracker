@@ -1,3 +1,4 @@
+from click import command
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect, JsonResponse
@@ -215,9 +216,10 @@ class DeleteProjectView(View):
         return HttpResponseRedirect(reverse('projects_list'))
     
 
-class DeleteCommentView(View):
-    def get(self, request, comment_id, *args, **kwargs):
-        comment = get_object_or_404(Comment, id=comment_id)
-        issue = get_object_or_404(Issue, id=comment.issue.id)
-        comment.delete()
-        return HttpResponseRedirect(reverse('issue_detail', args=[issue.created_by, issue.project.id, issue.id]))
+class DeleteCommentAjaxView(View):
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            comment_id = request.POST.get('comment_id')
+            comment = get_object_or_404(Comment, id=comment_id)
+            comment.delete()
+            return JsonResponse({'status': 'ok'})
