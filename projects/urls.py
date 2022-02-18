@@ -12,7 +12,8 @@ from .views import (
     UpdateIssueStatusAjaxView,
     DeleteProjectView,
     DeleteIssueView,
-    UpdateCommentAjaxView
+    UpdateCommentAjaxView,
+    DeleteCommentAjaxView,
 )
 
 urlpatterns = [
@@ -29,4 +30,5 @@ urlpatterns = [
     path('<slug:created_by>/<int:project_id>/delete/', DeleteProjectView.as_view(), name='delete_project'),
     path('<slug:created_by>/<int:project_id>/<int:issue_id>/delete/', DeleteIssueView.as_view(), name='delete_issue'),
     path('update_comment/', UpdateCommentAjaxView.as_view(), name='update_comment'),
+    path('delete_comment/', DeleteCommentAjaxView.as_view(), name='delete_comment'),
 ]

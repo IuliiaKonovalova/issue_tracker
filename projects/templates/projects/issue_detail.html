@@ -162,7 +162,7 @@
             <div class="btn__text--hidden">Edit</div>
             <i class="fas fa-edit btn__icon"></i>
           </button>
-          <button class="btn__comment--delete">
+          <button class="btn__comment--delete" data-comment-target='{{ comment.id }}'>
             <div class="btn__text--hidden">Delete</div>
             <i class="fas fa-trash-alt btn__icon"></i>
           </button>
@@ -227,6 +227,22 @@
         });
       });
 
+    });
+    $('.btn__comment--delete').click(function () {
+      let url = '{% url "delete_comment" %}'
+      let comment_id = $(this).attr('data-comment-target');
+      let comment = $(`[data-comment-id='${comment_id}']`);
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data: {
+          comment_id: comment_id,
+          csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+        success: function (data) {
+          comment.parent().remove();
+        }
+      })
     });
   });
 </script>
