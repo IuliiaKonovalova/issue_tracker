@@ -170,10 +170,23 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
     + [VSCode](https://code.visualstudio.com/): the IDE used to develop the website.
     + [Chrome](https://www.google.com/chrome/?brand=BNSD&gclid=Cj0KCQiApL2QBhC8ARIsAGMm-KHfU49tkRTR3Xdd0L54ZCnJl5axIDLzaPnPQYUpLiP-7ulUP46f7yYaAjcLEALw_wcB&gclsrc=aw.ds): the browser used to view the website.
     + [Draw.io](https://www.lucidchart.com/) was used to make a flowchart for the README file.
+    + [Coolors](https://coolors.co/202a3c-1c2431-181f2a-0b1523-65e2d9-925cef-6b28e0-ffffff-eeeeee) was used to make a color palette for the website.
+
+    https://bgjar.com/
 
 ---
-
 ## Design
+
+The designed was inspired by the [GitHub](https://github.com/).
+The decision on the design scheme came from the idea of simplicity, visual hierarchy, consistency, navigation, and a sense of community.
+The color palette was chosen to be consistent on the website and inspired by modern trend to make the website more user-friendly.
+![Responsive Mockup](documentation/design/color_palette.png)
+The background images was chosen to be consistent with the color palette and reduce user's destruction from the main content of the website.
+
+---
+## Testing
+
+Please refer to the [TESTING.md](TESTING.md) file for all test related documentation.
 
 ---
 
@@ -268,11 +281,6 @@ Create a local copy of the GitHub repository by following one of the two process
 1. Migrate changes.
 1. Set debug to False in settings.py
 1. Commit and push the changes to GitHub.
-
-
-
-
-
 ## Credits
 
 ---
