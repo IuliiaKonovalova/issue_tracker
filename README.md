@@ -111,6 +111,37 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
     ![password change form](documentation/website_screenshots/password_change_form.png)
 
 
+---
+
+## Technologies used
+
+- ### Languages:
+    
+    + Python: the main language used to develop the server side of the website.
+    + JavaScript: the main language used to develop the client side of the website.
+    + HTML: the markup language used to create the website.
+    + CSS: the styling language used to style the website.
+
+- ### Frameworks and libraries:
+
+    + Django: python framework used to create all the logic.
+    + jQuery: javascript library used for creating interactive elements, such as the kanban board, and to send AJAX requests to the server.
+
+- ### Databases:
+
+    + PostgreSQL: the database used to store all the data.
+
+- ### Other tools:
+
+    + Git: the version control system used to manage the code.
+    + Heroku: the hosting service used to host the website.
+    + Github: used to host the source code of the website.
+    + Visual Studio Code: the IDE used to develop the website.
+    + Chrome: the browser used to view the website.
+
+---
+
+
 
 
 ## Wireframes
