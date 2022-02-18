@@ -75,6 +75,14 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
         ![create team project page](documentation/website_screenshots/create_team_project.png)
 
+1. Project details
+
+    - After you click on a project, you will be redirected to the project details page. Here you can see all the information about the project and an interactive kanban board to work on the issues.
+
+    ![project details page](documentation/website_screenshots/project_details.png)
+
+    
+
 ## Wireframes
 ### Home page
 ![Home Page. Desktop Screen](documentation/wireframes/home_page.png)
