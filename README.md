@@ -81,9 +81,15 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
 1. Project details
 
-   - After you click on a project, you will be redirected to the project details page. Here you can see all the information about the project and an interactive kanban board to work on the issues. From here you can to go to each collaborator's profile page, create and manage issues, edit and delete the project if you created it.
+   - After you click on a project, you will be redirected to the project details page. Here you can see all the information about the project and an interactive kanban board to work on the issues. From here you can to go to each collaborator's profile page, create and manage issues, and edit and delete the project if you created it.
 
    ![project details page](documentation/website_screenshots/project_details.png)
+
+1. Issue details
+
+   - After you click on an issue, you will be redirected to the issue details page. Here you can see all the information about the issue, including the comments and the status of the issue. From here you can to go to creator's and assignee's profile pages, add and edit comments, and edit and delete the issue if you created it.
+
+   ![issue details page](documentation/website_screenshots/issue_details.png)
 
 ## Wireframes
 
