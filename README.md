@@ -153,8 +153,10 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
 - ### Frameworks and libraries:
 
-    + Django: python framework used to create all the logic.
-    + jQuery: javascript library used for creating interactive elements, such as the kanban board, and to send AJAX requests to the server.
+    + [Django](https://www.djangoproject.com/): python framework used to create all the logic.
+    + [jQuery](https://jquery.com/): was used to control click events and sending AJAX requests.
+    + [jQuery User Interface](https://jqueryui.com/) was used fto create interactive elements, such as the kanban board.
+    + [Select2](https://select2.org/): was used to create the dropdown menus.
 
 - ### Databases:
 
