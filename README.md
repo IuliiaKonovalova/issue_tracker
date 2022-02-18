@@ -160,19 +160,28 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
 - ### Databases:
 
+    + [SQLite](https://www.sqlite.org/): was used as a development database.
     + [PostgreSQL](https://www.postgresql.org/): the database used to store all the data.
 
 - ### Other tools:
 
     + [Git](https://git-scm.com/): the version control system used to manage the code.
+    + [Pip3](https://pypi.org/project/pip/): the package manager used to install the dependencies.
+    + [Gunicorn](https://gunicorn.org/): the web server used to run the website.
+    + [Spycopg2](https://www.python.org/dev/peps/pep-0249/): the database driver used to connect to the database.
+    + [Django-allauth](https://django-allauth.readthedocs.io/en/latest/): the authentication library used to create the user accounts.
+    + [Django-crispy-forms](https://django-cryptography.readthedocs.io/en/latest/): was used to control the rendering behavior of Django forms.
     + [Heroku](https://dashboard.heroku.com/): the hosting service used to host the website.
     + [GitHub](https://github.com/): used to host the source code of the website.
     + [VSCode](https://code.visualstudio.com/): the IDE used to develop the website.
-    + [Chrome](https://www.google.com/chrome/?brand=BNSD&gclid=Cj0KCQiApL2QBhC8ARIsAGMm-KHfU49tkRTR3Xdd0L54ZCnJl5axIDLzaPnPQYUpLiP-7ulUP46f7yYaAjcLEALw_wcB&gclsrc=aw.ds): the browser used to view the website.
+    + [Chrome DevTools](https://developer.chrome.com/docs/devtools/open/): was used to debug the website.
     + [Draw.io](https://www.lucidchart.com/) was used to make a flowchart for the README file.
     + [Coolors](https://coolors.co/202a3c-1c2431-181f2a-0b1523-65e2d9-925cef-6b28e0-ffffff-eeeeee) was used to make a color palette for the website.
-
-    https://bgjar.com/
+    + [BGJar](https://www.bgjar.com/): was used to make a background images for the website.
+    + [W3C Validator](https://validator.w3.org/): was used to validate HTML5 code for the website.
+    + [W3C CSS validator](https://jigsaw.w3.org/css-validator/): was used to validate CSS code for the website.
+    + [JShint](https://jshint.com/): was used to validate JS code for the website.
+    + [PEP8](https://pep8.org/): was used to validate Python code for the website.
 
 ---
 ## Design
@@ -281,6 +290,9 @@ Create a local copy of the GitHub repository by following one of the two process
 1. Migrate changes.
 1. Set debug to False in settings.py
 1. Commit and push the changes to GitHub.
+
+---
+
 ## Credits
 
 ---
