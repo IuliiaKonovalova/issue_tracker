@@ -318,7 +318,7 @@
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script>
   let issues_container = $('.project__issues--main');
-  let sectionsToDrop = $('.project__issue')
+  let sectionsToDrop = $('.project__issue');
   $('.issue__container', issues_container).draggable({
     revert: 'invalid',
     helper: 'clone',
@@ -342,7 +342,7 @@
       $(this).append(ui.draggable);
       let issue_id = ui.draggable.attr('data-issue-id');
       let issue_status = $(this).attr('data-issue-status');
-      let url = '{% url "update_issue_status" %}'
+      let url = '{% url "update_issue_status" %}';
       $.ajax({
         url: url,
         type: 'POST',
