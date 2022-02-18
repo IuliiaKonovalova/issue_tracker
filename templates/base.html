@@ -4,7 +4,7 @@
 
 <head>
   {% block meta %}
-  <meta http-equiv="X-UA-Compatible" content="ie-edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   {% endblock %}
@@ -40,7 +40,7 @@
         </li>
         {% if request.user.is_authenticated %}
         <li class="navbar__item">
-          <div href="#" id="dropdown-profile" class="dropdown navbar__item--dropdown">Account</div>
+          <div id="dropdown-profile" class="dropdown navbar__item--dropdown">Account</div>
           <ul class="account__options">
             <li class="account__option">
               <a href="{% url 'user_profile' username=request.user %}">Profile</a>
