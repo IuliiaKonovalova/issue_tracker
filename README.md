@@ -10,25 +10,54 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
 ## User stories
 
-1. As a first-time visitor, I want to be able to understand the purpose of the website.
-1. As a first-time visitor, I want to be able to register my account.
-1. As a registered user, I want to be able to log in to my account.
-1. As a registered user, I want to be able to create a personal project.
-1. As a registered user, I want to be able to create a team project.
-1. As a registered user, I want to be able to add collaborators to my team project.
-1. As a registered user, I want to be able to create issues for a project.
-1. As a registered user, I want to be able to add comments to an issue.
-1. As a registered user, I want to be able to track and change the status of an issue.
-1. As a registered user, I want to be able to vote for an issue.
-1. As a registered user, I want to be able to change my password.
-1. As a registered user, I want to be able to reset my password if I forgot it.
-1. As a registered user, I want to be able to log out of my account.
-1. As a registered user, I want to be able to delete my projects, issues, comments, and votes.
-1. As a registered user, I want to be able to use an interactive kanban board inside projects.
-1. As a registered user, I want to be able to see the list of all projects I created or am a collaborator of.
-1. As a registered user, I want to be able to see the list of all issues I created or am assigned to.
-1. As a registered user, I want to be able to view other users' profiles.
-1. As a registered user, I want to be able to work safely on my or my team's projects, knowing that only me or my team can see them.
+### First Time Visitor Goals:
+
+1. As a **First Time Visitor**, I want to **easily understand the main purpose of the app**, so I can **learn more about this app**.
+
+1. As a **First Time Visitor**, I want to **be able to easily navigate through the app**, so I can **find the content**.
+
+1. As a **First Time Visitor**, I want to be able to **register my account**, so I can **learn benefits of the app as a user**.
+
+1. As a **First Time Visitor**, I want to **find the app useful**, so I can **use it according to my needs**.
+
+### Registered User Goals:
+
+1. As a **Registered User**, I want to **be able to log in to my account**, so I can **have a personal account**.
+
+1. As a **Registered User**, I want to **be able easily login and logout**, so I can **access my personal account information**.
+
+1. As a **Registered User**, I want to **be able easily recover my password in case I forget it**, so I can **recover access to my account**.
+
+1. As a **Registered User**, I want to **be able change my password**, so I can **be sure that nobody else can access my account**.
+
+
+1. As a **Registered User**, I want to **be able to create a personal project**, so I can **keep track of my progress**.
+
+1. As a **Registered User**, I want to **be able to create a team project**, so I can **work on a project along with other developers**.
+
+1. As a **Registered User**, I want to be able **safely work on projects with my team**, so I can **be sure that only my team has access to this project**.
+
+1. As a **Registered User**, I want to **be able to add collaborators to my team project**, so I can **choose with which people I will work with**.
+
+1. As a **Registered User**, I want to **be able to create issues for a project**, so I can **increase productivity of my or team work**.
+
+1. As a **Site User**, I want to be able to **comment on the issue created**, so I can **add some additional Registered on the bug**.
+
+1. As a **Registered User**, I want to **be able to track and change the status or type of an issue, so I can **see the status or type of an issue**.
+
+1. As a **Registered User**, I want to be able to **upvote an issue**, so I can **show that I have the same issue as someone has already posted**.
+
+1. As a **Registered User**, I want to **be able to use an interactive kanban board inside projects**, so I can **easily apply changes to the issues**.
+
+1. As a **Site User**, I want to be able to **comment on the issue created**, so I can **add some additional information on the bug, feature, task, or user story**.
+
+1. As a **Registered User**, I want to **be able to edit or delete my projects, issues, comments, and votes**, so I can **be sure that I can apply any changes t my notes**.
+
+1. As a **Registered User**, I want **to be able to see the list of all projects I created or am a collaborator of**, so I can **understand on which project I should work on**.
+
+1. As a **Registered User**, I want to **be able to see the list of all issues I created or I was assigned to**, so I can **understand on which issue I should track or I have to work on**.
+
+1. As a **Registered User**, I want to **be able to view other users' profiles**, so I can **learn about other users' activity**.
 
 ---
 
