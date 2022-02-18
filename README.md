@@ -46,11 +46,34 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
 1. Log in
 
-    - When you click the "Log in" button, you will be redirected to a log in page.
+    - When you click the "Login" button, you will be redirected to a log in page.
 
     ![log in page](documentation/website_screenshots/sign_in_form.png)
 
-    - You can log in to your account by filling in the form and clicking the "Log in" button.
+    - You can log in to your account by filling in the form and clicking the "Sign in" button.
+
+1. Projects list
+
+    - After you log in, you will be redirected to the projects list page.
+
+    ![projects list page](documentation/website_screenshots/projects_list.png)
+
+    - You can see a list of all projects you created or are a collaborator of.
+    - You can click on a large plus button to create a new project. You will be given a choice of personal or team projects.
+
+    ![create project page](documentation/website_screenshots/create_project_button.png)
+
+1. Create project
+
+    - When you choose the type of project you want to create, you will be redirected to a create project page.
+
+        + Personal project form:
+
+        ![create personal project page](documentation/website_screenshots/create_personal_project.png)
+
+        + Team project form:
+
+        ![create team project page](documentation/website_screenshots/create_team_project.png)
 
 ## Wireframes
 ### Home page
