@@ -16,5 +16,9 @@
 ![Projects Page. Desktop Screen](documentation/wireframes/projects_page.png)
 ### Project page
 ![Project Page. Desktop Screen](documentation/wireframes/project_page.png)
+### Project Add/Edit Page
+![Project Add/Edit. Desktop Screen](documentation/wireframes/project_add_edit.png)
 ### Issue page
 ![Issue Page. Desktop Screen](documentation/wireframes/issue_page.png)
+### Issue Add/Edit Page
+![Issue Add/Edit. Desktop Screen](documentation/wireframes/issue_add_edit.png)
