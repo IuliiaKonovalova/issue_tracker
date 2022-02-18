@@ -56,6 +56,9 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
    - You can log in to your account by filling in the form and clicking the "Sign in" button.
 
+   - If you forgot your password, you can reset it by clicking the "Forgot password?" button. You will be redirected to a page where you can enter your email address and click the "Reset password" button.
+
+
 1. Projects list
 
    - After you log in, you will be redirected to the projects list page.
@@ -85,11 +88,30 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
    ![project details page](documentation/website_screenshots/project_details.png)
 
+   - You can click on "add issue" to create an issue for the project, you'll be redirected to a create issue page, where you can add a title, description, choose its priority and type, and add assignee.
+
+   ![create issue page](documentation/website_screenshots/create_issue.png)
+
 1. Issue details
 
    - After you click on an issue, you will be redirected to the issue details page. Here you can see all the information about the issue, including the comments and the status of the issue. From here you can to go to creator's and assignee's profile pages, add and edit comments, and edit and delete the issue if you created it.
 
    ![issue details page](documentation/website_screenshots/issue_details.png)
+
+1. Profile page
+
+    - You can go to your profile page by clicking on "Profile" in the account menu at the top right corner of the page. Also, you can visit other users' profile pages by clicking on their names in the projects list or issue details pages.
+    
+    - Here you can see users' information and their statistics.
+
+    ![profile page](documentation/website_screenshots/profile_page.png)
+
+    - If you are on your profile page, you can also see a password change form at the bottom of the page.
+
+    ![password change form](documentation/website_screenshots/password_change_form.png)
+
+
+
 
 ## Wireframes
 
