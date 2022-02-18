@@ -251,6 +251,7 @@ class EditIssueView(View):
             )
         issue = project.issues.get(id=issue_id)
         form = IssueForm(instance=issue)
+        form.fields['assigned_to'].queryset = project.collaborators.all()
         return render(
             request,
             'projects/edit_issue.html',
