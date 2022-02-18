@@ -197,7 +197,7 @@
   $(document).ready(function () {
     $('.btn__comment--edit').click(function () {
       $('.btn__comment--edit').hide();
-      let url = '{% url "update_comment" %}'
+      let url = '{% url "update_comment" %}';
       let comment_id = $(this).attr('data-comment-target');
       let comment = $(`[data-comment-id='${comment_id}']`);
       let comment_text = comment.text();
@@ -229,7 +229,7 @@
 
     });
     $('.btn__comment--delete').click(function () {
-      let url = '{% url "delete_comment" %}'
+      let url = '{% url "delete_comment" %}';
       let comment_id = $(this).attr('data-comment-target');
       let comment = $(`[data-comment-id='${comment_id}']`);
       $.ajax({
@@ -242,7 +242,7 @@
         success: function (data) {
           comment.parent().remove();
         }
-      })
+      });
     });
   });
 </script>
