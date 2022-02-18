@@ -11,7 +11,8 @@ class PersonalProjectForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
         }
-        
+
+
 class TeamProjectForm(forms.ModelForm):
     class Meta:
         model = Project
@@ -19,14 +20,22 @@ class TeamProjectForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
-            'collaborators': forms.SelectMultiple(attrs={'class': 'form-control'}),
+            'collaborators': forms.SelectMultiple(
+                attrs={'class': 'form-control'}
+                ),
         }
 
 
 class IssueForm(forms.ModelForm):
     class Meta:
         model = Issue
-        fields = ['title', 'description', 'priority', 'issue_type', 'assigned_to']
+        fields = [
+            'title',
+            'description',
+            'priority',
+            'issue_type',
+            'assigned_to'
+            ]
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
@@ -34,7 +43,7 @@ class IssueForm(forms.ModelForm):
             'priority': forms.RadioSelect(attrs={'class': 'form-control'}),
             # 'issue_type': forms.Select(attrs={'class': 'form-control'}),
             'issue_type': forms.RadioSelect(attrs={'class': 'form-control'}),
-            'assigned_to': forms.Select(attrs={'class': 'form-control'}),            
+            'assigned_to': forms.Select(attrs={'class': 'form-control'}),
         }
 
 
