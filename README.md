@@ -10,25 +10,54 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
 ## User stories
 
-1. As a first-time visitor, I want to be able to understand the purpose of the website.
-1. As a first-time visitor, I want to be able to register my account.
-1. As a registered user, I want to be able to log in to my account.
-1. As a registered user, I want to be able to create a personal project.
-1. As a registered user, I want to be able to create a team project.
-1. As a registered user, I want to be able to add collaborators to my team project.
-1. As a registered user, I want to be able to create issues for a project.
-1. As a registered user, I want to be able to add comments to an issue.
-1. As a registered user, I want to be able to track and change the status of an issue.
-1. As a registered user, I want to be able to vote for an issue.
-1. As a registered user, I want to be able to change my password.
-1. As a registered user, I want to be able to reset my password if I forgot it.
-1. As a registered user, I want to be able to log out of my account.
-1. As a registered user, I want to be able to delete my projects, issues, comments, and votes.
-1. As a registered user, I want to be able to use an interactive kanban board inside projects.
-1. As a registered user, I want to be able to see the list of all projects I created or am a collaborator of.
-1. As a registered user, I want to be able to see the list of all issues I created or am assigned to.
-1. As a registered user, I want to be able to view other users' profiles.
-1. As a registered user, I want to be able to work safely on my or my team's projects, knowing that only me or my team can see them.
+### First Time Visitor Goals:
+
+1. As a **First Time Visitor**, I want to **easily understand the main purpose of the app**, so I can **learn more about this app**.
+
+1. As a **First Time Visitor**, I want to **be able to easily navigate through the app**, so I can **find the content**.
+
+1. As a **First Time Visitor**, I want to be able to **register my account**, so I can **learn benefits of the app as a user**.
+
+1. As a **First Time Visitor**, I want to **find the app useful**, so I can **use it according to my needs**.
+
+### Registered User Goals:
+
+1. As a **Registered User**, I want to **be able to log in to my account**, so I can **have a personal account**.
+
+1. As a **Registered User**, I want to **be able easily login and logout**, so I can **access my personal account information**.
+
+1. As a **Registered User**, I want to **be able easily recover my password in case I forget it**, so I can **recover access to my account**.
+
+1. As a **Registered User**, I want to **be able change my password**, so I can **be sure that nobody else can access my account**.
+
+
+1. As a **Registered User**, I want to **be able to create a personal project**, so I can **keep track of my progress**.
+
+1. As a **Registered User**, I want to **be able to create a team project**, so I can **work on a project along with other developers**.
+
+1. As a **Registered User**, I want to be able **safely work on projects with my team**, so I can **be sure that only my team has access to this project**.
+
+1. As a **Registered User**, I want to **be able to add collaborators to my team project**, so I can **choose with which people I will work with**.
+
+1. As a **Registered User**, I want to **be able to create issues for a project**, so I can **increase productivity of my or team work**.
+
+1. As a **Site User**, I want to be able to **comment on the issue created**, so I can **add some additional Registered on the bug**.
+
+1. As a **Registered User**, I want to **be able to track and change the status or type of an issue, so I can **see the status or type of an issue**.
+
+1. As a **Registered User**, I want to be able to **upvote an issue**, so I can **show that I have the same issue as someone has already posted**.
+
+1. As a **Registered User**, I want to **be able to use an interactive kanban board inside projects**, so I can **easily apply changes to the issues**.
+
+1. As a **Site User**, I want to be able to **comment on the issue created**, so I can **add some additional information on the bug, feature, task, or user story**.
+
+1. As a **Registered User**, I want to **be able to edit or delete my projects, issues, comments, and votes**, so I can **be sure that I can apply any changes t my notes**.
+
+1. As a **Registered User**, I want **to be able to see the list of all projects I created or am a collaborator of**, so I can **understand on which project I should work on**.
+
+1. As a **Registered User**, I want to **be able to see the list of all issues I created or I was assigned to**, so I can **understand on which issue I should track or I have to work on**.
+
+1. As a **Registered User**, I want to **be able to view other users' profiles**, so I can **learn about other users' activity**.
 
 ---
 
@@ -117,33 +146,104 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
 - ### Languages:
     
-    + Python: the main language used to develop the server side of the website.
-    + JavaScript: the main language used to develop the client side of the website.
-    + HTML: the markup language used to create the website.
-    + CSS: the styling language used to style the website.
+    + [Python 3.8.5](https://www.python.org/downloads/release/python-385/): the main language used to develop the server side of the website.
+    + [JS](https://www.javascript.com/): the main language used to develop the client side of the website.
+    + [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML): the markup language used to create the website.
+    + [CSS](https://developer.mozilla.org/en-US/docs/Web/css): the styling language used to style the website.
 
 - ### Frameworks and libraries:
 
-    + Django: python framework used to create all the logic.
-    + jQuery: javascript library used for creating interactive elements, such as the kanban board, and to send AJAX requests to the server.
+    + [Django](https://www.djangoproject.com/): python framework used to create all the logic.
+    + [jQuery](https://jquery.com/): was used to control click events and sending AJAX requests.
+    + [jQuery User Interface](https://jqueryui.com/) was used fto create interactive elements, such as the kanban board.
+    + [Select2](https://select2.org/): was used to create the dropdown menus.
 
 - ### Databases:
 
-    + PostgreSQL: the database used to store all the data.
+    + [PostgreSQL](https://www.postgresql.org/): the database used to store all the data.
 
 - ### Other tools:
 
-    + Git: the version control system used to manage the code.
-    + Heroku: the hosting service used to host the website.
-    + Github: used to host the source code of the website.
-    + Visual Studio Code: the IDE used to develop the website.
-    + Chrome: the browser used to view the website.
+    + [Git](https://git-scm.com/): the version control system used to manage the code.
+    + [Heroku](https://dashboard.heroku.com/): the hosting service used to host the website.
+    + [GitHub](https://github.com/): used to host the source code of the website.
+    + [VSCode](https://code.visualstudio.com/): the IDE used to develop the website.
+    + [Chrome](https://www.google.com/chrome/?brand=BNSD&gclid=Cj0KCQiApL2QBhC8ARIsAGMm-KHfU49tkRTR3Xdd0L54ZCnJl5axIDLzaPnPQYUpLiP-7ulUP46f7yYaAjcLEALw_wcB&gclsrc=aw.ds): the browser used to view the website.
+    + [Draw.io](https://www.lucidchart.com/) was used to make a flowchart for the README file.
 
 ---
 
+## Design
+
+---
+
+## Deployment
+
+- The program was deployed to [Heroku](https://dashboard.heroku.com).
+- The program can be reached by the [link](https://issue-tracker-by-konovalovs.herokuapp.com/)
+### Local deployment:
+
+*Note:*
+  - This project requires install all the requirements:
+  - Open the terminal window and type:
+  - `pip3 install -r requirements.txt`
+
+Create a local copy of the GitHub repository by following one of the two processes below:
+
+- Download ZIP file:
+  1. Go to the [GitHub Repo page](https://github.com/IuliiaKonovalova/issue_tracker).
+  1. Click the Code button and download the ZIP file containing the project.
+  1. Extract the ZIP file to a location on your PC.
+
+- Clone the repository:
+  1. Open a folder on your computer with the terminal.
+  1. Run the following command
+  - `git clone https://github.com/IuliiaKonovalova/issue_tracker.git`
+
+- Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
+
+  [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/IuliiaKonovalova/issue_tracker)
+
+---
+
+1. Create a .gitignore file in the root directory of the project where you should add env.py and __pycache__ files to prevent the privacy of your secret data.
+
+1. Create a .env file. This will contain the following environment variables:
+
+    ```python
+    import os
+
+      os.environ("SECRET_KEY", "Add a secret key")
+      os.environ("DATABASE_URL", "will be used to connect to the database")
+    ```
+
+1. Run following commands in a terminal to make migrations: 
+    - `python3 manage.py makemigrations`
+    - `python3 manage.py migrate`
+1. Create a superuser to get access to the admin environment.
+    - `python3 manage.py createsuperuser`
+    - Enter required information (your username, email and password).
+1. Run the app with the following command in the terminal:
+    - `python3 manage.py runserver`
+1. Open the link provided in a browser to see the app.
+
+1. If you need to access admin page:
+    - Add /admin/ to the link provided.
+    - Enter your username and password (for the superuser that you have created before).
+    - You will be redirected to the admin page.
 
 
 
+
+
+
+
+
+
+
+## Credits
+
+---
 ## Wireframes
 
 ### Home page
