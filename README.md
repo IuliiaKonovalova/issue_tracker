@@ -175,6 +175,7 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
     + [GitHub](https://github.com/): used to host the source code of the website.
     + [VSCode](https://code.visualstudio.com/): the IDE used to develop the website.
     + [Chrome DevTools](https://developer.chrome.com/docs/devtools/open/): was used to debug the website.
+    + [Font Awesome](https://fontawesome.com/): was used to create the icons used in the website.
     + [Draw.io](https://www.lucidchart.com/) was used to make a flowchart for the README file.
     + [Coolors](https://coolors.co/202a3c-1c2431-181f2a-0b1523-65e2d9-925cef-6b28e0-ffffff-eeeeee) was used to make a color palette for the website.
     + [BGJar](https://www.bgjar.com/): was used to make a background images for the website.
@@ -294,6 +295,13 @@ Create a local copy of the GitHub repository by following one of the two process
 ---
 
 ## Credits
+
+- [GitHub](https://github.com/) for giving the idea of the project's design.
+- [Django](https://www.djangoproject.com/) for the framework.
+- [BGJar](https://www.bgjar.com/): for the free access to background images build tool.
+- [Font awesome](https://fontawesome.com/): for the free access to icons.
+- [Heroku](https://www.heroku.com/): for the free hosting of the website.
+- [jQuery](https://jquery.com/): for providing varieties of tools to make standard HTML code look appealing.
 
 ---
 ## Wireframes
