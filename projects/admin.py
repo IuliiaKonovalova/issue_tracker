@@ -21,7 +21,6 @@ class ProjectAdmin(admin.ModelAdmin):
     # need to add members to the project
 
 
-
 @admin.register(Issue)
 class IssueAdmin(SummernoteModelAdmin):
     summernote_fields = ('description',)
