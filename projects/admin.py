@@ -12,15 +12,15 @@ class ProjectAdmin(admin.ModelAdmin):
       'created_by',
       'created_on',
       'updated_on',
-      'status', 
+      'status',
     )
     list_filter = ('created_on',)
     search_fields = ('name', 'created_by')
     ordering = ('-created_on',)
     list_select_related = ('created_by',)
     # need to add members to the project
-    
-    
+
+
 
 @admin.register(Issue)
 class IssueAdmin(SummernoteModelAdmin):
@@ -39,7 +39,7 @@ class IssueAdmin(SummernoteModelAdmin):
     ordering = ('-created_on', 'status', 'priority')
     readonly_fields = ('created_on', 'updated_on',)
     list_select_related = ('created_by',)
-    
+
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
