@@ -146,10 +146,10 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
 - ### Languages:
     
-    + Python: the main language used to develop the server side of the website.
-    + JavaScript: the main language used to develop the client side of the website.
-    + HTML: the markup language used to create the website.
-    + CSS: the styling language used to style the website.
+    + [Python 3.8.5](https://www.python.org/downloads/release/python-385/): the main language used to develop the server side of the website.
+    + [JS](https://www.javascript.com/): the main language used to develop the client side of the website.
+    + [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML): the markup language used to create the website.
+    + [CSS](https://developer.mozilla.org/en-US/docs/Web/css): the styling language used to style the website.
 
 - ### Frameworks and libraries:
 
@@ -158,21 +158,29 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
 - ### Databases:
 
-    + PostgreSQL: the database used to store all the data.
+    + [PostgreSQL](https://www.postgresql.org/): the database used to store all the data.
 
 - ### Other tools:
 
-    + Git: the version control system used to manage the code.
-    + Heroku: the hosting service used to host the website.
-    + Github: used to host the source code of the website.
-    + Visual Studio Code: the IDE used to develop the website.
-    + Chrome: the browser used to view the website.
+    + [Git](https://git-scm.com/): the version control system used to manage the code.
+    + [Heroku](https://dashboard.heroku.com/): the hosting service used to host the website.
+    + [GitHub](https://github.com/): used to host the source code of the website.
+    + [VSCode](https://code.visualstudio.com/): the IDE used to develop the website.
+    + [Chrome](https://www.google.com/chrome/?brand=BNSD&gclid=Cj0KCQiApL2QBhC8ARIsAGMm-KHfU49tkRTR3Xdd0L54ZCnJl5axIDLzaPnPQYUpLiP-7ulUP46f7yYaAjcLEALw_wcB&gclsrc=aw.ds): the browser used to view the website.
+    + [Draw.io](https://www.lucidchart.com/) was used to make a flowchart for the README file.
 
 ---
 
+## Design
 
+---
 
+## Deployment
 
+---
+## Credits
+
+---
 ## Wireframes
 
 ### Home page
