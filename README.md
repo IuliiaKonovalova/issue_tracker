@@ -29,6 +29,29 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
 ---
 
+## Features
+1. Landing page
+
+    - When you visit the site, you will see a landing page with a welcome message and buttons to register or log in.
+
+    ![landing page](documentation/website_screenshots/landing_page.png)
+
+1. Sign up
+
+    - When you click the "Sign up" button, you will be redirected to a sign up page. After filling out the form, you will need to confirm your email address.
+
+    ![sign up page](documentation/website_screenshots/sign_up_form.png)
+
+    - You can register a new account by filling in the form and clicking the "Sign up" button.
+
+1. Log in
+
+    - When you click the "Log in" button, you will be redirected to a log in page.
+
+    ![log in page](documentation/website_screenshots/sign_in_form.png)
+
+    - You can log in to your account by filling in the form and clicking the "Log in" button.
+
 ## Wireframes
 ### Home page
 ![Home Page. Desktop Screen](documentation/wireframes/home_page.png)
