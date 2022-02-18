@@ -103,6 +103,7 @@ class CreateIssueView(View):
             created_by__username=created_by
             )
         form = IssueForm()
+        form.fields['assigned_to'].queryset = project.collaborators.all()
         return render(
             request,
             'projects/create_issue.html',
