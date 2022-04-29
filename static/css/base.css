@@ -740,6 +740,10 @@ body {
   border: 1px solid #ffffff8c;
 }
 
+.project__delete--form {
+  text-align: center;
+}
+
 .project__new label[for='id_title'],
 .project__new label[for='id_description'],
 .project__new label[for='id_collaborators'],
@@ -2098,6 +2102,10 @@ button.select2-selection__choice__remove {
   .password__change--form {
     margin: 2em auto;
     padding: 2em;
+  }
+
+  .project__delete--form {
+    width: 90%;
   }
 
   .project__new label[for='id_title']~div::before,
