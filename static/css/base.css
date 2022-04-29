@@ -2379,6 +2379,20 @@ button.select2-selection__choice__remove {
   }
 
   /* Forms */
+  .project__new--form,
+  .project__delete--form,
+  .issue__new--form,
+  .issue__previous--form,
+  .project__previous--form,
+  .password__change--form {
+    width: 90%;
+    margin: 1em auto;
+    padding: 0.5em;
+    padding-top: 1em;
+    display: flex;
+    align-items: center;
+  }
+
   .account button,
   .account input[type='submit'],
   .project__new button,
@@ -2439,5 +2453,29 @@ button.select2-selection__choice__remove {
   .projects__link {
     font-size: 1rem;
     padding: 0.7em 1.5em 0.8em 1.5em;
+  }
+
+  /* Forms */
+  .project__new input,
+  .issue__new input,
+  .issue__previous input,
+  .project__previous input,
+  .password__change input {
+    min-width: 90%;
+    width: 80vw;
+  }
+
+  .project__new .textarea,
+  .issue__new .textarea,
+  .issue__previous .textarea,
+  .project__previous .textarea {
+    min-width: 90%;
+    width: 80vw;
+  }
+
+  .project__previous--form .select2-container--default .select2-selection--multiple,
+  .project__new--form .select2-container--default .select2-selection--multiple {
+    min-width: 90%;
+    width: 80vw;
   }
 }
