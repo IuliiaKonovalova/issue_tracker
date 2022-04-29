@@ -1100,6 +1100,10 @@ button.select2-selection__choice__remove {
   transition: background-color 150ms ease-in-out;
 }
 
+.btn__issue--add i {
+  margin-left: 0.5em;
+}
+
 .btn__project--delete,
 .btn__issue--delete,
 .btn__comment--delete {
@@ -2305,6 +2309,21 @@ button.select2-selection__choice__remove {
   .projects__item--description {
     font-size: 1.2rem;
   }
+
+  .project__header {
+    position: relative;
+    font-size: 1rem;
+    padding: 3em 1.5em;
+  }
+
+  .btn__issue--add span {
+    display: none;
+  }
+
+  .btn__issue--add i {
+    margin-left: 0;
+  }
+
 }
 
 @media all and (max-width: 30em) {
