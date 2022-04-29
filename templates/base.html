@@ -4,24 +4,24 @@
 
 <head>
   {% block meta %}
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   {% endblock %}
 
   {% block extra_meta %}
   {% endblock %}
 
   {% block corecss %}
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
-  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
   {% endblock %}
 
   {% block extra_css %}
   {% endblock %}
 
   {% block corejs %}
-  <script src="https://kit.fontawesome.com/7a0af02583.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/7a0af02583.js" crossorigin="anonymous"></script>
   {% endblock %}
 
   {% block extra_js %}
@@ -32,49 +32,51 @@
 
 <body class="bg">
   <header class="header">
+  {% comment %} Navbar {% endcomment %}
     <nav class="navbar">
       <div class="logo__container">Bugs' digger</div>
       <ul class="navbar__items">
         <li class="navbar__item">
           <a href="{% url 'home' %}">Home</a>
         </li>
+        {% comment %} If user is authorised {% endcomment %}
         {% if request.user.is_authenticated %}
-        <li class="navbar__item">
-          <div id="dropdown-profile" class="dropdown navbar__item--dropdown">Account</div>
-          <ul class="account__options">
-            <li class="account__option">
-              <a href="{% url 'user_profile' username=request.user %}">Profile</a>
-            </li>
-            <li class="account__option">
-              <a href="{% url 'projects_list' %}">Projects</a>
-            </li>
-            <li class="account__option account__option--logout">
-              <a href="{% url 'account_logout' %}">Logout</a>
-            </li>
-          </ul>
-        </li>
+          <li class="navbar__item">
+            <div id="dropdown-profile" class="dropdown navbar__item--dropdown">Account</div>
+            <ul class="account__options">
+              <li class="account__option">
+                <a href="{% url 'user_profile' username=request.user %}">Profile</a>
+              </li>
+              <li class="account__option">
+                <a href="{% url 'projects_list' %}">Projects</a>
+              </li>
+              <li class="account__option account__option--logout">
+                <a href="{% url 'account_logout' %}">Logout</a>
+              </li>
+            </ul>
+          </li>
+        {% comment %} If user is not authorised {% endcomment %}
         {% else %}
-        <li class="navbar__item ">
-          <div id="dropdown-enter" class="dropdown navbar__item--dropdown">Get started</div>
-          <ul class="account__options">
-            <li class="account__option">
-              <a href="{% url 'account_login' %}">Login</a>
-            </li>
-            <li class="account__option">
-              <a href="{% url 'account_signup' %}">Sign Up</a>
-            </li>
-          </ul>
-        </li>
+          <li class="navbar__item ">
+            <div id="dropdown-enter" class="dropdown navbar__item--dropdown">Get started</div>
+            <ul class="account__options">
+              <li class="account__option">
+                <a href="{% url 'account_login' %}">Login</a>
+              </li>
+              <li class="account__option">
+                <a href="{% url 'account_signup' %}">Sign Up</a>
+              </li>
+            </ul>
+          </li>
         {% endif %}
       </ul>
     </nav>
-
-
   </header>
+  {% comment %} Main container {% endcomment %}
   <main class=" main">
     <div class="content__container">
       {% if messages %}
-      <div class="message-container"></div>
+        <div class="message-container"></div>
       {% endif %}
 
       {% block page_header %}
@@ -84,10 +86,10 @@
       {% endblock %}
     </div>
   </main>
+  {% comment %} Footer {% endcomment %}
   <footer class="footer">
-
     <div class="footer__content">
-
+    {% comment %} First Contributor {% endcomment %}
       <div class="contributor">
         <div class="contributor__name">Aleksei Konovalov</div>
         <ul class="contributor__links">
@@ -110,6 +112,7 @@
           </li>
         </ul>
       </div>
+      {% comment %} Second Contributor {% endcomment %}
       <div class="contributor">
         <div class="contributor__name">Iuliia Konovalova</div>
         <ul class="contributor__links">
@@ -134,9 +137,9 @@
       </div>
     </div>
   </footer>
+  {% comment %} Js main block {% endcomment %}
   {% block postloadjs %}
-  <script src="{% static 'js/base.js' %}"></script>
+    <script src="{% static 'js/base.js' %}"></script>
   {% endblock %}
 </body>
-
 </html>
