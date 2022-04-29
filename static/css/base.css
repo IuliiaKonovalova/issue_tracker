@@ -2254,6 +2254,24 @@ button.select2-selection__choice__remove {
     width: 100%;
     padding-left: 0;
   }
+
+  /* Footer */
+  .footer__content {
+    padding: 2.5em 1em;
+  }
+
+  .contributor:first-child {
+    margin-bottom: 2em;
+  }
+
+  .contributor__name {
+    font-size: 1.2rem;
+    margin-bottom: 0.8em;
+  }
+
+  .contributor__link a i {
+    font-size: 1.5rem;
+  }
 }
 
 @media all and (max-width: 40em) {
@@ -2322,6 +2340,24 @@ button.select2-selection__choice__remove {
 
   .btn__issue--add i {
     margin-left: 0;
+  }
+
+  .footer__content {
+    padding: 2em 1em;
+  }
+
+  .contributor:first-child {
+    margin-bottom: 1.5em;
+  }
+
+  .contributor__name {
+    font-size: 1rem;
+    margin-bottom: 0.6em;
+    letter-spacing: 0.08rem;
+  }
+
+  .contributor__link a i {
+    font-size: 1rem;
   }
 
 }
