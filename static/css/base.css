@@ -2300,7 +2300,6 @@ button.select2-selection__choice__remove {
   }
 
   /* Project Page */
-
   .projects__group {
     padding: 2em 1em;
     margin-bottom: 0;
@@ -2342,6 +2341,7 @@ button.select2-selection__choice__remove {
     margin-left: 0;
   }
 
+  /* Footer */
   .footer__content {
     padding: 2em 1em;
   }

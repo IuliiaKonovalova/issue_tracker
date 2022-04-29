@@ -1,361 +1,368 @@
 {% extends "base.html" %}
 
+{% comment %} Adding diffirent background image {% endcomment %}
 {% block extra_css %}
-<style>
-  .bg {
-    height: unset;
-    background-image: linear-gradient(#1c2431a9,
-        #1c2431a9),
-      url('/static/images/bg7.svg');
-    background-position: center top;
-  }
-</style>
+  <style>
+    .bg {
+      height: unset;
+      background-image: linear-gradient(#1c2431a9,
+          #1c2431a9),
+        url('/static/images/bg7.svg');
+      background-position: center top;
+    }
+  </style>
+{% endblock %}
+
+{% block extra_js %}
+
 {% endblock %}
 
 {% block content%}
-{% if request.user.is_authenticated %}
+  {% if request.user.is_authenticated %}
 
-<div class="project__details">
-  <h2 class="project__title">{{ project.title }}</h2>
-  {% if user.id == project.created_by.id or user in project.collaborators.all %}
-  <section class="project__header">
-    {% if project.created_by == request.user %}
-    <div class="project__edit">
-      <a href="{% url 'edit_project' created_by=project.created_by project_id=project.id %}"
-        class=" btn__project--edit">
-        <div class="btn__text--hidden">Edit</div>
-        <i class="fas fa-edit btn__icon"></i>
-      </a>
-      <a href="{% url 'delete_project' created_by=project.created_by project_id=project.id %}"
-        class="btn__project--delete">
-        <div class="btn__text--hidden">Delete</div>
-        <i class="fas fa-trash-alt btn__icon"></i>
-      </a>
-    </div>
+  <div class="project__details">
+    <h2 class="project__title">{{ project.title }}</h2>
+    {% if user.id == project.created_by.id or user in project.collaborators.all %}
+      <section class="project__header">
+        {% if project.created_by == request.user %}
+          <div class="project__edit">
+            <a href="{% url 'edit_project' created_by=project.created_by project_id=project.id %}"
+              class=" btn__project--edit">
+              <div class="btn__text--hidden">Edit</div>
+              <i class="fas fa-edit btn__icon"></i>
+            </a>
+            <a href="{% url 'delete_project' created_by=project.created_by project_id=project.id %}"
+              class="btn__project--delete">
+              <div class="btn__text--hidden">Delete</div>
+              <i class="fas fa-trash-alt btn__icon"></i>
+            </a>
+          </div>
+        {% endif %}
+        <h3 class="project__header--descriptions">
+          <span>Description: </span>
+        </h3>
+        <p class="project__header--about">
+          {{ project.description }}
+        </p>
+        <h3>
+          <span>Collaborators: </span>
+        </h3>
+        <p>
+          {% if project.project_type == 0 %}
+            {{ project.created_by }}
+          {% else %}
+            {% for collaborator in project.collaborators.all %}
+              <a href="{% url 'user_profile' username=collaborator.username %}" class="project__collaborator--link">
+                {{ collaborator.username }}
+              </a>
+            {% endfor %}
+          {% endif %}
+        </p>
+      </section>
+      <section class="project__issues">
+        <h3 class="project__issues--title">
+          Issues
+        </h3>
+        <div class="project__issues--main">
+          <div class="project__issue--status">
+            <div class="project__issues--header">
+              <h4 class="issue--title">To Do:</h4>
+              <a href="{% url 'create_issue' created_by=project.created_by project_id=project.id %}"
+                class="btn btn__issue--add" data-target-modal="#">
+                <span>Add issue</span>
+                <i class="fas fa-plus-circle"></i>
+              </a>
+            </div>
+            <div class="project__issues--container">
+              <div class="project__issue" data-issue-status=0>
+                {% for issue_to_do in issues_to_do %}
+                  <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_to_do.id %}"
+                    class="issue__container" data-issue-id="{{ issue_to_do.id }}">
+                    <div class="issue">
+                      <div class="issue__content">
+                        {% if issue_to_do.priority == 0 %}
+                          <div class="issue__priority blue">
+                            <div class="circle"></div>
+                          </div>
+                        {% elif issue_to_do.priority == 1 %}
+                          <div class="issue__priority yellow">
+                            <div class="circle"></div>
+                          </div>
+                        {% elif issue_to_do.priority == 2 %}
+                          <div class="issue__priority orange">
+                            <div class="circle"></div>
+                          </div>
+                        {% elif issue_to_do.priority == 3 %}
+                          <div class="issue__priority red">
+                            <div class="circle"></div>
+                          </div>
+                        {% endif %}
+                      </div>
+                      {% if issue_to_do.issue_type == 0 %}
+                        <div class="issue__type red">
+                          <p class="issue__type--text">Bug</p>
+                        </div>
+                      {% elif issue_to_do.issue_type == 1 %}
+                        <div class="issue__type purple">
+                          <p class="issue__type--text">Feature</p>
+                        </div>
+                      {% elif issue_to_do.issue_type == 2 %}
+                        <div class="issue__type green">
+                          <p class="issue__type--text">Task</p>
+                        </div>
+                      {% elif issue_to_do.issue_type == 3 %}
+                        <div class="issue__type blue">
+                          <p class="issue__type--text">User Story</p>
+                        </div>
+                      {% endif %}
+                    </div>
+                    <div class="issue__title">
+                      {{ issue_to_do.title }}
+                    </div>
+                    <div class="issue__additional">
+                      <div class="issue__assignee">
+                        <span>Assigned:</span>
+                        {{ issue_to_do.assigned_to.username }}
+                      </div>
+                      <div class="issue__data">
+                        <div class="issue__votes">
+                          <div class="issue__votes--icon">
+                            {% if user.id and user in issue_to_do.votes.all %}
+                            <i class="fas fa-check-circle"></i>
+                            {% else %}
+                            <i class="far fa-check-circle"></i>
+                            {% endif %}
+                          </div>
+                          {{ issue_to_do.votes.count }}
+                        </div>
+                        <div class="issue__comments">
+                          <div class="issue__comments--icon">
+                            <i class="far fa-comment"></i>
+                          </div>
+                          {{ issue_to_do.comments.count }}
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="project__issue--status">
+            <div class="project__issues--header">
+              <h4 class="project__issue--title">In Progress:</h4>
+            </div>
+            <div class="project__issues--container">
+              <div class="project__issue" data-issue-status=1>
+                {% for issue_in_progress in issues_in_progress %}
+                <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_in_progress.id %}"
+                  class="issue__container" data-issue-id="{{ issue_in_progress.id }}">
+                  <div class="issue">
+                    <div class="issue__content">
+                      {% if issue_in_progress.priority == 0 %}
+                      <div class="issue__priority blue">
+                        <div class="circle"></div>
+                      </div>
+                      {% elif issue_in_progress.priority == 1 %}
+                      <div class="issue__priority yellow">
+                        <div class="circle"></div>
+                      </div>
+                      {% elif issue_in_progress.priority == 2 %}
+                      <div class="issue__priority orange">
+                        <div class="circle"></div>
+                      </div>
+                      {% elif issue_in_progress.priority == 3 %}
+                      <div class="issue__priority red">
+                        <div class="circle"></div>
+                      </div>
+                      {% endif %}
+
+                    </div>
+                    {% if issue_in_progress.issue_type == 0 %}
+                    <div class="issue__type red">
+                      <p class="issue__type--text">Bug</p>
+                    </div>
+                    {% elif issue_in_progress.issue_type == 1 %}
+                    <div class="issue__type purple">
+                      <p class="issue__type--text">Feature</p>
+                    </div>
+                    {% elif issue_in_progress.issue_type == 2 %}
+                    <div class="issue__type green">
+                      <p class="issue__type--text">Task</p>
+                    </div>
+                    {% elif issue_in_progress.issue_type == 3 %}
+                    <div class="issue__type blue">
+                      <p class="issue__type--text">User Story</p>
+                    </div>
+                    {% endif %}
+                  </div>
+                  <div class="issue__title">
+                    {{ issue_in_progress.title }}
+                  </div>
+                  <div class="issue__additional">
+                    <div class="issue__assignee">
+                      <span>Assigned:</span>
+                      {{ issue_in_progress.assigned_to.username }}
+                    </div>
+                    <div class="issue__data">
+                      <div class="issue__votes">
+                        <div class="issue__votes--icon">
+                          {% if user.id and user in issue_in_progress.votes.all %}
+                          <i class="fas fa-check-circle"></i>
+                          {% else %}
+                          <i class="far fa-check-circle"></i>
+                          {% endif %}
+                        </div>
+                        {{ issue_in_progress.votes.count }}
+                      </div>
+                      <div class="issue__comments">
+                        <div class="issue__comments--icon">
+                          <i class="far fa-comment"></i>
+                        </div>
+                        {{ issue_in_progress.comments.count }}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="project__issue--status">
+            <div class="project__issues--header">
+              <h4 class="project__issue--title">Done:</h4>
+            </div>
+            <div class="project__issues--container">
+              <div class="project__issue" data-issue-status=2>
+                {% for issue_done in issues_done %}
+                <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_done.id %}"
+                  class="issue__container" data-issue-id="{{ issue_done.id }}">
+                  <div class="issue">
+                    <div class="issue__content">
+                      {% if issue_done.priority == 0 %}
+                      <div class="issue__priority blue">
+                        <div class="circle"></div>
+                      </div>
+                      {% elif issue_done.priority == 1 %}
+                      <div class="issue__priority yellow">
+                        <div class="circle"></div>
+                      </div>
+                      {% elif issue_done.priority == 2 %}
+                      <div class="issue__priority orange">
+                        <div class="circle"></div>
+                      </div>
+                      {% elif issue_done.priority == 3 %}
+                      <div class="issue__priority red">
+                        <div class="circle"></div>
+                      </div>
+                      {% endif %}
+
+                    </div>
+                    {% if issue_done.issue_type == 0 %}
+                    <div class="issue__type red">
+                      <p class="issue__type--text">Bug</p>
+                    </div>
+                    {% elif issue_done.issue_type == 1 %}
+                    <div class="issue__type purple">
+                      <p class="issue__type--text">Feature</p>
+                    </div>
+                    {% elif issue_done.issue_type == 2 %}
+                    <div class="issue__type green">
+                      <p class="issue__type--text">Task</p>
+                    </div>
+                    {% elif issue_done.issue_type == 3 %}
+                    <div class="issue__type blue">
+                      <p class="issue__type--text">User Story</p>
+                    </div>
+                    {% endif %}
+                  </div>
+                  <div class="issue__title">
+                    {{ issue_done.title }}
+                  </div>
+                  <div class="issue__additional">
+                    <div class="issue__assignee">
+                      <span>Assigned:</span>
+                      {{ issue_done.assigned_to.username }}
+                    </div>
+                    <div class="issue__data">
+                      <div class="issue__votes">
+                        <div class="issue__votes--icon">
+                          {% if user.id and user in issue_done.votes.all %}
+                          <i class="fas fa-check-circle"></i>
+                          {% else %}
+                          <i class="far fa-check-circle"></i>
+                          {% endif %}
+                        </div>
+                        {{ issue_done.votes.count }}
+                      </div>
+                      <div class="issue__comments">
+                        <div class="issue__comments--icon">
+                          <i class="far fa-comment"></i>
+                        </div>
+                        {{ issue_done.comments.count }}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    {% else %}
+      <h3 class="project__title--message">You are not authorized to view this project</h3>
     {% endif %}
-    <h3 class="project__header--descriptions">
-      <span>Description: </span>
-    </h3>
-    <p class="project__header--about">
-      {{ project.description }}
-    </p>
-    <h3>
-      <span>Collaborators: </span>
-    </h3>
-    <p>
-      {% if project.project_type == 0 %}
-      {{ project.created_by }}
-      {% else %}
-      {% for collaborator in project.collaborators.all %}
-      <a href="{% url 'user_profile' username=collaborator.username %}" class="project__collaborator--link">
-        {{ collaborator.username }}
-      </a>
-      {% endfor %}
-      {% endif %}
-    </p>
-  </section>
-  <section class="project__issues">
-    <h3 class="project__issues--title">
-      Issues
-    </h3>
-    <div class="project__issues--main">
-      <div class="project__issue--status">
-        <div class="project__issues--header">
-          <h4 class="issue--title">To Do:</h4>
-          <a href="{% url 'create_issue' created_by=project.created_by project_id=project.id %}"
-            class="btn btn__issue--add" data-target-modal="#">
-            <span>Add issue</span>
-            <i class="fas fa-plus-circle"></i>
-          </a>
-        </div>
-        <div class="project__issues--container">
-          <div class="project__issue" data-issue-status=0>
-            {% for issue_to_do in issues_to_do %}
-            <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_to_do.id %}"
-              class="issue__container" data-issue-id="{{ issue_to_do.id }}">
-              <div class="issue">
-                <div class="issue__content">
-                  {% if issue_to_do.priority == 0 %}
-                  <div class="issue__priority blue">
-                    <div class="circle"></div>
-                  </div>
-                  {% elif issue_to_do.priority == 1 %}
-                  <div class="issue__priority yellow">
-                    <div class="circle"></div>
-                  </div>
-                  {% elif issue_to_do.priority == 2 %}
-                  <div class="issue__priority orange">
-                    <div class="circle"></div>
-                  </div>
-                  {% elif issue_to_do.priority == 3 %}
-                  <div class="issue__priority red">
-                    <div class="circle"></div>
-                  </div>
-                  {% endif %}
-                </div>
-                {% if issue_to_do.issue_type == 0 %}
-                <div class="issue__type red">
-                  <p class="issue__type--text">Bug</p>
-                </div>
-                {% elif issue_to_do.issue_type == 1 %}
-                <div class="issue__type purple">
-                  <p class="issue__type--text">Feature</p>
-                </div>
-                {% elif issue_to_do.issue_type == 2 %}
-                <div class="issue__type green">
-                  <p class="issue__type--text">Task</p>
-                </div>
-                {% elif issue_to_do.issue_type == 3 %}
-                <div class="issue__type blue">
-                  <p class="issue__type--text">User Story</p>
-                </div>
-                {% endif %}
-              </div>
-              <div class="issue__title">
-                {{ issue_to_do.title }}
-              </div>
-              <div class="issue__additional">
-                <div class="issue__assignee">
-                  <span>Assigned:</span>
-                  {{ issue_to_do.assigned_to.username }}
-                </div>
-                <div class="issue__data">
-                  <div class="issue__votes">
-                    <div class="issue__votes--icon">
-                      {% if user.id and user in issue_to_do.votes.all %}
-                      <i class="fas fa-check-circle"></i>
-                      {% else %}
-                      <i class="far fa-check-circle"></i>
-                      {% endif %}
-                    </div>
-                    {{ issue_to_do.votes.count }}
-                  </div>
-                  <div class="issue__comments">
-                    <div class="issue__comments--icon">
-                      <i class="far fa-comment"></i>
-                    </div>
-                    {{ issue_to_do.comments.count }}
-                  </div>
-                </div>
-              </div>
-            </a>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-      <div class="project__issue--status">
-        <div class="project__issues--header">
-          <h4 class="project__issue--title">In Progress:</h4>
-        </div>
-        <div class="project__issues--container">
-          <div class="project__issue" data-issue-status=1>
-            {% for issue_in_progress in issues_in_progress %}
-            <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_in_progress.id %}"
-              class="issue__container" data-issue-id="{{ issue_in_progress.id }}">
-              <div class="issue">
-                <div class="issue__content">
-                  {% if issue_in_progress.priority == 0 %}
-                  <div class="issue__priority blue">
-                    <div class="circle"></div>
-                  </div>
-                  {% elif issue_in_progress.priority == 1 %}
-                  <div class="issue__priority yellow">
-                    <div class="circle"></div>
-                  </div>
-                  {% elif issue_in_progress.priority == 2 %}
-                  <div class="issue__priority orange">
-                    <div class="circle"></div>
-                  </div>
-                  {% elif issue_in_progress.priority == 3 %}
-                  <div class="issue__priority red">
-                    <div class="circle"></div>
-                  </div>
-                  {% endif %}
-
-                </div>
-                {% if issue_in_progress.issue_type == 0 %}
-                <div class="issue__type red">
-                  <p class="issue__type--text">Bug</p>
-                </div>
-                {% elif issue_in_progress.issue_type == 1 %}
-                <div class="issue__type purple">
-                  <p class="issue__type--text">Feature</p>
-                </div>
-                {% elif issue_in_progress.issue_type == 2 %}
-                <div class="issue__type green">
-                  <p class="issue__type--text">Task</p>
-                </div>
-                {% elif issue_in_progress.issue_type == 3 %}
-                <div class="issue__type blue">
-                  <p class="issue__type--text">User Story</p>
-                </div>
-                {% endif %}
-              </div>
-              <div class="issue__title">
-                {{ issue_in_progress.title }}
-              </div>
-              <div class="issue__additional">
-                <div class="issue__assignee">
-                  <span>Assigned:</span>
-                  {{ issue_in_progress.assigned_to.username }}
-                </div>
-                <div class="issue__data">
-                  <div class="issue__votes">
-                    <div class="issue__votes--icon">
-                      {% if user.id and user in issue_in_progress.votes.all %}
-                      <i class="fas fa-check-circle"></i>
-                      {% else %}
-                      <i class="far fa-check-circle"></i>
-                      {% endif %}
-                    </div>
-                    {{ issue_in_progress.votes.count }}
-                  </div>
-                  <div class="issue__comments">
-                    <div class="issue__comments--icon">
-                      <i class="far fa-comment"></i>
-                    </div>
-                    {{ issue_in_progress.comments.count }}
-                  </div>
-                </div>
-              </div>
-            </a>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-      <div class="project__issue--status">
-        <div class="project__issues--header">
-          <h4 class="project__issue--title">Done:</h4>
-        </div>
-        <div class="project__issues--container">
-          <div class="project__issue" data-issue-status=2>
-            {% for issue_done in issues_done %}
-            <a href="{% url 'issue_detail' created_by=project.created_by project_id=project.id issue_id=issue_done.id %}"
-              class="issue__container" data-issue-id="{{ issue_done.id }}">
-              <div class="issue">
-                <div class="issue__content">
-                  {% if issue_done.priority == 0 %}
-                  <div class="issue__priority blue">
-                    <div class="circle"></div>
-                  </div>
-                  {% elif issue_done.priority == 1 %}
-                  <div class="issue__priority yellow">
-                    <div class="circle"></div>
-                  </div>
-                  {% elif issue_done.priority == 2 %}
-                  <div class="issue__priority orange">
-                    <div class="circle"></div>
-                  </div>
-                  {% elif issue_done.priority == 3 %}
-                  <div class="issue__priority red">
-                    <div class="circle"></div>
-                  </div>
-                  {% endif %}
-
-                </div>
-                {% if issue_done.issue_type == 0 %}
-                <div class="issue__type red">
-                  <p class="issue__type--text">Bug</p>
-                </div>
-                {% elif issue_done.issue_type == 1 %}
-                <div class="issue__type purple">
-                  <p class="issue__type--text">Feature</p>
-                </div>
-                {% elif issue_done.issue_type == 2 %}
-                <div class="issue__type green">
-                  <p class="issue__type--text">Task</p>
-                </div>
-                {% elif issue_done.issue_type == 3 %}
-                <div class="issue__type blue">
-                  <p class="issue__type--text">User Story</p>
-                </div>
-                {% endif %}
-              </div>
-              <div class="issue__title">
-                {{ issue_done.title }}
-              </div>
-              <div class="issue__additional">
-                <div class="issue__assignee">
-                  <span>Assigned:</span>
-                  {{ issue_done.assigned_to.username }}
-                </div>
-                <div class="issue__data">
-                  <div class="issue__votes">
-                    <div class="issue__votes--icon">
-                      {% if user.id and user in issue_done.votes.all %}
-                      <i class="fas fa-check-circle"></i>
-                      {% else %}
-                      <i class="far fa-check-circle"></i>
-                      {% endif %}
-                    </div>
-                    {{ issue_done.votes.count }}
-                  </div>
-                  <div class="issue__comments">
-                    <div class="issue__comments--icon">
-                      <i class="far fa-comment"></i>
-                    </div>
-                    {{ issue_done.comments.count }}
-                  </div>
-                </div>
-              </div>
-            </a>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  {% else %}
-  <h3 class="project__title--message">You are not authorized to view this project</h3>
-  {% endif %}
-  {% else %}
-  <h3 class="project__title--message">You are not authorized to view this project</h3>
-  {% endif %}
-</div>
+    {% else %}
+      <h3 class="project__title--message">You are not authorized to view this project</h3>
+    {% endif %}
+  </div>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-<script>
-  let issues_container = $('.project__issues--main');
-  let sectionsToDrop = $('.project__issue');
-  $('.issue__container', issues_container).draggable({
-    revert: 'invalid',
-    helper: 'clone',
-    cursor: 'move',
-    cursorAt: {
-      top: 20,
-      left: 20
-    },
-    zIndex: 100,
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <!-- jquery ui touch punch script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <script>
+    let issues_container = $('.project__issues--main');
+    let sectionsToDrop = $('.project__issue');
+    $('.issue__container', issues_container).draggable({
+      revert: 'invalid',
+      helper: 'clone',
+      cursor: 'move',
+      cursorAt: {
+        top: 20,
+        left: 20
+      },
+      zIndex: 100,
 
-    start: function (event, ui) {
-      ui.helper.width($(this).width());
-      ui.helper.height($(this).height());
-    }
-  });
-  $(sectionsToDrop).droppable({
-    accept: '.issue__container',
-    hoverClass: 'hovered',
+      start: function (event, ui) {
+        ui.helper.width($(this).width());
+        ui.helper.height($(this).height());
+      }
+    });
+    $(sectionsToDrop).droppable({
+      accept: '.issue__container',
+      hoverClass: 'hovered',
 
-    drop: function (event, ui) {
-      $(this).append(ui.draggable);
-      let issue_id = ui.draggable.attr('data-issue-id');
-      let issue_status = $(this).attr('data-issue-status');
-      let url = '{% url "update_issue_status" %}';
-      $.ajax({
-        url: url,
-        type: 'POST',
-        data: {
-          issue_id: issue_id,
-          issue_status: issue_status,
-          csrfmiddlewaretoken: '{{ csrf_token }}'
-        },
-        success: function (data) {
-          console.log(data);
-        }
-      });
-    }
-  });
-</script>
+      drop: function (event, ui) {
+        $(this).append(ui.draggable);
+        let issue_id = ui.draggable.attr('data-issue-id');
+        let issue_status = $(this).attr('data-issue-status');
+        let url = '{% url "update_issue_status" %}';
+        $.ajax({
+          url: url,
+          type: 'POST',
+          data: {
+            issue_id: issue_id,
+            issue_status: issue_status,
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+          },
+          success: function (data) {
+            console.log(data);
+          }
+        });
+      }
+    });
+  </script>
 {% endblock %}
