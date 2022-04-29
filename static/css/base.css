@@ -132,10 +132,11 @@ body {
   list-style-type: none;
   right: 0;
   z-index: 99;
-  border: 1px solid var(--clr-neutral--500);
+  border: 0.5px solid var(--clr-accent--300);
   background-color: var(--clr-primary--100);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
   display: none;
+  border-radius: 0.2em;
 }
 
 .navbar__item--dropdown.open~.account__options {
@@ -184,15 +185,20 @@ body {
 
 
 /* ----- Home page ----- */
+.bg__main,
 .bg {
-  height: 60vh;
-  min-height: 30rem;
+  height: 60rem;
   width: unset;
   background-color: var(--clr-primary--500);
   background-image: url('/static/images/bg_image_dark.svg');
   background-repeat: no-repeat;
   background-position: left center;
   background-size: cover;
+}
+
+.bg {
+  height: 60vh;
+  min-height: 30rem;
 }
 
 .incentive {
@@ -1845,6 +1851,7 @@ button.select2-selection__choice__remove {
   font-weight: bold;
   margin-bottom: 0.8em;
   letter-spacing: 0.1rem;
+  text-align: center;
 }
 
 .contributor__links {
@@ -2006,6 +2013,10 @@ button.select2-selection__choice__remove {
     font-size: 1rem;
   }
 
+  .account__options {
+    padding: 0.7em 1em;
+  }
+
   /* Forms */
   .project__new--title,
   .project__title,
@@ -2032,7 +2043,22 @@ button.select2-selection__choice__remove {
   }
 
   .account input {
-    min-width: 15rem;
+    width: 100%;
+  }
+
+  .account .form-check {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    color: #ffffffc2;
+    font-weight: 100;
+    font-size: 1.2rem;
+  }
+
+  .account input[type='checkbox'] {
+    margin-left: 1em;
+    width: 2rem;
   }
 
   .project__new--form,
@@ -2225,8 +2251,31 @@ button.select2-selection__choice__remove {
   }
 }
 
+@media all and (max-width: 40em) {
+  .account {
+    margin: 2em auto;
+    padding: 2em 0.5em;
+    width: 90%;
+  }
 
+  .account__title {
+    font-size: 1.3rem;
+  }
 
+  .account p {
+    margin: 0.5em auto;
+    font-size: 0.9em;
+  }
+
+  .account form {
+    width: 90%;
+  }
+
+  .account input {
+    width: 100%;
+    min-width: unset;
+  }
+}
 
 @media all and (max-width: 30em) {
 
@@ -2299,4 +2348,23 @@ button.select2-selection__choice__remove {
     padding: 0.5em;
   }
 
+  /* Forms */
+  .account button,
+  .account input[type='submit'],
+  .project__new button,
+  .project__new input[type='submit'],
+  .project__previous button,
+  .project__previous input[type='submit'],
+  .project__delete button,
+  .project__delete input[type='submit'],
+  .issue__new button,
+  .issue__new input[type='submit'],
+  .issue__previous button,
+  .issue__previous input[type='submit'],
+  .password__change button,
+  .password__change input[type='submit'] {
+    font-size: 0.9rem;
+    padding: 0.5em 1.2em 0.48em 1.2em;
+    margin: 1em auto;
+  }
 }
