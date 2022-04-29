@@ -2088,7 +2088,6 @@ button.select2-selection__choice__remove {
 
   /* Home page */
   .bg {
-    height: 50rem;
     background-position: center center;
   }
 
@@ -2210,10 +2209,6 @@ button.select2-selection__choice__remove {
 @media all and (max-width: 30em) {
 
   /* Home Page */
-  .bg {
-    height: 40rem;
-  }
-
   .incentive__title {
     font-size: 2rem;
     line-height: 3rem;
