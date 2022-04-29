@@ -2,42 +2,42 @@
 {% load static %}
 
 {% block content %}
-<div class="bg">
-  <div class="incentive">
-    <h2 class="incentive__title">Place to make the best products</h2>
-    <div class="incentive__buttons">
-      <div class="incentive__button">
-        <a href="{% url 'account_login' %}">Login</a>
-      </div>
-      <div class="incentive__button">
-        <a href="{% url 'account_signup' %}">SignUp</a>
+  <div class="bg">
+    <div class="incentive">
+      <h2 class="incentive__title">Place to make the best products</h2>
+      <div class="incentive__buttons">
+        <div class="incentive__button">
+          <a href="{% url 'account_login' %}">Login</a>
+        </div>
+        <div class="incentive__button">
+          <a href="{% url 'account_signup' %}">SignUp</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<section class="benefits__container">
-  <div class="benefits__container--content">
-    <h2 class="benefits__title">Why this platform?</h2>
-    <div class="benefits">
-      <div class="benefit">
-        <div class="benefit__icon">
-          <i class="fas fa-rocket"></i>
+  <section class="benefits__container">
+    <div class="benefits__container--content">
+      <h2 class="benefits__title">Why this platform?</h2>
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit__icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <p class="benefit__content">Fast quality outcome</p>
         </div>
-        <p class="benefit__content">Fast quality outcome</p>
-      </div>
-      <div class="benefit__con">
-        <div class="benefit__icon">
-          <i class="fas fa-comments-dollar"></i>
+        <div class="benefit__con">
+          <div class="benefit__icon">
+            <i class="fas fa-comments-dollar"></i>
+          </div>
+          <p class="benefit__content">Productive communication</p>
         </div>
-        <p class="benefit__content">Productive communication</p>
-      </div>
-      <div class="benefit__con">
-        <div class="benefit__icon">
-          <i class="fas fa-user-secret"></i>
+        <div class="benefit__con">
+          <div class="benefit__icon">
+            <i class="fas fa-user-secret"></i>
+          </div>
+          <p class="benefit__content">Privacy of your team</p>
         </div>
-        <p class="benefit__content">Privacy of your team</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 {% endblock %}
