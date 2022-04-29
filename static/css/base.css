@@ -98,9 +98,11 @@ body {
   letter-spacing: 0.15rem;
 }
 
-.navbar__items {
+.navbar__items,
+.navbar__item {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .navbar__item:not(:first-child) {
@@ -109,16 +111,18 @@ body {
 
 .navbar__item a {
   color: var(--clr-neutral--100);
+  font-size: 1.2rem;
+}
+
+.navbar__item--dropdown {
+  position: relative;
+  font-size: 1.2rem;
 }
 
 .navbar__item a:hover,
 .navbar__item--dropdown:hover,
 .account__option a:hover {
   color: var(--clr-accent--300);
-}
-
-.navbar__item--dropdown {
-  position: relative;
 }
 
 .account__options {
@@ -1983,6 +1987,24 @@ button.select2-selection__choice__remove {
 }
 
 @media all and (max-width: 50em) {
+
+  .navbar {
+    padding: 1em;
+  }
+
+  .logo__container {
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+  }
+
+  .navbar__item a {
+    color: var(--clr-neutral--100);
+    font-size: 1rem;
+  }
+
+  .navbar__item--dropdown {
+    font-size: 1rem;
+  }
 
   /* Forms */
   .project__new--title,
