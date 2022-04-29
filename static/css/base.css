@@ -406,6 +406,12 @@ body {
   justify-content: center;
 }
 
+.forms__buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .account button,
 .account input[type='submit'],
 .project__new button,
@@ -425,12 +431,24 @@ body {
   color: var(--clr-neutral--100);
   font-size: 1.2rem;
   font-weight: bold;
-  padding: 0.5em 1.7em 0.58em 1.7em;
+  padding: 0.5em 1.7em 0.5em 1.7em;
   border-radius: var(--br);
   margin: 2em auto;
   outline: none;
   border: 1px solid var(--clr-primary--300);
   transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.forms__buttons a {
+  background-color: #08a8e7;
+  color: var(--clr-neutral--100);
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5em 1.7em 0.58em 1.7em;
+  border-radius: var(--br);
+  margin: 2em auto;
+  outline: none;
+  border: 1px solid var(--clr-primary--300);
 }
 
 .account button:hover,
@@ -442,6 +460,12 @@ body {
 .password__change button:hover {
   color: #fff;
   background-color: var(--clr-accent--700);
+  border-color: var(--clr-primary--300);
+}
+
+.forms__buttons a:hover {
+  color: #fff;
+  background-color: var(--clr-accent--300);
   border-color: var(--clr-primary--300);
 }
 
@@ -2130,7 +2154,6 @@ button.select2-selection__choice__remove {
   .password__change input[type='submit'] {
     font-size: 1.2rem;
     padding: 0.5em 1.7em 0.58em 1.7em;
-    margin: 1em auto;
   }
 
   button.select2-selection__choice__remove {
@@ -2461,10 +2484,10 @@ button.select2-selection__choice__remove {
   .issue__previous button,
   .issue__previous input[type='submit'],
   .password__change button,
-  .password__change input[type='submit'] {
+  .password__change input[type='submit'],
+  .forms__buttons a {
     font-size: 0.9rem;
     padding: 0.5em 1.2em 0.48em 1.2em;
-    margin: 1em auto;
   }
 }
 
