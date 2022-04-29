@@ -36,9 +36,12 @@
     <nav class="navbar">
       <div class="logo__container">Bugs' digger</div>
       <ul class="navbar__items">
-        <li class="navbar__item">
-          <a href="{% url 'home' %}">Home</a>
-        </li>
+      {% comment %} if user is not autorised {% endcomment %}
+        {% if not user.is_authenticated %}
+          <li class="navbar__item">
+            <a href="{% url 'home' %}">Home</a>
+          </li>
+        {% endif %}
         {% comment %} If user is authorised {% endcomment %}
         {% if request.user.is_authenticated %}
           <li class="navbar__item">

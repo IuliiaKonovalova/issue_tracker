@@ -157,7 +157,7 @@ body {
 
 .account__option--logout::before {
   content: '';
-  border: 0.5px solid var(--clr-neutral--300);
+  border: 0.5px solid var(--clr-accent--300);
   position: absolute;
   top: -1rem;
   left: -1.8rem;
