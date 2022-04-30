@@ -2566,4 +2566,36 @@ button.select2-selection__choice__remove {
     min-width: 90%;
     width: 80vw;
   }
+
+  /* Issue */
+  .issue__new input[type='radio'],
+  .issue__previous input[type='radio'] {
+    width: unset;
+    margin: 0;
+    margin-left: 0;
+    width: 2rem;
+  }
+
+  .issue__new .form-group {
+    display: flex;
+    /* flex-direction: column; */
+    width: 100%;
+    align-self: start;
+  }
+
+  .issue__new .form-group div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-self: start;
+  }
+
+  .issue__new .form-check {
+    position: relative;
+  }
+
+  .issue__new .form-check input {
+    position: absolute;
+    top: 0.5em;
+  }
 }
