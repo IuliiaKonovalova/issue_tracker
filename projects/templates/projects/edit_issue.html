@@ -21,7 +21,12 @@
       </h2>
       {{ form|crispy }}
       {% csrf_token %}
-      <button type="submit">Submit</button>
+      <div class="forms__buttons">
+        <a href="{% url 'issue_detail' issue.project.created_by issue.project.id issue.id %}" class="btn btn-secondary">
+          Cancel
+        </a>
+        <button type="submit">Submit</button>
+      </div>
     </form>
   </div>
   <!-- imports for jquery and select2-->

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect, JsonResponse
+from matplotlib.style import context
 from .models import Issue, Comment, Project
 from .forms import PersonalProjectForm, TeamProjectForm, IssueForm, CommentForm
 from django.contrib.auth.models import User
@@ -243,7 +244,6 @@ class EditProjectView(View):
 
 class EditIssueView(View):
     def get(self, request, created_by, project_id, issue_id, *args, **kwargs):
-        # issue = get_object_or_404(Issue, id=issue_id)
         project = get_object_or_404(
             Project,
             id=project_id,
@@ -252,8 +252,7 @@ class EditIssueView(View):
         issue = project.issues.get(id=issue_id)
         form = IssueForm(instance=issue)
         form.fields['assigned_to'].queryset = project.collaborators.all()
-        return render(
-            request,
+        return render(request,
             'projects/edit_issue.html',
             {'form': form, 'issue': issue}
             )
@@ -306,27 +305,34 @@ class UpdateCommentAjaxView(View):
 
 class DeleteIssueView(View):
     def get(self, request, created_by, project_id, issue_id, *args, **kwargs):
+        
+        if (
+            issue.created_by == request.user or
+            project.created_by == request.user
+        ):
+            project = get_object_or_404(
+            Project,
+            id=project_id,
+            created_by__username=created_by
+            )
+            issue = project.issues.get(id=issue_id)
+            return render(
+                request,
+                'projects/delete_issue.html',
+                {'issue': issue}
+            )
+    def post(self, request, created_by, project_id, issue_id, *args, **kwargs):
         project = get_object_or_404(
             Project,
             id=project_id,
             created_by__username=created_by
             )
         issue = project.issues.get(id=issue_id)
-        if (
-            issue.created_by == request.user or
-            project.created_by == request.user
-        ):
-            issue.delete()
-            return HttpResponseRedirect(
-                reverse(
-                    'project_detail',
-                    kwargs={'created_by': project.created_by, 'pk': project.id}
-                    )
-                    )
+        issue.delete()
         return HttpResponseRedirect(
             reverse(
-                'issue_detail',
-                args=[project.created_by, issue.project.id, issue.id]
+                'project_detail',
+                kwargs={'created_by': project.created_by, 'pk': project.id}
                 )
                 )
 
