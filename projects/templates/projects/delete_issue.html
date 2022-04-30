@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block extra_css %}
+<style>
+  .bg {
+    height: unset;
+    background-image: linear-gradient(#1c2431a9,
+        #1c2431a9),
+      url('/static/images/bg10.svg');
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="project__delete">
+  <form method="post" class="project__delete--form">
+    <h2 class="project__delete--title">
+      Delete Project
+    </h2>
+    {% csrf_token %}
+    <div class="project__delete--header">
+      <div class="project__delete--question">Are you sure you want to delete project: </div>
+      <div class="project__delete--name"> "{{ project.title }}" ?</div>
+      <div class="project__delete--warning">The project will be permanently deleted.</div>
+    </div>
+    <div class="project__delete--btns">
+      <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="project__delete--back">Go
+        back</a>
+      <button type="submit" name="delete">Delete</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

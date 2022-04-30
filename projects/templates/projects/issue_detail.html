@@ -1,250 +1,249 @@
 {% extends "base.html" %}
 {% block extra_css %}
-<style>
-  .bg {
-    height: unset;
-    background-image: linear-gradient(#1c2431a9,
-        #1c2431a9),
-      url('/static/images/bg10.svg');
-  }
-</style>
+  <style>
+    .bg {
+      height: unset;
+      background-image: linear-gradient(#1c2431a9,
+          #1c2431a9),
+        url('/static/images/bg10.svg');
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
-<div class="issue__details">
-  <a href="{% url 'project_detail' created_by=issue.project.created_by pk=issue.project.id %}" class="btn__issue--back">
-    <i class="fas fa-sign-in-alt"></i>
-    Go to project
-  </a>
-  {% if issue.project.created_by == request.user or issue.created_by == request.user %}
-  <div class="issue__edit">
-    <a href="{% url 'edit_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}"
-      class="btn__issue--edit">
-      <div class="btn__text--hidden">Edit</div>
-      <i class="fas fa-edit btn__icon"></i>
+  <div class="issue__details">
+    <a href="{% url 'project_detail' created_by=issue.project.created_by pk=issue.project.id %}" class="btn__issue--back">
+      <i class="fas fa-sign-in-alt"></i>
+      Go to project
     </a>
-    <a href="{% url 'delete_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}"
-      class="btn__issue--delete">
-      <div class="btn__text--hidden">Delete</div>
-      <i class="fas fa-trash-alt btn__icon"></i>
-    </a>
-  </div>
-  {% endif %}
-  <h2 class="issue__title--main">
-    {{ issue.title }}
-    <span>({{ issue.project }})</span>
-  </h2>
-  <div class="issue__details--main">
-    {% comment %} Issue's Priority + Issue's Type {% endcomment %}
-    <div class="issue__marks">
-      <div class="issue__priority--container">
-        {% if issue.priority == 0 %}
-        <div class="issue__priority blue">
-          <div class="circle"></div>
-        </div>
-        <div class="issue__priority--content">Low priority</div>
-        {% elif issue.priority == 1 %}
-        <div class="issue__priority yellow">
-          <div class="circle"></div>
-        </div>
-        <div class="issue__priority--content">Medium priority</div>
-        {% elif issue.priority == 2 %}
-        <div class="issue__priority orange">
-          <div class="circle"></div>
-        </div>
-        <div class="issue__priority--content">High priority</div>
-        {% elif issue.priority == 3 %}
-        <div class="issue__priority red">
-          <div class="circle"></div>
-        </div>
-        <div class="issue__priority--content">Urgent priority</div>
-        {% endif %}
-      </div>
-      <div class="issue__type--container">
-        {% if issue.issue_type == 0 %}
-        <div class="issue__type red">
-          <p class="issue__type--text">Bug</p>
-        </div>
-        <div class="issue__type--content">Type: Bug</div>
-        {% elif issue.issue_type == 1 %}
-        <div class="issue__type purple">
-          <p class="issue__type--text">Feature</p>
-        </div>
-        <div class="issue__type--content">Type: Feature</div>
-        {% elif issue.issue_type == 2 %}
-        <div class="issue__type green">
-          <p class="issue__type--text">Task</p>
-        </div>
-        <div class="issue__type--content">Type: Task</div>
-        {% elif issue.issue_type == 3 %}
-        <div class="issue__type blue">
-          <p class="issue__type--text">User Story</p>
-        </div>
-        <div class="issue__type--content">Type: User Story</div>
-        {% endif %}
-      </div>
+    {% if issue.project.created_by == request.user or issue.created_by == request.user %}
+    <div class="issue__edit">
+      <a href="{% url 'edit_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}"
+        class="btn__issue--edit">
+        <div class="btn__text--hidden">Edit</div>
+        <i class="fas fa-edit btn__icon"></i>
+      </a>
+      <a href="{% url 'delete_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}"
+        class="btn__issue--delete">
+        <div class="btn__text--hidden">Delete</div>
+        <i class="fas fa-trash-alt btn__icon"></i>
+      </a>
     </div>
-    {% comment %} Issue Main Data {% endcomment %}
-    <div class="issue__content--main">
-      <div class="issue__description">
-        <span class="issue__subtitle">Description: </span>
-        {{ issue.description }}
-      </div>
-      <div class="issue__description issue__description--name">
-        <span class="issue__subtitle">Created by: </span>
-        <a href="{% url 'user_profile' username=issue.created_by %}" class="issue__subtitle--link">
-          {{ issue.created_by }}
-          <i class="fas fa-sign-in-alt"></i>
-        </a>
-      </div>
-      <div class="issue__description issue__description--name">
-        <span class="issue__subtitle">Assigned to: </span>
-        <a href="{% url 'user_profile' username=issue.assigned_to %}" class="issue__subtitle--link">
-          {{ issue.assigned_to }}
-          <i class="fas fa-sign-in-alt"></i>
-        </a>
-      </div>
-      <div class="issue__description">
-        <span class="issue__subtitle">Created on: </span>
-        {{ issue.created_on }}
-      </div>
-      <div class="issue__description">
-        <span class="issue__subtitle">Updated on: </span>
-        {{ issue.updated_on }}
-      </div>
-    </div>
-  </div>
-  {% comment %} Issue's Votes' numbers + Comments' numbers {% endcomment %}
-  <div class="issue__data issue__detail--data">
-    <form class="issue__votes " method="POST"
-      action="{% url 'issue_vote' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}">
-      {% csrf_token %}
-      <div class="issue__votes--icon ">
-        {% if user.id and user in issue.votes.all %}
-        <button type="submit">
-          <i class="fas fa-check-circle votes"></i>
-        </button>
-        {% else %}
-        <button type="submit">
-          <i class="far fa-check-circle votes"></i>
-        </button>
-        {% endif %}
-      </div>
-      <div class="votes">
-        {{ issue.votes.count }}
-      </div>
-    </form>
-    <div class="issue__comments">
-      <div class="issue__comments--icon">
-        <i class="far fa-comment comments"></i>
-      </div>
-      <div class="comments">
-        {{ issue.comments.count }}
-      </div>
-    </div>
-  </div>
-  {% comment %} Issue's Comments {% endcomment %}
-  <div class="issue__details--comments">
-    {% if comments.all.count == 0 %}
-    <div class="issue__comments--empty">
-      <p>No comments yet</p>
-    </div>
-    {% else %}
-    {% for comment in comments.all %}
-    <div class="issue__comment">
-      <div class="issue__comment--header">
-        <a href="{% url 'user_profile' username=comment.created_by %}" class="issue__comment--name">
-          {{ comment.created_by }}
-        </a>
-        {% if comment.created_by == user %}
-        <div class="issue__comment--edit">
-          <button class="btn__comment--edit" data-comment-target='{{ comment.id }}'>
-            <div class="btn__text--hidden">Edit</div>
-            <i class="fas fa-edit btn__icon"></i>
-          </button>
-          <button class="btn__comment--delete" data-comment-target='{{ comment.id }}'>
-            <div class="btn__text--hidden">Delete</div>
-            <i class="fas fa-trash-alt btn__icon"></i>
-          </button>
-        </div>
-        {% endif %}
-      </div>
-      <div class="issue__comment--subheader">
-        <div class="issue__comment--date">
-          {{ comment.updated_on }}
-        </div>
-      </div>
-      <div class="issue__comment--content" data-comment-id='{{ comment.id }}'>
-        {{ comment.comment_body }}
-      </div>
-    </div>
-    {% endfor %}
     {% endif %}
+    <h2 class="issue__title--main">
+      {{ issue.title }}
+      <span>({{ issue.project }})</span>
+    </h2>
+    <div class="issue__details--main">
+      {% comment %} Issue's Priority + Issue's Type {% endcomment %}
+      <div class="issue__marks">
+        <div class="issue__priority--container">
+          {% if issue.priority == 0 %}
+            <div class="issue__priority blue">
+              <div class="circle"></div>
+            </div>
+            <div class="issue__priority--content">Low priority</div>
+          {% elif issue.priority == 1 %}
+            <div class="issue__priority yellow">
+              <div class="circle"></div>
+            </div>
+            <div class="issue__priority--content">Medium priority</div>
+          {% elif issue.priority == 2 %}
+            <div class="issue__priority orange">
+              <div class="circle"></div>
+            </div>
+            <div class="issue__priority--content">High priority</div>
+          {% elif issue.priority == 3 %}
+            <div class="issue__priority red">
+              <div class="circle"></div>
+            </div>
+            <div class="issue__priority--content">Urgent priority</div>
+          {% endif %}
+        </div>
+        <div class="issue__type--container">
+          {% if issue.issue_type == 0 %}
+            <div class="issue__type red">
+              <p class="issue__type--text">Bug</p>
+            </div>
+            <div class="issue__type--content">Type: Bug</div>
+          {% elif issue.issue_type == 1 %}
+            <div class="issue__type purple">
+              <p class="issue__type--text">Feature</p>
+            </div>
+            <div class="issue__type--content">Type: Feature</div>
+          {% elif issue.issue_type == 2 %}
+            <div class="issue__type green">
+              <p class="issue__type--text">Task</p>
+            </div>
+            <div class="issue__type--content">Type: Task</div>
+          {% elif issue.issue_type == 3 %}
+            <div class="issue__type blue">
+              <p class="issue__type--text">User Story</p>
+            </div>
+            <div class="issue__type--content">Type: User Story</div>
+          {% endif %}
+        </div>
+      </div>
+      {% comment %} Issue Main Data {% endcomment %}
+      <div class="issue__content--main">
+        <div class="issue__description">
+          <span class="issue__subtitle">Description: </span>
+          {{ issue.description }}
+        </div>
+        <div class="issue__description issue__description--name">
+          <span class="issue__subtitle">Created by: </span>
+          <a href="{% url 'user_profile' username=issue.created_by %}" class="issue__subtitle--link">
+            {{ issue.created_by }}
+            <i class="fas fa-sign-in-alt"></i>
+          </a>
+        </div>
+        <div class="issue__description issue__description--name">
+          <span class="issue__subtitle">Assigned to: </span>
+          <a href="{% url 'user_profile' username=issue.assigned_to %}" class="issue__subtitle--link">
+            {{ issue.assigned_to }}
+            <i class="fas fa-sign-in-alt"></i>
+          </a>
+        </div>
+        <div class="issue__description">
+          <span class="issue__subtitle">Created on: </span>
+          {{ issue.created_on }}
+        </div>
+        <div class="issue__description">
+          <span class="issue__subtitle">Updated on: </span>
+          {{ issue.updated_on }}
+        </div>
+      </div>
+    </div>
+    {% comment %} Issue's Votes' numbers + Comments' numbers {% endcomment %}
+    <div class="issue__data issue__detail--data">
+      <form class="issue__votes " method="POST"
+        action="{% url 'issue_vote' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}">
+        {% csrf_token %}
+        <div class="issue__votes--icon ">
+          {% if user.id and user in issue.votes.all %}
+            <button type="submit">
+              <i class="fas fa-check-circle votes"></i>
+            </button>
+          {% else %}
+            <button type="submit">
+              <i class="far fa-check-circle votes"></i>
+            </button>
+          {% endif %}
+        </div>
+        <div class="votes">
+          {{ issue.votes.count }}
+        </div>
+      </form>
+      <div class="issue__comments">
+        <div class="issue__comments--icon">
+          <i class="far fa-comment comments"></i>
+        </div>
+        <div class="comments">
+          {{ issue.comments.count }}
+        </div>
+      </div>
+    </div>
+    {% comment %} Issue's Comments {% endcomment %}
+    <div class="issue__details--comments">
+      {% if comments.all.count == 0 %}
+        <div class="issue__comments--empty">
+          <p>No comments yet</p>
+        </div>
+      {% else %}
+        {% for comment in comments.all %}
+          <div class="issue__comment">
+            <div class="issue__comment--header">
+              <a href="{% url 'user_profile' username=comment.created_by %}" class="issue__comment--name">
+                {{ comment.created_by }}
+              </a>
+              {% if comment.created_by == user %}
+                <div class="issue__comment--edit">
+                  <button class="btn__comment--edit" data-comment-target='{{ comment.id }}'>
+                    <div class="btn__text--hidden">Edit</div>
+                    <i class="fas fa-edit btn__icon"></i>
+                  </button>
+                  <button class="btn__comment--delete" data-comment-target='{{ comment.id }}'>
+                    <div class="btn__text--hidden">Delete</div>
+                    <i class="fas fa-trash-alt btn__icon"></i>
+                  </button>
+                </div>
+              {% endif %}
+            </div>
+            <div class="issue__comment--subheader">
+              <div class="issue__comment--date">
+                {{ comment.updated_on }}
+              </div>
+            </div>
+            <div class="issue__comment--content" data-comment-id='{{ comment.id }}'>
+              {{ comment.comment_body }}
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    {% comment %} Add Comment {% endcomment %}
+    <div class="add__comment">
+      <form class="add__comment--container" method="post">
+        {{ form|crispy }}
+        {% csrf_token %}
+        <button class="btn__comment--add" type="submit">Add comment +</button>
+      </form>
+    </div>
   </div>
-  {% comment %} Add Comment {% endcomment %}
-  <div class="add__comment">
-    <form class="add__comment--container" method="post">
-      {{ form|crispy }}
-      {% csrf_token %}
-      <button class="btn__comment--add" type="submit">Add comment +</button>
-    </form>
-  </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-<script>
-  $(document).ready(function () {
-    $('.btn__comment--edit').click(function () {
-      $('.btn__comment--edit').hide();
-      let url = '{% url "update_comment" %}';
-      let comment_id = $(this).attr('data-comment-target');
-      let comment = $(`[data-comment-id='${comment_id}']`);
-      let comment_text = comment.text();
-      // take away leading and following white spaces from textarea
-      comment_text = comment_text.replace(/^\s+|\s+$/g, '');
-      comment.html(`
-        <textarea class="comment__textarea">${comment_text}</textarea>
-        <button class="btn__comment--save" type="submit">Save</button>`);
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.btn__comment--edit').click(function () {
+        $('.btn__comment--edit').hide();
+        let url = '{% url "update_comment" %}';
+        let comment_id = $(this).attr('data-comment-target');
+        let comment = $(`[data-comment-id='${comment_id}']`);
+        let comment_text = comment.text();
+        // take away leading and following white spaces from textarea
+        comment_text = comment_text.replace(/^\s+|\s+$/g, '');
+        comment.html(`
+          <textarea class="comment__textarea">${comment_text}</textarea>
+          <button class="btn__comment--save" type="submit">Save</button>`);
 
-      $('.btn__comment--save').click(function () {
-        let comment_body = $('.comment__textarea').val();
-        $('.comment__textarea').val() == '';
+        $('.btn__comment--save').click(function () {
+          let comment_body = $('.comment__textarea').val();
+          $('.comment__textarea').val() == '';
 
+          $.ajax({
+            url: url,
+            type: 'POST',
+            data: {
+              comment_id: comment_id,
+              comment_body: comment_body,
+              csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function (data) {
+              comment.html(`${comment_body}`);
+              $('.btn__comment--edit').show();
+
+            }
+          });
+        });
+
+      });
+      $('.btn__comment--delete').click(function () {
+        let url = '{% url "delete_comment" %}';
+        let comment_id = $(this).attr('data-comment-target');
+        let comment = $(`[data-comment-id='${comment_id}']`);
         $.ajax({
           url: url,
           type: 'POST',
           data: {
             comment_id: comment_id,
-            comment_body: comment_body,
             csrfmiddlewaretoken: '{{ csrf_token }}'
           },
           success: function (data) {
-            comment.html(`${comment_body}`);
-            $('.btn__comment--edit').show();
-
+            comment.parent().remove();
           }
         });
       });
-
     });
-    $('.btn__comment--delete').click(function () {
-      let url = '{% url "delete_comment" %}';
-      let comment_id = $(this).attr('data-comment-target');
-      let comment = $(`[data-comment-id='${comment_id}']`);
-      $.ajax({
-        url: url,
-        type: 'POST',
-        data: {
-          comment_id: comment_id,
-          csrfmiddlewaretoken: '{{ csrf_token }}'
-        },
-        success: function (data) {
-          comment.parent().remove();
-        }
-      });
-    });
-  });
-</script>
-
+  </script>
 {% endblock %}

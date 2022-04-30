@@ -2220,8 +2220,8 @@ button.select2-selection__choice__remove {
 
   /* Issue Details */
   .issue__details {
-    margin: 1em 0;
-    padding: 1em;
+    margin: 1em 0.2em;
+    padding: 1em 0.5em;
   }
 
   .issue__title--main {
@@ -2576,25 +2576,28 @@ button.select2-selection__choice__remove {
     width: 2rem;
   }
 
-  .issue__new .form-group {
+  .issue__new .form-group,
+  .issue__previous .form-group {
     display: flex;
-    /* flex-direction: column; */
     width: 100%;
     align-self: start;
   }
 
-  .issue__new .form-group div {
+  .issue__new .form-group div,
+  .issue__previous .form-group div {
     display: flex;
     flex-direction: column;
     width: 100%;
     align-self: start;
   }
 
-  .issue__new .form-check {
+  .issue__new .form-check,
+  .issue__previous .form-check {
     position: relative;
   }
 
-  .issue__new .form-check input {
+  .issue__new .form-check input,
+  .issue__previous .form-check input {
     position: absolute;
     top: 0.5em;
   }

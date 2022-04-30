@@ -1,49 +1,48 @@
 {% extends "base.html" %}
 
 {% block extra_css %}
-<style>
-  .bg {
-    height: unset;
-    background-image: linear-gradient(#1c2431a9,
-        #1c2431a9),
-      url('/static/images/bg7.svg');
-    background-position: center top;
-  }
-</style>
+  <style>
+    .bg {
+      height: unset;
+      background-image: linear-gradient(#1c2431a9,
+          #1c2431a9),
+        url('/static/images/bg7.svg');
+      background-position: center top;
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
+  <div class="issue__previous">
+    <form method="post" class="issue__previous--form">
+      <h2 class="issue__edit--title">
+        Edit issue: <br>
+        {{ issue.title }}
+      </h2>
+      {{ form|crispy }}
+      {% csrf_token %}
+      <div class="forms__buttons">
+        <a href="{% url 'issue_detail' issue.project.created_by issue.project.id issue.id %}" class="btn btn-secondary">
+          Cancel
+        </a>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+  <!-- imports for jquery and select2-->
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('select').addClass('js-example-basic-single');
 
-<h2 class="issue__edit--title">
-  Edit issue: </br>
-  {{ issue.title }}
-</h2>
-<div class="issue__previous">
-  <form method="post" class="issue__previous--form">
-    {{ form|crispy }}
-    {% csrf_token %}
-    <button type="submit">Submit</button>
-  </form>
-</div>
-
-
-<!-- imports for jquery and select2-->
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script>
-  $(document).ready(function () {
-    $('select').addClass('js-example-basic-single');
-
-    $('.js-example-basic-single').select2({
-      placeholder: 'Chose an assignee',
+      $('.js-example-basic-single').select2({
+        placeholder: 'Chose an assignee',
+      });
+      $('#div_id_assigned_to').css('width', '100%');
+      $('.select2').css('width', '100%');
     });
-    $('#div_id_assigned_to').css('width', '100%');
-    $('.select2').css('width', '100%');
-  });
-
-
-
-</script>
+  </script>
 {% endblock %}
