@@ -2578,7 +2578,6 @@ button.select2-selection__choice__remove {
 
   .issue__new .form-group {
     display: flex;
-    /* flex-direction: column; */
     width: 100%;
     align-self: start;
   }
