@@ -18,7 +18,10 @@
     <form method="post" class="issue__new--form">
       {{ form|crispy }}
       {% csrf_token %}
-      <button type="submit">Submit</button>
+      <div class="forms__buttons">
+        <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="btn btn__cancel">Cancel</a>
+        <button type="submit">Submit</button>
+      </div>
     </form>
   </div>
   <!-- imports for jquery and select2-->
