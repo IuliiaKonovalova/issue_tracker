@@ -406,6 +406,12 @@ body {
   justify-content: center;
 }
 
+.forms__buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .account button,
 .account input[type='submit'],
 .project__new button,
@@ -425,12 +431,24 @@ body {
   color: var(--clr-neutral--100);
   font-size: 1.2rem;
   font-weight: bold;
-  padding: 0.5em 1.7em 0.58em 1.7em;
+  padding: 0.5em 1.7em 0.5em 1.7em;
   border-radius: var(--br);
   margin: 2em auto;
   outline: none;
   border: 1px solid var(--clr-primary--300);
   transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.forms__buttons a {
+  background-color: #08a8e7;
+  color: var(--clr-neutral--100);
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5em 1.7em 0.58em 1.7em;
+  border-radius: var(--br);
+  margin: 2em auto;
+  outline: none;
+  border: 1px solid var(--clr-primary--300);
 }
 
 .account button:hover,
@@ -442,6 +460,12 @@ body {
 .password__change button:hover {
   color: #fff;
   background-color: var(--clr-accent--700);
+  border-color: var(--clr-primary--300);
+}
+
+.forms__buttons a:hover {
+  color: #fff;
+  background-color: var(--clr-accent--300);
   border-color: var(--clr-primary--300);
 }
 
@@ -690,8 +714,9 @@ body {
   margin: 0 auto;
   text-align: center;
   color: var(--clr-neutral--100);
-  margin-top: 2em;
-  font-size: 2.5rem;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  font-size: 2rem;
   letter-spacing: 0.15rem;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
 }
@@ -709,11 +734,15 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  padding: 4em;
+  padding: 2em;
   background-color: var(--clr-primary--100);
   color: var(--clr-neutral--100);
   border-radius: var(--br);
   border: 1px solid #ffffff8c;
+}
+
+.project__delete--form {
+  text-align: center;
 }
 
 .project__new label[for='id_title'],
@@ -926,7 +955,8 @@ button.select2-selection__choice__remove {
   color: white;
   font-size: 1.3rem;
   resize: vertical;
-  min-height: 10rem;
+  height: 7rem;
+  min-height: 5rem;
   font-weight: 100;
 }
 
@@ -1886,7 +1916,7 @@ button.select2-selection__choice__remove {
   .project__edit--title,
   .password__edit--title {
     max-width: 30rem;
-    margin-top: 1em;
+    /* margin-top: 1em; */
     font-size: 2rem;
     letter-spacing: 0.1rem;
     padding: 0;
@@ -2076,6 +2106,10 @@ button.select2-selection__choice__remove {
     padding: 2em;
   }
 
+  .project__delete--form {
+    width: 90%;
+  }
+
   .project__new label[for='id_title']~div::before,
   .project__new label[for='id_description']~div::before,
   .project__new label[for='id_collaborators']~div::before,
@@ -2130,7 +2164,6 @@ button.select2-selection__choice__remove {
   .password__change input[type='submit'] {
     font-size: 1.2rem;
     padding: 0.5em 1.7em 0.58em 1.7em;
-    margin: 1em auto;
   }
 
   button.select2-selection__choice__remove {
@@ -2300,7 +2333,6 @@ button.select2-selection__choice__remove {
   }
 
   /* Project Page */
-
   .projects__group {
     padding: 2em 1em;
     margin-bottom: 0;
@@ -2342,6 +2374,7 @@ button.select2-selection__choice__remove {
     margin-left: 0;
   }
 
+  /* Footer */
   .footer__content {
     padding: 2em 1em;
   }
@@ -2461,10 +2494,10 @@ button.select2-selection__choice__remove {
   .issue__previous button,
   .issue__previous input[type='submit'],
   .password__change button,
-  .password__change input[type='submit'] {
+  .password__change input[type='submit'],
+  .forms__buttons a {
     font-size: 0.9rem;
     padding: 0.5em 1.2em 0.48em 1.2em;
-    margin: 1em auto;
   }
 }
 
@@ -2532,5 +2565,37 @@ button.select2-selection__choice__remove {
   .project__new--form .select2-container--default .select2-selection--multiple {
     min-width: 90%;
     width: 80vw;
+  }
+
+  /* Issue */
+  .issue__new input[type='radio'],
+  .issue__previous input[type='radio'] {
+    width: unset;
+    margin: 0;
+    margin-left: 0;
+    width: 2rem;
+  }
+
+  .issue__new .form-group {
+    display: flex;
+    /* flex-direction: column; */
+    width: 100%;
+    align-self: start;
+  }
+
+  .issue__new .form-group div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-self: start;
+  }
+
+  .issue__new .form-check {
+    position: relative;
+  }
+
+  .issue__new .form-check input {
+    position: absolute;
+    top: 0.5em;
   }
 }
