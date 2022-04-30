@@ -714,7 +714,8 @@ body {
   margin: 0 auto;
   text-align: center;
   color: var(--clr-neutral--100);
-  margin-top: 2em;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
   font-size: 2.5rem;
   letter-spacing: 0.15rem;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
@@ -733,7 +734,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  padding: 4em;
+  padding: 2em;
   background-color: var(--clr-primary--100);
   color: var(--clr-neutral--100);
   border-radius: var(--br);
@@ -954,7 +955,8 @@ button.select2-selection__choice__remove {
   color: white;
   font-size: 1.3rem;
   resize: vertical;
-  min-height: 10rem;
+  height: 7rem;
+  min-height: 5rem;
   font-weight: 100;
 }
 
@@ -1914,7 +1916,7 @@ button.select2-selection__choice__remove {
   .project__edit--title,
   .password__edit--title {
     max-width: 30rem;
-    margin-top: 1em;
+    /* margin-top: 1em; */
     font-size: 2rem;
     letter-spacing: 0.1rem;
     padding: 0;

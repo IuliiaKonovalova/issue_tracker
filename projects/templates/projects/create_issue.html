@@ -13,9 +13,10 @@
 {% endblock %}
 
 {% block content %}
-  <h2 class="issue__new--title">Add Issue</h2>
+  
   <div class="issue__new">
     <form method="post" class="issue__new--form">
+      <h2 class="issue__new--title">Add Issue</h2>
       {{ form|crispy }}
       {% csrf_token %}
       <div class="forms__buttons">
