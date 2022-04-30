@@ -716,7 +716,7 @@ body {
   color: var(--clr-neutral--100);
   padding-top: 2vh;
   padding-bottom: 2vh;
-  font-size: 2.5rem;
+  font-size: 2rem;
   letter-spacing: 0.15rem;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
 }

@@ -2,13 +2,13 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  {% if personal %}
-    <h2 class="project__new--title">Add Personal Project</h2>
-  {% else %}
-    <h2 class="project__new--title">Add Group Project</h2>
-  {% endif %}
   <div class="project__new">
     <form method="post" class="project__new--form">
+      {% if personal %}
+        <h2 class="project__new--title">Add Personal Project</h2>
+      {% else %}
+        <h2 class="project__new--title">Add Group Project</h2>
+      {% endif %}
       {{ form|crispy }}
       {% csrf_token %}
       <div class="forms__buttons">
