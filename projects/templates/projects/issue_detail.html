@@ -17,18 +17,18 @@
       Go to project
     </a>
     {% if issue.project.created_by == request.user or issue.created_by == request.user %}
-    <div class="issue__edit">
-      <a href="{% url 'edit_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}"
-        class="btn__issue--edit">
-        <div class="btn__text--hidden">Edit</div>
-        <i class="fas fa-edit btn__icon"></i>
-      </a>
-      <a href="{% url 'delete_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}"
-        class="btn__issue--delete">
-        <div class="btn__text--hidden">Delete</div>
-        <i class="fas fa-trash-alt btn__icon"></i>
-      </a>
-    </div>
+      <div class="issue__edit">
+        <a href="{% url 'edit_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}"
+          class="btn__issue--edit">
+          <div class="btn__text--hidden">Edit</div>
+          <i class="fas fa-edit btn__icon"></i>
+        </a>
+        <a href="{% url 'delete_issue' created_by=issue.project.created_by project_id=issue.project.id issue_id=issue.id %}"
+          class="btn__issue--delete">
+          <div class="btn__text--hidden">Delete</div>
+          <i class="fas fa-trash-alt btn__icon"></i>
+        </a>
+      </div>
     {% endif %}
     <h2 class="issue__title--main">
       {{ issue.title }}

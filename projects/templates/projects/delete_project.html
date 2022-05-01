@@ -13,8 +13,9 @@
         <div class="project__delete--warning">The project will be permanently deleted.</div>
       </div>
       <div class="project__delete--btns">
-        <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="project__delete--back">Go
-          back</a>
+        <a href="{% url 'project_detail' created_by=project.created_by pk=project.id %}" class="project__delete--back">
+          Cancel
+        </a>
         <button type="submit" name="delete">Delete</button>
       </div>
     </form>

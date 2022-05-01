@@ -17,7 +17,7 @@
   --br: 0.5em;
 }
 
-/*------ Global Settings------*/
+/*------ Global Settings ------*/
 *,
 *::before,
 *::after {
@@ -61,8 +61,7 @@ img {
   object-fit: contain;
 }
 
-/* Body */
-
+/* Body Styling */
 body {
   font-family: var(--ff-primary);
   font-size: var(--fs);
@@ -164,9 +163,7 @@ body {
   right: -1.8em;
 }
 
-
-/* ----- Main ----- */
-
+/* ----- Main Styling ----- */
 .main {
   width: 100%;
   flex: 1 0 auto;
@@ -183,8 +180,7 @@ body {
   flex-direction: column;
 }
 
-
-/* ----- Home page ----- */
+/* ----- Home page Styling ----- */
 .bg__main,
 .bg {
   height: 60rem;
@@ -212,7 +208,6 @@ body {
   padding: 0 2em;
 }
 
-
 .incentive__title {
   max-width: 45rem;
   background-color: #181f2a6b;
@@ -227,7 +222,6 @@ body {
   padding-top: 1em;
   display: flex;
 }
-
 
 .incentive__button {
   width: 12rem;
@@ -296,10 +290,11 @@ body {
   margin: 0 2em;
 }
 
-/* ----- Forms ----- */
+/* ----- Forms Styling ----- */
 .account__container,
 .project__new,
 .project__delete,
+.issue__delete,
 .issue__new,
 .issue__previous,
 .project__previous,
@@ -311,27 +306,34 @@ body {
   height: unset;
 }
 
-.project__delete--header {
+.project__delete--header,
+.issue__delete--header {
   font-size: 1.5rem;
   padding: 0 1em;
 }
 
 .project__delete--question,
-.project__delete--warning {
+.project__delete--warning,
+.issue__delete--question,
+.issue__delete--warning {
   color: rgba(255, 255, 255, 0.808);
   padding-top: 0.5em;
   margin-bottom: 0.5em;
 }
 
-.project__delete--name {
+.project__delete--name,
+.issue__delete--name {
   font-size: 1.6rem;
+  text-align: center;
 }
 
-.project__delete--name span {
+.project__delete--name span,
+.issue__delete--name span {
   color: rgba(255, 255, 255, 0.808);
 }
 
-.project__delete--warning {
+.project__delete--warning,
+.issue__delete--warning {
   font-style: italic;
   padding-top: 1em;
   margin-bottom: 2em;
@@ -399,7 +401,8 @@ body {
 }
 
 
-.project__delete--btns {
+.project__delete--btns,
+.issue__delete--btns {
   width: 100%;
   display: flex;
   align-items: center;
@@ -420,13 +423,16 @@ body {
 .project__previous input[type='submit'],
 .project__delete button,
 .project__delete input[type='submit'],
+.issue__delete button,
+.issue__delete input[type='submit'],
 .issue__new button,
 .issue__new input[type='submit'],
 .issue__previous button,
 .issue__previous input[type='submit'],
 .password__change button,
 .password__change input[type='submit'],
-.project__delete--back {
+.project__delete--back,
+.issue__delete--back {
   background-color: var(--clr-accent--800);
   color: var(--clr-neutral--100);
   font-size: 1.2rem;
@@ -455,6 +461,7 @@ body {
 .project__new button:hover,
 .project__previous button:hover,
 .project__delete--back:hover,
+.issue__delete--back:hover,
 .issue__new button:hover,
 .issue__previous button:hover,
 .password__change button:hover {
@@ -469,16 +476,20 @@ body {
   border-color: var(--clr-primary--300);
 }
 
-.project__delete button {
+.project__delete button,
+.issue__delete button {
   background-color: red;
 }
 
-.project__delete button:hover {
+.project__delete button:hover,
+.issue__delete button:hover {
   background-color: rgb(245, 98, 98);
 }
 
 .project__delete button,
-.project__delete--back {
+.project__delete--back,
+.issue__delete button,
+.issue__delete--back {
   margin: 0.5em auto;
 }
 
@@ -502,7 +513,7 @@ body {
 }
 
 
-/* ----- Projects ----- */
+/* ----- Projects Styling ----- */
 .projects__container {
   width: 100%;
   background-color: #1c2431a9;
@@ -689,7 +700,7 @@ body {
   font-size: 1.5rem;
 }
 
-/* ----- New Project ----- */
+/* ----- New Project Styling ----- */
 .projects__container {
   width: 100%;
   background-color: #1c2431a9;
@@ -709,6 +720,7 @@ body {
 .issue__edit--title,
 .project__edit--title,
 .project__delete--title,
+.issue__delete--title,
 .password__edit--title {
   max-width: 35rem;
   margin: 0 auto;
@@ -723,6 +735,7 @@ body {
 
 .project__new--form,
 .project__delete--form,
+.issue__delete--form,
 .issue__new--form,
 .issue__previous--form,
 .project__previous--form,
@@ -741,7 +754,8 @@ body {
   border: 1px solid #ffffff8c;
 }
 
-.project__delete--form {
+.project__delete--form,
+.issue__delete--form {
   text-align: center;
 }
 
@@ -887,7 +901,6 @@ button.select2-selection__choice__remove {
   content: 'Issue Type:';
 }
 
-
 .project__new input,
 .issue__new input,
 .issue__previous input,
@@ -960,7 +973,7 @@ button.select2-selection__choice__remove {
   font-weight: 100;
 }
 
-/* ----- Project Details ----- */
+/* ----- Project Details Styling ----- */
 
 .project__details,
 .issue__details,
@@ -991,6 +1004,10 @@ button.select2-selection__choice__remove {
   margin-bottom: 2em;
 }
 
+.profile__title {
+  margin-bottom: 0;
+}
+
 .project__header,
 .profile__header,
 .profile__statistics,
@@ -1006,6 +1023,11 @@ button.select2-selection__choice__remove {
   background-color: var(--clr-primary--100);
   border-radius: var(--br);
   margin-bottom: 2em;
+}
+
+.profile__header {
+  margin-top: 5vh;
+  margin-bottom: 2vh;
 }
 
 .project__header {
@@ -1205,7 +1227,7 @@ button.select2-selection__choice__remove {
   justify-content: space-between;
 }
 
-/* -----Issue Priority + Priority Low*/
+/* -----Issue Priority + Priority Low Styling ----- */
 .issue__priority {
   width: 1.5rem;
   height: 1.5rem;
@@ -1244,7 +1266,7 @@ button.select2-selection__choice__remove {
   -moz-box-shadow: 0px 0px 3px 2px #65e2d9;
 }
 
-/* Issue Priority Middle */
+/* Issue Priority Middle Styling */
 .issue__priority.yellow {
   -webkit-box-shadow: 0px 0px 3px 2px yellow;
   -moz-box-shadow: 0px 0px 3px 2px yellow;
@@ -1265,7 +1287,7 @@ button.select2-selection__choice__remove {
   -moz-box-shadow: 0px 0px 3px 2px yellow;
 }
 
-/* Issue Priority High */
+/* Issue Priority High Styling */
 .issue__priority.orange {
   -webkit-box-shadow: 0px 0px 3px 2px #ff7b00;
   -moz-box-shadow: 0px 0px 3px 2px #ff7b00;
@@ -1286,7 +1308,7 @@ button.select2-selection__choice__remove {
   -moz-box-shadow: 0px 0px 3px 2px #ff7b00;
 }
 
-/* Issue Priority Urgent */
+/* Issue Priority Urgent Styling */
 .issue__priority.red {
   -webkit-box-shadow: 0px 0px 3px 2px red;
   -moz-box-shadow: 0px 0px 3px 2px red;
@@ -1307,7 +1329,7 @@ button.select2-selection__choice__remove {
   -moz-box-shadow: 0px 0px 3px 2px red;
 }
 
-/* ------- Issue Type + Issue Type User Story */
+/* ------- Issue Type + Issue Type User Story Styling ----- */
 .issue__type {
   padding: 0 0.7em 0.0 0.7em;
   font-size: 0.9rem;
@@ -1330,7 +1352,7 @@ button.select2-selection__choice__remove {
   white-space: nowrap;
 }
 
-/* Issue Type Bug */
+/* Issue Type Bug Styling */
 .issue__type.red {
   color: rgb(145, 2, 2);
   border: red;
@@ -1339,7 +1361,7 @@ button.select2-selection__choice__remove {
   box-shadow: 0px 0px 3px 2px red;
 }
 
-/* Issue Type Feature */
+/* Issue Type Feature Styling */
 .issue__type.purple {
   color: #6b28e0;
   border: #6b28e0;
@@ -1348,7 +1370,7 @@ button.select2-selection__choice__remove {
   box-shadow: 0px 0px 3px 2px #6b28e0;
 }
 
-/* Issue Type Task */
+/* Issue Type Task Styling */
 .issue__type.green {
   color: green;
   border: green;
@@ -1357,7 +1379,7 @@ button.select2-selection__choice__remove {
   box-shadow: 0px 0px 3px 2px green;
 }
 
-/* Assignee, votes, comments */
+/* Assignee, votes, comments Styling */
 .project__issue .issue__additional {
   width: 100%;
   display: flex;
@@ -1399,7 +1421,7 @@ button.select2-selection__choice__remove {
   margin-right: 0.5em;
 }
 
-/* ----- Issue Details ----- */
+/* ----- Issue Details Styling ----- */
 .issue__details {
   max-width: 50rem;
   margin: 4em auto;
@@ -1540,7 +1562,7 @@ button.select2-selection__choice__remove {
   font-size: 1rem;
 }
 
-/* Data on votes and comments */
+/* Data on votes and comments Styling */
 .issue__detail--data {
   padding: 2em 0;
 }
@@ -1563,7 +1585,7 @@ button.select2-selection__choice__remove {
   font-size: 1.5rem;
 }
 
-/* Comments */
+/* Comments Styling */
 .issue__details--comments {
   padding: 1em;
 }
@@ -1659,7 +1681,7 @@ button.select2-selection__choice__remove {
   margin-left: 0.5em;
 }
 
-/* Add comment */
+/* Add comment Styling */
 .add__comment {
   width: 90%;
 }
@@ -1698,8 +1720,7 @@ button.select2-selection__choice__remove {
   cursor: pointer;
 }
 
-/* ----- Create / Edit Issue Form ----- */
-
+/* ----- Create / Edit Issue Form Styling ----- */
 .issue__new label[for='id_title']~div::before,
 .issue__previous label[for='id_title']~div::before {
   content: 'Issue Name:';
@@ -1710,8 +1731,7 @@ button.select2-selection__choice__remove {
   content: 'Issue Description:';
 }
 
-/* ----- Profile Page ----- */
-
+/* ----- Profile Page Styling ----- */
 .profile__header {
   position: relative;
 }
@@ -1833,7 +1853,7 @@ button.select2-selection__choice__remove {
   text-align: center;
 }
 
-/* Change Password */
+/* Change Password Styling */
 .password__edit--subtitle {
   font-size: 1.5rem;
 }
@@ -1854,9 +1874,7 @@ button.select2-selection__choice__remove {
   display: none;
 }
 
-
-/* ----- Footer ----- */
-
+/* ----- Footer Styling ----- */
 .footer {
   width: 100%;
   background-color: var(--clr-primary--900);
@@ -1904,19 +1922,21 @@ button.select2-selection__choice__remove {
   color: var(--clr-accent--300);
 }
 
+/* ----- MEDIA BREAKPOINTS ----- */
 @media all and (max-width: 65em) {
 
-  /* Profile Page */
+  /* Media for Profile Page */
   .project__new--title,
   .project__title,
   .project__delete--title,
+  .issue__delete--title,
+  .issue__delete--title,
   .profile__title,
   .issue__new--title,
   .issue__edit--title,
   .project__edit--title,
   .password__edit--title {
     max-width: 30rem;
-    /* margin-top: 1em; */
     font-size: 2rem;
     letter-spacing: 0.1rem;
     padding: 0;
@@ -2001,8 +2021,8 @@ button.select2-selection__choice__remove {
 
   .profile__edit {
     position: absolute;
-    right: 0;
-    top: -3rem;
+    right: 0.7rem;
+    top: 0.8rem;
     display: flex;
     align-items: center;
   }
@@ -2021,8 +2041,7 @@ button.select2-selection__choice__remove {
     margin-left: 0.3em;
   }
 
-  /* Project Page */
-
+  /* Media for Project Page */
   .project__issues--main {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -2030,6 +2049,7 @@ button.select2-selection__choice__remove {
 
 @media all and (max-width: 50em) {
 
+  /* Media for navbar */
   .navbar {
     padding: 1em;
   }
@@ -2052,11 +2072,12 @@ button.select2-selection__choice__remove {
     padding: 0.7em 1em;
   }
 
-  /* Forms */
+  /* Media for Forms */
   .project__new--title,
   .project__title,
   .profile__title,
   .project__delete--title,
+  .issue__delete--title,
   .issue__new--title,
   .issue__edit--title,
   .project__edit--title,
@@ -2098,6 +2119,7 @@ button.select2-selection__choice__remove {
 
   .project__new--form,
   .project__delete--form,
+  .issue__delete--form,
   .issue__new--form,
   .issue__previous--form,
   .project__previous--form,
@@ -2106,8 +2128,23 @@ button.select2-selection__choice__remove {
     padding: 2em;
   }
 
-  .project__delete--form {
+  .project__delete--form,
+  .issue__delete--form {
     width: 90%;
+  }
+
+  .issue__delete--header,
+  .project__delete--header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .issue__delete--title,
+  .project__delete--title {
+    margin-bottom: 0.5em;
   }
 
   .project__new label[for='id_title']~div::before,
@@ -2156,6 +2193,8 @@ button.select2-selection__choice__remove {
   .project__previous input[type='submit'],
   .project__delete button,
   .project__delete input[type='submit'],
+  .issue__delete button,
+  .issue__delete input[type='submit'],
   .issue__new button,
   .issue__new input[type='submit'],
   .issue__previous button,
@@ -2172,7 +2211,7 @@ button.select2-selection__choice__remove {
     background-color: #040911;
   }
 
-  /* Home page */
+  /* Media for Home page */
   .bg {
     background-position: center center;
   }
@@ -2218,7 +2257,7 @@ button.select2-selection__choice__remove {
     max-width: unset;
   }
 
-  /* Issue Details */
+  /* Media for Issue Details */
   .issue__details {
     margin: 1em 0.2em;
     padding: 1em 0.5em;
@@ -2288,7 +2327,7 @@ button.select2-selection__choice__remove {
     padding-left: 0;
   }
 
-  /* Footer */
+  /* Media for Footer */
   .footer__content {
     padding: 2.5em 1em;
   }
@@ -2308,6 +2347,8 @@ button.select2-selection__choice__remove {
 }
 
 @media all and (max-width: 40em) {
+
+  /* Media for account pages */
   .account {
     margin: 2em auto;
     padding: 2em 0.5em;
@@ -2332,7 +2373,7 @@ button.select2-selection__choice__remove {
     min-width: unset;
   }
 
-  /* Project Page */
+  /* Media for Project Page */
   .projects__group {
     padding: 2em 1em;
     margin-bottom: 0;
@@ -2374,7 +2415,45 @@ button.select2-selection__choice__remove {
     margin-left: 0;
   }
 
-  /* Footer */
+  .issue__delete--title,
+  .project__delete--title {
+    margin-bottom: 0.1em;
+  }
+
+  /* Media for Profile Page */
+  .profile__title,
+  .password__edit--title {
+    font-size: 1.2rem;
+  }
+
+  .password__edit--title {
+    margin-bottom: 0;
+  }
+
+  .profile__statistics--title,
+  .profile__projects--title,
+  .profile__issues--title,
+  .profile__header--descriptions,
+  .profile__statistics--subtitle,
+  .profile__statistics--block,
+  .profile__projects--subtitle,
+  .profile__projects--block,
+  .profile__projects--block div i,
+  .profile__issues--subtitle,
+  .profile__issues--block,
+  .password__edit--subtitle {
+    font-size: 1rem;
+  }
+
+  .password__change--form {
+    margin-top: 1em;
+  }
+
+  .password__change button {
+    margin: 0.5em auto;
+  }
+
+  /* Media for Footer */
   .footer__content {
     padding: 2em 1em;
   }
@@ -2392,12 +2471,11 @@ button.select2-selection__choice__remove {
   .contributor__link a i {
     font-size: 1rem;
   }
-
 }
 
 @media all and (max-width: 30em) {
 
-  /* Home Page */
+  /* Media for Home Page */
   .incentive__title {
     font-size: 2rem;
     line-height: 3rem;
@@ -2407,12 +2485,25 @@ button.select2-selection__choice__remove {
     flex-direction: column;
   }
 
-  /* Profile Page */
+  /* Media for Profile Page */
   .profile__statistics--column,
   .profile__projects--column,
   .profile__issues--column {
     padding: 0.5em 0.3em;
     font-size: 1rem;
+  }
+
+  .password__change {
+    width: 100%;
+  }
+
+  .password__change--form {
+    width: 90%;
+    margin: 1em auto;
+    padding: 0.5em;
+    padding-top: 1em;
+    display: flex;
+    align-items: center;
   }
 
   .project__new input,
@@ -2422,6 +2513,10 @@ button.select2-selection__choice__remove {
   .password__change input {
     width: 17rem;
     margin: 0.5em 0 0.5em 0;
+  }
+
+  .password__change input {
+    width: 15rem;
   }
 
   .project__new .textarea,
@@ -2444,6 +2539,7 @@ button.select2-selection__choice__remove {
   .issue__previous--form,
   .project__previous--form,
   .project__delete--form,
+  .issue__delete--form,
   .password__change--form {
     margin: 1em auto;
     padding: 0.5em;
@@ -2457,7 +2553,7 @@ button.select2-selection__choice__remove {
     margin-right: 0.3em;
   }
 
-  /* Project Page */
+  /* Media for Project Page */
   .project__issues {
     padding: 1em;
   }
@@ -2466,9 +2562,10 @@ button.select2-selection__choice__remove {
     padding: 0.5em;
   }
 
-  /* Forms */
+  /* Media for Forms */
   .project__new--form,
   .project__delete--form,
+  .issue__delete--form,
   .issue__new--form,
   .issue__previous--form,
   .project__previous--form,
@@ -2489,21 +2586,38 @@ button.select2-selection__choice__remove {
   .project__previous input[type='submit'],
   .project__delete button,
   .project__delete input[type='submit'],
+  .issue__delete button,
+  .issue__delete input[type='submit'],
   .issue__new button,
   .issue__new input[type='submit'],
   .issue__previous button,
   .issue__previous input[type='submit'],
   .password__change button,
   .password__change input[type='submit'],
-  .forms__buttons a {
+  .forms__buttons a,
+  .issue__delete--back,
+  .project__delete--back {
     font-size: 0.9rem;
     padding: 0.5em 1.2em 0.48em 1.2em;
+  }
+
+  .project__delete--question,
+  .project__delete--warning,
+  .issue__delete--question,
+  .issue__delete--warning {
+    font-size: 1.2rem;
+  }
+
+  .project__delete--warning,
+  .issue__delete--warning {
+    padding-top: 0.5em;
+    margin-bottom: 0.5em;
   }
 }
 
 @media all and (max-width: 23em) {
-  /* Project Page */
 
+  /* Media for Project Page */
   .projects__title {
     font-size: 2rem;
   }
@@ -2515,7 +2629,6 @@ button.select2-selection__choice__remove {
   .projects__list {
     grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
   }
-
 
   .projects__subtitle {
     font-size: 1.5rem;
@@ -2543,7 +2656,7 @@ button.select2-selection__choice__remove {
     padding: 0.7em 1.5em 0.8em 1.5em;
   }
 
-  /* Forms */
+  /* Media for Forms */
   .project__new input,
   .issue__new input,
   .issue__previous input,
@@ -2551,6 +2664,10 @@ button.select2-selection__choice__remove {
   .password__change input {
     min-width: 90%;
     width: 80vw;
+  }
+
+  .password__change input {
+    width: 70vw;
   }
 
   .project__new .textarea,
@@ -2567,7 +2684,7 @@ button.select2-selection__choice__remove {
     width: 80vw;
   }
 
-  /* Issue */
+  /* Media for Issue Page */
   .issue__new input[type='radio'],
   .issue__previous input[type='radio'] {
     width: unset;
@@ -2600,5 +2717,17 @@ button.select2-selection__choice__remove {
   .issue__previous .form-check input {
     position: absolute;
     top: 0.5em;
+  }
+
+  /* Media for Profile */
+  .profile__statistics--container,
+  .profile__projects--container,
+  .profile__issues--container {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 1rem;
+  }
+
+  .profile__header--descriptions {
+    word-break: break-word;
   }
 }

@@ -17,14 +17,16 @@
 {% endblock %}
 
 {% block content %}
+{% comment %} Profile details {% endcomment %}
   <div class="profile__details">
-    {% if user_profile == request.user %}
-      <h2 class="profile__title">Your Profile</h2>
-    {% else %}
-      <h2 class="profile__title">{{ user_profile.username }}'s Profile</h2>
-    {% endif %}
-    {% comment %} Profile Data {% endcomment %}
+  {% comment %} Name of the user {% endcomment %}
     <section class="profile__header">
+      {% if user_profile == request.user %}
+        <h2 class="profile__title">Your Profile</h2>
+      {% else %}
+        <h2 class="profile__title">{{ user_profile.username }}'s Profile</h2>
+      {% endif %}
+      {% comment %} Profile Data {% endcomment %}
       {% if user_profile == request.user %}
         <a href="#scroll_to_settings" class="profile__edit btn__profile--edit">
           Edit
@@ -47,12 +49,14 @@
         <div class="profile__statistics--column">
           <div class="profile__statistics--projects">
             <h4 class="profile__statistics--subtitle">Projects</h4>
+            {% comment %} Projects created by the user (number) {% endcomment %}
             <div class="profile__statistics--block">
               <div class="statistics__block--title">Created:</div>
               <div>
                 {{ user_profile.projects.all.count }}
               </div>
             </div>
+            {% comment %} Projects in which the user collaborated (number) {% endcomment %}
             <div class="profile__statistics--block">
               <div class="statistics__block--title">Total:</div>
               <div>
@@ -65,12 +69,14 @@
           <div class="profile__statistics--issues">
             <h4 class="profile__statistics--subtitle">Issues</h4>
             <div class="profile__statistics--block">
+            {% comment %} Issues created by the user (number) {% endcomment %}
               <div class="statistics__block--title">Created:</div>
               <div>
                 {{ user_profile.issues.all.count }}
               </div>
             </div>
             <div class="profile__statistics--block">
+            {% comment %} Issues assigned to the user (number) {% endcomment %}
               <div class="statistics__block--title">Assigned:</div>
               <div>
                 {{ user_profile.assigned_issues.all.count }}
@@ -81,6 +87,7 @@
         <div class="profile__statistics--column">
           <h4 class="profile__statistics--subtitle">Comments</h4>
           <div class="profile__statistics--block">
+          {% comment %} Comments created by the user (number) {% endcomment %}
             <div class="statistics__block--title">Comments left:</div>
             <div>
               {{ user_profile.written_comments.all.count }}
@@ -94,6 +101,7 @@
       <h3 class="profile__projects--title">Projects:</h3>
       <div class="profile__projects--container">
         <div class="profile__projects--column">
+        {% comment %} Projects created by the user (data) {% endcomment %}
           <h4 class="profile__projects--subtitle">Created Projects:</h4>
           <div class="profile__projects--block">
             {% if user_profile.projects.all.count == 0 %}
@@ -130,6 +138,7 @@
           </div>
         </div>
         <div class="profile__projects--column">
+        {% comment %} Projects in which the user collaborated (data) {% endcomment %}
           <h4 class="profile__statistics--subtitle">Collaborated on:</h4>
           <div class="profile__projects--block">
             {% if user_profile.collaborated_projects.all.count == 0 %}
@@ -162,6 +171,7 @@
       <h3 class="profile__issues--title">Issues:</h3>
       <div class="profile__issues--container">
         <div class="profile__issues--column">
+        {% comment %} Issues created by the user (data) {% endcomment %}
           <h4 class="profile__issues--subtitle">Created Issues:</h4>
           <div class="profile__issues--block ">
             {% if user_profile.issues.all.count == 0 %}
@@ -183,6 +193,7 @@
           </div>
         </div>
         <div class="profile__issues--column">
+        {% comment %} Isues assigned to the user (data) {% endcomment %}
           <h4 class="profile__issues--subtitle">Assigned Issues:</h4>
           <div class="profile__issues--block">
             {% if user_profile.issues.all.count == 0 %}

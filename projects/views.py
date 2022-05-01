@@ -305,17 +305,16 @@ class UpdateCommentAjaxView(View):
 
 class DeleteIssueView(View):
     def get(self, request, created_by, project_id, issue_id, *args, **kwargs):
-        
-        if (
-            issue.created_by == request.user or
-            project.created_by == request.user
-        ):
-            project = get_object_or_404(
+        project = get_object_or_404(
             Project,
             id=project_id,
             created_by__username=created_by
             )
-            issue = project.issues.get(id=issue_id)
+        issue = project.issues.get(id=issue_id)
+        if (
+            issue.created_by == request.user or
+            project.created_by == request.user
+        ):
             return render(
                 request,
                 'projects/delete_issue.html',
