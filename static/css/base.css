@@ -1011,6 +1011,10 @@ button.select2-selection__choice__remove {
   margin-bottom: 2em;
 }
 
+.profile__title {
+  margin-bottom: 0;
+}
+
 .project__header,
 .profile__header,
 .profile__statistics,
@@ -1026,6 +1030,11 @@ button.select2-selection__choice__remove {
   background-color: var(--clr-primary--100);
   border-radius: var(--br);
   margin-bottom: 2em;
+}
+
+.profile__header {
+  margin-top: 5vh;
+  margin-bottom: 2vh;
 }
 
 .project__header {
@@ -2023,8 +2032,8 @@ button.select2-selection__choice__remove {
 
   .profile__edit {
     position: absolute;
-    right: 0;
-    top: -3rem;
+    right: 0.7rem;
+    top: 0.8rem;
     display: flex;
     align-items: center;
   }
