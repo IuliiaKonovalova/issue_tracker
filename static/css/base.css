@@ -300,6 +300,7 @@ body {
 .account__container,
 .project__new,
 .project__delete,
+.issue__delete,
 .issue__new,
 .issue__previous,
 .project__previous,
@@ -311,27 +312,34 @@ body {
   height: unset;
 }
 
-.project__delete--header {
+.project__delete--header,
+.issue__delete--header {
   font-size: 1.5rem;
   padding: 0 1em;
 }
 
 .project__delete--question,
-.project__delete--warning {
+.project__delete--warning,
+.issue__delete--question,
+.issue__delete--warning {
   color: rgba(255, 255, 255, 0.808);
   padding-top: 0.5em;
   margin-bottom: 0.5em;
 }
 
-.project__delete--name {
+.project__delete--name,
+.issue__delete--name {
   font-size: 1.6rem;
+  text-align: center;
 }
 
-.project__delete--name span {
+.project__delete--name span,
+.issue__delete--name span {
   color: rgba(255, 255, 255, 0.808);
 }
 
-.project__delete--warning {
+.project__delete--warning,
+.issue__delete--warning {
   font-style: italic;
   padding-top: 1em;
   margin-bottom: 2em;
@@ -399,7 +407,8 @@ body {
 }
 
 
-.project__delete--btns {
+.project__delete--btns,
+.issue__delete--btns {
   width: 100%;
   display: flex;
   align-items: center;
@@ -420,13 +429,16 @@ body {
 .project__previous input[type='submit'],
 .project__delete button,
 .project__delete input[type='submit'],
+.issue__delete button,
+.issue__delete input[type='submit'],
 .issue__new button,
 .issue__new input[type='submit'],
 .issue__previous button,
 .issue__previous input[type='submit'],
 .password__change button,
 .password__change input[type='submit'],
-.project__delete--back {
+.project__delete--back,
+.issue__delete--back {
   background-color: var(--clr-accent--800);
   color: var(--clr-neutral--100);
   font-size: 1.2rem;
@@ -455,6 +467,7 @@ body {
 .project__new button:hover,
 .project__previous button:hover,
 .project__delete--back:hover,
+.issue__delete--back:hover,
 .issue__new button:hover,
 .issue__previous button:hover,
 .password__change button:hover {
@@ -469,16 +482,20 @@ body {
   border-color: var(--clr-primary--300);
 }
 
-.project__delete button {
+.project__delete button,
+.issue__delete button {
   background-color: red;
 }
 
-.project__delete button:hover {
+.project__delete button:hover,
+.issue__delete button:hover {
   background-color: rgb(245, 98, 98);
 }
 
 .project__delete button,
-.project__delete--back {
+.project__delete--back,
+.issue__delete button,
+.issue__delete--back {
   margin: 0.5em auto;
 }
 
@@ -709,6 +726,7 @@ body {
 .issue__edit--title,
 .project__edit--title,
 .project__delete--title,
+.issue__delete--title,
 .password__edit--title {
   max-width: 35rem;
   margin: 0 auto;
@@ -723,6 +741,7 @@ body {
 
 .project__new--form,
 .project__delete--form,
+.issue__delete--form,
 .issue__new--form,
 .issue__previous--form,
 .project__previous--form,
@@ -741,7 +760,8 @@ body {
   border: 1px solid #ffffff8c;
 }
 
-.project__delete--form {
+.project__delete--form,
+.issue__delete--form {
   text-align: center;
 }
 
@@ -1910,6 +1930,8 @@ button.select2-selection__choice__remove {
   .project__new--title,
   .project__title,
   .project__delete--title,
+  .issue__delete--title,
+  .issue__delete--title,
   .profile__title,
   .issue__new--title,
   .issue__edit--title,
@@ -2057,6 +2079,7 @@ button.select2-selection__choice__remove {
   .project__title,
   .profile__title,
   .project__delete--title,
+  .issue__delete--title,
   .issue__new--title,
   .issue__edit--title,
   .project__edit--title,
@@ -2098,6 +2121,7 @@ button.select2-selection__choice__remove {
 
   .project__new--form,
   .project__delete--form,
+  .issue__delete--form,
   .issue__new--form,
   .issue__previous--form,
   .project__previous--form,
@@ -2106,7 +2130,8 @@ button.select2-selection__choice__remove {
     padding: 2em;
   }
 
-  .project__delete--form {
+  .project__delete--form,
+  .issue__delete--form {
     width: 90%;
   }
 
@@ -2156,6 +2181,8 @@ button.select2-selection__choice__remove {
   .project__previous input[type='submit'],
   .project__delete button,
   .project__delete input[type='submit'],
+  .issue__delete button,
+  .issue__delete input[type='submit'],
   .issue__new button,
   .issue__new input[type='submit'],
   .issue__previous button,
@@ -2444,6 +2471,7 @@ button.select2-selection__choice__remove {
   .issue__previous--form,
   .project__previous--form,
   .project__delete--form,
+  .issue__delete--form,
   .password__change--form {
     margin: 1em auto;
     padding: 0.5em;
@@ -2469,6 +2497,7 @@ button.select2-selection__choice__remove {
   /* Forms */
   .project__new--form,
   .project__delete--form,
+  .issue__delete--form,
   .issue__new--form,
   .issue__previous--form,
   .project__previous--form,
@@ -2489,6 +2518,8 @@ button.select2-selection__choice__remove {
   .project__previous input[type='submit'],
   .project__delete button,
   .project__delete input[type='submit'],
+  .issue__delete button,
+  .issue__delete input[type='submit'],
   .issue__new button,
   .issue__new input[type='submit'],
   .issue__previous button,
