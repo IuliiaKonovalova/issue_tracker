@@ -2135,6 +2135,20 @@ button.select2-selection__choice__remove {
     width: 90%;
   }
 
+  .issue__delete--header,
+  .project__delete--header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .issue__delete--title,
+  .project__delete--title {
+    margin-bottom: 0.5em;
+  }
+
   .project__new label[for='id_title']~div::before,
   .project__new label[for='id_description']~div::before,
   .project__new label[for='id_collaborators']~div::before,
@@ -2401,6 +2415,12 @@ button.select2-selection__choice__remove {
     margin-left: 0;
   }
 
+
+  .issue__delete--title,
+  .project__delete--title {
+    margin-bottom: 0.1em;
+  }
+
   /* Footer */
   .footer__content {
     padding: 2em 1em;
@@ -2526,11 +2546,28 @@ button.select2-selection__choice__remove {
   .issue__previous input[type='submit'],
   .password__change button,
   .password__change input[type='submit'],
-  .forms__buttons a {
+  .forms__buttons a,
+  .issue__delete--back,
+  .project__delete--back {
     font-size: 0.9rem;
     padding: 0.5em 1.2em 0.48em 1.2em;
   }
+
+  .project__delete--question,
+  .project__delete--warning,
+  .issue__delete--question,
+  .issue__delete--warning {
+    font-size: 1.2rem;
+  }
+
+  .project__delete--warning,
+  .issue__delete--warning {
+    padding-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
 }
+
+
 
 @media all and (max-width: 23em) {
   /* Project Page */
