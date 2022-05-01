@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, reverse
-from django.views import generic, View
+from django.views import View
 from django.http import HttpResponseRedirect, JsonResponse
-from matplotlib.style import context
 from .models import Issue, Comment, Project
 from .forms import PersonalProjectForm, TeamProjectForm, IssueForm, CommentForm
 from django.contrib.auth.models import User
