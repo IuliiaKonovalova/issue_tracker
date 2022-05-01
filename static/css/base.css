@@ -2449,6 +2449,33 @@ button.select2-selection__choice__remove {
     font-size: 1rem;
   }
 
+  .profile__title,
+  .password__edit--title {
+    font-size: 1.2rem;
+  }
+
+  .password__edit--title {
+    margin-bottom: 0;
+  }
+
+  .profile__statistics--title,
+  .profile__projects--title,
+  .profile__issues--title,
+  .profile__header--descriptions,
+  .profile__statistics--subtitle,
+  .profile__statistics--block,
+  .profile__projects--subtitle,
+  .profile__projects--block,
+  .profile__projects--block div i,
+  .profile__issues--subtitle,
+  .profile__issues--block,
+  .password__edit--subtitle {
+    font-size: 1rem;
+  }
+
+  .password__change--form {
+    margin-top: 1em;
+  }
 }
 
 @media all and (max-width: 30em) {
