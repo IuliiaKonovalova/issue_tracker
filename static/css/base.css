@@ -2430,25 +2430,7 @@ button.select2-selection__choice__remove {
     margin-bottom: 0.1em;
   }
 
-  /* Footer */
-  .footer__content {
-    padding: 2em 1em;
-  }
-
-  .contributor:first-child {
-    margin-bottom: 1.5em;
-  }
-
-  .contributor__name {
-    font-size: 1rem;
-    margin-bottom: 0.6em;
-    letter-spacing: 0.08rem;
-  }
-
-  .contributor__link a i {
-    font-size: 1rem;
-  }
-
+  /* Profile Page */
   .profile__title,
   .password__edit--title {
     font-size: 1.2rem;
@@ -2476,6 +2458,29 @@ button.select2-selection__choice__remove {
   .password__change--form {
     margin-top: 1em;
   }
+
+  .password__change button {
+    margin: 0.5em auto;
+  }
+
+  /* Footer */
+  .footer__content {
+    padding: 2em 1em;
+  }
+
+  .contributor:first-child {
+    margin-bottom: 1.5em;
+  }
+
+  .contributor__name {
+    font-size: 1rem;
+    margin-bottom: 0.6em;
+    letter-spacing: 0.08rem;
+  }
+
+  .contributor__link a i {
+    font-size: 1rem;
+  }
 }
 
 @media all and (max-width: 30em) {
@@ -2498,6 +2503,19 @@ button.select2-selection__choice__remove {
     font-size: 1rem;
   }
 
+  .password__change {
+    width: 100%;
+  }
+
+  .password__change--form {
+    width: 90%;
+    margin: 1em auto;
+    padding: 0.5em;
+    padding-top: 1em;
+    display: flex;
+    align-items: center;
+  }
+
   .project__new input,
   .issue__new input,
   .issue__previous input,
@@ -2505,6 +2523,10 @@ button.select2-selection__choice__remove {
   .password__change input {
     width: 17rem;
     margin: 0.5em 0 0.5em 0;
+  }
+
+  .password__change input {
+    width: 15rem;
   }
 
   .project__new .textarea,
@@ -2657,6 +2679,10 @@ button.select2-selection__choice__remove {
     width: 80vw;
   }
 
+  .password__change input {
+    width: 70vw;
+  }
+
   .project__new .textarea,
   .issue__new .textarea,
   .issue__previous .textarea,
@@ -2704,5 +2730,18 @@ button.select2-selection__choice__remove {
   .issue__previous .form-check input {
     position: absolute;
     top: 0.5em;
+  }
+
+  /* Profile */
+  .profile__statistics--container,
+  .profile__projects--container,
+  .profile__issues--container {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 1rem;
+  }
+
+  .profile__header--descriptions {
+    /* Add break words settings */
+    word-break: break-word;
   }
 }
