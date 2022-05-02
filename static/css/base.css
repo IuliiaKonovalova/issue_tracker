@@ -679,7 +679,7 @@ body {
   font-weight: 900;
   width: 100%;
   padding-top: 0.7em;
-  padding-bottom: 0.8em;
+  padding-bottom: 0.75em;
   border-radius: var(--br);
   outline: none;
   border: 1px solid var(--clr-primary--300);
