@@ -604,7 +604,7 @@ body {
   color: var(--clr-neutral--100);
   font-size: 1.5rem;
   font-weight: bold;
-  padding: 0.7em 3.7em 0.8em 3.7em;
+  padding: 0.7em 3.7em 0.75em 3.7em;
   width: 100%;
   border-radius: var(--br);
   outline: none;
