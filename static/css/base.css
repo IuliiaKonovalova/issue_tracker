@@ -237,7 +237,6 @@ body {
   font-size: 1.5rem;
 }
 
-
 .incentive__button:hover {
   background-color: var(--clr-accent--700);
 }
