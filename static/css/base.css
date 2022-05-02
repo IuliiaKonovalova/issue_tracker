@@ -1001,6 +1001,10 @@ button.select2-selection__choice__remove {
   margin-bottom: 2em;
 }
 
+.project__title {
+  margin-bottom: 3vh;
+}
+
 .profile__title {
   margin-bottom: 0;
 }
