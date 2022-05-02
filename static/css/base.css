@@ -229,7 +229,7 @@ body {
   background-color: var(--clr-accent--800);
   font-weight: bold;
   padding-top: 0.7em;
-  padding-bottom: 0.9em;
+  padding-bottom: 0.8em;
   border-radius: var(--br);
   margin: 1em;
   transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
