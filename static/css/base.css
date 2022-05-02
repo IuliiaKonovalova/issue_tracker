@@ -233,12 +233,10 @@ body {
   border-radius: var(--br);
   margin: 1em;
   transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
-}
-
-.incentive__button a {
   color: var(--clr-neutral--100);
   font-size: 1.5rem;
 }
+
 
 .incentive__button:hover {
   background-color: var(--clr-accent--700);
