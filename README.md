@@ -154,6 +154,12 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
 1. Issue delete page
 
+    - After you click on the delete button, you will be redirected to the issue delete page. Here you can delete the issue.
+  
+    ![delete issue page](documentation/website_screenshots/delete_issue.png)
+  
+    This page has a button "Delete" and a button "Cancel". If the user clicks "Delete", the issue will be deleted and the user will be redirected to the project details page. If the user clicks "Cancel", the issue will not be deleted and the user will be redirected to the issue details page.
+
 1. Profile page
 
     - You can go to your profile page by clicking on "Profile" in the account menu at the top right corner of the page. Also, you can visit other users' profile pages by clicking on their names in the projects list or issue details pages.
