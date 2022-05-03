@@ -121,6 +121,22 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
    ![create issue page](documentation/website_screenshots/create_issue.png)
 
+1. Project edit page
+
+   - After you click on the edit button, you will be redirected to the project edit page. Here you can edit the project name, description, and choose the type of project.
+
+   ![edit project page](documentation/website_screenshots/edit_project.png)
+
+   This page has pre-filled fields with the current project information, which the user may easily edit depending on the type of the project (personal or team project). It also has 2 buttons: "Submit" and "Cancel". If the user clicks "Submit", the project will be updated. If the user clicks "Cancel", the project will not be updated and the user will be redirected to the project details page.
+
+1. Project delete page
+
+    - After you click on the delete button, you will be redirected to the project delete page. Here you can delete the project.
+  
+    ![delete project page](documentation/website_screenshots/delete_project.png)
+  
+    This page has a button "Delete" and a button "Cancel". If the user clicks "Delete", the project will be deleted and the user will be redirected to the projects list page. If the user clicks "Cancel", the project will not be deleted and the user will be redirected to the project details page.
+
 1. Issue details
 
    - After you click on an issue, you will be redirected to the issue details page. Here you can see all the information about the issue, including the comments and the status of the issue. From here you can to go to creator's and assignee's profile pages, add and edit comments, and edit and delete the issue if you created it.
