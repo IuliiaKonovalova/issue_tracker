@@ -143,6 +143,17 @@ This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was cre
 
    ![issue details page](documentation/website_screenshots/issue_details.png)
 
+1. Issue edit page
+
+    - After you click on the edit button, you will be redirected to the issue edit page. Here you can edit the issue title, description, and choose the priority and type of the issue.
+  
+    ![edit issue page](documentation/website_screenshots/edit_issue.png)
+  
+    This page has pre-filled fields with the current issue information, which the user may easily edit depending on the type of the issue (bug, feature, task, or user story). It also has 2 buttons: "Submit" and "Cancel". If the user clicks "Submit", the issue will be updated. If the user clicks "Cancel", the issue will not be updated and the user will be redirected to the issue details page.
+
+
+1. Issue delete page
+
 1. Profile page
 
     - You can go to your profile page by clicking on "Profile" in the account menu at the top right corner of the page. Also, you can visit other users' profile pages by clicking on their names in the projects list or issue details pages.
