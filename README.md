@@ -4,7 +4,7 @@
 
 ## About
 
-This [issue tracker](https://issue-tracker-by-konovalovs.herokuapp.com/) was created to help people to create and track issues in their personal or team projects. It is a simple and easy to use issue tracker that allows you to register your account, create projects, issues, add comments, and track the status of your issues.
+This [issue tracker](https://issue-tracker-mnl3.onrender.com/) was created to help people to create and track issues in their personal or team projects. It is a simple and easy to use issue tracker that allows you to register your account, create projects, issues, add comments, and track the status of your issues.
 
 ---
 
@@ -235,8 +235,8 @@ Please refer to the [TESTING.md](TESTING.md) file for all test related documenta
 
 ## Deployment
 
-- The program was deployed to [Heroku](https://dashboard.heroku.com).
-- The program can be reached by the [link](https://issue-tracker-by-konovalovs.herokuapp.com/)
+- The program was deployed to [Heroku](https://dashboard.heroku.com) initially then moved to [Render](https://render.com/).
+- The program can be reached by the [link](https://issue-tracker-mnl3.onrender.com/)
 ### Local deployment:
 
 *Note:*
