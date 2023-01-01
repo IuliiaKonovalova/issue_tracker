@@ -21,7 +21,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ['DEBUG'] == 'True'
 
 
-ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME'), '127.0.0.1', ]
+ALLOWED_HOSTS = ['127.0.0.1', ]
 
 # Application definition
 
@@ -106,7 +106,7 @@ WSGI_APPLICATION = 'issue_tracker.wsgi.application'
 
 # Database
 if "DATABASE_URL" in os.environ:
-    print("database = PostgreSQL via Heroku")
+    print("database = production")
     DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
