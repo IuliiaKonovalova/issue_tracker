@@ -15,8 +15,9 @@
 
 - ### JavaScript
 
-    + [Official JavaScript validator](https://jshint.com/) was used to validate the JavaScript output. No errors were found, but it complained about undefined jQuery variable: "$".
+    + [Official JavaScript validator](https://jshint.com/) was used to validate the JavaScript output.
 
+    ![JavaScript validator results](documentation/validation/jshint_validation.png)
 - ### Python
 
     + [PEP8 online validator](https://pep8online.com/) was used to validate the Python output. No errors were found.
