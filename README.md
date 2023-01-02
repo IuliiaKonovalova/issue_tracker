@@ -204,7 +204,7 @@ This [issue tracker](https://issue-tracker-mnl3.onrender.com/) was created to he
     + [Spycopg2](https://www.python.org/dev/peps/pep-0249/): the database driver used to connect to the database.
     + [Django-allauth](https://django-allauth.readthedocs.io/en/latest/): the authentication library used to create the user accounts.
     + [Django-crispy-forms](https://django-cryptography.readthedocs.io/en/latest/): was used to control the rendering behavior of Django forms.
-    + [Heroku](https://dashboard.heroku.com/): the hosting service used to host the website.
+    + [Render](https://render.com/): the cloud platform used to host the website.
     + [GitHub](https://github.com/): used to host the source code of the website.
     + [VSCode](https://code.visualstudio.com/): the IDE used to develop the website.
     + [Chrome DevTools](https://developer.chrome.com/docs/devtools/open/): was used to debug the website.
@@ -333,7 +333,7 @@ Create a local copy of the GitHub repository by following one of the two process
 - [Django](https://www.djangoproject.com/) for the framework.
 - [BGJar](https://www.bgjar.com/): for the free access to background images build tool.
 - [Font awesome](https://fontawesome.com/): for the free access to icons.
-- [Heroku](https://www.heroku.com/): for the free hosting of the website.
+- [Render](https://render.com/): for the free access to hosting.
 - [jQuery](https://jquery.com/): for providing varieties of tools to make standard HTML code look appealing.
 
 ---
