@@ -1,4 +1,4 @@
-/*jshint esversion: 6 */
+/* jshint esversion: 8, jquery: true, scripturl: true */
 const profileMenu = document.getElementById("dropdown-profile");
 const menu = document.querySelectorAll(".dropdown");
 const loginSignup = document.getElementById("dropdown-enter");
