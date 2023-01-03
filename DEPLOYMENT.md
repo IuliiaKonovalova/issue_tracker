@@ -54,6 +54,12 @@ Create a local copy of the GitHub repository by following one of the two process
     - Enter your username and password (for the superuser that you have created before).
     - You will be redirected to the admin page.
 
+---
+
+**The app was initially deployed to Heroku then moved to Render since Heroku has removed its free tier services from November 29 2022**
+
+---
+
 
 ### Heroku Deployment
 
